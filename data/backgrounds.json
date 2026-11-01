@@ -361,6 +361,44 @@
     "score": 0.82
   },
   {
+    "id": "recraft-minimal-04",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-04.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-04.jpg",
+    "primary": "#f9eae7",
+    "centre": "#fceceb",
+    "busyness": 0.007,
+    "paper": "#fceceb",
+    "layout": "centered",
+    "safe": {
+      "x": 0.12,
+      "y": 0.15,
+      "w": 0.76,
+      "h": 0.7
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-minimal-06",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-06.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-06.jpg",
+    "primary": "#67051c",
+    "centre": "#600418",
+    "busyness": 0.013,
+    "paper": "#570315",
+    "layout": "centered",
+    "safe": {
+      "x": 0.106,
+      "y": 0.081,
+      "w": 0.789,
+      "h": 0.856
+    },
+    "score": 1
+  },
+  {
     "id": "recraft-minimal-02",
     "kind": "simple",
     "category": "minimal",
@@ -397,6 +435,44 @@
       "h": 0.72
     },
     "score": 0.86
+  },
+  {
+    "id": "recraft-minimal-03",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-03.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-03.jpg",
+    "primary": "#e8ddc7",
+    "centre": "#eae2d3",
+    "busyness": 0.008,
+    "paper": "#ebe3d4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.111,
+      "y": 0.063,
+      "w": 0.778,
+      "h": 0.875
+    },
+    "score": 0.85
+  },
+  {
+    "id": "recraft-minimal-05",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-05.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-05.jpg",
+    "primary": "#cfdbb8",
+    "centre": "#cfdcb9",
+    "busyness": 0.011,
+    "paper": "#cedbb7",
+    "layout": "centered",
+    "safe": {
+      "x": 0.1,
+      "y": 0.17,
+      "w": 0.8,
+      "h": 0.74
+    },
+    "score": 0.62
   },
   {
     "id": "recraft-peacocks-09",

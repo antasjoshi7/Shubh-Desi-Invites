@@ -63,7 +63,6 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
       <Crumbs trail={[{ name: `${e.name} invitation video`, path: `/${slug}` }]} />
       <section className="s-hero">
         <div>
-          <p className="s-kicker">Free · No watermark · No sign-up</p>
           <h1>{e.h1}</h1>
           <p className="s-lead">{e.lead}</p>
           <Cta href={start} label={`Make a ${e.name} invite`} />
@@ -154,7 +153,7 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
               <h3>
                 <Link href={`/${o.slug}`}>{o.name} invitation video</Link>
               </h3>
-              <p>{o.dress[0]} · {o.motions[0]}</p>
+              <p>{o.lead.split(":")[0]}.</p>
             </li>
           ))}
           <li>

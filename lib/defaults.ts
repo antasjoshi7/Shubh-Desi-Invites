@@ -74,7 +74,7 @@ function boxesFor(kind: PageKind, event?: EventId): TextBox[] {
         box("Time", e.time, "details"),
         box("Venue", e.venue, "details"),
         box("Dress code", e.dress, "body"),
-        box("RSVP", "RSVP: Sharma family · +91 98765 43210", "small"),
+        box("RSVP", "RSVP: Sharma family, +91 98765 43210", "small"),
       ];
     }
     case "outro":

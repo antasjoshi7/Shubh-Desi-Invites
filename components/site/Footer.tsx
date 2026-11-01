@@ -24,6 +24,7 @@ export function SiteFooter() {
           <h2>Ideas</h2>
           <ul>
             <li><Link href="/wedding-invitation-wording">Invitation wording</Link></li>
+            <li><Link href="/digital-wedding-invitation-price">What invites cost</Link></li>
             <li><Link href="/designs">All designs</Link></li>
             <li><Link href="/guides">Guides</Link></li>
           </ul>

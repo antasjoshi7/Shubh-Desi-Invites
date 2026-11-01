@@ -68,7 +68,7 @@ export const WORDING_GROUPS: WordingGroup[] = [
       },
       {
         label: "Short and sweet",
-        text: "Two hearts, one journey\nRohan & Aishwarya\n12.12.2026 · Udaipur\nSave the date",
+        text: "Two hearts, one journey\nRohan & Aishwarya\n12.12.2026, Udaipur\nSave the date",
       },
       {
         label: "For colleagues",
@@ -150,6 +150,6 @@ export const WORDING_FAQS: Faq[] = [
   },
   {
     q: "Is it okay to invite people on WhatsApp?",
-    a: "Yes, for most guests it's now normal. Send a personal message with the video rather than a bare forward, and call elders or close family as well.",
+    a: "Yes, for most guests it's now normal. Send it one by one or in small family groups rather than one big group, start with a personal line rather than a bare forward, and call elders and close family too (or follow up with a printed card).",
   },
 ];

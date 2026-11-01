@@ -1023,3 +1023,12 @@ p.sec-desc { margin: 8px 0 0; }
   cursor: pointer;
 }
 .fit-note { margin: 10px 0 0; font-size: 12px; line-height: 1.45; color: rgba(245, 230, 200, 0.62); }
+
+/* rating box under a finished video */
+.rating-box { margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 8px; }
+.rating-q { margin: 0; font-size: 15px; font-weight: 600; }
+.rating-stars { display: flex; gap: 4px; }
+.rating-stars button { background: none; border: none; font-size: 30px; line-height: 1; color: rgba(245, 230, 200, 0.25); cursor: pointer; padding: 2px; }
+.rating-stars button.on { color: var(--marigold); }
+.rating-box textarea, .rating-box input:not([type]) { width: 100%; background: var(--bg-2); color: var(--cream); border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 12px; font-size: 15px; resize: none; }
+.rating-share { display: flex; gap: 8px; align-items: center; font-size: 13px; opacity: 0.8; }

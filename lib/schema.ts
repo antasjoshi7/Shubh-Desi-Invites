@@ -1,6 +1,7 @@
 // Builders for structured data (schema.org JSON-LD). See docs/SEO-PLAYBOOK.md for what each one does.
 
 import type { Faq } from "./content/events";
+import { ratingSummary } from "./content/reviews";
 import { SITE, absolute } from "./site";
 
 export const organizationSchema = () => ({
@@ -35,6 +36,8 @@ export const appSchema = (opts: { name: string; description: string; path: strin
   isAccessibleForFree: true,
   offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
   ...(opts.image ? { image: absolute(opts.image) } : {}),
+  // real ratings from the rating box, once there are at least five
+  ...(ratingSummary() ? { aggregateRating: { "@type": "AggregateRating", ratingValue: ratingSummary()!.average, ratingCount: ratingSummary()!.count, bestRating: 5 } } : {}),
   publisher: { "@id": absolute("/#org") },
 });
 

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
+import { Reviews } from "@/components/site/Reviews";
 import { MotionReel } from "@/components/site/MotionReel";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Tiles } from "@/components/site/Tiles";
@@ -12,7 +13,7 @@ import { appSchema, howToSchema, organizationSchema, websiteSchema } from "@/lib
 import { COUNTS, SITE } from "@/lib/site";
 
 const TITLE = "Free Indian Wedding Invitation Video Maker (No Watermark)";
-const DESCRIPTION = `Make an Indian wedding invitation video on your phone in 5 minutes. ${COUNTS.designs} traditional designs, Ganesh ji and Om symbols, music and animations. Free, no watermark, no sign-up.`;
+const DESCRIPTION = `Make an Indian wedding invitation video on your phone in 5 minutes. ${COUNTS.designsLabel} designs, animations that come alive, Ganesh ji and Om, music and animations. Free, no watermark, no sign-up.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  { name: "Pick a design", text: `Choose from ${COUNTS.designs} designs: peacocks, elephants, marigolds, palaces, Pichwai lotus and more.` },
+  { name: "Pick a design", text: `Choose from ${COUNTS.designsLabel} designs, with new ones every week: peacocks, elephants, marigolds, palaces, Pichwai lotus and more.` },
   { name: "Add your details", text: "Tap any line to type names, dates and venues. Add a page for each function: Haldi, Mehendi, Sangeet, wedding, reception." },
   { name: "Download and share", text: "Pick music and an animation, then export an MP4 (or a picture) to send on WhatsApp or post as a story." },
 ];
@@ -32,6 +33,10 @@ const FAQS: FaqItem[] = [
   { q: "Will there be a watermark on my video?", a: "No. The video you download is clean, with nothing added to it." },
   { q: "Do I need to make an account?", a: "No. Open the editor and start. Your invite saves on your own phone as you go, so you can close it and come back later." },
   { q: "Does it work on my phone?", a: "Yes. It's made for phones first and works in Chrome and Safari on Android and iPhone, and on computers." },
+  { q: "Do my guests have to click a link?", a: "No. You send the video or picture itself, so it plays right inside WhatsApp. Many people don't open invite links because of spam and fraud, and older relatives often find invite websites confusing, so a plain video is the easiest thing for every guest to open." },
+  { q: "How much does a wedding invitation usually cost?", a: "From what couples share online in 2026, printed cards cost roughly ₹30 to ₹500 each, ready-made video templates ₹199 to ₹500, and custom digital invites from designers up to ₹20,000 to ₹30,000. This tool is free. Many families now print a few cards for elders and the temple and send the video to everyone else. " },
+  { q: "Is it respectful to put Ganesh ji on a digital invite?", a: "Many families feel uneasy throwing away printed cards that carry Ganesh ji, deities or shlokas once the wedding is over, and a digital invite avoids that. If you'd still rather not use a deity, choose a monogram of the couple's initials instead." },
+  { q: "Will someone else have the same design?", a: "The designs are shared by everyone who uses the tool, like any template. You can make yours your own by changing the paper and design colours, fonts, the symbol and where the text sits." },
   { q: "Is my invite uploaded anywhere?", a: "No. The video is made inside your browser, on your device. Names, dates and addresses never leave your phone." },
   { q: "Can I write the invite in Hindi?", a: "Yes. Type in Hindi or any language and choose a font with Devanagari letters, such as Yatra One, Rozha One or Amita." },
   { q: "How long is the video, and what size?", a: "Each page plays for 3 to 8 seconds and you can have up to 10 pages, so most invites are 20 to 60 seconds. Videos are 720 × 1280 (9:16), the shape of a phone screen, which suits WhatsApp and Instagram stories." },
@@ -45,15 +50,15 @@ export default function Home() {
     <>
       <section className="s-hero">
         <div>
-          <p className="s-kicker">For Indian weddings, made with love</p>
+          <p className="s-kicker">Why pay ₹1,699 for an invite?</p>
           <h1>Free Indian wedding invitation video maker</h1>
           <p className="s-lead">
-            Make a beautiful wedding invitation video on your phone in about five minutes. Traditional designs, Ganesh ji and Om, music and animations included. No watermark, no sign-up, nothing to pay.
+            Make a wedding invitation video that comes alive: a baraat horse that gallops, palace doors that swing open, diyas that light up one by one. Pick from {COUNTS.designsLabel} designs in the styles trending on Pinterest and Instagram, type your details, and download it free, with no watermark and no sign-up.
           </p>
           <Cta />
           <p className="s-updated">
-            {COUNTS.designs} designs · {COUNTS.motions} animations · {COUNTS.music} songs · Updated{" "}
-            {new Date(SITE.updated).toLocaleDateString("en-IN", { month: "long", year: "numeric" })}
+            {COUNTS.designs} designs so far, with new ones every week. Updated{" "}
+            {new Date(SITE.updated).toLocaleDateString("en-IN", { month: "long", year: "numeric" })}.
           </p>
         </div>
         <Tiles tiles={tilesFor(["wedding", "peacocks", "elephants"], 3, "shaadi")} />
@@ -120,7 +125,7 @@ export default function Home() {
         </p>
         <Tiles tiles={tilesFor(["wedding", "haldi", "sangeet", "mehendi", "reception", "peacocks", "elephants", "lotus", "palaces", "temple"], 10)} />
         <p>
-          <Link href="/designs">See all {COUNTS.designs} designs</Link>
+          <Link href="/designs">See all {COUNTS.designs} designs</Link>, with new ones added every week.
         </p>
       </section>
 
@@ -152,12 +157,20 @@ export default function Home() {
       </section>
 
       <section className="s-section">
+        <h2>Why pay for an invite?</h2>
+        <p>
+          Video templates cost ₹199 to ₹500, invitation websites start around ₹1,699 plus GST, and designers charge up to ₹30,000. See what each one gets you in our <Link href="/digital-wedding-invitation-price">digital wedding invitation price</Link> comparison, or make yours here for free.
+        </p>
+      </section>
+
+      <section className="s-section">
         <h2>Need the words?</h2>
         <p>
           Copy-ready wording for the main invite, invites from parents, RSVP lines and the WhatsApp message to send with your video is in the <Link href="/wedding-invitation-wording">wedding invitation wording</Link> collection.
         </p>
       </section>
 
+      <Reviews />
       <Faq items={FAQS} />
       <Cta />
 

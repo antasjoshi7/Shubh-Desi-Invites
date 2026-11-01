@@ -9,17 +9,17 @@ const root = process.cwd();
 const backgrounds = JSON.parse(fs.readFileSync(path.join(root, "data/backgrounds.json"), "utf8"));
 const samples = JSON.parse(fs.readFileSync(path.join(root, "data/samples.json"), "utf8"));
 
-// ----- icon: a gold star in a double ring on plum -----
-const ICON = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#1a0620"/>
-  <circle cx="256" cy="256" r="178" fill="none" stroke="#ffb400" stroke-width="14"/>
-  <circle cx="256" cy="256" r="146" fill="none" stroke="#ffb400" stroke-width="5" opacity="0.7"/>
-  <path d="M256 128 C268 214 298 244 384 256 C298 268 268 298 256 384 C244 298 214 268 128 256 C214 244 244 214 256 128Z" fill="#ff2e7e"/>
-  <path d="M256 176 C263 228 284 249 336 256 C284 263 263 284 256 336 C249 284 228 263 176 256 C228 249 249 228 256 176Z" fill="#f5e6c8"/>
-</svg>`;
-fs.writeFileSync(path.join(root, "app/icon.svg"), ICON);
-await sharp(Buffer.from(ICON)).resize(180, 180).png().toFile(path.join(root, "app/apple-icon.png"));
-for (const s of [192, 512]) await sharp(Buffer.from(ICON)).resize(s, s).png().toFile(path.join(root, `public/icon-${s}.png`));
+// ----- icon: the marigold mark made in Recraft (assets/brand-icon-recraft.png), corners rounded off -----
+const SOURCE_ICON = path.join(root, "assets/brand-icon-recraft.png");
+const mask = Buffer.from(`<svg width="1024" height="1024"><rect width="1024" height="1024" rx="256" fill="#fff"/></svg>`);
+const rounded = await sharp(SOURCE_ICON).ensureAlpha().composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
+const onPlum = await sharp({ create: { width: 1024, height: 1024, channels: 4, background: "#5a1a2e" } }).composite([{ input: rounded }]).png().toBuffer();
+fs.rmSync(path.join(root, "app/icon.svg"), { force: true });
+await sharp(rounded).resize(512, 512).png().toFile(path.join(root, "app/icon.png")); // favicon (browsers and Google results)
+await sharp(onPlum).resize(180, 180).png().toFile(path.join(root, "app/apple-icon.png")); // iPhone home screen rounds its own corners
+for (const s of [192, 512]) await sharp(onPlum).resize(s, s).png().toFile(path.join(root, `public/icon-${s}.png`));
+fs.mkdirSync(path.join(root, "public/brand"), { recursive: true });
+await sharp(rounded).resize(96, 96).png().toFile(path.join(root, "public/brand/mark.png")); // the logo in the site header
 
 // ----- share images (1200 x 630): three invites side by side and a title -----
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
@@ -37,7 +37,7 @@ async function shareImage(file, title, subtitle, images) {
   const text = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}">
     <defs><radialGradient id="g" cx="0.3" cy="0" r="1"><stop offset="0" stop-color="#4a0f3d"/><stop offset="1" stop-color="#1a0620"/></radialGradient></defs>
     <rect width="${W}" height="${H}" fill="url(#g)"/>
-    <text x="64" y="120" font-family="Georgia, serif" font-style="italic" font-size="30" fill="#ff88b8">Free · No watermark · No sign-up</text>
+    <text x="64" y="120" font-family="Georgia, serif" font-style="italic" font-size="30" fill="#ff88b8">Free, with no watermark</text>
     ${title.map((l, i) => `<text x="64" y="${205 + i * 70}" font-family="Georgia, serif" font-size="62" fill="#f5e6c8">${esc(l)}</text>`).join("")}
     <text x="64" y="${230 + title.length * 70}" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#f5e6c8" opacity="0.8">${esc(subtitle)}</text>
     <rect x="64" y="${270 + title.length * 70}" width="270" height="62" rx="31" fill="#ff2e7e"/>
@@ -76,7 +76,7 @@ for (const s of samples) {
     <defs><radialGradient id="g" cx="0.5" cy="0" r="1"><stop offset="0" stop-color="#5a1349"/><stop offset="1" stop-color="#1a0620"/></radialGradient></defs>
     <rect width="1000" height="1500" fill="url(#g)"/>
     <text x="500" y="1290" text-anchor="middle" font-family="Georgia, serif" font-size="62" fill="#f5e6c8">${esc(title)}</text>
-    <text x="500" y="1360" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#ff88b8">Free · No watermark · Made on your phone</text>
+    <text x="500" y="1360" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="34" fill="#ff88b8">Free and made on your phone</text>
     <text x="500" y="1440" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" fill="#ffb400">${esc(site)}</text>
   </svg>`;
   const name = path.basename(s.src, ".jpg") + "-pin.jpg";

@@ -27,6 +27,8 @@ export const absolute = (path: string) => SITE.url + (path === "/" ? "" : path);
 
 export const COUNTS = {
   designs: BACKGROUNDS.length,
+  // how the design count reads in copy: "200+" once there are 200, "nearly 200" until then
+  designsLabel: BACKGROUNDS.length >= 200 ? `${Math.floor(BACKGROUNDS.length / 50) * 50}+` : `nearly ${Math.ceil(BACKGROUNDS.length / 50) * 50}`,
   motions: ANIMATIONS.length,
   fonts: FONTS.length,
   symbols: SYMBOL_STYLES.length,

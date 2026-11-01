@@ -7,10 +7,9 @@ export function Tiles({ tiles }: { tiles: Tile[] }) {
     <ul className="s-tiles">
       {tiles.map((t) => (
         <li key={t.href}>
-          <Link href={t.href}>
+          <Link href={t.href} aria-label={`${t.label}: ${t.alt}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src={t.src} alt={t.alt} width={360} height={640} loading="lazy" decoding="async" />
-            <span>{t.label}</span>
           </Link>
         </li>
       ))}

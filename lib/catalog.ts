@@ -170,6 +170,7 @@ export const ANIMATIONS: { id: AnimationId; name: string }[] = [
   { id: "mehendi", name: "Mehendi" },
   { id: "parrots", name: "Parrots" },
   { id: "butterflies", name: "Butterflies" },
+  { id: "clouds", name: "Floating clouds" },
   { id: "sparkles", name: "Golden sparkles" },
   { id: "fadeUp", name: "Fade up" },
   { id: "wipe", name: "Wipe" },

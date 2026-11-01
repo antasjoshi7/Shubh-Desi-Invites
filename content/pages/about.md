@@ -36,4 +36,4 @@ guides show you as the author.
 
 ## Contact
 
-[Your email] · [Your Twitter/X]
+[Your email], or find me on [Your Twitter/X]

@@ -26,7 +26,6 @@ export default function AnimatedPage() {
       <Crumbs trail={[{ name: "Animated wedding invitation", path: "/animated-wedding-invitation" }]} />
       <section className="s-hero" style={{ gridTemplateColumns: "1fr" }}>
         <div>
-          <p className="s-kicker">Free · No watermark · No sign-up</p>
           <h1>Animated Indian wedding invitations</h1>
           <p className="s-lead">
             {COUNT} hand-painted animations made for Indian weddings: a baraat ghodi that really gallops, elephants that meet and raise their trunks, palace doors that swing open, diyas that light one by one. Pick one for each page of your invite and download the video.

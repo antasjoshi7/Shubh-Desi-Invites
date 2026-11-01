@@ -26,7 +26,11 @@ export async function startAnalytics() {
   queued = [];
 }
 
-// Records one thing that happened. Never pass text the person typed.
+// Whether analytics (and so the rating box) is switched on for this site.
+export const analyticsOn = () => !!KEY;
+
+// Records one thing that happened. Never pass text typed into an invite (feedback the person
+// chooses to send in the rating box is the one exception).
 export function track(event: string, props?: Record<string, unknown>) {
   if (!KEY) return;
   if (client) client.capture(event, props);

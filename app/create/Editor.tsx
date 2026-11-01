@@ -5,6 +5,7 @@ import { BgThumb, Label, SameBox, Slider, Swatch } from "@/components/Controls";
 import { MiniPreview } from "@/components/MiniPreview";
 import { PageStrip } from "@/components/PageStrip";
 import { PreviewModal } from "@/components/PreviewModal";
+import { RatingBox } from "@/components/RatingBox";
 import { SymbolTile } from "@/components/SymbolTile";
 import { TextOverlay, type OverlayItem } from "@/components/TextOverlay";
 import { Tip, useTips } from "@/components/Tip";
@@ -654,7 +655,7 @@ export default function Editor() {
     style: "Style",
     edit: "Edit text",
     add: "Add a page",
-    pagemenu: `${titles[current]} · page ${current + 1}`,
+    pagemenu: `${titles[current]}, page ${current + 1}`,
     more: "More",
   };
 
@@ -810,7 +811,7 @@ export default function Editor() {
         {/* smart help */}
         {!locked && !dragging && offDesign.length > 0 && !panel && !sel.length && (
           <button className="nudge" onClick={() => setBoxes((b) => ({ ...b, dx: 0, dy: 0 }), offDesign.map((r) => r.id))}>
-            ✨ Text is sitting on the design · <b>Fit it</b>
+            ✨ Text is sitting on the design. <b>Fit it</b>
           </button>
         )}
         {multi && (
@@ -826,14 +827,14 @@ export default function Editor() {
       {ready && !locked && !multi && (
         <p className="context" key={"ctx-" + mode}>
           {group
-            ? "Drag to move all · Pull ⤢ to resize · Tap a line to edit it"
+            ? "Drag to move it all, pull ⤢ to resize, or tap a line to edit it"
             : mode === "text"
-            ? "Drag to move · Pull ⤢ to resize · Tap again to type"
+            ? "Drag to move, pull ⤢ to resize, or tap again to type"
             : mode === "symbol"
-              ? "Drag to move · Pull ⤢ or pinch to resize"
+              ? "Drag to move, or pull ⤢ or pinch to resize"
               : fit < 0.8
-                ? "Lots of text here, so it's shrunk to fit · Move a few lines to another page"
-                : "Tap the text to move or resize it all · Hold to pick several"}
+                ? "Lots of text here, so it's shrunk to fit. Move a few lines to another page"
+                : "Tap the text to move or resize it all, or hold to pick several"}
         </p>
       )}
 
@@ -901,7 +902,7 @@ export default function Editor() {
             {/* ----- Colours ----- */}
             {panel === "colours" && (
               <>
-                <Label title="Themes" desc={eventLook ? "One tap changes the paper colour · the artwork keeps its colours · ★ matches this event" : "One tap changes the paper colour · the artwork keeps its colours"} />
+                <Label title="Themes" desc={eventLook ? "One tap changes the paper colour and the artwork keeps its own. ★ matches this event" : "One tap changes the paper colour and the artwork keeps its own"} />
                 <div className="chips">
                   {THEMES.map((t) => (
                     <button key={t.name} className={"chip chip-theme" + (eventLook?.theme === t.name ? " suggested" : "")} onClick={() => setColours({ paper: t.colours.paper })}>
@@ -935,7 +936,7 @@ export default function Editor() {
                   </label>
                 </div>
                 <Slider label="Artwork strength" desc="Lower makes the artwork softer and lighter" min={0.2} max={1} step={0.05} value={page.colours.opacity} onChange={(v) => setColours({ opacity: v })} show={`${Math.round(page.colours.opacity * 100)}%`} />
-                <Label title="Text colours" desc="Colours for your words · ★ easiest to read on this paper" />
+                <Label title="Text colours" desc="Colours for your words. ★ is easiest to read on this paper" />
                 <div className="chips">
                   {ranked.slice(0, 8).map(({ palette: p, recommended: rec, readable }) => (
                     <button key={p.id} className={"chip chip-palette" + (p.id === page.palette.id ? " on" : "") + (readable ? "" : " dim")} onClick={() => update({ palette: p })}>
@@ -965,7 +966,7 @@ export default function Editor() {
                 />
                 {suggestion && suggestion !== editBox.role && (
                   <button className="suggest-chip" onClick={() => setBoxes((b) => ({ ...b, role: suggestion, px: undefined, scale: undefined, italic: undefined, caps: undefined, tracking: undefined, bold: undefined }), [editBox.id])}>
-                    ✨ Looks like {ROLES[suggestion].name.toLowerCase()} · <b>Style it that way</b>
+                    ✨ Looks like {ROLES[suggestion].name.toLowerCase()}. <b>Style it that way</b>
                   </button>
                 )}
                 <p className="sec-desc">Tap another line on the page to type into that one.</p>
@@ -1009,7 +1010,7 @@ export default function Editor() {
             )}
             {panel === "size" && firstSel && !group && (
               <>
-              <Label title="Font size" desc={selBoxes.length > 1 ? "Bigger number, bigger text · the lines keep their sizes relative to each other" : "Bigger number, bigger text"} />
+              <Label title="Font size" desc={selBoxes.length > 1 ? "Bigger number, bigger text. The lines keep their sizes relative to each other" : "Bigger number, bigger text"} />
               <div className="size-row">
                 <input
                   type="range"
@@ -1111,7 +1112,7 @@ export default function Editor() {
                 </div>
                 <Slider
                   label="Letter spacing"
-                  desc="Space between letters · capitals look best a little apart"
+                  desc="Space between letters. Capitals look best a little apart"
                   min={0}
                   max={0.3}
                   step={0.01}
@@ -1180,7 +1181,7 @@ export default function Editor() {
             {/* ----- Motion ----- */}
             {panel === "motion" && (
               <>
-                <Label title="Text animation" desc="How your words appear · tap one to preview" />
+                <Label title="Text animation" desc="How your words appear. Tap one to preview" />
                 <div className="scroller">
                   {ANIMATIONS.map((a) => (
                     <button key={a.id} className={"motion" + (a.id === page.animation ? " on" : "")} onClick={() => setPreviewing({ kind: "animation", id: a.id })}>
@@ -1190,7 +1191,7 @@ export default function Editor() {
                   ))}
                 </div>
                 <SameBox checked={invite.same.animation} onChange={(on) => setSame("animation", on)} />
-                <Label title="Between pages" desc="The effect when one page changes to the next · used for every page" />
+                <Label title="Between pages" desc="The effect when one page changes to the next, used for every page" />
                 <div className="scroller">
                   {TRANSITIONS.map((tr) => (
                     <button key={tr.id} className={"motion" + (tr.id === page.transition ? " on" : "")} onClick={() => setPreviewing({ kind: "transition", id: tr.id })}>
@@ -1356,7 +1357,7 @@ export default function Editor() {
               <div style={{ width: `${Math.round(progress * 100)}%` }} />
             </div>
             <p className="note">
-              {Math.round(progress * 100)}% · {Math.round(total)}s, {invite.pages.length} page{invite.pages.length > 1 ? "s" : ""}. Keep this tab open.
+              {Math.round(progress * 100)}% done: {Math.round(total)}s, {invite.pages.length} page{invite.pages.length > 1 ? "s" : ""}. Keep this tab open.
             </p>
           </div>
         </div>
@@ -1379,9 +1380,10 @@ export default function Editor() {
               Download .{result.extension}
             </a>
             <p className="note">
-              {result.method} · {(result.blob.size / 1024 / 1024).toFixed(1)} MB
-              {invite.music.track && !result.withMusic ? " · music couldn't be added on this browser" : ""}
+              {(result.blob.size / 1024 / 1024).toFixed(1)} MB video
+              {invite.music.track && !result.withMusic ? ", but music couldn't be added on this browser" : ""}
             </p>
+            <RatingBox />
           </div>
         </div>
       )}

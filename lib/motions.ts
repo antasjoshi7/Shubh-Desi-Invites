@@ -51,6 +51,7 @@ const MOTIONS: Partial<Record<AnimationId, { draw: Motion; assets: () => string[
   sparkles: { draw: (...a) => sparkles(...a), assets: () => [] },
   kalash: { draw: (...a) => kalash(...a), assets: () => srcs([...items.kalash, ...items.marigold]) },
   butterflies: { draw: (...a) => butterflies(...a), assets: () => srcs(items.butterfly) },
+  clouds: { draw: (...a) => clouds(...a), assets: () => srcs(items.cloud) },
 };
 
 export const PAINTED_MOTIONS = Object.keys(MOTIONS) as AnimationId[];
@@ -818,4 +819,31 @@ function sparkles(ctx: Ctx, time: number, _duration: number, text: TextKit) {
     ctx.restore();
   }
   ctx.restore();
+}
+
+// ---------- Floating clouds: soft, see-through clouds drift slowly above and below the text ----------
+
+function clouds(ctx: Ctx, time: number, _duration: number, text: TextKit) {
+  const list = items.cloud;
+  const show = clamp01(time / 1.2); // they drift into view over the first second
+  const above = Math.max(90, text.top - 50); // the clear sky above the text block
+  const below = Math.min(H - 90, text.bottom + 60); // and below it
+  for (let i = 0; i < 8; i++) {
+    const img = list[i % list.length];
+    const depth = 0.6 + rnd(i, 31) * 0.4; // nearer clouds are bigger, brighter and faster
+    const lane = i < 3 ? "above" : i < 6 ? "below" : "behind";
+    const y =
+      lane === "above"
+        ? 60 + rnd(i, 32) * Math.max(10, above - 120)
+        : lane === "below"
+          ? below + rnd(i, 32) * Math.max(10, H - 70 - below)
+          : text.top + (0.2 + rnd(i, 32) * 0.6) * (text.bottom - text.top);
+    const dir = i % 2 ? 1 : -1;
+    const x = -160 + rnd(i, 33) * (W + 320) + dir * (14 + 22 * depth) * time;
+    const size = (240 + 220 * rnd(i, 34)) * depth;
+    // the ones that pass behind the words are barely there, so the text always reads clearly
+    const alpha = show * (lane === "behind" ? 0.16 : 0.42 + 0.3 * depth);
+    drawCentred(ctx, img, x, y + Math.sin(time * 0.6 + i) * 4, size, alpha);
+  }
+  text.fadeUp(0.5);
 }

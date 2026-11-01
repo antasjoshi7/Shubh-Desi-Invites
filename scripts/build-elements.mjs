@@ -21,6 +21,7 @@ const DATA_FILE = path.join(ROOT, "data/elements.json");
 // grow: how far apart (in 4px steps) bits can be and still count as one item (default 2).
 // noChain: crop off a thin chain/string at the top (the app draws its own).
 // white: the background is white and the drawing is dark lines (cut by darkness instead of colour).
+// soft: soft-edged things like clouds, whose see-through edges are turned cream so no background tint shows.
 const SOURCES = [
   { name: "horse", file: "side-view-of-a-richly-decorated-indian-wedding-hor.png" },
   { name: "elephant", file: "side-view-of-a-richly-decorated-indian-wedding-ele (1).png" },
@@ -38,6 +39,7 @@ const SOURCES = [
   { name: "skylantern", file: "element-sheet--three-glowing-paper-sky-lanterns-fo (1).png", split: true },
   { name: "butterfly", file: "element-sheet--three-ornate-butterflies-seen-from- (1).png", split: true, grow: 0 },
   { name: "lantern", file: "a-single-ornate-brass-indian-hanging-lantern-on-a-.png", noChain: true },
+  { name: "cloud", file: "clouds.png", split: true, soft: true },
 ];
 
 // Animals cut into parts so code can move their legs (a "cut-out" puppet).
@@ -103,7 +105,7 @@ function measureBackground(data, w, h) {
 
 // RGBA with the background removed: alpha from the distance to the background colour,
 // and edge pixels "un-mixed" from the background so no green or blue fringe is left.
-function cutOut(data, w, h, white) {
+function cutOut(data, w, h, white, soft) {
   const out = Buffer.alloc(w * h * 4);
   const { bg, spread } = measureBackground(data, w, h);
   // which background colour can leak into the edges
@@ -137,6 +139,16 @@ function cutOut(data, w, h, white) {
         rr -= m * 0.9;
         bb -= m * 0.9;
       }
+    }
+    // soft things (clouds): see-through edges take a cream colour instead of whatever tint is left
+    if (soft) {
+      // keep the painted light (whites and warm peach); anything darker or tinted becomes cream
+      gg = Math.min(gg, (rr + bb) / 2 + 4);
+      const lum = 0.3 * rr + 0.59 * gg + 0.11 * bb;
+      const keep = Math.max(0, Math.min(1, (lum - 175) / 60)) * Math.pow(a, 0.5);
+      rr = rr * keep + 252 * (1 - keep);
+      gg = gg * keep + 244 * (1 - keep);
+      bb = Math.min(bb, rr) * keep + 236 * (1 - keep);
     }
     out[p * 4] = Math.max(0, Math.min(255, rr));
     out[p * 4 + 1] = Math.max(0, Math.min(255, gg));
@@ -392,7 +404,7 @@ for (const s of SOURCES) {
     continue;
   }
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const rgba = erode(cutOut(data, info.width, info.height, s.white), info.width, info.height);
+  const rgba = erode(cutOut(data, info.width, info.height, s.white, s.soft), info.width, info.height);
   if (s.columns) {
     const parts = splitColumns(rgba, info.width, info.height, s.columns);
     result[s.name] = [];

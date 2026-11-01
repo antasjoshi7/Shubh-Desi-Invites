@@ -10,7 +10,7 @@ import { appSchema, howToSchema } from "@/lib/schema";
 import { COUNTS } from "@/lib/site";
 
 const TITLE = "Wedding E-Card Maker: Free Indian Digital Wedding Card";
-const DESCRIPTION = `Make a digital Indian wedding card (e-invite) for WhatsApp in minutes. ${COUNTS.designs} traditional designs, download as a picture or video. Free, no watermark.`;
+const DESCRIPTION = `Make a digital Indian wedding card (e-invite) for WhatsApp in minutes. ${COUNTS.designsLabel} traditional designs, download as a picture or video. Free, no watermark.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -31,7 +31,6 @@ export default function ECardPage() {
       <Crumbs trail={[{ name: "Wedding e-card", path: "/wedding-e-card" }]} />
       <section className="s-hero">
         <div>
-          <p className="s-kicker">Free · No watermark · No sign-up</p>
           <h1>Indian wedding e-card maker</h1>
           <p className="s-lead">
             Make a digital wedding card to send on WhatsApp: the look of a printed Indian card, saved as a picture (PNG) or an animated video. Ready in a few minutes on your phone.
@@ -53,7 +52,7 @@ export default function ECardPage() {
       <section className="s-section">
         <h2>E-card or video invite?</h2>
         <p>
-          An <strong>e-card</strong> is a single picture: quick to open, easy to print, and good for elders who prefer something that looks like a card. A <strong>video invite</strong> plays every function one after another with music and animation, and feels more special when it arrives. Many families send both: the video to everyone, and the card to people who&apos;d like to print it or keep it.
+          An <strong>e-card</strong> is a single picture: quick to open, easy to print, and good for elders who prefer something that looks like a card. A <strong>video invite</strong> plays every function one after another with music and animation, and feels more special when it arrives. Some guests find a video a slow way to check the date and venue, so many families send both: the video to everyone, then the main page as a picture that&apos;s quick to read, print or keep.
         </p>
       </section>
 
@@ -61,7 +60,7 @@ export default function ECardPage() {
         <h2>Wedding card designs</h2>
         <Tiles tiles={tilesFor(["minimal", "wedding", "borders", "florals", "palaces", "temple", "lotus", "paisley", "peacocks", "elephants"], 10)} />
         <p>
-          <Link href="/designs">See all {COUNTS.designs} designs</Link> · <Link href="/wedding-invitation-wording">Wording to copy</Link>
+          You can also <Link href="/designs">browse every design</Link> or <Link href="/wedding-invitation-wording">copy some wording</Link>.
         </p>
       </section>
 

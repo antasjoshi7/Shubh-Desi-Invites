@@ -58,6 +58,8 @@ threads, practitioner write-ups, and the replies under your bookmarked question 
 | K | Hacker News: one-feature tool to $7k/mo | **Medium** | Top channel was **web directories** (50%+ of paying users), then helpful replies in communities, then cross-links. Directory submissions are a legitimate, fast first step. |
 | L | Smallpdf / iLovePDF (company blog, Ahrefs, OneSky case study) | **Medium–High** | iLovePDF: no launch, no ads, word of mouth, **no account needed** (they call it "a big part of why the number is what it is"); about 46% of traffic from Google, 43% direct. Smallpdf: one page per tool, then **translation into 20+ languages** (+60% organic; Thai alone +500%). |
 | N | @chrissimpson (local-SEO checklist) | **Low–Medium** | Mostly for local businesses (Google Business Profile, press releases): skip those, and skip "keyword in every H1–H6, 5% more than competitors" (outdated stuffing). Useful: a video on the page gets **video structured data and a text description** (done for the animations); start **3–4 months before your season** (that's now); plain HTML, because a JavaScript-only page can look blank to Google; pick **www or non-www** and use it everywhere; first backlinks should use the **brand name** as link text; one page per service, with a hub linking to all of them. |
+| O | Two Reddit threads you saved (r/DesiWeddings, r/IndianWeddings, in `research/reddit/`) | **High** (real couples) | Printed cards ₹30–500 each (₹140 typical); template videos ₹199–500; designers ₹2–30k; people distrust invite *links* (spam, fraud); elders can't handle invite websites; designers say still pictures beat video for event details; "clean, illustrative, effortless to open" is the brief; generic sites (Joy) lack Indian themes; "Pinterest it" is the standard advice. All of this is now answered on the home FAQ, the e-card page and the new price page. |
+| P | Forum and vendor research (DesiEvite, Vinvite, Canva, WhatsApp etiquette guides) | **Medium** | Free tools often charge ₹49–99 or $0.99 to remove watermarks; WhatsApp invites are normal, but send one by one or in small groups with a personal line, and call elders. |
 | M | Pinterest data (Pinterest reports via press) | **Medium** | Wedding is one of Pinterest's biggest categories: billions of wedding searches a year; Indian searches like "desi wedding decor" and "dulha haldi" up sharply. Pins keep sending traffic for months. Timelines for new accounts (2 weeks to 3 months) are anecdotal. |
 
 **What I deliberately didn't take:** the "nine bots" automation (overkill until you have data), paid
@@ -236,6 +238,7 @@ week, and don't tinker with a page for 90 days after publishing.
 ├── /sangeet-invitation-video
 ├── /reception-invitation-video
 ├── /animated-wedding-invitation    15 animation previews (video structured data)
+├── /digital-wedding-invitation-price  what invites cost (price-intent searches)
 ├── /wedding-e-card                 digital card / e-invite
 ├── /wedding-invitation-wording     wording hub (23 examples)  → links to each event's #wording
 ├── /designs                        all 197 designs → each opens the editor
@@ -391,6 +394,8 @@ every month to see what grows.
 ---
 
 ## 13. Setup checklist: what only you can do
+
+The live, numbered version of this list is **docs/ACTIONS.md** (kept up to date every session).
 
 In this order:
 

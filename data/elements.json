@@ -366,6 +366,33 @@
         "w": 297,
         "h": 900
       }
+    ],
+    "cloud": [
+      {
+        "src": "/generated/elements/cloud-1.webp",
+        "w": 740,
+        "h": 235
+      },
+      {
+        "src": "/generated/elements/cloud-2.webp",
+        "w": 574,
+        "h": 179
+      },
+      {
+        "src": "/generated/elements/cloud-3.webp",
+        "w": 540,
+        "h": 150
+      },
+      {
+        "src": "/generated/elements/cloud-4.webp",
+        "w": 688,
+        "h": 222
+      },
+      {
+        "src": "/generated/elements/cloud-5.webp",
+        "w": 381,
+        "h": 118
+      }
     ]
   },
   "rigs": {

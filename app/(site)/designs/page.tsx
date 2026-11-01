@@ -24,7 +24,7 @@ export default function DesignsPage() {
         <div>
           <h1>Indian wedding invitation designs</h1>
           <p className="s-lead">
-            {COUNTS.designs} free designs, each with a large clear space for your text. Tap any design to open it in the <Link href="/create">invite maker</Link>; you can change its colours there.
+            {COUNTS.designs} free designs so far, in the styles trending on Pinterest and Instagram, with new ones every week. Each leaves a large clear space for your text. Tap any design to open it in the <Link href="/create">invite maker</Link>; you can change its colours there.
           </p>
           <ul className="s-jump">
             {cats.map((c) => (
@@ -41,10 +41,9 @@ export default function DesignsPage() {
           <ul className="s-tiles">
             {c.designs.map((d) => (
               <li key={d.id}>
-                <Link href={d.href}>
+                <Link href={d.href} aria-label={`Use this design: ${d.alt}`}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={d.src} alt={d.alt} width={180} height={320} loading="lazy" decoding="async" />
-                  <span>Use this design</span>
                 </Link>
               </li>
             ))}

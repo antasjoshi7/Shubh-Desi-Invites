@@ -58,6 +58,7 @@ export type AnimationId =
   | "sparkles"
   | "kalash"
   | "butterflies"
+  | "clouds"
   | "fadeUp" | "wipe" | "typewriter" | "blur" | "bloom" | "petals" | "chariot";
 export type TransitionId =
   | "crossfade"

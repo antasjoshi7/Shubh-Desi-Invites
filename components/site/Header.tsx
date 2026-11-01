@@ -5,7 +5,8 @@ export function SiteHeader() {
   return (
     <header className="s-header">
       <Link href="/" className="s-logo" aria-label={`${SITE.name} home`}>
-        <span className="s-logo-mark" aria-hidden="true">✦</span>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/mark.png" alt="" width={30} height={30} className="s-logo-mark" />
         {SITE.name}
       </Link>
       <nav aria-label="Main">
