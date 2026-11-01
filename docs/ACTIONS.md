@@ -56,6 +56,8 @@ Things only you can get that would put the site ahead of every competitor. Ranke
 
 ## Product follow-ups (no rush)
 
+Bigger product ideas (personal invites per guest, RSVP management, physical card commission model, other occasions and more) are scored in **docs/IDEAS.md**.
+
 - **"All pages as pictures" button**: one tap to download every page as a PNG. Designers in the Reddit threads say still pictures are easier for guests to check details than video.
 - **Photo of the couple** on a page (most-asked missing feature on competitor sites).
 - **Small-event invites**: griha pravesh, baby shower, pooja (people in the threads use paid sites for these too).
