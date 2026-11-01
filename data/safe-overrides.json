@@ -1,0 +1,165 @@
+{
+  "_about": "Hand-measured text areas (fractions of the page) for designs with a drawn panel, used instead of automatic detection. x/w should stay centred: text is laid out from the middle of the page.",
+  "recraft-sangeet-01": {
+    "x": 0.2,
+    "y": 0.24,
+    "w": 0.6,
+    "h": 0.5
+  },
+  "recraft-sangeet-02": {
+    "x": 0.1,
+    "y": 0.26,
+    "w": 0.8,
+    "h": 0.66
+  },
+  "recraft-sangeet-03": {
+    "x": 0.14,
+    "y": 0.25,
+    "w": 0.72,
+    "h": 0.6
+  },
+  "recraft-haldi-01": {
+    "x": 0.14,
+    "y": 0.24,
+    "w": 0.72,
+    "h": 0.6
+  },
+  "recraft-haldi-02": {
+    "x": 0.22,
+    "y": 0.2,
+    "w": 0.56,
+    "h": 0.44
+  },
+  "recraft-haldi-03": {
+    "x": 0.18,
+    "y": 0.44,
+    "w": 0.64,
+    "h": 0.44
+  },
+  "recraft-mehendi-01": {
+    "x": 0.18,
+    "y": 0.22,
+    "w": 0.64,
+    "h": 0.6
+  },
+  "recraft-mehendi-02": {
+    "x": 0.22,
+    "y": 0.22,
+    "w": 0.56,
+    "h": 0.62
+  },
+  "recraft-wedding-01": {
+    "x": 0.14,
+    "y": 0.17,
+    "w": 0.72,
+    "h": 0.52
+  },
+  "recraft-wedding-02": {
+    "x": 0.2,
+    "y": 0.18,
+    "w": 0.6,
+    "h": 0.6
+  },
+  "recraft-wedding-03": {
+    "x": 0.16,
+    "y": 0.08,
+    "w": 0.68,
+    "h": 0.8
+  },
+  "recraft-wedding-04": {
+    "x": 0.16,
+    "y": 0.14,
+    "w": 0.68,
+    "h": 0.46
+  },
+  "recraft-wedding-05": {
+    "x": 0.16,
+    "y": 0.14,
+    "w": 0.68,
+    "h": 0.62
+  },
+  "recraft-wedding-06": {
+    "x": 0.1,
+    "y": 0.1,
+    "w": 0.8,
+    "h": 0.62
+  },
+  "recraft-wedding-07": {
+    "x": 0.27,
+    "y": 0.2,
+    "w": 0.46,
+    "h": 0.66
+  },
+  "recraft-reception-01": {
+    "x": 0.2,
+    "y": 0.18,
+    "w": 0.6,
+    "h": 0.62
+  },
+  "recraft-reception-02": {
+    "x": 0.26,
+    "y": 0.18,
+    "w": 0.48,
+    "h": 0.42
+  },
+  "recraft-reception-03": {
+    "x": 0.16,
+    "y": 0.18,
+    "w": 0.68,
+    "h": 0.5
+  },
+  "recraft-reception-04": {
+    "x": 0.2,
+    "y": 0.1,
+    "w": 0.6,
+    "h": 0.8
+  },
+  "recraft-minimal-01": {
+    "x": 0.12,
+    "y": 0.08,
+    "w": 0.76,
+    "h": 0.72
+  },
+  "recraft-minimal-02": {
+    "x": 0.12,
+    "y": 0.08,
+    "w": 0.76,
+    "h": 0.72
+  },
+  "recraft-peacocks-51": {
+    "x": 0.15,
+    "y": 0.15,
+    "w": 0.7,
+    "h": 0.52
+  },
+  "recraft-peacocks-52": {
+    "x": 0.2,
+    "y": 0.2,
+    "w": 0.6,
+    "h": 0.42
+  },
+  "recraft-lotus-51": {
+    "x": 0.16,
+    "y": 0.2,
+    "w": 0.68,
+    "h": 0.66
+  },
+  "recraft-palaces-51": {
+    "x": 0.24,
+    "y": 0.38,
+    "w": 0.52,
+    "h": 0.52
+  },
+  "recraft-palaces-52": {
+    "x": 0.18,
+    "y": 0.18,
+    "w": 0.64,
+    "h": 0.62
+  },
+  "recraft-borders-51": {
+    "x": 0.26,
+    "y": 0.07,
+    "w": 0.48,
+    "h": 0.85
+  }
+}

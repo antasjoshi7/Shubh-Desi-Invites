@@ -1,0 +1,5 @@
+[
+  { "id": "centered", "name": "Middle", "anchor": 0.5 },
+  { "id": "top", "name": "Top", "anchor": 0 },
+  { "id": "bottom", "name": "Bottom", "anchor": 1 }
+]

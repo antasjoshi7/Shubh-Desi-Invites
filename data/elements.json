@@ -1,0 +1,559 @@
+{
+  "items": {
+    "horse": [
+      {
+        "src": "/generated/elements/horse.webp",
+        "w": 674,
+        "h": 656
+      }
+    ],
+    "elephant": [
+      {
+        "src": "/generated/elements/elephant.webp",
+        "w": 704,
+        "h": 581
+      }
+    ],
+    "parrot": [
+      {
+        "src": "/generated/elements/parrot-1.webp",
+        "w": 507,
+        "h": 482
+      },
+      {
+        "src": "/generated/elements/parrot-2.webp",
+        "w": 498,
+        "h": 385
+      }
+    ],
+    "peacock": [
+      {
+        "src": "/generated/elements/peacock.webp",
+        "w": 900,
+        "h": 609
+      }
+    ],
+    "feather": [
+      {
+        "src": "/generated/elements/feather-1.webp",
+        "w": 175,
+        "h": 782
+      },
+      {
+        "src": "/generated/elements/feather-2.webp",
+        "w": 146,
+        "h": 796
+      },
+      {
+        "src": "/generated/elements/feather-3.webp",
+        "w": 145,
+        "h": 779
+      },
+      {
+        "src": "/generated/elements/feather-4.webp",
+        "w": 151,
+        "h": 794
+      },
+      {
+        "src": "/generated/elements/feather-5.webp",
+        "w": 153,
+        "h": 788
+      }
+    ],
+    "marigold": [
+      {
+        "src": "/generated/elements/marigold-1.webp",
+        "w": 239,
+        "h": 240
+      },
+      {
+        "src": "/generated/elements/marigold-2.webp",
+        "w": 226,
+        "h": 228
+      },
+      {
+        "src": "/generated/elements/marigold-3.webp",
+        "w": 228,
+        "h": 224
+      },
+      {
+        "src": "/generated/elements/marigold-4.webp",
+        "w": 88,
+        "h": 281
+      },
+      {
+        "src": "/generated/elements/marigold-5.webp",
+        "w": 85,
+        "h": 274
+      },
+      {
+        "src": "/generated/elements/marigold-6.webp",
+        "w": 231,
+        "h": 225
+      },
+      {
+        "src": "/generated/elements/marigold-7.webp",
+        "w": 236,
+        "h": 239
+      },
+      {
+        "src": "/generated/elements/marigold-8.webp",
+        "w": 228,
+        "h": 228
+      },
+      {
+        "src": "/generated/elements/marigold-9.webp",
+        "w": 84,
+        "h": 283
+      },
+      {
+        "src": "/generated/elements/marigold-10.webp",
+        "w": 88,
+        "h": 279
+      },
+      {
+        "src": "/generated/elements/marigold-11.webp",
+        "w": 231,
+        "h": 227
+      },
+      {
+        "src": "/generated/elements/marigold-12.webp",
+        "w": 237,
+        "h": 239
+      },
+      {
+        "src": "/generated/elements/marigold-13.webp",
+        "w": 233,
+        "h": 236
+      }
+    ],
+    "petal": [
+      {
+        "src": "/generated/elements/petal-1.webp",
+        "w": 180,
+        "h": 242
+      },
+      {
+        "src": "/generated/elements/petal-2.webp",
+        "w": 186,
+        "h": 233
+      },
+      {
+        "src": "/generated/elements/petal-3.webp",
+        "w": 182,
+        "h": 242
+      },
+      {
+        "src": "/generated/elements/petal-4.webp",
+        "w": 189,
+        "h": 233
+      },
+      {
+        "src": "/generated/elements/petal-5.webp",
+        "w": 183,
+        "h": 234
+      },
+      {
+        "src": "/generated/elements/petal-6.webp",
+        "w": 186,
+        "h": 244
+      },
+      {
+        "src": "/generated/elements/petal-7.webp",
+        "w": 186,
+        "h": 235
+      },
+      {
+        "src": "/generated/elements/petal-8.webp",
+        "w": 188,
+        "h": 243
+      },
+      {
+        "src": "/generated/elements/petal-9.webp",
+        "w": 182,
+        "h": 243
+      },
+      {
+        "src": "/generated/elements/petal-10.webp",
+        "w": 187,
+        "h": 235
+      },
+      {
+        "src": "/generated/elements/petal-11.webp",
+        "w": 180,
+        "h": 247
+      },
+      {
+        "src": "/generated/elements/petal-12.webp",
+        "w": 190,
+        "h": 235
+      }
+    ],
+    "petal-b": [
+      {
+        "src": "/generated/elements/petal-b-1.webp",
+        "w": 216,
+        "h": 237
+      },
+      {
+        "src": "/generated/elements/petal-b-2.webp",
+        "w": 164,
+        "h": 236
+      },
+      {
+        "src": "/generated/elements/petal-b-3.webp",
+        "w": 221,
+        "h": 240
+      },
+      {
+        "src": "/generated/elements/petal-b-4.webp",
+        "w": 196,
+        "h": 235
+      },
+      {
+        "src": "/generated/elements/petal-b-5.webp",
+        "w": 175,
+        "h": 236
+      },
+      {
+        "src": "/generated/elements/petal-b-6.webp",
+        "w": 171,
+        "h": 247
+      },
+      {
+        "src": "/generated/elements/petal-b-7.webp",
+        "w": 191,
+        "h": 241
+      },
+      {
+        "src": "/generated/elements/petal-b-8.webp",
+        "w": 190,
+        "h": 235
+      },
+      {
+        "src": "/generated/elements/petal-b-9.webp",
+        "w": 193,
+        "h": 236
+      },
+      {
+        "src": "/generated/elements/petal-b-10.webp",
+        "w": 216,
+        "h": 229
+      },
+      {
+        "src": "/generated/elements/petal-b-11.webp",
+        "w": 185,
+        "h": 237
+      },
+      {
+        "src": "/generated/elements/petal-b-12.webp",
+        "w": 212,
+        "h": 237
+      }
+    ],
+    "diya": [
+      {
+        "src": "/generated/elements/diya-1.webp",
+        "w": 336,
+        "h": 331
+      },
+      {
+        "src": "/generated/elements/diya-2.webp",
+        "w": 337,
+        "h": 332
+      },
+      {
+        "src": "/generated/elements/diya-3.webp",
+        "w": 335,
+        "h": 333
+      },
+      {
+        "src": "/generated/elements/diya-4.webp",
+        "w": 338,
+        "h": 330
+      }
+    ],
+    "lotus": [
+      {
+        "src": "/generated/elements/lotus-1.webp",
+        "w": 594,
+        "h": 514
+      },
+      {
+        "src": "/generated/elements/lotus-2.webp",
+        "w": 216,
+        "h": 434
+      },
+      {
+        "src": "/generated/elements/lotus-3.webp",
+        "w": 241,
+        "h": 115
+      },
+      {
+        "src": "/generated/elements/lotus-4.webp",
+        "w": 139,
+        "h": 192
+      },
+      {
+        "src": "/generated/elements/lotus-5.webp",
+        "w": 196,
+        "h": 170
+      },
+      {
+        "src": "/generated/elements/lotus-6.webp",
+        "w": 469,
+        "h": 305
+      }
+    ],
+    "kalash": [
+      {
+        "src": "/generated/elements/kalash.webp",
+        "w": 546,
+        "h": 861
+      }
+    ],
+    "door": [
+      {
+        "src": "/generated/elements/door.webp",
+        "w": 312,
+        "h": 900
+      }
+    ],
+    "mehendi": [
+      {
+        "src": "/generated/elements/mehendi.webp",
+        "w": 875,
+        "h": 869
+      }
+    ],
+    "skylantern": [
+      {
+        "src": "/generated/elements/skylantern-1.webp",
+        "w": 269,
+        "h": 589
+      },
+      {
+        "src": "/generated/elements/skylantern-2.webp",
+        "w": 223,
+        "h": 484
+      },
+      {
+        "src": "/generated/elements/skylantern-3.webp",
+        "w": 229,
+        "h": 503
+      }
+    ],
+    "butterfly": [
+      {
+        "src": "/generated/elements/butterfly-1.webp",
+        "w": 360,
+        "h": 382
+      },
+      {
+        "src": "/generated/elements/butterfly-2.webp",
+        "w": 364,
+        "h": 379
+      },
+      {
+        "src": "/generated/elements/butterfly-3.webp",
+        "w": 355,
+        "h": 379
+      }
+    ],
+    "lantern": [
+      {
+        "src": "/generated/elements/lantern.webp",
+        "w": 297,
+        "h": 900
+      }
+    ]
+  },
+  "rigs": {
+    "horseRig": {
+      "w": 896,
+      "h": 582,
+      "body": {
+        "src": "/generated/elements/horseRig-body.webp",
+        "w": 423,
+        "h": 297,
+        "x": 252,
+        "y": 55
+      },
+      "parts": [
+        {
+          "name": "hindFar",
+          "src": "/generated/elements/horseRig-hindFar.webp",
+          "w": 57,
+          "h": 83,
+          "x": 314,
+          "y": 314,
+          "px": 344,
+          "py": 329,
+          "far": true
+        },
+        {
+          "name": "hindFarLow",
+          "src": "/generated/elements/horseRig-hindFarLow.webp",
+          "w": 88,
+          "h": 109,
+          "x": 312,
+          "y": 395,
+          "px": 323,
+          "py": 399,
+          "parent": "hindFar",
+          "far": true
+        },
+        {
+          "name": "frontFar",
+          "src": "/generated/elements/horseRig-frontFar.webp",
+          "w": 46,
+          "h": 81,
+          "x": 474,
+          "y": 328,
+          "px": 498,
+          "py": 343,
+          "far": true
+        },
+        {
+          "name": "frontFarLow",
+          "src": "/generated/elements/horseRig-frontFarLow.webp",
+          "w": 54,
+          "h": 107,
+          "x": 466,
+          "y": 406,
+          "px": 494,
+          "py": 413,
+          "parent": "frontFar",
+          "far": true
+        },
+        {
+          "name": "tail",
+          "src": "/generated/elements/horseRig-tail.webp",
+          "w": 54,
+          "h": 258,
+          "x": 201,
+          "y": 232,
+          "px": 253,
+          "py": 241
+        },
+        {
+          "name": "hindNear",
+          "src": "/generated/elements/horseRig-hindNear.webp",
+          "w": 67,
+          "h": 59,
+          "x": 252,
+          "y": 334,
+          "px": 288,
+          "py": 350
+        },
+        {
+          "name": "hindNearLow",
+          "src": "/generated/elements/horseRig-hindNearLow.webp",
+          "w": 64,
+          "h": 130,
+          "x": 244,
+          "y": 382,
+          "px": 267,
+          "py": 386,
+          "parent": "hindNear"
+        },
+        {
+          "name": "frontNear",
+          "src": "/generated/elements/horseRig-frontNear.webp",
+          "w": 39,
+          "h": 81,
+          "x": 517,
+          "y": 328,
+          "px": 539,
+          "py": 343
+        },
+        {
+          "name": "frontNearLow",
+          "src": "/generated/elements/horseRig-frontNearLow.webp",
+          "w": 43,
+          "h": 109,
+          "x": 517,
+          "y": 406,
+          "px": 531,
+          "py": 413,
+          "parent": "frontNear"
+        }
+      ]
+    },
+    "elephantRig": {
+      "w": 768,
+      "h": 499,
+      "body": {
+        "src": "/generated/elements/elephantRig-body.webp",
+        "w": 392,
+        "h": 267,
+        "x": 189,
+        "y": 79
+      },
+      "parts": [
+        {
+          "name": "hindFar",
+          "src": "/generated/elements/elephantRig-hindFar.webp",
+          "w": 79,
+          "h": 94,
+          "x": 242,
+          "y": 331,
+          "px": 287,
+          "py": 343,
+          "far": true
+        },
+        {
+          "name": "frontFar",
+          "src": "/generated/elements/elephantRig-frontFar.webp",
+          "w": 69,
+          "h": 94,
+          "x": 352,
+          "y": 327,
+          "px": 390,
+          "py": 339,
+          "far": true
+        },
+        {
+          "name": "tail",
+          "src": "/generated/elements/elephantRig-tail.webp",
+          "w": 20,
+          "h": 149,
+          "x": 178,
+          "y": 221,
+          "px": 190,
+          "py": 237
+        },
+        {
+          "name": "hindNear",
+          "src": "/generated/elements/elephantRig-hindNear.webp",
+          "w": 71,
+          "h": 100,
+          "x": 173,
+          "y": 328,
+          "px": 210,
+          "py": 341
+        },
+        {
+          "name": "frontNear",
+          "src": "/generated/elements/elephantRig-frontNear.webp",
+          "w": 94,
+          "h": 91,
+          "x": 441,
+          "y": 327,
+          "px": 465,
+          "py": 339
+        },
+        {
+          "name": "trunk",
+          "src": "/generated/elements/elephantRig-trunk.webp",
+          "w": 67,
+          "h": 106,
+          "x": 529,
+          "y": 241,
+          "px": 561,
+          "py": 246
+        }
+      ]
+    }
+  }
+}

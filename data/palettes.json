@@ -1,0 +1,12 @@
+[
+  { "id": "cream-gold", "name": "Cream & Gold", "text": "#fff6e3", "accent": "#ffcf5a" },
+  { "id": "pearl-marigold", "name": "Pearl & Marigold", "text": "#fdf2e0", "accent": "#ffb400" },
+  { "id": "ivory-rose", "name": "Ivory & Rose", "text": "#ffffff", "accent": "#ffa3c4" },
+  { "id": "sandal-saffron", "name": "Sandal & Saffron", "text": "#f6e7cf", "accent": "#ff9a3c" },
+  { "id": "moonlight-mint", "name": "Moonlight & Mint", "text": "#f2f7f5", "accent": "#8fd6b4" },
+  { "id": "maroon-gold", "name": "Maroon & Gold", "text": "#5a0f1e", "accent": "#a8740a" },
+  { "id": "plum-rose", "name": "Plum & Rose", "text": "#3d1240", "accent": "#c2185b" },
+  { "id": "forest-brass", "name": "Forest & Brass", "text": "#173b2a", "accent": "#9a7b2f" },
+  { "id": "royal-blue-gold", "name": "Royal Blue & Gold", "text": "#13235b", "accent": "#b8860b" },
+  { "id": "ink-teal", "name": "Ink & Teal", "text": "#1d2433", "accent": "#0f766e" }
+]

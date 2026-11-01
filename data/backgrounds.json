@@ -1,0 +1,3745 @@
+[
+  {
+    "id": "recraft-sangeet-03",
+    "kind": "simple",
+    "category": "sangeet",
+    "src": "/generated/bg/recraft-sangeet-03.jpg",
+    "thumb": "/generated/thumbs/recraft-sangeet-03.jpg",
+    "primary": "#ba6b78",
+    "centre": "#dc9da1",
+    "busyness": 0.031,
+    "paper": "#d9969a",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.14,
+      "y": 0.25,
+      "w": 0.72,
+      "h": 0.6
+    },
+    "score": 0.81
+  },
+  {
+    "id": "recraft-sangeet-01",
+    "kind": "simple",
+    "category": "sangeet",
+    "src": "/generated/bg/recraft-sangeet-01.jpg",
+    "thumb": "/generated/thumbs/recraft-sangeet-01.jpg",
+    "primary": "#4d2f88",
+    "centre": "#6446b7",
+    "busyness": 0.008,
+    "paper": "#6445b7",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.24,
+      "w": 0.6,
+      "h": 0.5
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-sangeet-02",
+    "kind": "simple",
+    "category": "sangeet",
+    "src": "/generated/bg/recraft-sangeet-02.jpg",
+    "thumb": "/generated/thumbs/recraft-sangeet-02.jpg",
+    "primary": "#13305d",
+    "centre": "#224370",
+    "busyness": 0.04,
+    "paper": "#062858",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.1,
+      "y": 0.26,
+      "w": 0.8,
+      "h": 0.66
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-haldi-01",
+    "kind": "simple",
+    "category": "haldi",
+    "src": "/generated/bg/recraft-haldi-01.jpg",
+    "thumb": "/generated/thumbs/recraft-haldi-01.jpg",
+    "primary": "#f5e6bc",
+    "centre": "#fdfdfe",
+    "busyness": 0.003,
+    "paper": "#fdfdfe",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.14,
+      "y": 0.24,
+      "w": 0.72,
+      "h": 0.6
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-haldi-02",
+    "kind": "simple",
+    "category": "haldi",
+    "src": "/generated/bg/recraft-haldi-02.jpg",
+    "thumb": "/generated/thumbs/recraft-haldi-02.jpg",
+    "primary": "#f2d6a1",
+    "centre": "#f4f5e7",
+    "busyness": 0.029,
+    "paper": "#fcfaee",
+    "layout": "centered",
+    "safe": {
+      "x": 0.22,
+      "y": 0.2,
+      "w": 0.56,
+      "h": 0.44
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-haldi-03",
+    "kind": "simple",
+    "category": "haldi",
+    "src": "/generated/bg/recraft-haldi-03.jpg",
+    "thumb": "/generated/thumbs/recraft-haldi-03.jpg",
+    "primary": "#f1d272",
+    "centre": "#ebede6",
+    "busyness": 0.045,
+    "paper": "#f8f7f3",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.18,
+      "y": 0.44,
+      "w": 0.64,
+      "h": 0.44
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-mehendi-01",
+    "kind": "simple",
+    "category": "mehendi",
+    "src": "/generated/bg/recraft-mehendi-01.jpg",
+    "thumb": "/generated/thumbs/recraft-mehendi-01.jpg",
+    "primary": "#097651",
+    "centre": "#e9e9e5",
+    "busyness": 0.003,
+    "paper": "#e9e9e5",
+    "layout": "centered",
+    "safe": {
+      "x": 0.18,
+      "y": 0.22,
+      "w": 0.64,
+      "h": 0.6
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-mehendi-02",
+    "kind": "simple",
+    "category": "mehendi",
+    "src": "/generated/bg/recraft-mehendi-02.jpg",
+    "thumb": "/generated/thumbs/recraft-mehendi-02.jpg",
+    "primary": "#cfdcc8",
+    "centre": "#e2e9db",
+    "busyness": 0.016,
+    "paper": "#dbe4d5",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.22,
+      "y": 0.22,
+      "w": 0.56,
+      "h": 0.62
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-wedding-02",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-02.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-02.jpg",
+    "primary": "#f5cbba",
+    "centre": "#f1e0dd",
+    "busyness": 0.024,
+    "paper": "#f8eae7",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.18,
+      "w": 0.6,
+      "h": 0.6
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-wedding-06",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-06.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-06.jpg",
+    "primary": "#efd4c2",
+    "centre": "#fcf4e8",
+    "busyness": 0.008,
+    "paper": "#fcf6ea",
+    "layout": "top",
+    "safe": {
+      "x": 0.1,
+      "y": 0.1,
+      "w": 0.8,
+      "h": 0.62
+    },
+    "score": 0.97
+  },
+  {
+    "id": "recraft-wedding-07",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-07.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-07.jpg",
+    "primary": "#d2927f",
+    "centre": "#f8eeeb",
+    "busyness": 0.039,
+    "paper": "#fdfaf7",
+    "layout": "centered",
+    "safe": {
+      "x": 0.27,
+      "y": 0.2,
+      "w": 0.46,
+      "h": 0.66
+    },
+    "score": 0.89
+  },
+  {
+    "id": "recraft-wedding-03",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-03.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-03.jpg",
+    "primary": "#d5bf9c",
+    "centre": "#f8f1e7",
+    "busyness": 0.022,
+    "paper": "#f9f3e9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.16,
+      "y": 0.08,
+      "w": 0.68,
+      "h": 0.8
+    },
+    "score": 0.84
+  },
+  {
+    "id": "recraft-wedding-01",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-01.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-01.jpg",
+    "primary": "#c4dced",
+    "centre": "#f2f5f0",
+    "busyness": 0.019,
+    "paper": "#f8faf7",
+    "layout": "top",
+    "safe": {
+      "x": 0.14,
+      "y": 0.17,
+      "w": 0.72,
+      "h": 0.52
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-wedding-04",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-04.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-04.jpg",
+    "primary": "#75bcc3",
+    "centre": "#cae7e6",
+    "busyness": 0.026,
+    "paper": "#e8f6f5",
+    "layout": "centered",
+    "safe": {
+      "x": 0.16,
+      "y": 0.14,
+      "w": 0.68,
+      "h": 0.46
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-wedding-05",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-05.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-05.jpg",
+    "primary": "#b3d4e5",
+    "centre": "#e7f5f6",
+    "busyness": 0.016,
+    "paper": "#fafdfc",
+    "layout": "top",
+    "safe": {
+      "x": 0.16,
+      "y": 0.14,
+      "w": 0.68,
+      "h": 0.62
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-reception-04",
+    "kind": "simple",
+    "category": "reception",
+    "src": "/generated/bg/recraft-reception-04.jpg",
+    "thumb": "/generated/thumbs/recraft-reception-04.jpg",
+    "primary": "#edc5ba",
+    "centre": "#fcf9f3",
+    "busyness": 0.008,
+    "paper": "#fdfaf4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.1,
+      "w": 0.6,
+      "h": 0.8
+    },
+    "score": 0.97
+  },
+  {
+    "id": "recraft-reception-03",
+    "kind": "simple",
+    "category": "reception",
+    "src": "/generated/bg/recraft-reception-03.jpg",
+    "thumb": "/generated/thumbs/recraft-reception-03.jpg",
+    "primary": "#401625",
+    "centre": "#fbf9f9",
+    "busyness": 0.011,
+    "paper": "#fdfcfc",
+    "layout": "centered",
+    "safe": {
+      "x": 0.16,
+      "y": 0.18,
+      "w": 0.68,
+      "h": 0.5
+    },
+    "score": 0.9
+  },
+  {
+    "id": "recraft-reception-01",
+    "kind": "simple",
+    "category": "reception",
+    "src": "/generated/bg/recraft-reception-01.jpg",
+    "thumb": "/generated/thumbs/recraft-reception-01.jpg",
+    "primary": "#e3c5b8",
+    "centre": "#fdfbfb",
+    "busyness": 0.004,
+    "paper": "#fdfcfb",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.18,
+      "w": 0.6,
+      "h": 0.62
+    },
+    "score": 0.86
+  },
+  {
+    "id": "recraft-reception-02",
+    "kind": "simple",
+    "category": "reception",
+    "src": "/generated/bg/recraft-reception-02.jpg",
+    "thumb": "/generated/thumbs/recraft-reception-02.jpg",
+    "primary": "#ddbeb5",
+    "centre": "#f8f7f6",
+    "busyness": 0.032,
+    "paper": "#fdfdfd",
+    "layout": "top",
+    "safe": {
+      "x": 0.26,
+      "y": 0.18,
+      "w": 0.48,
+      "h": 0.42
+    },
+    "score": 0.82
+  },
+  {
+    "id": "recraft-minimal-02",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-02.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-02.jpg",
+    "primary": "#efd7cb",
+    "centre": "#faf2ee",
+    "busyness": 0.003,
+    "paper": "#faf2ee",
+    "layout": "top",
+    "safe": {
+      "x": 0.12,
+      "y": 0.08,
+      "w": 0.76,
+      "h": 0.72
+    },
+    "score": 0.93
+  },
+  {
+    "id": "recraft-minimal-01",
+    "kind": "simple",
+    "category": "minimal",
+    "src": "/generated/bg/recraft-minimal-01.jpg",
+    "thumb": "/generated/thumbs/recraft-minimal-01.jpg",
+    "primary": "#eeddd5",
+    "centre": "#f8edea",
+    "busyness": 0.006,
+    "paper": "#f8ebe8",
+    "layout": "top",
+    "safe": {
+      "x": 0.12,
+      "y": 0.08,
+      "w": 0.76,
+      "h": 0.72
+    },
+    "score": 0.86
+  },
+  {
+    "id": "recraft-peacocks-09",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-09.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-09.jpg",
+    "primary": "#e4874f",
+    "centre": "#f7f1ef",
+    "busyness": 0.015,
+    "paper": "#f9f3f1",
+    "layout": "top",
+    "safe": {
+      "x": 0.222,
+      "y": 0.069,
+      "w": 0.556,
+      "h": 0.569
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-peacocks-10",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-10.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-10.jpg",
+    "primary": "#eb874c",
+    "centre": "#fdfcfb",
+    "busyness": 0.006,
+    "paper": "#fdfdfc",
+    "layout": "centered",
+    "safe": {
+      "x": 0.233,
+      "y": 0.188,
+      "w": 0.533,
+      "h": 0.563
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-peacocks-15",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-15.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-15.jpg",
+    "primary": "#facec5",
+    "centre": "#fbcfc6",
+    "busyness": 0.003,
+    "paper": "#fbcfc6",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.013,
+      "w": 0.511,
+      "h": 0.825
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-peacocks-16",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-16.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-16.jpg",
+    "primary": "#f8d6d2",
+    "centre": "#f9d7d3",
+    "busyness": 0.003,
+    "paper": "#f9d7d4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.222,
+      "y": 0.013,
+      "w": 0.556,
+      "h": 0.888
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-peacocks-14",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-14.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-14.jpg",
+    "primary": "#bf9981",
+    "centre": "#2f0c20",
+    "busyness": 0.011,
+    "paper": "#2d091e",
+    "layout": "top",
+    "safe": {
+      "x": 0.29,
+      "y": 0.05,
+      "w": 0.42,
+      "h": 0.694
+    },
+    "score": 0.78
+  },
+  {
+    "id": "recraft-peacocks-21",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-21.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-21.jpg",
+    "primary": "#f2f0eb",
+    "centre": "#f3f1ec",
+    "busyness": 0.024,
+    "paper": "#fdfbf8",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.278,
+      "y": 0.288,
+      "w": 0.444,
+      "h": 0.669
+    },
+    "score": 0.71
+  },
+  {
+    "id": "recraft-peacocks-18",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-18.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-18.jpg",
+    "primary": "#e7e2de",
+    "centre": "#fbf6f0",
+    "busyness": 0.003,
+    "paper": "#fbf6f1",
+    "layout": "centered",
+    "safe": {
+      "x": 0.233,
+      "y": 0.081,
+      "w": 0.533,
+      "h": 0.794
+    },
+    "score": 0.66
+  },
+  {
+    "id": "recraft-peacocks-01",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-01.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-01.jpg",
+    "primary": "#28498f",
+    "centre": "#28498f",
+    "busyness": 0.003,
+    "paper": "#28498e",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.013,
+      "w": 0.511,
+      "h": 0.888
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-02",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-02.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-02.jpg",
+    "primary": "#0e4296",
+    "centre": "#0e4396",
+    "busyness": 0.009,
+    "paper": "#0d4297",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.013,
+      "w": 0.444,
+      "h": 0.813
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-03",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-03.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-03.jpg",
+    "primary": "#2151a7",
+    "centre": "#2d57a1",
+    "busyness": 0.029,
+    "paper": "#1f50a8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.013,
+      "w": 0.42,
+      "h": 0.944
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-04",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-04.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-04.jpg",
+    "primary": "#0f469f",
+    "centre": "#1448a0",
+    "busyness": 0.014,
+    "paper": "#0e45a0",
+    "layout": "centered",
+    "safe": {
+      "x": 0.189,
+      "y": 0.369,
+      "w": 0.622,
+      "h": 0.488
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-05",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-05.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-05.jpg",
+    "primary": "#131a57",
+    "centre": "#151b57",
+    "busyness": 0.006,
+    "paper": "#131a57",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.061,
+      "y": 0.334,
+      "w": 0.878,
+      "h": 0.653
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-06",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-06.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-06.jpg",
+    "primary": "#0b1652",
+    "centre": "#0b1652",
+    "busyness": 0.003,
+    "paper": "#0b1652",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.089,
+      "y": 0.2,
+      "w": 0.822,
+      "h": 0.788
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-07",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-07.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-07.jpg",
+    "primary": "#c0a1be",
+    "centre": "#c0a1be",
+    "busyness": 0.005,
+    "paper": "#c1a1be",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.131,
+      "w": 0.511,
+      "h": 0.769
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-08",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-08.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-08.jpg",
+    "primary": "#b39cac",
+    "centre": "#a88aa1",
+    "busyness": 0.011,
+    "paper": "#a889a0",
+    "layout": "centered",
+    "safe": {
+      "x": 0.233,
+      "y": 0.256,
+      "w": 0.533,
+      "h": 0.381
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-11",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-11.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-11.jpg",
+    "primary": "#0a4658",
+    "centre": "#0a4658",
+    "busyness": 0.003,
+    "paper": "#0a4658",
+    "layout": "top",
+    "safe": {
+      "x": 0.211,
+      "y": 0.013,
+      "w": 0.578,
+      "h": 0.794
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-12",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-12.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-12.jpg",
+    "primary": "#0b556e",
+    "centre": "#0d576e",
+    "busyness": 0.018,
+    "paper": "#09546e",
+    "layout": "top",
+    "safe": {
+      "x": 0.267,
+      "y": 0.281,
+      "w": 0.467,
+      "h": 0.45
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-13",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-13.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-13.jpg",
+    "primary": "#39072f",
+    "centre": "#39072f",
+    "busyness": 0.011,
+    "paper": "#38062e",
+    "layout": "centered",
+    "safe": {
+      "x": 0.233,
+      "y": 0.281,
+      "w": 0.533,
+      "h": 0.506
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-17",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-17.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-17.jpg",
+    "primary": "#59a1bb",
+    "centre": "#f6f4ee",
+    "busyness": 0.02,
+    "paper": "#fef9f3",
+    "layout": "top",
+    "safe": {
+      "x": 0.289,
+      "y": 0.05,
+      "w": 0.422,
+      "h": 0.538
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-19",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-19.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-19.jpg",
+    "primary": "#0c4e6e",
+    "centre": "#0c4d6e",
+    "busyness": 0.004,
+    "paper": "#0c4d6e",
+    "layout": "top",
+    "safe": {
+      "x": 0.178,
+      "y": 0.013,
+      "w": 0.644,
+      "h": 0.706
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-20",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-20.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-20.jpg",
+    "primary": "#0c4a65",
+    "centre": "#0b4a65",
+    "busyness": 0.003,
+    "paper": "#0b4a65",
+    "layout": "top",
+    "safe": {
+      "x": 0.178,
+      "y": 0.013,
+      "w": 0.644,
+      "h": 0.906
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-22",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-22.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-22.jpg",
+    "primary": "#e8e8e3",
+    "centre": "#fdfbf7",
+    "busyness": 0.005,
+    "paper": "#fdfbf7",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.217,
+      "y": 0.2,
+      "w": 0.567,
+      "h": 0.706
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-23",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-23.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-23.jpg",
+    "primary": "#0f3362",
+    "centre": "#103363",
+    "busyness": 0.003,
+    "paper": "#113363",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.213,
+      "w": 0.689,
+      "h": 0.575
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-24",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-24.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-24.jpg",
+    "primary": "#0c2d63",
+    "centre": "#183462",
+    "busyness": 0.039,
+    "paper": "#0b2d63",
+    "layout": "centered",
+    "safe": {
+      "x": 0.111,
+      "y": 0.375,
+      "w": 0.778,
+      "h": 0.375
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-51",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-51.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-51.jpg",
+    "primary": "#1a528e",
+    "centre": "#faf9f9",
+    "busyness": 0.009,
+    "paper": "#fcfafa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.15,
+      "y": 0.15,
+      "w": 0.7,
+      "h": 0.52
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-peacocks-52",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-52.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-52.jpg",
+    "primary": "#154c77",
+    "centre": "#f4f5f2",
+    "busyness": 0.03,
+    "paper": "#fdfdfb",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.2,
+      "w": 0.6,
+      "h": 0.42
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-elephants-03",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-03.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-03.jpg",
+    "primary": "#630b1f",
+    "centre": "#600a19",
+    "busyness": 0.006,
+    "paper": "#5e0b16",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.238,
+      "w": 0.511,
+      "h": 0.513
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-04",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-04.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-04.jpg",
+    "primary": "#560920",
+    "centre": "#54041a",
+    "busyness": 0.008,
+    "paper": "#54041a",
+    "layout": "centered",
+    "safe": {
+      "x": 0.189,
+      "y": 0.275,
+      "w": 0.622,
+      "h": 0.456
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-07",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-07.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-07.jpg",
+    "primary": "#f4d6c5",
+    "centre": "#fae7d9",
+    "busyness": 0.015,
+    "paper": "#fce9db",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.144,
+      "w": 0.444,
+      "h": 0.675
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-08",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-08.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-08.jpg",
+    "primary": "#fae1d1",
+    "centre": "#f8e6d6",
+    "busyness": 0.017,
+    "paper": "#fde8d9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.167,
+      "y": 0.113,
+      "w": 0.667,
+      "h": 0.475
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-11",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-11.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-11.jpg",
+    "primary": "#71041d",
+    "centre": "#72051d",
+    "busyness": 0.012,
+    "paper": "#70021b",
+    "layout": "centered",
+    "safe": {
+      "x": 0.1,
+      "y": 0.119,
+      "w": 0.8,
+      "h": 0.513
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-12",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-12.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-12.jpg",
+    "primary": "#51081a",
+    "centre": "#4f0718",
+    "busyness": 0.016,
+    "paper": "#4c0315",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.125,
+      "w": 0.6,
+      "h": 0.544
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-13",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-13.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-13.jpg",
+    "primary": "#db6e58",
+    "centre": "#fefbf6",
+    "busyness": 0.003,
+    "paper": "#fefbf6",
+    "layout": "centered",
+    "safe": {
+      "x": 0.178,
+      "y": 0.144,
+      "w": 0.644,
+      "h": 0.706
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-15",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-15.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-15.jpg",
+    "primary": "#ac8b28",
+    "centre": "#fefdfd",
+    "busyness": 0.003,
+    "paper": "#fefdfd",
+    "layout": "centered",
+    "safe": {
+      "x": 0.133,
+      "y": 0.194,
+      "w": 0.733,
+      "h": 0.525
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-elephants-14",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-14.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-14.jpg",
+    "primary": "#ca6b58",
+    "centre": "#fbf7f3",
+    "busyness": 0.002,
+    "paper": "#fbf7f3",
+    "layout": "centered",
+    "safe": {
+      "x": 0.144,
+      "y": 0.238,
+      "w": 0.711,
+      "h": 0.575
+    },
+    "score": 0.92
+  },
+  {
+    "id": "recraft-elephants-06",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-06.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-06.jpg",
+    "primary": "#e8ceba",
+    "centre": "#eed7c3",
+    "busyness": 0.005,
+    "paper": "#eed7c3",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.094,
+      "w": 0.444,
+      "h": 0.719
+    },
+    "score": 0.91
+  },
+  {
+    "id": "recraft-elephants-05",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-05.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-05.jpg",
+    "primary": "#d7bcab",
+    "centre": "#e3caba",
+    "busyness": 0.018,
+    "paper": "#e5cfc0",
+    "layout": "top",
+    "safe": {
+      "x": 0.29,
+      "y": 0.247,
+      "w": 0.42,
+      "h": 0.453
+    },
+    "score": 0.81
+  },
+  {
+    "id": "recraft-elephants-16",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-16.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-16.jpg",
+    "primary": "#a66453",
+    "centre": "#fdfcfa",
+    "busyness": 0.006,
+    "paper": "#fdfcfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.144,
+      "y": 0.269,
+      "w": 0.711,
+      "h": 0.419
+    },
+    "score": 0.79
+  },
+  {
+    "id": "recraft-elephants-01",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-01.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-01.jpg",
+    "primary": "#1d4b3e",
+    "centre": "#1e4b3e",
+    "busyness": 0.006,
+    "paper": "#1d4a3e",
+    "layout": "top",
+    "safe": {
+      "x": 0.189,
+      "y": 0.013,
+      "w": 0.622,
+      "h": 0.713
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-elephants-02",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-02.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-02.jpg",
+    "primary": "#1e4742",
+    "centre": "#224843",
+    "busyness": 0.01,
+    "paper": "#1e4742",
+    "layout": "top",
+    "safe": {
+      "x": 0.178,
+      "y": 0.013,
+      "w": 0.644,
+      "h": 0.694
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-elephants-09",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-09.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-09.jpg",
+    "primary": "#1a5eba",
+    "centre": "#1e60b9",
+    "busyness": 0.018,
+    "paper": "#195ebb",
+    "layout": "top",
+    "safe": {
+      "x": 0.244,
+      "y": 0.025,
+      "w": 0.511,
+      "h": 0.613
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-elephants-10",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-10.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-10.jpg",
+    "primary": "#133093",
+    "centre": "#143193",
+    "busyness": 0.009,
+    "paper": "#123193",
+    "layout": "top",
+    "safe": {
+      "x": 0.167,
+      "y": 0.063,
+      "w": 0.667,
+      "h": 0.644
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-birds-03",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-03.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-03.jpg",
+    "primary": "#ea8978",
+    "centre": "#fbf8f3",
+    "busyness": 0.013,
+    "paper": "#fcf9f5",
+    "layout": "centered",
+    "safe": {
+      "x": 0.211,
+      "y": 0.375,
+      "w": 0.578,
+      "h": 0.363
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-birds-05",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-05.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-05.jpg",
+    "primary": "#f5ccd7",
+    "centre": "#f5ced8",
+    "busyness": 0.004,
+    "paper": "#f5ced8",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.133,
+      "y": 0.25,
+      "w": 0.733,
+      "h": 0.444
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-birds-08",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-08.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-08.jpg",
+    "primary": "#e6988b",
+    "centre": "#eee8e1",
+    "busyness": 0.032,
+    "paper": "#f2ece6",
+    "layout": "top",
+    "safe": {
+      "x": 0.289,
+      "y": 0.075,
+      "w": 0.422,
+      "h": 0.513
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-birds-06",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-06.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-06.jpg",
+    "primary": "#f0c7ce",
+    "centre": "#f1d3d5",
+    "busyness": 0.008,
+    "paper": "#f2d4d5",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.144,
+      "y": 0.3,
+      "w": 0.711,
+      "h": 0.45
+    },
+    "score": 0.97
+  },
+  {
+    "id": "recraft-birds-04",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-04.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-04.jpg",
+    "primary": "#dcca8d",
+    "centre": "#fbf7f1",
+    "busyness": 0.016,
+    "paper": "#fdf9f3",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.225,
+      "w": 0.42,
+      "h": 0.513
+    },
+    "score": 0.93
+  },
+  {
+    "id": "recraft-birds-07",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-07.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-07.jpg",
+    "primary": "#e2aea2",
+    "centre": "#f4f1f0",
+    "busyness": 0.042,
+    "paper": "#fdfcf9",
+    "layout": "top",
+    "safe": {
+      "x": 0.278,
+      "y": 0.419,
+      "w": 0.444,
+      "h": 0.175
+    },
+    "score": 0.92
+  },
+  {
+    "id": "recraft-birds-01",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-01.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-01.jpg",
+    "primary": "#967953",
+    "centre": "#f7f4f2",
+    "busyness": 0.042,
+    "paper": "#fefcfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.289,
+      "y": 0.156,
+      "w": 0.422,
+      "h": 0.681
+    },
+    "score": 0.76
+  },
+  {
+    "id": "recraft-birds-09",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-09.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-09.jpg",
+    "primary": "#174071",
+    "centre": "#174376",
+    "busyness": 0.003,
+    "paper": "#174376",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.156,
+      "w": 0.6,
+      "h": 0.681
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-birds-11",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-11.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-11.jpg",
+    "primary": "#206e84",
+    "centre": "#266c82",
+    "busyness": 0.01,
+    "paper": "#246c83",
+    "layout": "centered",
+    "safe": {
+      "x": 0.167,
+      "y": 0.419,
+      "w": 0.667,
+      "h": 0.356
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-birds-12",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-12.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-12.jpg",
+    "primary": "#0a4d6e",
+    "centre": "#0a4c6e",
+    "busyness": 0.009,
+    "paper": "#084c6e",
+    "layout": "centered",
+    "safe": {
+      "x": 0.167,
+      "y": 0.369,
+      "w": 0.667,
+      "h": 0.344
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-birds-02",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-02.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-02.jpg",
+    "primary": "#d9d2d3",
+    "centre": "#fdfafa",
+    "busyness": 0.008,
+    "paper": "#fdfbfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.222,
+      "y": 0.2,
+      "w": 0.556,
+      "h": 0.594
+    },
+    "score": 0.6
+  },
+  {
+    "id": "recraft-birds-10",
+    "kind": "simple",
+    "category": "birds",
+    "src": "/generated/bg/recraft-birds-10.jpg",
+    "thumb": "/generated/thumbs/recraft-birds-10.jpg",
+    "primary": "#15192c",
+    "centre": "#1e1f2f",
+    "busyness": 0.049,
+    "paper": "#14182b",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.013,
+      "w": 0.444,
+      "h": 0.975
+    },
+    "score": 0.58
+  },
+  {
+    "id": "recraft-horses-06",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-06.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-06.jpg",
+    "primary": "#5d0b1e",
+    "centre": "#5c0f22",
+    "busyness": 0.031,
+    "paper": "#570418",
+    "layout": "top",
+    "safe": {
+      "x": 0.178,
+      "y": 0.088,
+      "w": 0.644,
+      "h": 0.494
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-horses-05",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-05.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-05.jpg",
+    "primary": "#6c182d",
+    "centre": "#6f2134",
+    "busyness": 0.056,
+    "paper": "#5e081d",
+    "layout": "top",
+    "safe": {
+      "x": 0.29,
+      "y": 0.138,
+      "w": 0.42,
+      "h": 0.5
+    },
+    "score": 0.91
+  },
+  {
+    "id": "recraft-horses-07",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-07.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-07.jpg",
+    "primary": "#935231",
+    "centre": "#fefefd",
+    "busyness": 0.003,
+    "paper": "#fefefd",
+    "layout": "top",
+    "safe": {
+      "x": 0.167,
+      "y": 0.106,
+      "w": 0.667,
+      "h": 0.631
+    },
+    "score": 0.91
+  },
+  {
+    "id": "recraft-horses-09",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-09.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-09.jpg",
+    "primary": "#c68e82",
+    "centre": "#f8f5ef",
+    "busyness": 0.021,
+    "paper": "#fdf9f3",
+    "layout": "top",
+    "safe": {
+      "x": 0.222,
+      "y": 0.013,
+      "w": 0.556,
+      "h": 0.594
+    },
+    "score": 0.82
+  },
+  {
+    "id": "recraft-horses-10",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-10.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-10.jpg",
+    "primary": "#d4bea1",
+    "centre": "#f8f2ec",
+    "busyness": 0.027,
+    "paper": "#fbf7f1",
+    "layout": "top",
+    "safe": {
+      "x": 0.289,
+      "y": 0.038,
+      "w": 0.422,
+      "h": 0.719
+    },
+    "score": 0.82
+  },
+  {
+    "id": "recraft-horses-08",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-08.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-08.jpg",
+    "primary": "#ac704f",
+    "centre": "#ece8e3",
+    "busyness": 0.04,
+    "paper": "#fdfcfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.144,
+      "y": 0.15,
+      "w": 0.711,
+      "h": 0.475
+    },
+    "score": 0.81
+  },
+  {
+    "id": "recraft-horses-01",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-01.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-01.jpg",
+    "primary": "#175659",
+    "centre": "#1d5557",
+    "busyness": 0.022,
+    "paper": "#165659",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.167,
+      "y": 0.319,
+      "w": 0.667,
+      "h": 0.294
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-horses-02",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-02.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-02.jpg",
+    "primary": "#0c4240",
+    "centre": "#124342",
+    "busyness": 0.017,
+    "paper": "#0c4141",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.131,
+      "w": 0.6,
+      "h": 0.513
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-horses-03",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-03.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-03.jpg",
+    "primary": "#1b50a4",
+    "centre": "#28559f",
+    "busyness": 0.025,
+    "paper": "#1c51a5",
+    "layout": "top",
+    "safe": {
+      "x": 0.178,
+      "y": 0.219,
+      "w": 0.644,
+      "h": 0.419
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-horses-04",
+    "kind": "simple",
+    "category": "horses",
+    "src": "/generated/bg/recraft-horses-04.jpg",
+    "thumb": "/generated/thumbs/recraft-horses-04.jpg",
+    "primary": "#1c5db0",
+    "centre": "#1c5bae",
+    "busyness": 0.013,
+    "paper": "#195cb2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.256,
+      "y": 0.213,
+      "w": 0.489,
+      "h": 0.475
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-florals-04",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-04.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-04.jpg",
+    "primary": "#8d0d19",
+    "centre": "#172324",
+    "busyness": 0.008,
+    "paper": "#152223",
+    "layout": "centered",
+    "safe": {
+      "x": 0.267,
+      "y": 0.175,
+      "w": 0.467,
+      "h": 0.481
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-florals-03",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-03.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-03.jpg",
+    "primary": "#eadbc5",
+    "centre": "#fbf7f4",
+    "busyness": 0.009,
+    "paper": "#fcf8f5",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.156,
+      "y": 0.388,
+      "w": 0.689,
+      "h": 0.531
+    },
+    "score": 0.9
+  },
+  {
+    "id": "recraft-florals-01",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-01.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-01.jpg",
+    "primary": "#eaddca",
+    "centre": "#fcf6f4",
+    "busyness": 0.005,
+    "paper": "#fcf7f4",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.211,
+      "y": 0.244,
+      "w": 0.578,
+      "h": 0.581
+    },
+    "score": 0.86
+  },
+  {
+    "id": "recraft-florals-51",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-51.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-51.jpg",
+    "primary": "#e9c2b1",
+    "centre": "#ecd4c7",
+    "busyness": 0.064,
+    "paper": "#f6e6db",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.15,
+      "y": 0.622,
+      "w": 0.7,
+      "h": 0.313
+    },
+    "score": 0.8
+  },
+  {
+    "id": "recraft-florals-02",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-02.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-02.jpg",
+    "primary": "#926155",
+    "centre": "#0e2423",
+    "busyness": 0.015,
+    "paper": "#0b2222",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.256,
+      "y": 0.325,
+      "w": 0.489,
+      "h": 0.369
+    },
+    "score": 0.74
+  },
+  {
+    "id": "recraft-marigold-01",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-01.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-01.jpg",
+    "primary": "#e88247",
+    "centre": "#fcf8f4",
+    "busyness": 0.009,
+    "paper": "#fcf9f7",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.233,
+      "y": 0.213,
+      "w": 0.533,
+      "h": 0.694
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-marigold-02",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-02.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-02.jpg",
+    "primary": "#fce1af",
+    "centre": "#fde6ba",
+    "busyness": 0.003,
+    "paper": "#fde6ba",
+    "layout": "centered",
+    "safe": {
+      "x": 0.144,
+      "y": 0.206,
+      "w": 0.711,
+      "h": 0.594
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-marigold-03",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-03.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-03.jpg",
+    "primary": "#efb04f",
+    "centre": "#fdfbfa",
+    "busyness": 0.002,
+    "paper": "#fdfbfa",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.178,
+      "y": 0.131,
+      "w": 0.644,
+      "h": 0.763
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-marigold-04",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-04.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-04.jpg",
+    "primary": "#f6d8a6",
+    "centre": "#f6ddb2",
+    "busyness": 0.002,
+    "paper": "#f6ddb2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.183,
+      "y": 0.166,
+      "w": 0.633,
+      "h": 0.644
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-lotus-01",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-01.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-01.jpg",
+    "primary": "#eecbc1",
+    "centre": "#fdf8f8",
+    "busyness": 0.004,
+    "paper": "#fdf8f8",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.144,
+      "w": 0.956,
+      "h": 0.588
+    },
+    "score": 0.96
+  },
+  {
+    "id": "recraft-lotus-03",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-03.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-03.jpg",
+    "primary": "#efd2c6",
+    "centre": "#fbe1dd",
+    "busyness": 0.006,
+    "paper": "#fbe1dd",
+    "layout": "top",
+    "safe": {
+      "x": 0.078,
+      "y": 0.131,
+      "w": 0.844,
+      "h": 0.563
+    },
+    "score": 0.95
+  },
+  {
+    "id": "recraft-lotus-52",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-52.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-52.jpg",
+    "primary": "#e4d8c0",
+    "centre": "#eadec7",
+    "busyness": 0.013,
+    "paper": "#ebe1cb",
+    "layout": "top",
+    "safe": {
+      "x": 0.239,
+      "y": 0.206,
+      "w": 0.522,
+      "h": 0.478
+    },
+    "score": 0.84
+  },
+  {
+    "id": "recraft-lotus-02",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-02.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-02.jpg",
+    "primary": "#0c4764",
+    "centre": "#0a4765",
+    "busyness": 0.005,
+    "paper": "#0a4765",
+    "layout": "centered",
+    "safe": {
+      "x": 0.133,
+      "y": 0.3,
+      "w": 0.733,
+      "h": 0.394
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-lotus-04",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-04.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-04.jpg",
+    "primary": "#0a4f6d",
+    "centre": "#0d506f",
+    "busyness": 0.015,
+    "paper": "#084e6e",
+    "layout": "top",
+    "safe": {
+      "x": 0.089,
+      "y": 0.313,
+      "w": 0.822,
+      "h": 0.363
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-lotus-51",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-51.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-51.jpg",
+    "primary": "#085955",
+    "centre": "#faf4ec",
+    "busyness": 0.006,
+    "paper": "#faf4ed",
+    "layout": "centered",
+    "safe": {
+      "x": 0.16,
+      "y": 0.2,
+      "w": 0.68,
+      "h": 0.66
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-temple-01",
+    "kind": "simple",
+    "category": "temple",
+    "src": "/generated/bg/recraft-temple-01.jpg",
+    "thumb": "/generated/thumbs/recraft-temple-01.jpg",
+    "primary": "#be070d",
+    "centre": "#bf0d11",
+    "busyness": 0.018,
+    "paper": "#be050b",
+    "layout": "top",
+    "safe": {
+      "x": 0.167,
+      "y": 0.131,
+      "w": 0.667,
+      "h": 0.488
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-temple-03",
+    "kind": "simple",
+    "category": "temple",
+    "src": "/generated/bg/recraft-temple-03.jpg",
+    "thumb": "/generated/thumbs/recraft-temple-03.jpg",
+    "primary": "#b20611",
+    "centre": "#b2060f",
+    "busyness": 0.014,
+    "paper": "#b3020c",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.113,
+      "w": 0.444,
+      "h": 0.581
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-temple-02",
+    "kind": "simple",
+    "category": "temple",
+    "src": "/generated/bg/recraft-temple-02.jpg",
+    "thumb": "/generated/thumbs/recraft-temple-02.jpg",
+    "primary": "#d47e5a",
+    "centre": "#fdfaf7",
+    "busyness": 0.003,
+    "paper": "#fdfaf7",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.133,
+      "y": 0.188,
+      "w": 0.733,
+      "h": 0.669
+    },
+    "score": 0.97
+  },
+  {
+    "id": "recraft-temple-04",
+    "kind": "simple",
+    "category": "temple",
+    "src": "/generated/bg/recraft-temple-04.jpg",
+    "thumb": "/generated/thumbs/recraft-temple-04.jpg",
+    "primary": "#99313e",
+    "centre": "#fdfdfc",
+    "busyness": 0.002,
+    "paper": "#fdfdfc",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.167,
+      "y": 0.131,
+      "w": 0.667,
+      "h": 0.775
+    },
+    "score": 0.92
+  },
+  {
+    "id": "recraft-palaces-02",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-02.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-02.jpg",
+    "primary": "#640e23",
+    "centre": "#580518",
+    "busyness": 0.008,
+    "paper": "#580418",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.233,
+      "y": 0.275,
+      "w": 0.533,
+      "h": 0.713
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-palaces-04",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-04.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-04.jpg",
+    "primary": "#f7c4b3",
+    "centre": "#fed1c2",
+    "busyness": 0.007,
+    "paper": "#fed1c3",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.081,
+      "w": 0.6,
+      "h": 0.619
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-palaces-05",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-05.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-05.jpg",
+    "primary": "#f7d0c3",
+    "centre": "#fcd8cf",
+    "busyness": 0.003,
+    "paper": "#fcd8ce",
+    "layout": "top",
+    "safe": {
+      "x": 0.167,
+      "y": 0.244,
+      "w": 0.667,
+      "h": 0.494
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-palaces-06",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-06.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-06.jpg",
+    "primary": "#51111f",
+    "centre": "#460614",
+    "busyness": 0.027,
+    "paper": "#430311",
+    "layout": "centered",
+    "safe": {
+      "x": 0.267,
+      "y": 0.394,
+      "w": 0.467,
+      "h": 0.506
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-palaces-51",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-51.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-51.jpg",
+    "primary": "#490f1e",
+    "centre": "#f4e7d7",
+    "busyness": 0.044,
+    "paper": "#faf8f5",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.24,
+      "y": 0.38,
+      "w": 0.52,
+      "h": 0.52
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-palaces-01",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-01.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-01.jpg",
+    "primary": "#acbfd9",
+    "centre": "#adbfd9",
+    "busyness": 0.004,
+    "paper": "#acbfd9",
+    "layout": "top",
+    "safe": {
+      "x": 0.111,
+      "y": 0.069,
+      "w": 0.778,
+      "h": 0.613
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-palaces-03",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-03.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-03.jpg",
+    "primary": "#8291b6",
+    "centre": "#8191b6",
+    "busyness": 0.003,
+    "paper": "#8191b6",
+    "layout": "top",
+    "safe": {
+      "x": 0.144,
+      "y": 0.013,
+      "w": 0.711,
+      "h": 0.731
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-palaces-52",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-52.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-52.jpg",
+    "primary": "#788059",
+    "centre": "#fefefd",
+    "busyness": 0.003,
+    "paper": "#fefefd",
+    "layout": "centered",
+    "safe": {
+      "x": 0.18,
+      "y": 0.18,
+      "w": 0.64,
+      "h": 0.62
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-paisley-01",
+    "kind": "simple",
+    "category": "paisley",
+    "src": "/generated/bg/recraft-paisley-01.jpg",
+    "thumb": "/generated/thumbs/recraft-paisley-01.jpg",
+    "primary": "#f1dcc1",
+    "centre": "#f2dcc1",
+    "busyness": 0.013,
+    "paper": "#f3dec2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.239,
+      "y": 0.147,
+      "w": 0.522,
+      "h": 0.703
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-paisley-02",
+    "kind": "simple",
+    "category": "paisley",
+    "src": "/generated/bg/recraft-paisley-02.jpg",
+    "thumb": "/generated/thumbs/recraft-paisley-02.jpg",
+    "primary": "#7a0520",
+    "centre": "#7a041f",
+    "busyness": 0.002,
+    "paper": "#7a041e",
+    "layout": "centered",
+    "safe": {
+      "x": 0.178,
+      "y": 0.163,
+      "w": 0.644,
+      "h": 0.669
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-paisley-04",
+    "kind": "simple",
+    "category": "paisley",
+    "src": "/generated/bg/recraft-paisley-04.jpg",
+    "thumb": "/generated/thumbs/recraft-paisley-04.jpg",
+    "primary": "#550618",
+    "centre": "#550617",
+    "busyness": 0.002,
+    "paper": "#550617",
+    "layout": "centered",
+    "safe": {
+      "x": 0.178,
+      "y": 0.169,
+      "w": 0.644,
+      "h": 0.663
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-paisley-03",
+    "kind": "simple",
+    "category": "paisley",
+    "src": "/generated/bg/recraft-paisley-03.jpg",
+    "thumb": "/generated/thumbs/recraft-paisley-03.jpg",
+    "primary": "#efdec1",
+    "centre": "#f6e6ca",
+    "busyness": 0.004,
+    "paper": "#f6e6ca",
+    "layout": "centered",
+    "safe": {
+      "x": 0.222,
+      "y": 0.238,
+      "w": 0.556,
+      "h": 0.531
+    },
+    "score": 0.97
+  },
+  {
+    "id": "recraft-borders-01",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-01.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-01.jpg",
+    "primary": "#eaa193",
+    "centre": "#ea9c8c",
+    "busyness": 0.002,
+    "paper": "#ea9c8c",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.244,
+      "w": 0.689,
+      "h": 0.5
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-borders-02",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-02.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-02.jpg",
+    "primary": "#e98486",
+    "centre": "#ea8587",
+    "busyness": 0.014,
+    "paper": "#ea8385",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.138,
+      "w": 0.511,
+      "h": 0.725
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-borders-51",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-51.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-51.jpg",
+    "primary": "#efe4cc",
+    "centre": "#f1e6d1",
+    "busyness": 0.055,
+    "paper": "#f6ecd5",
+    "layout": "centered",
+    "safe": {
+      "x": 0.26,
+      "y": 0.07,
+      "w": 0.48,
+      "h": 0.85
+    },
+    "score": 0.84
+  },
+  {
+    "id": "recraft-borders-03",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-03.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-03.jpg",
+    "primary": "#b2685d",
+    "centre": "#fdf6ed",
+    "busyness": 0.005,
+    "paper": "#fdf6ed",
+    "layout": "centered",
+    "safe": {
+      "x": 0.211,
+      "y": 0.213,
+      "w": 0.578,
+      "h": 0.581
+    },
+    "score": 0.81
+  },
+  {
+    "id": "recraft-borders-04",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-04.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-04.jpg",
+    "primary": "#d3cfca",
+    "centre": "#f5f3ed",
+    "busyness": 0.037,
+    "paper": "#fcfaf5",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.544,
+      "w": 0.42,
+      "h": 0.281
+    },
+    "score": 0.61
+  },
+  {
+    "id": "recraft-lights-02",
+    "kind": "simple",
+    "category": "lights",
+    "src": "/generated/bg/recraft-lights-02.jpg",
+    "thumb": "/generated/thumbs/recraft-lights-02.jpg",
+    "primary": "#b26743",
+    "centre": "#101827",
+    "busyness": 0.003,
+    "paper": "#101727",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.067,
+      "y": 0.288,
+      "w": 0.867,
+      "h": 0.644
+    },
+    "score": 0.88
+  },
+  {
+    "id": "recraft-lights-01",
+    "kind": "simple",
+    "category": "lights",
+    "src": "/generated/bg/recraft-lights-01.jpg",
+    "thumb": "/generated/thumbs/recraft-lights-01.jpg",
+    "primary": "#a56443",
+    "centre": "#181821",
+    "busyness": 0.015,
+    "paper": "#151621",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.133,
+      "y": 0.325,
+      "w": 0.733,
+      "h": 0.6
+    },
+    "score": 0.85
+  },
+  {
+    "id": "simple-arch-maroon",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-arch-maroon.jpg",
+    "thumb": "/generated/thumbs/simple-arch-maroon.jpg",
+    "primary": "#5f1626",
+    "centre": "#f8f0e0",
+    "busyness": 0,
+    "paper": "#f8f0e0",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.244,
+      "w": 0.689,
+      "h": 0.606
+    },
+    "score": 1
+  },
+  {
+    "id": "simple-rose-corners-sage",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-rose-corners-sage.jpg",
+    "thumb": "/generated/thumbs/simple-rose-corners-sage.jpg",
+    "primary": "#f9c7ae",
+    "centre": "#f3f6ed",
+    "busyness": 0.001,
+    "paper": "#f3f6ed",
+    "layout": "centered",
+    "safe": {
+      "x": 0.133,
+      "y": 0.175,
+      "w": 0.733,
+      "h": 0.65
+    },
+    "score": 1
+  },
+  {
+    "id": "simple-toran-ivory",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-toran-ivory.jpg",
+    "thumb": "/generated/thumbs/simple-toran-ivory.jpg",
+    "primary": "#f67b4b",
+    "centre": "#fffbf5",
+    "busyness": 0,
+    "paper": "#fffbf5",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.022,
+      "y": 0.244,
+      "w": 0.956,
+      "h": 0.631
+    },
+    "score": 1
+  },
+  {
+    "id": "simple-toran-peach",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-toran-peach.jpg",
+    "thumb": "/generated/thumbs/simple-toran-peach.jpg",
+    "primary": "#fbc15f",
+    "centre": "#fef5ec",
+    "busyness": 0,
+    "paper": "#fef4ec",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.022,
+      "y": 0.244,
+      "w": 0.956,
+      "h": 0.631
+    },
+    "score": 1
+  },
+  {
+    "id": "simple-peacock-ivory",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-peacock-ivory.jpg",
+    "thumb": "/generated/thumbs/simple-peacock-ivory.jpg",
+    "primary": "#d6ba72",
+    "centre": "#f9f7ef",
+    "busyness": 0.009,
+    "paper": "#fcf9f3",
+    "layout": "top",
+    "safe": {
+      "x": 0.233,
+      "y": 0.013,
+      "w": 0.533,
+      "h": 0.65
+    },
+    "score": 0.94
+  },
+  {
+    "id": "simple-lotus-pink",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-lotus-pink.jpg",
+    "thumb": "/generated/thumbs/simple-lotus-pink.jpg",
+    "primary": "#f8eaec",
+    "centre": "#fdf2f4",
+    "busyness": 0,
+    "paper": "#fdf2f4",
+    "layout": "top",
+    "safe": {
+      "x": 0.156,
+      "y": 0.069,
+      "w": 0.689,
+      "h": 0.744
+    },
+    "score": 0.92
+  },
+  {
+    "id": "simple-peacock-blush",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-peacock-blush.jpg",
+    "thumb": "/generated/thumbs/simple-peacock-blush.jpg",
+    "primary": "#d6bd7f",
+    "centre": "#f9f0eb",
+    "busyness": 0.009,
+    "paper": "#fcf4f1",
+    "layout": "top",
+    "safe": {
+      "x": 0.233,
+      "y": 0.013,
+      "w": 0.533,
+      "h": 0.65
+    },
+    "score": 0.92
+  },
+  {
+    "id": "simple-rose-corners-ivory",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-rose-corners-ivory.jpg",
+    "thumb": "/generated/thumbs/simple-rose-corners-ivory.jpg",
+    "primary": "#f8f1ea",
+    "centre": "#fcf9f2",
+    "busyness": 0,
+    "paper": "#fcf9f2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.133,
+      "y": 0.175,
+      "w": 0.733,
+      "h": 0.65
+    },
+    "score": 0.92
+  },
+  {
+    "id": "simple-side-vines-cream",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-side-vines-cream.jpg",
+    "thumb": "/generated/thumbs/simple-side-vines-cream.jpg",
+    "primary": "#e9daba",
+    "centre": "#fcf7ec",
+    "busyness": 0,
+    "paper": "#fcf7ec",
+    "layout": "centered",
+    "safe": {
+      "x": 0.167,
+      "y": 0.013,
+      "w": 0.667,
+      "h": 0.975
+    },
+    "score": 0.92
+  },
+  {
+    "id": "simple-side-vines-blue",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-side-vines-blue.jpg",
+    "thumb": "/generated/thumbs/simple-side-vines-blue.jpg",
+    "primary": "#d7c392",
+    "centre": "#f0f5f9",
+    "busyness": 0.001,
+    "paper": "#f1f6fa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.167,
+      "y": 0.013,
+      "w": 0.667,
+      "h": 0.975
+    },
+    "score": 0.88
+  },
+  {
+    "id": "simple-arch-emerald",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-arch-emerald.jpg",
+    "thumb": "/generated/thumbs/simple-arch-emerald.jpg",
+    "primary": "#0f3b2e",
+    "centre": "#fbf7ec",
+    "busyness": 0,
+    "paper": "#fbf7ec",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.25,
+      "w": 0.689,
+      "h": 0.6
+    },
+    "score": 0.62
+  },
+  {
+    "id": "simple-lotus-sky",
+    "kind": "simple",
+    "category": "drawn",
+    "src": "/generated/bg/simple-lotus-sky.jpg",
+    "thumb": "/generated/thumbs/simple-lotus-sky.jpg",
+    "primary": "#eaf0f4",
+    "centre": "#f0f7fa",
+    "busyness": 0,
+    "paper": "#f1f7fa",
+    "layout": "top",
+    "safe": {
+      "x": 0.156,
+      "y": 0.069,
+      "w": 0.689,
+      "h": 0.744
+    },
+    "score": 0.62
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-2",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-2.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-2.jpg",
+    "primary": "#e9c19f",
+    "centre": "#f5f4f3",
+    "busyness": 0.044,
+    "paper": "#fbfbfc",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.669,
+      "w": 0.42,
+      "h": 0.063
+    },
+    "score": 1
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-21",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-21.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-21.jpg",
+    "primary": "#dc5031",
+    "centre": "#f8e8e4",
+    "busyness": 0.04,
+    "paper": "#fdfdfb",
+    "layout": "top",
+    "safe": {
+      "x": 0.144,
+      "y": 0.013,
+      "w": 0.711,
+      "h": 0.538
+    },
+    "score": 1
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-2",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-2.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-2.jpg",
+    "primary": "#f4e3c2",
+    "centre": "#f7f2e6",
+    "busyness": 0.02,
+    "paper": "#f9f6ea",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.394,
+      "w": 0.689,
+      "h": 0.231
+    },
+    "score": 1
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r-4",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r-4.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r-4.jpg",
+    "primary": "#eb5e2c",
+    "centre": "#e75b3a",
+    "busyness": 0.004,
+    "paper": "#e75b3a",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.233,
+      "y": 0.275,
+      "w": 0.533,
+      "h": 0.569
+    },
+    "score": 1
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-1",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-1.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-1.jpg",
+    "primary": "#f0e0ca",
+    "centre": "#f7f0e8",
+    "busyness": 0.029,
+    "paper": "#fbf8f5",
+    "layout": "top",
+    "safe": {
+      "x": 0.144,
+      "y": 0.013,
+      "w": 0.711,
+      "h": 0.356
+    },
+    "score": 0.95
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-6",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-6.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-6.jpg",
+    "primary": "#e48f62",
+    "centre": "#d7916d",
+    "busyness": 0.051,
+    "paper": "#e9a688",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.95
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-4",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-4.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-4.jpg",
+    "primary": "#eedec6",
+    "centre": "#f3eee3",
+    "busyness": 0.009,
+    "paper": "#f3eee5",
+    "layout": "top",
+    "safe": {
+      "x": 0.144,
+      "y": 0.125,
+      "w": 0.711,
+      "h": 0.538
+    },
+    "score": 0.94
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-16",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-16.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-16.jpg",
+    "primary": "#f2e0d6",
+    "centre": "#d6dded",
+    "busyness": 0.03,
+    "paper": "#f5e9e6",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.291
+    },
+    "score": 0.92
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-7",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-7.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-7.jpg",
+    "primary": "#efe0cd",
+    "centre": "#fcf7f2",
+    "busyness": 0.011,
+    "paper": "#fdf9f4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.556,
+      "w": 0.956,
+      "h": 0.203
+    },
+    "score": 0.92
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r-3",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r-3.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r-3.jpg",
+    "primary": "#e0a06d",
+    "centre": "#dda373",
+    "busyness": 0.056,
+    "paper": "#ecb887",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.91
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-3",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-3.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-3.jpg",
+    "primary": "#daa094",
+    "centre": "#f0e6e0",
+    "busyness": 0.044,
+    "paper": "#faf5f3",
+    "layout": "top",
+    "safe": {
+      "x": 0.111,
+      "y": 0.031,
+      "w": 0.778,
+      "h": 0.35
+    },
+    "score": 0.9
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-6",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-6.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-6.jpg",
+    "primary": "#f3eade",
+    "centre": "#f5eee3",
+    "busyness": 0.012,
+    "paper": "#f6efe4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.044,
+      "y": 0.306,
+      "w": 0.911,
+      "h": 0.406
+    },
+    "score": 0.9
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r-1",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r-1.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r-1.jpg",
+    "primary": "#fadb75",
+    "centre": "#f6e9bb",
+    "busyness": 0.062,
+    "paper": "#fefdf9",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.15,
+      "y": 0.538,
+      "w": 0.7,
+      "h": 0.45
+    },
+    "score": 0.87
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-9",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-9.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-9.jpg",
+    "primary": "#e8a4ba",
+    "centre": "#f4d6e1",
+    "busyness": 0.064,
+    "paper": "#fdf9f9",
+    "layout": "top",
+    "safe": {
+      "x": 0.256,
+      "y": 0.247,
+      "w": 0.489,
+      "h": 0.144
+    },
+    "score": 0.83
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w.jpg",
+    "primary": "#dec3b2",
+    "centre": "#f1ece8",
+    "busyness": 0.015,
+    "paper": "#fcfafa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.375,
+      "w": 0.42,
+      "h": 0.181
+    },
+    "score": 0.83
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-17",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-17.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-17.jpg",
+    "primary": "#f0d0c4",
+    "centre": "#ded1ce",
+    "busyness": 0.065,
+    "paper": "#f8f7f7",
+    "layout": "centered",
+    "safe": {
+      "x": 0.267,
+      "y": 0.013,
+      "w": 0.467,
+      "h": 0.213
+    },
+    "score": 0.82
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-3",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-3.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-3.jpg",
+    "primary": "#e9decf",
+    "centre": "#efe5dd",
+    "busyness": 0.032,
+    "paper": "#fbf8f4",
+    "layout": "centered",
+    "safe": {
+      "x": 0.15,
+      "y": 0.244,
+      "w": 0.7,
+      "h": 0.178
+    },
+    "score": 0.81
+  },
+  {
+    "id": "make-an-indian-wedding-invite-background-vibe-te-2",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-wedding-invite-background-vibe-te-2.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-wedding-invite-background-vibe-te-2.jpg",
+    "primary": "#8a6650",
+    "centre": "#a58c7c",
+    "busyness": 0.001,
+    "paper": "#a58c7c",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.078,
+      "y": 0.256,
+      "w": 0.844,
+      "h": 0.588
+    },
+    "score": 0.74
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-14",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-14.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-14.jpg",
+    "primary": "#826e54",
+    "centre": "#61523f",
+    "busyness": 0.043,
+    "paper": "#453526",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.71
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu.jpg",
+    "primary": "#edad95",
+    "centre": "#d8d0cb",
+    "busyness": 0.088,
+    "paper": "#fdfdfc",
+    "layout": "top",
+    "safe": {
+      "x": 0.156,
+      "y": 0.069,
+      "w": 0.689,
+      "h": 0.406
+    },
+    "score": 0.67
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-5",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-5.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-5.jpg",
+    "primary": "#d1c1a0",
+    "centre": "#d6c5a4",
+    "busyness": 0.062,
+    "paper": "#f7f2e8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.244,
+      "y": 0.013,
+      "w": 0.511,
+      "h": 0.144
+    },
+    "score": 0.66
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-9",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-9.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-9.jpg",
+    "primary": "#e0b6a0",
+    "centre": "#c3a392",
+    "busyness": 0.079,
+    "paper": "#fcf7f3",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.65
+  },
+  {
+    "id": "a-very-subtle-bacgkround-art-for-an-indian-desi-hi-2",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-very-subtle-bacgkround-art-for-an-indian-desi-hi-2.jpg",
+    "thumb": "/generated/thumbs/a-very-subtle-bacgkround-art-for-an-indian-desi-hi-2.jpg",
+    "primary": "#f4e7cf",
+    "centre": "#ede4da",
+    "busyness": 0.09,
+    "paper": "#fdfbf6",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.844,
+      "w": 0.956,
+      "h": 0.113
+    },
+    "score": 0.65
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-5",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-5.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-5.jpg",
+    "primary": "#162b34",
+    "centre": "#fdf9ef",
+    "busyness": 0.003,
+    "paper": "#fdf9ee",
+    "layout": "centered",
+    "safe": {
+      "x": 0.2,
+      "y": 0.206,
+      "w": 0.6,
+      "h": 0.588
+    },
+    "score": 0.62
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r-5",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r-5.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r-5.jpg",
+    "primary": "#5dced2",
+    "centre": "#fafafa",
+    "busyness": 0.001,
+    "paper": "#fafafa",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.181,
+      "w": 0.6,
+      "h": 0.6
+    },
+    "score": 0.62
+  },
+  {
+    "id": "make-an-indian-wedding-invite-background-vibe-te-1",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-wedding-invite-background-vibe-te-1.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-wedding-invite-background-vibe-te-1.jpg",
+    "primary": "#ba99cc",
+    "centre": "#c6a3cd",
+    "busyness": 0.045,
+    "paper": "#d2b5e2",
+    "layout": "top",
+    "safe": {
+      "x": 0.211,
+      "y": 0.506,
+      "w": 0.578,
+      "h": 0.113
+    },
+    "score": 0.62
+  },
+  {
+    "id": "make-an-indian-wedding-invite-background-vibe-te",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-wedding-invite-background-vibe-te.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-wedding-invite-background-vibe-te.jpg",
+    "primary": "#dac7dd",
+    "centre": "#e3d6e5",
+    "busyness": 0.018,
+    "paper": "#e7dae8",
+    "layout": "top",
+    "safe": {
+      "x": 0.189,
+      "y": 0.013,
+      "w": 0.622,
+      "h": 0.606
+    },
+    "score": 0.62
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-10",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-10.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-10.jpg",
+    "primary": "#d2bd9f",
+    "centre": "#9f8d76",
+    "busyness": 0.071,
+    "paper": "#776856",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.61
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-15",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-15.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-15.jpg",
+    "primary": "#e5c9b4",
+    "centre": "#839298",
+    "busyness": 0.081,
+    "paper": "#e6ccb6",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.119
+    },
+    "score": 0.61
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-22",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-22.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-22.jpg",
+    "primary": "#e3caa3",
+    "centre": "#d6b993",
+    "busyness": 0.086,
+    "paper": "#f5ead9",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.61
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r-2",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r-2.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r-2.jpg",
+    "primary": "#0cb8db",
+    "centre": "#d8eae4",
+    "busyness": 0.046,
+    "paper": "#fefefe",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.281,
+      "w": 0.444,
+      "h": 0.338
+    },
+    "score": 0.61
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-18",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-18.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-18.jpg",
+    "primary": "#eed2cb",
+    "centre": "#e6dbda",
+    "busyness": 0.086,
+    "paper": "#fbf6f6",
+    "layout": "top",
+    "safe": {
+      "x": 0.133,
+      "y": 0.013,
+      "w": 0.733,
+      "h": 0.25
+    },
+    "score": 0.6
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-19",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-19.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-19.jpg",
+    "primary": "#daba84",
+    "centre": "#d9b796",
+    "busyness": 0.094,
+    "paper": "#fdfdfd",
+    "layout": "centered",
+    "safe": {
+      "x": 0.05,
+      "y": 0.013,
+      "w": 0.9,
+      "h": 0.034
+    },
+    "score": 0.55
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-15",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-15.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-15.jpg",
+    "primary": "#f1ceb8",
+    "centre": "#dbcdbf",
+    "busyness": 0.104,
+    "paper": "#fdfbf5",
+    "layout": "top",
+    "safe": {
+      "x": 0.283,
+      "y": 0.219,
+      "w": 0.433,
+      "h": 0.034
+    },
+    "score": 0.54
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-1",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-1.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-1.jpg",
+    "primary": "#886652",
+    "centre": "#5f4437",
+    "busyness": 0.071,
+    "paper": "#4b342c",
+    "layout": "centered",
+    "safe": {
+      "x": 0.289,
+      "y": 0.2,
+      "w": 0.422,
+      "h": 0.05
+    },
+    "score": 0.53
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-14",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-14.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-14.jpg",
+    "primary": "#f8ca87",
+    "centre": "#d0d2c6",
+    "busyness": 0.111,
+    "paper": "#fdf4eb",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.48
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-24",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-24.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-24.jpg",
+    "primary": "#f3d2a5",
+    "centre": "#c7a291",
+    "busyness": 0.155,
+    "paper": "#fdf9f3",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.45
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-10",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-10.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-10.jpg",
+    "primary": "#f2c8b4",
+    "centre": "#e7d4cb",
+    "busyness": 0.146,
+    "paper": "#fcf9f6",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.45
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-8",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-8.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-8.jpg",
+    "primary": "#f2c6a8",
+    "centre": "#d8c9bf",
+    "busyness": 0.148,
+    "paper": "#fcfaf9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.45
+  },
+  {
+    "id": "a-very-subtle-bacgkround-art-for-an-indian-desi-hi-1",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-very-subtle-bacgkround-art-for-an-indian-desi-hi-1.jpg",
+    "thumb": "/generated/thumbs/a-very-subtle-bacgkround-art-for-an-indian-desi-hi-1.jpg",
+    "primary": "#f6c6b8",
+    "centre": "#ebdddc",
+    "busyness": 0.126,
+    "paper": "#fcfaf6",
+    "layout": "top",
+    "safe": {
+      "x": 0.256,
+      "y": 0.013,
+      "w": 0.489,
+      "h": 0.106
+    },
+    "score": 0.45
+  },
+  {
+    "id": "make-an-indian-save-the-date-template-beautiful-r",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/make-an-indian-save-the-date-template-beautiful-r.jpg",
+    "thumb": "/generated/thumbs/make-an-indian-save-the-date-template-beautiful-r.jpg",
+    "primary": "#e69e75",
+    "centre": "#e4c6bb",
+    "busyness": 0.121,
+    "paper": "#fefdfd",
+    "layout": "centered",
+    "safe": {
+      "x": 0.29,
+      "y": 0.444,
+      "w": 0.42,
+      "h": 0.025
+    },
+    "score": 0.45
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-23",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-23.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-23.jpg",
+    "primary": "#e9b3a4",
+    "centre": "#e5e0d9",
+    "busyness": 0.115,
+    "paper": "#fcfbf9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.44
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-20",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-20.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-20.jpg",
+    "primary": "#cf7e5a",
+    "centre": "#554157",
+    "busyness": 0.11,
+    "paper": "#383b56",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.43
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-4",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-4.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-4.jpg",
+    "primary": "#e5b499",
+    "centre": "#e7c7b3",
+    "busyness": 0.149,
+    "paper": "#fcfbfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.43
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-7",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-7.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-7.jpg",
+    "primary": "#d78e6a",
+    "centre": "#ead9cd",
+    "busyness": 0.121,
+    "paper": "#f8f6f6",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.42
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-12",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-12.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-12.jpg",
+    "primary": "#e6cda9",
+    "centre": "#ede2d8",
+    "busyness": 0.116,
+    "paper": "#f8f3ed",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.4
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-11",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-11.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-11.jpg",
+    "primary": "#ebdac2",
+    "centre": "#e9dfcf",
+    "busyness": 0.116,
+    "paper": "#fcf5e8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.37
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-23",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-23.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-23.jpg",
+    "primary": "#db9f8c",
+    "centre": "#e1d6cc",
+    "busyness": 0.148,
+    "paper": "#fdfaf3",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.37
+  },
+  {
+    "id": "a-very-subtle-bacgkround-art-for-an-indian-desi-hi",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-very-subtle-bacgkround-art-for-an-indian-desi-hi.jpg",
+    "thumb": "/generated/thumbs/a-very-subtle-bacgkround-art-for-an-indian-desi-hi.jpg",
+    "primary": "#e2b9a6",
+    "centre": "#ebe2da",
+    "busyness": 0.119,
+    "paper": "#fdfbf8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.37
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-12",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-12.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-12.jpg",
+    "primary": "#e6d9b8",
+    "centre": "#d0c4b5",
+    "busyness": 0.115,
+    "paper": "#fae7d8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.34
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-13",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-13.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-13.jpg",
+    "primary": "#bea48f",
+    "centre": "#c5b6a7",
+    "busyness": 0.096,
+    "paper": "#fdfbf8",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.34
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-8",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-8.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-8.jpg",
+    "primary": "#e894cd",
+    "centre": "#e99fcb",
+    "busyness": 0.081,
+    "paper": "#fac4f6",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.34
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-17",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-17.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-17.jpg",
+    "primary": "#693b26",
+    "centre": "#613321",
+    "busyness": 0.134,
+    "paper": "#361709",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.34
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-22",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-22.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-22.jpg",
+    "primary": "#d9ba95",
+    "centre": "#ddccbc",
+    "busyness": 0.176,
+    "paper": "#fdfbf8",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.34
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-18",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-18.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-18.jpg",
+    "primary": "#d69e92",
+    "centre": "#c7b0a9",
+    "busyness": 0.116,
+    "paper": "#f9f9f9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.33
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-19",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-19.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-19.jpg",
+    "primary": "#c47962",
+    "centre": "#6b2b28",
+    "busyness": 0.18,
+    "paper": "#090715",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.33
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-24",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-24.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-24.jpg",
+    "primary": "#d3b68f",
+    "centre": "#ddd6d0",
+    "busyness": 0.176,
+    "paper": "#fdfcfa",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.32
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-21",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-21.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-21.jpg",
+    "primary": "#984e3d",
+    "centre": "#973430",
+    "busyness": 0.214,
+    "paper": "#270508",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.31
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-16",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-16.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-16.jpg",
+    "primary": "#e7ddc6",
+    "centre": "#e2dcd3",
+    "busyness": 0.134,
+    "paper": "#fcfbf8",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.29
+  },
+  {
+    "id": "a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-11",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-11.jpg",
+    "thumb": "/generated/thumbs/a-subtle-bacgkround-art-for-an-indian-desi-hindu-w-11.jpg",
+    "primary": "#8f7e55",
+    "centre": "#8a896e",
+    "busyness": 0.102,
+    "paper": "#c4ded7",
+    "layout": "top",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.378
+    },
+    "score": 0.28
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-13",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-13.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-13.jpg",
+    "primary": "#38241e",
+    "centre": "#3f2821",
+    "busyness": 0.111,
+    "paper": "#2d1b18",
+    "layout": "centered",
+    "safe": {
+      "x": 0.233,
+      "y": 0.831,
+      "w": 0.533,
+      "h": 0.156
+    },
+    "score": 0.26
+  },
+  {
+    "id": "a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-20",
+    "kind": "illustrated",
+    "category": "illustrated",
+    "src": "/generated/bg/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-20.jpg",
+    "thumb": "/generated/thumbs/a-v-subtle-bacgkround-art-for-an-indian-desi-hindu-20.jpg",
+    "primary": "#a6806b",
+    "centre": "#57473d",
+    "busyness": 0.207,
+    "paper": "#0a0307",
+    "layout": "centered",
+    "safe": {
+      "x": 0.172,
+      "y": 0.313,
+      "w": 0.656,
+      "h": 0.381
+    },
+    "score": 0.18
+  }
+]

@@ -1,0 +1,152 @@
+[
+  {
+    "src": "/samples/haldi-1.jpg",
+    "design": "recraft-haldi-01",
+    "event": "haldi",
+    "alt": "Haldi ceremony invitation with date, time, venue and dress code on a marigold arch design"
+  },
+  {
+    "src": "/samples/haldi-2.jpg",
+    "design": "recraft-haldi-02",
+    "event": "haldi",
+    "alt": "Haldi ceremony invitation with date, time, venue and dress code on a marigold arch design"
+  },
+  {
+    "src": "/samples/haldi-3.jpg",
+    "design": "recraft-haldi-03",
+    "event": "haldi",
+    "alt": "Haldi ceremony invitation with date, time, venue and dress code on a marigold arch design"
+  },
+  {
+    "src": "/samples/haldi-4.jpg",
+    "design": "recraft-marigold-01",
+    "event": "haldi",
+    "alt": "Haldi ceremony invitation with date, time, venue and dress code on a marigold design"
+  },
+  {
+    "src": "/samples/mehendi-1.jpg",
+    "design": "recraft-mehendi-01",
+    "event": "mehendi",
+    "alt": "Mehendi ceremony invitation with date, time, venue and dress code on a green henna design"
+  },
+  {
+    "src": "/samples/mehendi-2.jpg",
+    "design": "recraft-mehendi-02",
+    "event": "mehendi",
+    "alt": "Mehendi ceremony invitation with date, time, venue and dress code on a green henna design"
+  },
+  {
+    "src": "/samples/mehendi-3.jpg",
+    "design": "recraft-paisley-01",
+    "event": "mehendi",
+    "alt": "Mehendi ceremony invitation with date, time, venue and dress code on a paisley design"
+  },
+  {
+    "src": "/samples/mehendi-4.jpg",
+    "design": "recraft-paisley-02",
+    "event": "mehendi",
+    "alt": "Mehendi ceremony invitation with date, time, venue and dress code on a paisley design"
+  },
+  {
+    "src": "/samples/sangeet-1.jpg",
+    "design": "recraft-sangeet-03",
+    "event": "sangeet",
+    "alt": "Sangeet ceremony invitation with date, time, venue and dress code on a night lantern design"
+  },
+  {
+    "src": "/samples/sangeet-2.jpg",
+    "design": "recraft-sangeet-01",
+    "event": "sangeet",
+    "alt": "Sangeet ceremony invitation with date, time, venue and dress code on a night lantern design"
+  },
+  {
+    "src": "/samples/sangeet-3.jpg",
+    "design": "recraft-sangeet-02",
+    "event": "sangeet",
+    "alt": "Sangeet ceremony invitation with date, time, venue and dress code on a night lantern design"
+  },
+  {
+    "src": "/samples/sangeet-4.jpg",
+    "design": "recraft-lights-02",
+    "event": "sangeet",
+    "alt": "Sangeet ceremony invitation with date, time, venue and dress code on a lantern design"
+  },
+  {
+    "src": "/samples/reception-1.jpg",
+    "design": "recraft-reception-04",
+    "event": "reception",
+    "alt": "Reception ceremony invitation with date, time, venue and dress code on a rose design"
+  },
+  {
+    "src": "/samples/reception-2.jpg",
+    "design": "recraft-reception-03",
+    "event": "reception",
+    "alt": "Reception ceremony invitation with date, time, venue and dress code on a rose design"
+  },
+  {
+    "src": "/samples/reception-3.jpg",
+    "design": "recraft-reception-01",
+    "event": "reception",
+    "alt": "Reception ceremony invitation with date, time, venue and dress code on a rose design"
+  },
+  {
+    "src": "/samples/reception-4.jpg",
+    "design": "recraft-reception-02",
+    "event": "reception",
+    "alt": "Reception ceremony invitation with date, time, venue and dress code on a rose design"
+  },
+  {
+    "src": "/samples/wedding-1.jpg",
+    "design": "recraft-wedding-02",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a floral palace design"
+  },
+  {
+    "src": "/samples/wedding-2.jpg",
+    "design": "recraft-peacocks-09",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a peacock design"
+  },
+  {
+    "src": "/samples/wedding-3.jpg",
+    "design": "recraft-elephants-03",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a elephant design"
+  },
+  {
+    "src": "/samples/wedding-4.jpg",
+    "design": "recraft-temple-01",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a temple design"
+  },
+  {
+    "src": "/samples/wedding-5.jpg",
+    "design": "recraft-palaces-02",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a palace arch design"
+  },
+  {
+    "src": "/samples/wedding-6.jpg",
+    "design": "recraft-lotus-01",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a Pichwai lotus design"
+  },
+  {
+    "src": "/samples/wedding-7.jpg",
+    "design": "recraft-horses-06",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a baraat horse design"
+  },
+  {
+    "src": "/samples/wedding-8.jpg",
+    "design": "recraft-florals-04",
+    "event": "shaadi",
+    "alt": "Indian wedding invitation with the couple's and parents' names on a floral design"
+  },
+  {
+    "src": "/samples/hindi-1.jpg",
+    "design": "recraft-temple-03",
+    "event": "shaadi",
+    "alt": "Hindi wedding card (shaadi card) in Devanagari on a red temple design with kalash and banana leaves"
+  }
+]

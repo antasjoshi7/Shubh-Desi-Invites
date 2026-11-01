@@ -1,0 +1,22 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# secrets and local settings
+.env
+.env.*
+!.env.example
+.vercel/
+
+# large source files kept on this computer only
+*.zip
+example output reference.mp4
+
+.DS_Store
+
+# personal reference material (may contain family names)
+Purple and Cream Indian Wedding Invitation/
+reference/

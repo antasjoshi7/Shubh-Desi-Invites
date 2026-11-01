@@ -1,0 +1,146 @@
+[
+  {
+    "id": "playfair-display",
+    "family": "Playfair Display",
+    "bold": "/fonts/playfair-display-bold.woff2",
+    "regular": "/fonts/playfair-display-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cinzel",
+    "family": "Cinzel",
+    "bold": "/fonts/cinzel-bold.woff2",
+    "regular": "/fonts/cinzel-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cormorant-garamond",
+    "family": "Cormorant Garamond",
+    "bold": "/fonts/cormorant-garamond-bold.woff2",
+    "regular": "/fonts/cormorant-garamond-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "marcellus",
+    "family": "Marcellus",
+    "regular": "/fonts/marcellus-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "yeseva-one",
+    "family": "Yeseva One",
+    "regular": "/fonts/yeseva-one-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "italiana",
+    "family": "Italiana",
+    "regular": "/fonts/italiana-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "rozha-one",
+    "family": "Rozha One",
+    "regular": "/fonts/rozha-one-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "yatra-one",
+    "family": "Yatra One",
+    "regular": "/fonts/yatra-one-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "gilda-display",
+    "family": "Gilda Display",
+    "regular": "/fonts/gilda-display-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "bodoni-moda",
+    "family": "Bodoni Moda",
+    "bold": "/fonts/bodoni-moda-bold.woff2",
+    "regular": "/fonts/bodoni-moda-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cinzel-decorative",
+    "family": "Cinzel Decorative",
+    "bold": "/fonts/cinzel-decorative-bold.woff2",
+    "regular": "/fonts/cinzel-decorative-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "taj-mahal",
+    "family": "Taj Mahal",
+    "regular": "/fonts/taj-mahal-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "royal",
+    "family": "Royal",
+    "regular": "/fonts/royal-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "royal-glamour",
+    "family": "Royal Glamour",
+    "regular": "/fonts/royal-glamour-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "dehanna",
+    "family": "Dehanna",
+    "regular": "/fonts/dehanna-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "pinyon-script",
+    "family": "Pinyon Script",
+    "regular": "/fonts/pinyon-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "alex-brush",
+    "family": "Alex Brush",
+    "regular": "/fonts/alex-brush-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "parisienne",
+    "family": "Parisienne",
+    "regular": "/fonts/parisienne-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "allura",
+    "family": "Allura",
+    "regular": "/fonts/allura-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "petit-formal-script",
+    "family": "Petit Formal Script",
+    "regular": "/fonts/petit-formal-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "amita",
+    "family": "Amita",
+    "bold": "/fonts/amita-bold.woff2",
+    "regular": "/fonts/amita-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "kharisna",
+    "family": "Kharisna",
+    "regular": "/fonts/kharisna-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "royal-moscow",
+    "family": "Royal Moscow",
+    "regular": "/fonts/royal-moscow-regular.woff2",
+    "style": "display"
+  }
+]
