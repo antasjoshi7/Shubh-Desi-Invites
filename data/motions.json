@@ -1,0 +1,152 @@
+[
+  {
+    "id": "ghodi",
+    "name": "Baraat ghodi",
+    "event": "shaadi",
+    "design": "recraft-horses-06",
+    "video": "/motions/ghodi.mp4",
+    "poster": "/motions/ghodi.jpg",
+    "seconds": 5.6,
+    "description": "A white baraat horse, dressed in its wedding finery, gallops across the page with its legs really moving, then the invite appears."
+  },
+  {
+    "id": "elephants",
+    "name": "Elephant procession",
+    "event": null,
+    "design": "recraft-elephants-03",
+    "video": "/motions/elephants.mp4",
+    "poster": "/motions/elephants.jpg",
+    "seconds": 5.6,
+    "description": "Two decorated elephants walk in from either side, meet below your text and raise their trunks in welcome."
+  },
+  {
+    "id": "peacock",
+    "name": "Peacock dance",
+    "event": "sangeet",
+    "design": "recraft-peacocks-09",
+    "video": "/motions/peacock.mp4",
+    "poster": "/motions/peacock.jpg",
+    "seconds": 5.6,
+    "description": "A peacock fans its tail open feather by feather beneath your words."
+  },
+  {
+    "id": "rosePetals",
+    "name": "Rose petals",
+    "event": null,
+    "design": "recraft-florals-04",
+    "video": "/motions/rosePetals.mp4",
+    "poster": "/motions/rosePetals.jpg",
+    "seconds": 5.6,
+    "description": "Painted rose petals tumble down the page while your text rises in."
+  },
+  {
+    "id": "marigolds",
+    "name": "Marigold garlands",
+    "event": "haldi",
+    "design": "recraft-haldi-01",
+    "video": "/motions/marigolds.mp4",
+    "poster": "/motions/marigolds.jpg",
+    "seconds": 5.6,
+    "description": "Strings of marigolds drop from the top of the page and sway, the classic Haldi and mandap look."
+  },
+  {
+    "id": "diyaRow",
+    "name": "Diya lights",
+    "event": "reception",
+    "design": "recraft-reception-04",
+    "video": "/motions/diyaRow.mp4",
+    "poster": "/motions/diyaRow.jpg",
+    "seconds": 5.6,
+    "description": "A row of clay diyas rises in under your text and the lamps light up one by one."
+  },
+  {
+    "id": "lanterns",
+    "name": "Swinging lanterns",
+    "event": "sangeet",
+    "design": "recraft-sangeet-03",
+    "video": "/motions/lanterns.mp4",
+    "poster": "/motions/lanterns.jpg",
+    "seconds": 5.6,
+    "description": "Brass lanterns drop in on chains and swing gently, glowing."
+  },
+  {
+    "id": "skyLanterns",
+    "name": "Sky lanterns",
+    "event": "reception",
+    "design": "recraft-lights-02",
+    "video": "/motions/skyLanterns.mp4",
+    "poster": "/motions/skyLanterns.jpg",
+    "seconds": 5.6,
+    "description": "Glowing sky lanterns rise from below and drift up past your text."
+  },
+  {
+    "id": "doors",
+    "name": "Palace doors",
+    "event": null,
+    "design": "recraft-palaces-02",
+    "video": "/motions/doors.mp4",
+    "poster": "/motions/doors.jpg",
+    "seconds": 5.6,
+    "description": "Carved palace doors cover the page, then swing open to reveal your invite."
+  },
+  {
+    "id": "lotus",
+    "name": "Lotus bloom",
+    "event": null,
+    "design": "recraft-lotus-01",
+    "video": "/motions/lotus.mp4",
+    "poster": "/motions/lotus.jpg",
+    "seconds": 5.6,
+    "description": "A lotus bud rises from the water and opens, with ripples and floating leaves."
+  },
+  {
+    "id": "kalash",
+    "name": "Kalash blessing",
+    "event": "shaadi",
+    "design": "recraft-temple-01",
+    "video": "/motions/kalash.mp4",
+    "poster": "/motions/kalash.jpg",
+    "seconds": 5.6,
+    "description": "A brass kalash rises in a golden glow while marigolds drift down: a blessing to open the invite."
+  },
+  {
+    "id": "mehendi",
+    "name": "Mehendi",
+    "event": "mehendi",
+    "design": "recraft-mehendi-01",
+    "video": "/motions/mehendi.mp4",
+    "poster": "/motions/mehendi.jpg",
+    "seconds": 5.6,
+    "description": "A henna mandala draws itself in behind your text, line by line."
+  },
+  {
+    "id": "parrots",
+    "name": "Parrots",
+    "event": "mehendi",
+    "design": "recraft-birds-03",
+    "video": "/motions/parrots.mp4",
+    "poster": "/motions/parrots.jpg",
+    "seconds": 5.6,
+    "description": "Green parrots fly across the page, wings beating."
+  },
+  {
+    "id": "butterflies",
+    "name": "Butterflies",
+    "event": "mehendi",
+    "design": "recraft-florals-03",
+    "video": "/motions/butterflies.mp4",
+    "poster": "/motions/butterflies.jpg",
+    "seconds": 5.6,
+    "description": "Butterflies flutter in and settle around your text."
+  },
+  {
+    "id": "sparkles",
+    "name": "Golden sparkles",
+    "event": "sangeet",
+    "design": "recraft-sangeet-01",
+    "video": "/motions/sparkles.mp4",
+    "poster": "/motions/sparkles.jpg",
+    "seconds": 5.6,
+    "description": "Soft gold fireworks burst above your text and twinkle around it."
+  }
+]

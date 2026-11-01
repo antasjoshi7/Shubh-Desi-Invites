@@ -16,6 +16,7 @@ export function SiteFooter() {
             {EVENT_PAGES.map((p) => (
               <li key={p.slug}><Link href={`/${p.slug}`}>{p.name} invitation video</Link></li>
             ))}
+            <li><Link href="/animated-wedding-invitation">Animated wedding invitation</Link></li>
             <li><Link href="/wedding-e-card">Wedding e-card</Link></li>
           </ul>
         </div>

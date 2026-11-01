@@ -9,6 +9,7 @@ export function SiteHeader() {
         {SITE.name}
       </Link>
       <nav aria-label="Main">
+        <Link href="/animated-wedding-invitation">Animations</Link>
         <Link href="/designs">Designs</Link>
         <Link href="/wedding-invitation-wording">Wording</Link>
         <Link href="/create" className="s-btn s-btn-small">Make invite</Link>

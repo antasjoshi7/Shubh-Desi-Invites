@@ -57,6 +57,7 @@ threads, practitioner write-ups, and the replies under your bookmarked question 
 | J | Replies under @2whazzuup's question | **Medium** | "Intent matching does the work"; "ship genuinely useful free tools or data pages, then use them as the reason to ask for links"; "directories help early"; "organic Reddit comments where people ask for what you solve"; "social/video is the kindling, organic is the log". |
 | K | Hacker News: one-feature tool to $7k/mo | **Medium** | Top channel was **web directories** (50%+ of paying users), then helpful replies in communities, then cross-links. Directory submissions are a legitimate, fast first step. |
 | L | Smallpdf / iLovePDF (company blog, Ahrefs, OneSky case study) | **Medium–High** | iLovePDF: no launch, no ads, word of mouth, **no account needed** (they call it "a big part of why the number is what it is"); about 46% of traffic from Google, 43% direct. Smallpdf: one page per tool, then **translation into 20+ languages** (+60% organic; Thai alone +500%). |
+| N | @chrissimpson (local-SEO checklist) | **Low–Medium** | Mostly for local businesses (Google Business Profile, press releases): skip those, and skip "keyword in every H1–H6, 5% more than competitors" (outdated stuffing). Useful: a video on the page gets **video structured data and a text description** (done for the animations); start **3–4 months before your season** (that's now); plain HTML, because a JavaScript-only page can look blank to Google; pick **www or non-www** and use it everywhere; first backlinks should use the **brand name** as link text; one page per service, with a hub linking to all of them. |
 | M | Pinterest data (Pinterest reports via press) | **Medium** | Wedding is one of Pinterest's biggest categories: billions of wedding searches a year; Indian searches like "desi wedding decor" and "dulha haldi" up sharply. Pins keep sending traffic for months. Timelines for new accounts (2 weeks to 3 months) are anecdotal. |
 
 **What I deliberately didn't take:** the "nine bots" automation (overkill until you have data), paid
@@ -147,6 +148,17 @@ week, and don't tinker with a page for 90 days after publishing.
 | "Updated" dates | pages + `SITE.updated` in `lib/site.ts` | Freshness signal for people and AI assistants (F). |
 | One place for name and domain | `lib/site.ts` | Change the brand or domain once; every page, sitemap and share image follows. |
 
+### Animation previews (the main difference from Canva and Adobe)
+- **15 preview clips** (5.6 s, 432×768 MP4, ~600 KB each) and poster frames in `public/motions/`,
+  rendered by the tool itself; descriptions in `data/motions.json`.
+- **New page `/animated-wedding-invitation`**: all 15 with descriptions, a "which animation for which
+  function" table, FAQ, and a **VideoObject** structured-data entry per clip (lets them show in Google's
+  video results).
+- **Home** has an "Invites that come alive" strip (6 clips); **each event page** shows 6 suitable ones.
+- Clips only download and play while on screen (`components/site/MotionReel.tsx`), so pages stay fast.
+- Tapping a clip opens the editor with that design and animation: `/create?design=…&motion=doors`.
+- The same clips make good **Pinterest video pins** and Twitter posts.
+
 ### Images and marketing assets
 - **25 sample invites** rendered by the tool itself (`public/samples/`): real names, dates and venues
   on real designs, including one in Hindi. Used across the pages and share images.
@@ -223,6 +235,7 @@ week, and don't tinker with a page for 90 days after publishing.
 ├── /mehendi-invitation-video
 ├── /sangeet-invitation-video
 ├── /reception-invitation-video
+├── /animated-wedding-invitation    15 animation previews (video structured data)
 ├── /wedding-e-card                 digital card / e-invite
 ├── /wedding-invitation-wording     wording hub (23 examples)  → links to each event's #wording
 ├── /designs                        all 197 designs → each opens the editor
@@ -328,7 +341,9 @@ Pinning:
 - Pace: a few fresh pins a day beats 25 at once. New design, new wording, or a new crop counts as fresh.
 - Titles and descriptions use the search words people type ("Haldi invitation card design, free
   video maker, yellow marigold").
-- Later: short **video pins** (screen recording of making an invite, 6–15 seconds) and
+- **Video pins now**: the 15 animation clips in `public/motions/*.mp4` are ready-made video pins;
+  link each to `/animated-wedding-invitation` or the matching event page.
+- Later: screen recordings of making an invite (6–15 seconds) and
   **wording pins** (an invite with the wording visible, linking to the wording page).
 - Pinterest Trends (trends.pinterest.com) shows what Indian brides search each month. Check it
   before making new pins.
@@ -387,6 +402,8 @@ In this order:
    The Terms page says fonts are open-licensed, which is only true once this is sorted.
 1. **Buy the domain.** Then in Vercel: Project › Settings › Domains › add it; follow the DNS
    instructions at your registrar.
+   Pick **one** version of the address (`yourdomain.com` *or* `www.yourdomain.com`), let Vercel
+   redirect the other to it, and use that exact version everywhere (Pinterest, Twitter, directories).
 2. **Set environment variables** in Vercel (Project › Settings › Environment Variables), then redeploy:
 
    | Variable | Value |

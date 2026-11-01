@@ -1,7 +1,7 @@
 // Starting content for new invites and new pages.
 // The flow follows a typical invite video: intro → invitation → one page per event → thank you.
 
-import { BACKGROUNDS, EVENT_LOOK, MAX_PAGES, lookFor, type Background } from "./catalog";
+import { ANIMATIONS, BACKGROUNDS, EVENT_LOOK, MAX_PAGES, lookFor, type Background } from "./catalog";
 import { DEFAULT_LINE_SPACING } from "./render";
 import { DEFAULT_BODY_FONT, DEFAULT_SCRIPT_FONT } from "./textStyles";
 import type { EventId, Invite, Page, PageKind, TextBox, TextRole } from "./types";
@@ -140,24 +140,34 @@ export function duplicatePage(p: Page): Page {
   return { ...p, boxes: p.boxes.map((b) => ({ ...b, id: newId() })) };
 }
 
-// Opening the editor from a landing page link (/create?event=haldi or /create?design=<id>):
-// adds that event's page (in a design made for it) or puts that design on the first page, and says which page to show.
-// Work already saved on this device is kept; the change is one step that Undo takes back.
-export function startFrom(invite: Invite, fresh: boolean, event?: string | null, design?: string | null): { invite: Invite; page: number } | null {
+// Opening the editor from a landing page link (/create?event=haldi, ?design=<id>, ?motion=ghodi, or a mix):
+// adds that event's page (in a design made for it) or puts that design on the first page, gives that page the
+// motion, and says which page to show. Work already saved on this device is kept; Undo takes the change back.
+export function startFrom(
+  invite: Invite,
+  fresh: boolean,
+  event?: string | null,
+  design?: string | null,
+  motion?: string | null,
+): { invite: Invite; page: number } | null {
   const picked = design ? BACKGROUNDS.find((b) => b.id === design) : undefined;
   const ev = event && event in EVENT_LOOK ? (event as EventId) : undefined;
+  const anim = ANIMATIONS.find((a) => a.id === motion)?.id;
+  const withMotion = (r: { invite: Invite; page: number }) =>
+    anim ? { ...r, invite: { ...r.invite, pages: r.invite.pages.map((p, i) => (i === r.page ? { ...p, animation: anim } : p)) } } : r;
   if (ev) {
     const bg = picked ?? BACKGROUNDS.find((b) => b.category === EVENT_LOOK[ev].category) ?? BACKGROUNDS[0];
     const pages = fresh ? invite.pages.map((p) => ({ ...p, background: bg.src, ...lookFor(bg) })) : [...invite.pages];
     const at = pages.findIndex((p) => p.kind === "event" && p.event === ev);
-    if (at >= 0) return { invite: { ...invite, pages }, page: at };
+    if (at >= 0) return withMotion({ invite: { ...invite, pages }, page: at });
     if (pages.length >= MAX_PAGES) return null;
     pages.push({ ...makePage("event", pages[pages.length - 1], ev), background: bg.src, ...lookFor(bg) });
-    return { invite: { ...invite, pages }, page: pages.length - 1 };
+    return withMotion({ invite: { ...invite, pages }, page: pages.length - 1 });
   }
   if (picked) {
     const pages = invite.pages.map((p, i) => (i === 0 ? { ...p, background: picked.src, ...lookFor(picked) } : p));
-    return { invite: { ...invite, pages }, page: 0 };
+    return withMotion({ invite: { ...invite, pages }, page: 0 });
   }
+  if (anim) return withMotion({ invite, page: 0 });
   return null;
 }

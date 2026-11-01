@@ -2,10 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
+import { MotionReel } from "@/components/site/MotionReel";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Tiles } from "@/components/site/Tiles";
 import { EVENT_PAGES, type Faq as FaqItem } from "@/lib/content/events";
 import { tilesFor } from "@/lib/content/gallery";
+import { MOTION_PREVIEWS, motionsById } from "@/lib/content/motions";
 import { appSchema, howToSchema, organizationSchema, websiteSchema } from "@/lib/schema";
 import { COUNTS, SITE } from "@/lib/site";
 
@@ -64,6 +66,17 @@ export default function Home() {
             Open the <Link href="/create">editor</Link>, pick a design, and tap the text to type your names, dates and venue. Add a page for each function, choose music and an animation, and press Export. The video is made on your phone and saved as an MP4 you can send on WhatsApp. It&apos;s free, has no watermark, and doesn&apos;t need an account.
           </p>
         </div>
+      </section>
+
+      <section className="s-section">
+        <h2>Invites that come alive</h2>
+        <p>
+          Hand-painted animations made for Indian weddings, which general design apps don&apos;t have: a baraat ghodi that really gallops, palace doors that swing open, elephants that raise their trunks. Tap one to use it.
+        </p>
+        <MotionReel items={motionsById(["ghodi", "doors", "elephants", "peacock", "marigolds", "skyLanterns"])} />
+        <p style={{ marginTop: 14 }}>
+          <Link href="/animated-wedding-invitation">See all {MOTION_PREVIEWS.length} animated wedding invitation styles</Link>
+        </p>
       </section>
 
       <section className="s-section">

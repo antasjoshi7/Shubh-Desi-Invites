@@ -122,3 +122,14 @@
 .s-footer li { font-size: 15px; margin-bottom: 6px; }
 .s-footer a { color: var(--cream); text-decoration: none; opacity: 0.85; }
 .s-fineprint { max-width: 980px; margin: 24px auto 0 !important; font-size: 13px !important; opacity: 0.55; }
+
+/* animation previews */
+.s-reel { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; grid-template-columns: repeat(3, 1fr); }
+@media (min-width: 720px) { .s-reel { grid-template-columns: repeat(6, 1fr); } }
+.s-reel video { width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 8px; display: block; background: var(--bg-3); }
+.s-reel span { display: block; font-size: 13px; text-align: center; padding: 6px 0 2px; opacity: 0.8; }
+.s-reel-wide { gap: 22px 14px; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 720px) { .s-reel-wide { grid-template-columns: repeat(4, 1fr); } }
+.s-reel-wide h3 { margin: 10px 0 4px; font-size: 17px; }
+.s-reel-wide p { font-size: 14px !important; line-height: 1.5 !important; margin: 0 0 6px !important; }
+.s-reel-wide li > a:last-child { font-size: 14px; }

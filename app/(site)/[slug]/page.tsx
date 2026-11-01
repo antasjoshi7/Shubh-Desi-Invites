@@ -4,12 +4,14 @@ import { notFound } from "next/navigation";
 import { Crumbs } from "@/components/site/Crumbs";
 import { Cta } from "@/components/site/Cta";
 import { Faq } from "@/components/site/Faq";
+import { MotionReel } from "@/components/site/MotionReel";
 import { JsonLd } from "@/components/site/JsonLd";
 import { Tiles } from "@/components/site/Tiles";
 import { Wordings } from "@/components/site/Wordings";
 import { EVENT_PAGES, eventPage } from "@/lib/content/events";
 import { allPages } from "@/lib/content/pages";
 import { tilesFor } from "@/lib/content/gallery";
+import { motionsNamed } from "@/lib/content/motions";
 import { appSchema, howToSchema } from "@/lib/schema";
 import { COUNTS, SITE } from "@/lib/site";
 import { Prose } from "@/components/site/Prose";
@@ -117,10 +119,15 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
         </ul>
         <h3 style={{ marginTop: 22 }}>When to send it</h3>
         <p>{e.timing}</p>
-        <h3>Animations that suit a {e.name}</h3>
+      </section>
+
+      <section className="s-section">
+        <h2>Animations for a {e.name} invite</h2>
         <p>
-          {e.motions.join(", ")}. The tool has {COUNTS.motions} animations, including a baraat horse that really gallops.
+          Painted animations that move around your text. Tap one to start your {e.name} page with it, or see{" "}
+          <Link href="/animated-wedding-invitation">all animated invitation styles</Link>.
         </p>
+        <MotionReel items={motionsNamed(e.motions)} />
       </section>
 
       <section className="s-section">

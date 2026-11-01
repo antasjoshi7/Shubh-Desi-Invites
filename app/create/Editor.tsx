@@ -188,9 +188,9 @@ export default function Editor() {
     }
     // arrived from a landing page: start on that event or design
     const params = new URLSearchParams(window.location.search);
-    track("editor_opened", { event: params.get("event"), design: params.get("design"), returning: !!saved });
-    if (params.has("event") || params.has("design")) {
-      const started = startFrom(saved ?? history.value, !saved, params.get("event"), params.get("design"));
+    track("editor_opened", { event: params.get("event"), design: params.get("design"), motion: params.get("motion"), returning: !!saved });
+    if (params.has("event") || params.has("design") || params.has("motion")) {
+      const started = startFrom(saved ?? history.value, !saved, params.get("event"), params.get("design"), params.get("motion"));
       if (started) {
         history.set(started.invite);
         setCurrent(started.page);
