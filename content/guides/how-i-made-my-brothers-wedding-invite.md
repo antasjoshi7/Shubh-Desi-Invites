@@ -1,5 +1,5 @@
 ---
-title: How I made my brother's wedding invite video for free
+title: How our wedding video invite went (and what I'd change)
 description: [One line: what you made, how long it took, what it cost (nothing).]
 status: draft
 date:
@@ -7,7 +7,9 @@ updated:
 ---
 
 <!--
-WRITING BRIEF
+WRITING BRIEF: write this AFTER the wedding. The "why I built it" story now lives on the About
+page (content/pages/about.md), so this one is only about how it went, to avoid two pages telling
+the same story.
 Search it targets: none directly. This is your story page: it's what you share on Twitter, what
 the About page links to, and what tells Google and readers a real person built this from a real
 need ("experience", the first E in Google's E-E-A-T quality guidelines).

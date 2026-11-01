@@ -1,7 +1,7 @@
 # Pending actions
 
 The running to-do list for growing the site. Kept up to date at the end of every working session.
-Last updated: 1 November 2026.
+Last updated: 1 November 2026 (evening).
 
 ## Waiting on you
 
@@ -15,13 +15,15 @@ Last updated: 1 November 2026.
 | 6 | **Google Search Console**: add a Domain property for the new domain and verify it with the DNS record | Your SEO scoreboard: searches, clicks, positions | 15 min, after #1 |
 | 7 | **Bing Webmaster Tools**: import from Search Console | Bing also feeds ChatGPT search and Copilot | 2 min, after #6 |
 | 8 | **Read the Hindi wording once** (lib/content/wording.ts, the "hindi" group), or ask a parent | Wrong Hindi on a public page hurts trust | 10 min |
-| 9 | **Write the About page** (content/pages/about.md has the brief) and set `status: published` | A real person behind the site is a trust signal for Google and for families | 30 min |
+| 9 | **Finish the story page** (content/pages/about.md is drafted): fill in your name, the wedding month, email and Twitter handle, read it once, set `status: published` | A real person and a real reason behind the site is a trust signal for Google and for families | 10 min |
 | 10 | **Review and publish Terms** (content/pages/terms.md) | Google expects privacy and terms pages; fix the font line after #3 | 10 min |
-| 11 | **Write the story guide**: how you made your brother's invite (content/guides/how-i-made-my-brothers-wedding-invite.md) | Experience-based content is what Google rewards most now, and it doubles as your Twitter launch post | 1 hr |
+| 11 | **After the wedding: "how it went" post** (content/guides/how-i-made-my-brothers-wedding-invite.md): what relatives said, what you'd change, a few screenshots | Experience-based content is what Google rewards most now | 1 hr, after the wedding |
 | 12 | **Pinterest Business account**: claim the website (send me the verification code), make boards, start pinning from `marketing/pinterest/` and the clips in `public/motions/` | Brides plan on Pinterest; pins send traffic for months | 30 min setup, then 10 min a day |
 | 13 | **Submit to directories** (Product Hunt, AlternativeTo, SaaSHub, Indie Hackers, BetaList, Uneed, Microlaunch, Peerlist) | First links to the domain and first visitors | 2 hrs once |
 | 14 | **Twitter**: launch thread with the story, then weekly build-in-public numbers | CV and early users | ongoing |
 | 15 | **More Reddit threads as PDFs** in `research/reddit/` whenever you see good ones (questions people ask about invites, wording, costs, WhatsApp) | I can't open Reddit; your saved threads are how real questions get answered on the site | 1 min each |
+| 17 | **Twitter/X handle**: make the account (your own name) and send me the handle | Goes in the site footer, the share cards (`twitter:site`) and the "who made this" data, so the site and your account point to each other | 10 min |
+| 18 | **Keyword Planner export**: download the CSV (better than screenshots) for the seed list in docs/SEO-PLAYBOOK.md section 8, save it as `research/keywords.csv` | Real volumes decide which pages to build next and which titles to adjust | 20 min |
 | 16 | **Recraft credits** (optional): when you have more, 3 to 5 designs a week keeps the "new designs every week" line true | The home page says new designs are added every week | ongoing |
 
 ## What I do next (once the matching item above is done)
