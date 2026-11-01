@@ -26,3 +26,24 @@ Competitor context: WedMeGood (very popular wedding site) sells paid video invit
 reminders. It turns the tool from "make a video" into "send all your invites properly and know who's
 coming", which no free tool does and which WedMeGood-style paid cards don't do either. It needs no
 server. Later, **print commission** is the revenue that doesn't require putting anything behind a paywall.
+
+## The personalisation wedge: "the digital nyota"
+
+The custom being replaced: elders go home to home with the card (and often sweets) and invite each
+family by name. A WhatsApp forward loses exactly that. The wedge is to bring the visit back, with almost
+no extra work for the family:
+
+1. **Name on the opening.** Each guest's video opens with their name: the palace doors open on a name
+   plate reading "Sharma Parivar", or an envelope addressed to them. Only that short opening is made per
+   guest; the rest of the video is shared, so making 200 personal videos stays fast.
+2. **Relation-aware greeting.** The salutation follows Indian etiquette from a one-word tag the tool can
+   mostly guess from the name typed: "Aadarniya Mamaji evam Mamiji" for elders, "Dear Rahul" for
+   friends, "Dear Mr. Mehta" for the office. No free tool gets honorifics right; it's the culture-first part.
+3. **Parents' voice saying the name** (version 2). A parent reads the guest list aloud once; the tool cuts
+   it into names by the pauses and places each one into a short spoken line ("Namaste ___, aapko zaroor
+   aana hai") over the music. To an elder, it sounds like a personal phone call.
+4. **Send list.** One tap per guest opens the share sheet with that guest's video or card and message.
+
+Input from the family: paste the guest list (or pick from contacts on Android), check the guessed tags,
+optionally read the names aloud once. Version 1 (1–3 + send list, without voice) is about two days;
+voice is about two or three more. No server needed.
