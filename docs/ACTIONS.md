@@ -7,7 +7,7 @@ Last updated: 1 November 2026 (evening).
 
 | # | What | Why it matters | Effort |
 |---|---|---|---|
-| 1 | **Pick the name and buy the domain.** "Shaadi Video Maker" sounds like a photographer. Shortlist (free when checked on 1 Nov): **Nyota** at nyotacard.com + nyotacard.in (recommended), nyotakaro.com / .in, invitepatrika.com. Buy the .com and .in together, then tell me | Everything (Google, Pinterest, links) builds on the final name and address; renaming later costs rankings | 15 min, about ₹1,500/yr for both |
+| 1 | **Buy shubhdesi.com and shubhdesi.in** (both free when checked on 2 Nov; confirm at the registrar). Optional: shubhdesiinvites.com too, pointed at shubhdesi.com, for people who type the full name. Then tell me | The site is already renamed to Shubh Desi Invites; the domain is what Google, Pinterest and links build on | 15 min, about ₹1,500/yr for both |
 | 2 | **Say "deploy"** | Nothing since the first deploy is live yet: new pages, animations, favicon, 201 designs | 1 word |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | **Create the GitHub repo** (empty, no README) and send me the URL, or push it yourself | CV proof; lets Vercel deploy on every change | 5 min |
@@ -30,7 +30,7 @@ Last updated: 1 November 2026 (evening).
 
 | After | I will |
 |---|---|
-| #1 | Set the domain everywhere (`NEXT_PUBLIC_SITE_URL`), remake share images and pins with it, redirect the old address |
+| #1 | Point the site at shubhdesi.com (`NEXT_PUBLIC_SITE_URL`), remake share images and pins with the domain on them, redirect the old .vercel.app address |
 | #2 | Deploy, check every page live, submit the sitemap, run IndexNow |
 | #3 | Remove or replace the fonts, update Terms |
 | #4 | Push, connect Vercel to GitHub, write the README with screenshots |

@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const p = allPages().find((x) => x.slug === slug);
   if (!p) return {};
   return {
-    title: p.title,
+    title: p.title.includes(SITE.name) ? { absolute: p.title } : p.title, // no "Name | Name"
     description: p.description,
     alternates: { canonical: `/${slug}` },
     robots: p.published ? undefined : { index: false, follow: true },

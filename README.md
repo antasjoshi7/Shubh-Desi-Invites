@@ -1,4 +1,4 @@
-# Shaadi Video Maker
+# Shubh Desi Invites
 
 Makes Indian wedding invite videos (9:16 MP4) entirely in the browser.
 No server, no database, no account. Optional cookieless analytics (PostHog), off until a key is set.

@@ -1,6 +1,6 @@
 ---
 title: Terms of use
-description: The simple terms for using Shaadi Video Maker.
+description: The simple terms for using Shubh Desi Invites.
 status: draft
 date: 2026-11-01
 updated: 2026-11-01
@@ -14,7 +14,7 @@ Publish it (status: published) once you're happy with it.
 
 ## Using the tool
 
-Shaadi Video Maker is free for personal and commercial use. You can make as many invites as you like, and you may share, post and print the videos and pictures you make.
+Shubh Desi Invites is free for personal and commercial use. You can make as many invites as you like, and you may share, post and print the videos and pictures you make.
 
 ## Your content
 

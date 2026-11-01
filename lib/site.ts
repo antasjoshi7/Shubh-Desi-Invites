@@ -5,13 +5,13 @@ import { ANIMATIONS, BACKGROUNDS, FONTS, SYMBOL_STYLES } from "./catalog";
 import { MUSIC } from "./music";
 
 export const SITE = {
-  name: "Shaadi Video Maker",
-  // the live address; set NEXT_PUBLIC_SITE_URL once the custom domain is connected
+  name: "Shubh Desi Invites",
+  // the live address; set NEXT_PUBLIC_SITE_URL to https://shubhdesi.com once that domain is bought and connected
   url: (process.env.NEXT_PUBLIC_SITE_URL || "https://shaadi-video-maker.vercel.app").replace(/\/$/, ""),
   tagline: "Free Indian wedding invitation video maker",
   // one plain sentence: what it is, who it's for, what it does (read by Google and AI assistants)
   definition:
-    "Shaadi Video Maker is a free online tool for making Indian wedding invitation videos and e-cards on your phone: pick a design, type your names and dates, and download an MP4 for WhatsApp, with no watermark and no sign-up.",
+    "Shubh Desi Invites is a free online tool for making Indian wedding invitation cards and videos on your phone: pick a design, type your names and dates, and download an MP4 for WhatsApp, with no watermark and no sign-up.",
   locale: "en_IN",
   // HUMAN INPUT: your name as it should appear on guides you write (shown as the author)
   author: process.env.NEXT_PUBLIC_AUTHOR_NAME || "",

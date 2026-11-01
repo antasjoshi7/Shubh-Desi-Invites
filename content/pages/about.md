@@ -1,5 +1,5 @@
 ---
-title: The story behind Shaadi Video Maker
+title: The story behind Shubh Desi Invites
 description: I built a free Indian wedding invite maker for my brother's wedding, because everything we tried was paid, watermarked or didn't look Indian.
 status: draft
 date: 2026-11-01
@@ -18,7 +18,7 @@ After the wedding, add a short "How it went" section (what relatives said, what 
 update the `updated` date. That's the most valuable paragraph this page will ever have.
 -->
 
-Hi, I'm the founder of Shaadi Video Maker. My brother is getting married in February 2027, and this tool started as a way to make his wedding invite.
+Hi, I'm the founder of Shubh Desi Invites. My brother is getting married in February 2027, and this tool started as a way to make his wedding invite.
 
 ## How it started
 

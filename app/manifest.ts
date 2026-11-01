@@ -7,7 +7,7 @@ export const dynamic = "force-static";
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: SITE.name,
-    short_name: "Shaadi Video",
+    short_name: "Shubh Desi",
     description: SITE.definition,
     start_url: "/create",
     display: "standalone",

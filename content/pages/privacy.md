@@ -1,6 +1,6 @@
 ---
 title: Privacy
-description: What Shaadi Video Maker collects (almost nothing) and why. Your invite never leaves your device.
+description: What Shubh Desi Invites collects (almost nothing) and why. Your invite never leaves your device.
 status: published
 date: 2026-11-01
 updated: 2026-11-01
