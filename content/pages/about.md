@@ -18,7 +18,7 @@ After the wedding, add a short "How it went" section (what relatives said, what 
 update the `updated` date. That's the most valuable paragraph this page will ever have.
 -->
 
-Hi, I'm [your name]. My brother is getting married in [month year], and this tool started as a way to make his wedding invite.
+Hi, I'm the founder of Shaadi Video Maker. My brother is getting married in February 2027, and this tool started as a way to make his wedding invite.
 
 ## How it started
 
@@ -38,4 +38,4 @@ It's free: no watermark, no sign-up, nothing locked behind a payment. Your invit
 
 My brother's wedding is coming up, and I'm sharing how the invites (and this site) come together. If something doesn't work, or you'd like a design for your community's traditions, I'd love to hear from you.
 
-[your email], or find me on [Twitter/X handle].
+[, or find me on [Twitter/X handle].

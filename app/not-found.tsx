@@ -14,7 +14,7 @@ export default function NotFound() {
           <div>
             <h1>This page isn&apos;t here</h1>
             <p className="s-lead">
-              It may have moved. Try the <Link href="/">home page</Link>, the <Link href="/designs">designs</Link> or the{" "}
+              It may have moved. Try the <Link href="/">home page</Link>, the <Link href="/wedding-card-design">designs</Link> or the{" "}
               <Link href="/wedding-invitation-wording">wording collection</Link>.
             </p>
             <Cta />

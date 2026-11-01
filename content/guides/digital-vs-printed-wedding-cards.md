@@ -24,7 +24,7 @@ Outline:
 ## What digital invites cost (free tools like this one, paid designers ₹500 to ₹5,000: VERIFY)
 ## What relatives told us (your 5 answers)
 ## Why most families do both (print a few for elders and the temple, video for everyone else)
-## How to make the digital version: link to /wedding-e-card and /create
+## How to make the digital version: link to /create-marriage-invitation-card and /create
 -->
 
 [Write here]

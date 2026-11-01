@@ -83,7 +83,7 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
         <p>Tap a design to open it in the editor with {e.name} wording ready to change.</p>
         <Tiles tiles={tilesFor(e.categories, 10, e.event)} />
         <p>
-          Want something else? <Link href="/designs">Browse all {COUNTS.designs} designs</Link>.
+          Want something else? Browse all {COUNTS.designs} <Link href="/wedding-card-design">wedding card designs</Link>.
         </p>
       </section>
 

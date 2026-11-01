@@ -12,8 +12,9 @@ import { MOTION_PREVIEWS, motionsById } from "@/lib/content/motions";
 import { appSchema, howToSchema, organizationSchema, websiteSchema } from "@/lib/schema";
 import { COUNTS, SITE } from "@/lib/site";
 
-const TITLE = "Free Indian Wedding Invitation Video Maker (No Watermark)";
-const DESCRIPTION = `Make an Indian wedding invitation video on your phone in 5 minutes. ${COUNTS.designsLabel} designs, animations that come alive, Ganesh ji and Om, music and animations. Free, no watermark, no sign-up.`;
+// Targets the invite-video cluster: wedding invite / marriage invitation / wedding card video, video maker, templates (docs/keywords.md).
+const TITLE = "Free Wedding Invitation Video Maker: Indian Invite Videos";
+const DESCRIPTION = `Make a Hindu wedding invite video on your phone in 5 minutes: ${COUNTS.designsLabel} designs and templates, animations, Ganesh ji, music. Free, no watermark, no sign-up.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
@@ -68,7 +69,7 @@ export default function Home() {
         <h2>How do I make a wedding invitation video for free?</h2>
         <div className="s-answer">
           <p>
-            Open the <Link href="/create">editor</Link>, pick a design, and tap the text to type your names, dates and venue. Add a page for each function, choose music and an animation, and press Export. The video is made on your phone and saved as an MP4 you can send on WhatsApp. It&apos;s free, has no watermark, and doesn&apos;t need an account.
+            Open the <Link href="/create">editor</Link>, pick a design, and tap the text to type your names, dates and venue. Add a page for each function, choose music and an animation, and press Export. The video is made on your phone and saved as an MP4: your wedding invite video (some families call it a marriage invitation video or a wedding card video), ready to send on WhatsApp. It&apos;s free, has no watermark, and doesn&apos;t need an account.
           </p>
         </div>
       </section>
@@ -111,7 +112,7 @@ export default function Home() {
           ))}
           <li>
             <h3>
-              <Link href="/wedding-e-card">Wedding e-card</Link>
+              <Link href="/create-marriage-invitation-card">Marriage invitation card</Link>
             </h3>
             <p>Need a picture instead of a video? Download any page as a PNG card.</p>
           </li>
@@ -119,13 +120,13 @@ export default function Home() {
       </section>
 
       <section className="s-section">
-        <h2>Designs made for Indian weddings</h2>
+        <h2>Wedding invitation video templates</h2>
         <p>
           Peacocks, elephants, the baraat horse, marigold garlands, temple bells, Pichwai lotus, palace arches and mehendi patterns. Each design leaves a big clear space for all your text, the way printed cards do.
         </p>
         <Tiles tiles={tilesFor(["wedding", "haldi", "sangeet", "mehendi", "reception", "peacocks", "elephants", "lotus", "palaces", "temple"], 10)} />
         <p>
-          <Link href="/designs">See all {COUNTS.designs} designs</Link>, with new ones added every week.
+          See all {COUNTS.designs} <Link href="/wedding-card-design">wedding card designs</Link>, with new ones added every week.
         </p>
       </section>
 

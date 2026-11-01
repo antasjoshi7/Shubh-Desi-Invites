@@ -17,7 +17,7 @@ export function SiteFooter() {
               <li key={p.slug}><Link href={`/${p.slug}`}>{p.name} invitation video</Link></li>
             ))}
             <li><Link href="/animated-wedding-invitation">Animated wedding invitation</Link></li>
-            <li><Link href="/wedding-e-card">Wedding e-card</Link></li>
+            <li><Link href="/create-marriage-invitation-card">Marriage invitation card</Link></li>
           </ul>
         </div>
         <div>
@@ -25,7 +25,7 @@ export function SiteFooter() {
           <ul>
             <li><Link href="/wedding-invitation-wording">Invitation wording</Link></li>
             <li><Link href="/digital-wedding-invitation-price">What invites cost</Link></li>
-            <li><Link href="/designs">All designs</Link></li>
+            <li><Link href="/wedding-card-design">Wedding card designs</Link></li>
             <li><Link href="/guides">Guides</Link></li>
           </ul>
         </div>

@@ -9,42 +9,43 @@ import { tilesFor } from "@/lib/content/gallery";
 import { appSchema, howToSchema } from "@/lib/schema";
 import { COUNTS } from "@/lib/site";
 
-const TITLE = "Wedding E-Card Maker: Free Indian Digital Wedding Card";
-const DESCRIPTION = `Make a digital Indian wedding card (e-invite) for WhatsApp in minutes. ${COUNTS.designsLabel} traditional designs, download as a picture or video. Free, no watermark.`;
+// Targets "create marriage invitation card" and "wedding cards online" (docs/keywords.md).
+const TITLE = "Create Marriage Invitation Card Online, Free (Indian E-Card)";
+const DESCRIPTION = `Create a marriage invitation card online in minutes: ${COUNTS.designsLabel} Indian designs, your names and dates, download as a picture or video for WhatsApp. Free, no watermark.`;
 
 export const metadata: Metadata = {
   title: { absolute: TITLE },
   description: DESCRIPTION,
-  alternates: { canonical: "/wedding-e-card" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/wedding-e-card" },
+  alternates: { canonical: "/create-marriage-invitation-card" },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/create-marriage-invitation-card" },
 };
 
 const STEPS = [
   { name: "Pick a design", text: "Choose a card design: traditional, floral, royal or minimal." },
   { name: "Type your details", text: "Tap each line to change names, parents, date and venue." },
-  { name: "Download as a picture", text: "Open the More menu (⋯) and tap Page as PNG to save the card, or press Export for a video." },
+  { name: "Download your card", text: "Open the More menu (⋯) and tap Page as PNG to save the card, or press Export for a video." },
 ];
 
 export default function ECardPage() {
   return (
     <>
-      <Crumbs trail={[{ name: "Wedding e-card", path: "/wedding-e-card" }]} />
+      <Crumbs trail={[{ name: "Create a marriage invitation card", path: "/create-marriage-invitation-card" }]} />
       <section className="s-hero">
         <div>
-          <h1>Indian wedding e-card maker</h1>
+          <h1>Create a marriage invitation card online</h1>
           <p className="s-lead">
-            Make a digital wedding card to send on WhatsApp: the look of a printed Indian card, saved as a picture (PNG) or an animated video. Ready in a few minutes on your phone.
+            Make a digital wedding card (an e-card) to send on WhatsApp: the look of a printed Indian card, saved as a picture or an animated video. Ready in a few minutes on your phone.
           </p>
-          <Cta href="/create" label="Make your e-card" />
+          <Cta href="/create" label="Create your card" />
         </div>
         <Tiles tiles={tilesFor(["minimal", "wedding", "borders"], 3, "shaadi")} />
       </section>
 
       <section className="s-section">
-        <h2>How do I make a digital wedding card for free?</h2>
+        <h2>How do I create a marriage invitation card for free?</h2>
         <div className="s-answer">
           <p>
-            Open the <Link href="/create">editor</Link>, pick a design and type your details. To get a picture, open the More menu (⋯) and tap Page as PNG. Every page of your invite can be its own card, so you can send the main card, then the Haldi or Sangeet card separately. For an animated version with music, press Export instead.
+            Open the <Link href="/create">editor</Link>, pick one of the <Link href="/wedding-card-design">wedding card designs</Link> and type your details. To get a picture, open the More menu (⋯) and tap Page as PNG. Every page of your invite can be its own card, so you can send the main card, then the Haldi or Sangeet card separately. For an animated version with music, press Export instead.
           </p>
         </div>
       </section>
@@ -57,15 +58,15 @@ export default function ECardPage() {
       </section>
 
       <section className="s-section">
-        <h2>Wedding card designs</h2>
+        <h2>Designs to start from</h2>
         <Tiles tiles={tilesFor(["minimal", "wedding", "borders", "florals", "palaces", "temple", "lotus", "paisley", "peacocks", "elephants"], 10)} />
         <p>
-          You can also <Link href="/designs">browse every design</Link> or <Link href="/wedding-invitation-wording">copy some wording</Link>.
+          You can also browse every <Link href="/wedding-card-design">wedding card design</Link> or <Link href="/wedding-invitation-wording">copy some wording</Link>.
         </p>
       </section>
 
       <section className="s-section">
-        <h2>How to make a wedding e-card</h2>
+        <h2>How to create a wedding card online</h2>
         <ol className="s-steps">
           {STEPS.map((s) => (
             <li key={s.name}>
@@ -74,7 +75,7 @@ export default function ECardPage() {
             </li>
           ))}
         </ol>
-        <JsonLd data={howToSchema("How to make an Indian wedding e-card", STEPS)} />
+        <JsonLd data={howToSchema("How to create a marriage invitation card online", STEPS)} />
       </section>
 
       <Faq
@@ -85,7 +86,7 @@ export default function ECardPage() {
           { q: "Can I make cards for each function?", a: "Yes. Add a page for Haldi, Mehendi, Sangeet, the wedding and the reception, then download each page as its own picture." },
         ]}
       />
-      <JsonLd data={appSchema({ name: "Indian wedding e-card maker", description: DESCRIPTION, path: "/wedding-e-card" })} />
+      <JsonLd data={appSchema({ name: "Marriage invitation card maker", description: DESCRIPTION, path: "/create-marriage-invitation-card" })} />
     </>
   );
 }

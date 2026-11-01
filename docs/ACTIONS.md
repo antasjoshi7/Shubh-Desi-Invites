@@ -23,7 +23,7 @@ Last updated: 1 November 2026 (evening).
 | 14 | **Twitter**: launch thread with the story, then weekly build-in-public numbers | CV and early users | ongoing |
 | 15 | **More Reddit threads as PDFs** in `research/reddit/` whenever you see good ones (questions people ask about invites, wording, costs, WhatsApp) | I can't open Reddit; your saved threads are how real questions get answered on the site | 1 min each |
 | 17 | **Twitter/X handle**: make the account (your own name) and send me the handle | Goes in the site footer, the share cards (`twitter:site`) and the "who made this" data, so the site and your account point to each other | 10 min |
-| 18 | **Keyword Planner export**: download the CSV (better than screenshots) for the seed list in docs/SEO-PLAYBOOK.md section 8, save it as `research/keywords.csv` | Real volumes decide which pages to build next and which titles to adjust | 20 min |
+| 18 | **More keyword data**: the first screenshots are in docs/keywords.md and already used. Next, look up the event, wording and regional terms listed at the bottom of that file, ideally as a CSV download | Decides the next pages (regional invites? Canva comparison? wording deep dives?) | 20 min |
 | 16 | **Recraft credits** (optional): when you have more, 3 to 5 designs a week keeps the "new designs every week" line true | The home page says new designs are added every week | ongoing |
 
 ## What I do next (once the matching item above is done)
@@ -49,4 +49,5 @@ Last updated: 1 November 2026 (evening).
 ## Done recently
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.
+- 1 Nov: keyword clusters mapped to pages (docs/keywords.md); designs page moved to /wedding-card-design, e-card page to /create-marriage-invitation-card, home tuned for "wedding invite video".
 - 1 Nov: 16 animation previews incl. new Floating clouds, animated invitation page, price comparison page, marigold favicon, 201 designs, real rating box and review strip (empty until real reviews), answers from the two Reddit threads, bigger text in samples, no more dot-separated lists.

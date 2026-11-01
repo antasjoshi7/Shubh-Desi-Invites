@@ -124,9 +124,9 @@ week, and don't tinker with a page for 90 days after publishing.
 | The editor moved from `/` to `/create` | `app/create/` | The editor is drawn on a canvas, which Google can't read. The home page is now readable text that ranks; the editor is one tap away. `/create` is marked **noindex** so Google doesn't index an empty-looking page. |
 | Home page = "Free Indian wedding invitation video maker" | `app/(site)/page.tsx` | Targets the main search. Definition sentence, question-as-first-H2 with a <100-word answer, steps, events, designs, an honest "is this better than Canva?" comparison, FAQ. |
 | 4 event pages | `/haldi-`, `/mehendi-`, `/sangeet-`, `/reception-invitation-video` (content in `lib/content/events.ts`) | One search each. Each has sample invites, what to write, 5 wordings to copy (incl. Hinglish), a WhatsApp message, dress codes, timing, motions, how-to steps and FAQs. |
-| Wedding e-card page | `/wedding-e-card` | "digital wedding card / e-invite" is a different search from "video". Explains PNG export. |
+| Wedding e-card page | `/create-marriage-invitation-card` | "digital wedding card / e-invite" is a different search from "video". Explains PNG export. |
 | Wording collection | `/wedding-invitation-wording` (`lib/content/wording.ts`) | 23 examples: traditional, from parents, from the couple, Hindi, RSVP, WhatsApp messages. "Wording" searches are huge, and the page is a natural thing for other sites to link to. |
-| Designs gallery | `/designs` | All 197 designs by category; each opens the editor on that design. |
+| Wedding card designs | `/wedding-card-design` | All designs by category (finished samples first); targets "wedding card design" and "Hindu / shadi card design". |
 | Guides | `/guides`, `content/guides/*.md` | Written in Markdown so you can write them like a doc. 1 published, 6 drafts with briefs. |
 | About, Privacy, Terms | `content/pages/*.md` | Trust pages. Privacy is published (accurate to what the site does). About and Terms are drafts for you. |
 | 404 page | `app/not-found.tsx` | Sends lost visitors back to the main pages instead of a dead end. |
@@ -239,9 +239,9 @@ week, and don't tinker with a page for 90 days after publishing.
 ├── /reception-invitation-video
 ├── /animated-wedding-invitation    15 animation previews (video structured data)
 ├── /digital-wedding-invitation-price  what invites cost (price-intent searches)
-├── /wedding-e-card                 digital card / e-invite
+├── /create-marriage-invitation-card  make a card (picture) online
 ├── /wedding-invitation-wording     wording hub (23 examples)  → links to each event's #wording
-├── /designs                        all 197 designs → each opens the editor
+├── /wedding-card-design            all designs, samples first → each opens the editor
 ├── /guides                         articles (Markdown, content/guides)
 │   └── /guides/how-to-make-wedding-invitation-video-on-phone   (published)
 ├── /about  /privacy  /terms        trust pages (content/pages)
