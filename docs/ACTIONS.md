@@ -26,6 +26,21 @@ Last updated: 1 November 2026 (evening).
 | 18 | **More keyword data**: the first screenshots are in docs/keywords.md and already used. Next, look up the event, wording and regional terms listed at the bottom of that file, ideally as a CSV download | Decides the next pages (regional invites? Canva comparison? wording deep dives?) | 20 min |
 | 16 | **Recraft credits** (optional): when you have more, 3 to 5 designs a week keeps the "new designs every week" line true | The home page says new designs are added every week | ongoing |
 
+## Data goldmine (before and around launch)
+
+Things only you can get that would put the site ahead of every competitor. Ranked by impact for the effort.
+
+| # | What | How | Becomes |
+|---|---|---|---|
+| G1 | **Real card wording from 15 to 25 printed cards** at home or with relatives (the "card matter") | Photograph the text side; I'll transcribe and strip every name, number and address | The most authentic wording library online, by community and by who's inviting |
+| G2 | **Vivah muhurat dates for 2027** from your family pandit or a panchang he trusts | Photo of the list with the source name | A "shubh vivah muhurat 2027" page: huge yearly searches, from exactly the people about to send invites |
+| G3 | **A 10-question WhatsApp survey of 20 to 30 relatives and friends** (printed or digital? video or picture? what annoys them? when do they expect an invite?) | I'll write the questions; you send it and paste back the answers | Original data ("we asked 30 Indian families…") that bloggers and journalists quote and link to |
+| G4 | **Two or three printer quotes** (price per card, minimum order, days needed) | Call or visit local card printers | Real prices for the price page and the digital-vs-printed guide |
+| G5 | **Your brother's invite as it happens**: the pages you make, family feedback, how guests reacted (screenshots with permission) | Save as you go | The story page, a "how it went" post and your Twitter launch |
+| G6 | **More keyword data**: events, wording, Hindi-script searches (शादी कार्ड), regional, and "vivah muhurat 2027" | Keyword Planner, Download keyword ideas (CSV) | Which pages to build next |
+| G7 | **Pinterest Trends (India)** for wedding invitation, haldi, mehendi, shaadi card | trends.pinterest.com, screenshots | Which designs and pins to make, and when |
+| G8 | **Regional helpers**: one Marathi, Gujarati, Punjabi or South Indian relative willing to check wording | WhatsApp them | Regional invite pages that are genuinely right, not find-and-replace |
+
 ## What I do next (once the matching item above is done)
 
 | After | I will |
