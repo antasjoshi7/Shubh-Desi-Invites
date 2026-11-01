@@ -7,7 +7,7 @@ Last updated: 1 November 2026 (evening).
 
 | # | What | Why it matters | Effort |
 |---|---|---|---|
-| 1 | **Buy the domain** and tell me the name | Everything (Google, Pinterest, links) builds on the final address; the `.vercel.app` one can't rank well | 10 min, about ₹1,000/yr |
+| 1 | **Pick the name and buy the domain.** "Shaadi Video Maker" sounds like a photographer. Shortlist (free when checked on 1 Nov): **Nyota** at nyotacard.com + nyotacard.in (recommended), nyotakaro.com / .in, invitepatrika.com. Buy the .com and .in together, then tell me | Everything (Google, Pinterest, links) builds on the final name and address; renaming later costs rankings | 15 min, about ₹1,500/yr for both |
 | 2 | **Say "deploy"** | Nothing since the first deploy is live yet: new pages, animations, favicon, 201 designs | 1 word |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | **Create the GitHub repo** (empty, no README) and send me the URL, or push it yourself | CV proof; lets Vercel deploy on every change | 5 min |
@@ -15,7 +15,7 @@ Last updated: 1 November 2026 (evening).
 | 6 | **Google Search Console**: add a Domain property for the new domain and verify it with the DNS record | Your SEO scoreboard: searches, clicks, positions | 15 min, after #1 |
 | 7 | **Bing Webmaster Tools**: import from Search Console | Bing also feeds ChatGPT search and Copilot | 2 min, after #6 |
 | 8 | **Read the Hindi wording once** (lib/content/wording.ts, the "hindi" group), or ask a parent | Wrong Hindi on a public page hurts trust | 10 min |
-| 9 | **Finish the story page** (content/pages/about.md is drafted): fill in your name, the wedding month, email and Twitter handle, read it once, set `status: published` | A real person and a real reason behind the site is a trust signal for Google and for families | 10 min |
+| 9 | **Finish the story page** (content/pages/about.md): add your **email** and **Twitter/X handle** in the last line (the two [brackets]), read it once, set `status: published`. If the brand name changes, change it in the first line too | A real person and a real reason behind the site is a trust signal for Google and for families | 5 min |
 | 10 | **Review and publish Terms** (content/pages/terms.md) | Google expects privacy and terms pages; fix the font line after #3 | 10 min |
 | 11 | **After the wedding: "how it went" post** (content/guides/how-i-made-my-brothers-wedding-invite.md): what relatives said, what you'd change, a few screenshots | Experience-based content is what Google rewards most now | 1 hr, after the wedding |
 | 12 | **Pinterest Business account**: claim the website (send me the verification code), make boards, start pinning from `marketing/pinterest/` and the clips in `public/motions/` | Brides plan on Pinterest; pins send traffic for months | 30 min setup, then 10 min a day |

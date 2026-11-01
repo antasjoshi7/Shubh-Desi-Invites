@@ -8,7 +8,7 @@ updated: 2026-11-01
 
 <!--
 DRAFTED FROM WHAT YOU'VE TOLD ME. Before publishing, please:
-1. Fill in the four [brackets]: your name, the wedding month, your email, your Twitter/X handle.
+1. Fill in the two [brackets] at the end: your email and your Twitter/X handle.
 2. Read it out loud. Change anything you wouldn't say, or that isn't quite how it happened.
 3. Optional but powerful: add a photo of your cousin's card (names blurred) or of you, saved in
    public/guides/, with a line like ![My cousin's hand-made card](/guides/cousins-card.jpg)
@@ -28,7 +28,7 @@ So I went looking. The free apps put a watermark on the video unless you paid. O
 
 ## So I built one
 
-I'm not a developer. I built this with an AI coding assistant, one evening at a time, testing every change on my phone the way my parents would use it. The designs are painted in the style of printed Indian cards, with a big clear space in the middle so all the details fit. The animations are what I'm proudest of: a baraat ghodi that actually gallops, palace doors that swing open, diyas that light up one by one.
+I wanted a free tool that puts design and culture first: invites that look like the cards our families actually keep, made for our traditions rather than adapted from generic templates. I tested every change on my phone the way my parents would use it. The designs are painted in the style of printed Indian cards, with a big clear space in the middle so all the details fit. The animations are what I'm proudest of: a baraat ghodi that actually gallops, palace doors that swing open, diyas that light up one by one.
 
 ## What I promise
 
@@ -38,4 +38,4 @@ It's free: no watermark, no sign-up, nothing locked behind a payment. Your invit
 
 My brother's wedding is coming up, and I'm sharing how the invites (and this site) come together. If something doesn't work, or you'd like a design for your community's traditions, I'd love to hear from you.
 
-[, or find me on [Twitter/X handle].
+Write to me at [your email], or find me on Twitter/X at [@yourhandle].
