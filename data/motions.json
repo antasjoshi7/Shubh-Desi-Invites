@@ -226,17 +226,6 @@
     "scene": true
   },
   {
-    "id": "floralArch",
-    "name": "Floral arch",
-    "event": "sangeet",
-    "design": "simple-arch-emerald",
-    "video": "/motions/floralArch.mp4",
-    "poster": "/motions/floralArch.jpg",
-    "seconds": 5.6,
-    "description": "A lush arch of roses, jasmine and marigolds blooms around your words as flowers drift down and butterflies flutter.",
-    "scene": true
-  },
-  {
     "id": "gardenCorners",
     "name": "Garden corners",
     "event": "reception",
@@ -311,17 +300,6 @@
     "poster": "/motions/peacockGarden.jpg",
     "seconds": 5.6,
     "description": "A peacock fans its tail between blooming floral corners.",
-    "scene": true
-  },
-  {
-    "id": "parrotArch",
-    "name": "Parrots under the arch",
-    "event": "haldi",
-    "design": "recraft-minimal-01",
-    "video": "/motions/parrotArch.mp4",
-    "poster": "/motions/parrotArch.jpg",
-    "seconds": 5.6,
-    "description": "Green parrots fly through a blooming floral arch.",
     "scene": true
   },
   {
@@ -424,17 +402,6 @@
     "scene": true
   },
   {
-    "id": "elephantArch",
-    "name": "Elephants under the arch",
-    "event": "mehendi",
-    "design": "recraft-minimal-01",
-    "video": "/motions/elephantArch.mp4",
-    "poster": "/motions/elephantArch.jpg",
-    "seconds": 5.6,
-    "description": "Two decorated elephants meet beneath a blooming floral arch.",
-    "scene": true
-  },
-  {
     "id": "royalCourtSilver",
     "name": "Royal court, silver",
     "event": "sangeet",
@@ -443,17 +410,6 @@
     "poster": "/motions/royalCourtSilver.jpg",
     "seconds": 5.6,
     "description": "The royal court in silver: chandeliers and fans in cool, elegant tones.",
-    "scene": true
-  },
-  {
-    "id": "floralArchPastel",
-    "name": "Floral arch, pastel",
-    "event": "shaadi",
-    "design": "simple-arch-emerald",
-    "video": "/motions/floralArchPastel.mp4",
-    "poster": "/motions/floralArchPastel.jpg",
-    "seconds": 5.6,
-    "description": "The floral arch in soft pastels.",
     "scene": true
   },
   {

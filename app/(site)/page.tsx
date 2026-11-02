@@ -77,9 +77,9 @@ export default function Home() {
       <section className="s-section">
         <h2>Invites that come alive</h2>
         <p>
-          Hand-painted scenes made for Indian weddings, which general design apps don&apos;t have: elephants arriving with royal fans, chandeliers dropping in over a royal court, a floral arch blooming around your words, a baraat ghodi that really gallops. Tap one to use it.
+          Hand-painted scenes made for Indian weddings, which general design apps don&apos;t have: elephants arriving with royal fans, chandeliers dropping in over a royal court, a marigold toran with swinging temple bells, a baraat ghodi that really gallops. Tap one to use it.
         </p>
-        <MotionReel items={motionsById(["shahiSwagat", "floralArch", "royalCourt", "ghodi", "toranWelcome", "doors"])} />
+        <MotionReel items={motionsById(["shahiSwagat", "royalCourt", "toranWelcome", "ghodi", "gardenCorners", "doors"])} />
         <p style={{ marginTop: 14 }}>
           <Link href="/animated-wedding-invitation">See all {MOTION_PREVIEWS.length} animated wedding invitation styles</Link>
         </p>

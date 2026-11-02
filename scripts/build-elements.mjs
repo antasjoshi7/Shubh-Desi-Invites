@@ -48,7 +48,6 @@ const SOURCES = [
   { name: "chandelier", file: "new/element-sheet--three-ornate-antique-crystal-and-go (1).png", split: true },
   { name: "bell", file: "new/element-sheet--five-ornate-brass-temple-bells-hang (1).png", split: true },
   { name: "corner", file: "new/element-sheet--two-lush-floral-corner-arrangements.png", split: true, grow: 6, bg: [221, 14, 134] },
-  { name: "arch", file: "new/a-lush-semicircular-floral-arch-of-pink-roses--whi.png", bg: [192, 8, 97] },
   { name: "toran", file: "new/a-long-horizontal-toran-door-hanging-across-the-fu.png" },
   { name: "jasmine", file: "new/element-sheet--three-long-hanging-strings-of-white (1).png", split: true },
   { name: "egret", file: "new/element-sheet--five-flying-white-egrets-in-differe.png", split: true },
@@ -83,6 +82,17 @@ const RIGS = [
       { name: "hindNearLow", poly: [[350, 548], [447, 548], [447, 750], [350, 750]], pivot: [382, 552], parent: "hindNear" },
       { name: "frontNear", poly: [[741, 466], [818, 466], [814, 592], [741, 592]], cut: 492, pivot: [770, 490] },
       { name: "frontNearLow", poly: [[741, 582], [816, 582], [816, 750], [741, 750]], pivot: [758, 590], parent: "frontNear" },
+    ],
+  },
+  {
+    // the camel walks at a pace: its two near-side legs swing together, the far front leg opposite
+    name: "camelRig",
+    file: "new/a-single-decorated-rajasthani-camel--side-view-wal (1).png",
+    scale: 0.6,
+    parts: [
+      { name: "frontFar", poly: [[620, 405], [735, 405], [728, 745], [625, 745]], cut: 425, pivot: [678, 420], far: true },
+      { name: "hindNear", poly: [[390, 435], [495, 435], [495, 560], [622, 700], [622, 748], [478, 748], [438, 640], [390, 560]], cut: 452, pivot: [445, 448] },
+      { name: "frontNear", poly: [[765, 400], [872, 400], [862, 560], [962, 700], [962, 748], [832, 748], [798, 600], [765, 520]], cut: 420, pivot: [815, 412] },
     ],
   },
   {

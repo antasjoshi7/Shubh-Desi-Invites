@@ -981,23 +981,6 @@ function toran(ctx: Ctx, time: number, at = 0) {
   ctx.restore();
 }
 
-// The floral arch growing open over the text: sized so its opening clears the words, crown above them.
-function floralArch(ctx: Ctx, time: number, text: TextKit, at = 0) {
-  const img = pickEl("arch");
-  if (!img) return;
-  const p = arrive(time, at, 1.4);
-  const opening = 0.46; // the arch's inner opening, as a share of its width
-  const w = Math.max(W * 1.08, (text.right - text.left + 70) / opening) * (0.94 + 0.06 * p);
-  const h = (img.h / img.w) * w;
-  const y = text.top - 44 - 0.3 * h; // the crown clears the symbol at the top of the block
-  ctx.save();
-  ctx.globalAlpha = p;
-  ctx.translate(W / 2, y + h);
-  ctx.scale(1, 0.9 + 0.1 * p);
-  draw(ctx, img, -w / 2, -h, w, h);
-  ctx.restore();
-}
-
 // Lush floral corners growing in: the top-left piece and the bottom-right piece, mirrored for the other two.
 function corners(ctx: Ctx, time: number, at = 0, all4 = false) {
   const [tl, br] = [pickEl("corner", 0), pickEl("corner", 1)];
@@ -1059,7 +1042,63 @@ function traveller(ctx: Ctx, time: number, text: TextKit, name: string, size: nu
   ctx.ellipse(x, ground - 4, size * 0.38, 9, 0, 0, Math.PI * 2);
   ctx.fill();
   ctx.restore();
-  put(ctx, pickEl(name), { x, y: ground + bob, size, anchor: "stand" });
+  if (name === "palki" && el("kahar").length) return doliProcession(ctx, time, text, at);
+  const rig = name === "camel" ? ELEMENTS.rigs.camelRig : undefined;
+  if (!rig) {
+    put(ctx, pickEl(name), { x, y: ground + bob, size, anchor: "stand" });
+    return;
+  }
+  // the camel's legs swing as it walks in (a pace: near legs together, far leg opposite), then it stands
+  const walking = p < 1 ? 1 : Math.max(0, 1 - (time - at - 3.2) / 0.4);
+  const u = time / 0.95;
+  const swing = 13 * DEG * walking * Math.sin(2 * Math.PI * u);
+  const feet = Math.max(...rig.parts.map((q) => q.y + q.h));
+  const k = size / rig.body.w;
+  ctx.save();
+  ctx.translate(x - (rig.body.x + rig.body.w / 2) * k, ground + bob * 0.6 - feet * k);
+  ctx.scale(k, k);
+  drawRig(ctx, rig, { hindNear: swing, frontNear: swing, frontFar: -swing });
+  ctx.restore();
+}
+
+// The doli carried in by two kahars (bearers), one behind and one in front, the poles on their shoulders.
+// Their walking poses play in turn while they walk, and the doli rocks a little with each step.
+// Pole ends measured on the painting: back end (2%, 68%), front end (95%, 80%) of the doli picture.
+function doliProcession(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const doli = pickEl("palki");
+  const frames = [...el("kahar")].sort((a, b) => a.src.localeCompare(b.src, undefined, { numeric: true }));
+  if (!doli || !frames.length) return;
+  const p = arrive(time, at, 3.4);
+  const walking = p < 1;
+  const dw = 240;
+  const dh = (doli.h / doli.w) * dw;
+  const bh = 180; // a bearer's height
+  const shoulder = 0.8 * bh; // from his feet up to the pole on his shoulder
+  const ground = Math.min(H - 20, text.bottom + 320);
+  const step = walking ? Math.floor(time * 7) % frames.length : 0;
+  const rock = walking ? 3 * Math.sin(time * 7 * Math.PI) : 0;
+  const dx = -dw - 80 + p * (W / 2 + dw / 2 + 60) - dw / 2;
+  const dy = ground - 0.8 * dh - shoulder + rock;
+  const back = { x: dx + 0.02 * dw, y: dy + 0.68 * dh + shoulder };
+  const front = { x: dx + 0.95 * dw, y: dy + 0.8 * dh + shoulder };
+  const bearer = (pos: { x: number; y: number }, offset: number, shade: boolean) => {
+    const img = frames[(step + offset) % frames.length];
+    const w = (img.w / img.h) * bh;
+    ctx.save();
+    if (shade && "filter" in ctx) ctx.filter = "brightness(0.85)"; // the one behind is a little darker
+    put(ctx, img, { x: pos.x, y: pos.y, size: w, anchor: "stand" });
+    ctx.restore();
+  };
+  ctx.save();
+  ctx.globalAlpha = 0.14;
+  ctx.fillStyle = "#000";
+  ctx.beginPath();
+  ctx.ellipse(dx + dw / 2, ground - 4, dw * 0.55, 9, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+  bearer(back, 2, true);
+  draw(ctx, doli, dx, dy, dw, dh);
+  bearer(front, 0, false);
 }
 
 // The royal parasols standing either side of the text, their fringe swaying.
@@ -1152,7 +1191,7 @@ const SCENES: Record<string, SceneDef> = {
   },
   doliArrival: {
     name: "Doli arrival",
-    parts: ["palki", "toran"],
+    parts: ["palki", "kahar", "toran"],
     layers: ["rosePetals"],
     draw: (c, t, d, k) => (toran(c, t), traveller(c, t, k, "palki", 300, 0.3), layerOf("rosePetals", c, t, d, k)),
   },
@@ -1168,12 +1207,7 @@ const SCENES: Record<string, SceneDef> = {
     layers: ["diyaRow"],
     draw: (c, t, d, k) => (toran(c, t), bells(c, t, k, 0.5), layerOf("diyaRow", c, t, d, k)),
   },
-  floralArch: {
-    name: "Floral arch",
-    parts: ["arch", "bloom"],
-    layers: ["butterflies"],
-    draw: (c, t, d, k) => (floralArch(c, t, k), shower(c, singles("bloom"), t, d, 12, 46, 81, 0.8), layerOf("butterflies", c, t, d, k)),
-  },
+
   gardenCorners: {
     name: "Garden corners",
     parts: ["corner"],
@@ -1216,12 +1250,7 @@ const SCENES: Record<string, SceneDef> = {
     layers: ["peacock"],
     draw: (c, t, d, k) => (corners(c, t, 0.2), layerOf("peacock", c, t, d, k)),
   },
-  parrotArch: {
-    name: "Parrots under the arch",
-    parts: ["arch"],
-    layers: ["parrots"],
-    draw: (c, t, d, k) => (floralArch(c, t, k), layerOf("parrots", c, t, d, k)),
-  },
+
   monsoonEgrets: {
     name: "Egrets and clouds",
     parts: ["egret"],
@@ -1277,19 +1306,12 @@ const SCENES: Record<string, SceneDef> = {
     layers: [],
     draw: (c, t, d, k) => (corners(c, t, 0.1), shower(c, singles("bloom"), t, d, 16, 48, 161, 0.3)),
   },
-  elephantArch: {
-    name: "Elephants under the arch",
-    parts: ["arch"],
-    layers: ["elephants"],
-    draw: (c, t, d, k) => (floralArch(c, t, k), layerOf("elephants", c, t, d, k)),
-    reveal: 2,
-  },
+
 };
 
 // Colour variants of favourite scenes: the same scene with a different palette over its painted layers.
 const VARIANTS: Record<string, { of: string; name: string; filter: string }> = {
   royalCourtSilver: { of: "royalCourt", name: "Royal court, silver", filter: "grayscale(1) brightness(1.18) contrast(1.05)" },
-  floralArchPastel: { of: "floralArch", name: "Floral arch, pastel", filter: "saturate(0.55) brightness(1.12)" },
   gardenCornersIvory: { of: "gardenCorners", name: "Garden corners, ivory", filter: "grayscale(0.85) sepia(0.3) brightness(1.1)" },
   toranRoseGold: { of: "toranWelcome", name: "Toran, rose gold", filter: "hue-rotate(-32deg) saturate(1.1)" },
 };
@@ -1303,7 +1325,12 @@ function runScene(def: SceneDef, opts: SceneOpts): Motion {
     text.fadeUp(def.reveal ?? 0.6);
   };
 }
-const sceneAssets = (def: SceneDef) => () => [...def.parts.flatMap((p) => srcs(el(p))), ...def.layers.flatMap((id) => MOTIONS[id]?.assets() ?? [])];
+const RIG_OF: Record<string, string> = { camel: "camelRig" }; // pieces that are drawn as a moving-leg puppet
+const sceneAssets = (def: SceneDef) => () => [
+  ...def.parts.flatMap((p) => srcs(el(p))),
+  ...def.parts.flatMap((p) => (RIG_OF[p] && ELEMENTS.rigs[RIG_OF[p]] ? rigImages(ELEMENTS.rigs[RIG_OF[p]]) : [])),
+  ...def.layers.flatMap((id) => MOTIONS[id]?.assets() ?? []),
+];
 
 // a scene is offered only once all its painted parts exist (e.g. the doli waits for its picture)
 const ready = (def: SceneDef) => def.parts.every((p) => el(p).length > 0);

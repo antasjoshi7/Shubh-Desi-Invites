@@ -77,7 +77,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Shades of yellow", "Yellow and white", "Florals and pastels", "Wear something turmeric-friendly"],
     timing:
       "Send Haldi invites with the main wedding invite, usually three to five weeks before. A short reminder the day before helps, because Haldi often starts early in the morning.",
-    motions: ["Haldi morning", "Toran welcome", "Marigold garlands", "Floral arch", "Kalash blessing", "Butterflies"],
+    motions: ["Haldi morning", "Toran welcome", "Marigold garlands", "Flower shower", "Kalash blessing", "Butterflies"],
     faqs: [
       {
         q: "Can I make only a Haldi invite, without the wedding pages?",
@@ -145,7 +145,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Shades of green", "Florals", "Bright and colourful", "Pastels"],
     timing:
       "Send it with the wedding invite, three to five weeks ahead. If mehendi artists will do guests' hands, mention it so people can plan their day.",
-    motions: ["Mehendi garden", "Madhubani fish", "Parrots under the arch", "Mehendi", "Jasmine rain", "Garden corners"],
+    motions: ["Mehendi garden", "Madhubani fish", "Jasmine rain", "Mehendi", "Parrots", "Garden corners"],
     faqs: [
       {
         q: "Can I combine the Mehendi and Sangeet in one invite?",
@@ -281,7 +281,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Formal", "Indo-western", "Black tie", "Pastels"],
     timing:
       "Send it with the wedding invite, three to five weeks ahead. If the reception is in another city, send it earlier so guests can plan travel.",
-    motions: ["Royal court, silver", "Moonlit diyas", "Elephants under the arch", "Chandelier night", "Palace doors", "Sky lanterns"],
+    motions: ["Royal court, silver", "Moonlit diyas", "Royal welcome", "Chandelier night", "Palace doors", "Sky lanterns"],
     faqs: [
       {
         q: "Who should host a reception invite?",
