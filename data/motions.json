@@ -182,28 +182,6 @@
     "scene": true
   },
   {
-    "id": "lotusLake",
-    "name": "Lotus lake",
-    "event": "mehendi",
-    "design": "recraft-minimal-06",
-    "video": "/motions/lotusLake.mp4",
-    "poster": "/motions/lotusLake.jpg",
-    "seconds": 5.6,
-    "description": "A pair of crowned swans glides in on a lotus lake while lily pads bob on the water.",
-    "scene": true
-  },
-  {
-    "id": "moonlitLake",
-    "name": "Moonlit lake",
-    "event": "sangeet",
-    "design": "recraft-minimal-05",
-    "video": "/motions/moonlitLake.mp4",
-    "poster": "/motions/moonlitLake.jpg",
-    "seconds": 5.6,
-    "description": "A golden crescent moon rises over a still lotus lake as fireflies drift upwards.",
-    "scene": true
-  },
-  {
     "id": "baraatParasols",
     "name": "Baraat with parasols",
     "event": "reception",
@@ -424,17 +402,6 @@
     "scene": true
   },
   {
-    "id": "swanArch",
-    "name": "Swans under the arch",
-    "event": "reception",
-    "design": "recraft-minimal-06",
-    "video": "/motions/swanArch.mp4",
-    "poster": "/motions/swanArch.jpg",
-    "seconds": 5.6,
-    "description": "Swans glide on a lotus lake beneath a blooming floral arch.",
-    "scene": true
-  },
-  {
     "id": "moonClouds",
     "name": "Moon and clouds",
     "event": "shaadi",
@@ -476,17 +443,6 @@
     "poster": "/motions/royalCourtSilver.jpg",
     "seconds": 5.6,
     "description": "The royal court in silver: chandeliers and fans in cool, elegant tones.",
-    "scene": true
-  },
-  {
-    "id": "lotusLakeDusk",
-    "name": "Lotus lake at dusk",
-    "event": "reception",
-    "design": "recraft-minimal-02",
-    "video": "/motions/lotusLakeDusk.mp4",
-    "poster": "/motions/lotusLakeDusk.jpg",
-    "seconds": 5.6,
-    "description": "The lotus lake at dusk, in warm golden-hour colours.",
     "scene": true
   },
   {

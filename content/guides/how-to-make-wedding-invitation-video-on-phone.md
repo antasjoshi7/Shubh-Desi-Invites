@@ -58,7 +58,7 @@ Press **Play** at the top to watch the whole invite.
 
 Press **Export**. The video is made on your phone (nothing is uploaded) and you get an MP4 file with no watermark. Save it, then send it on WhatsApp with a personal message; there are [ready messages to copy](/wedding-invitation-wording#whatsapp).
 
-Want a picture instead? Open **More** and tap **Page as PNG** to save the page you're on as an [e-card](/create-marriage-invitation-card).
+Want a card instead? Open **More**, tap **PDF or pictures**, untick any pages you don't need, and download a print-ready PDF or pictures as an [e-card](/create-marriage-invitation-card).
 
 ## Common questions
 

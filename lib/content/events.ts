@@ -81,7 +81,7 @@ export const EVENT_PAGES: EventPage[] = [
     faqs: [
       {
         q: "Can I make only a Haldi invite, without the wedding pages?",
-        a: "Yes. Start from the Haldi design and delete the other pages, or keep a single page and download it as a picture (PNG) instead of a video.",
+        a: "Yes. Start from the Haldi design and delete the other pages, or download just that page as a PDF or a picture instead of a video.",
       },
       {
         q: "What colours work best for a Haldi invite?",
@@ -281,7 +281,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Formal", "Indo-western", "Black tie", "Pastels"],
     timing:
       "Send it with the wedding invite, three to five weeks ahead. If the reception is in another city, send it earlier so guests can plan travel.",
-    motions: ["Moonlit lake", "Royal court, silver", "Swans under the arch", "Moonlit diyas", "Palace doors", "Sky lanterns"],
+    motions: ["Royal court, silver", "Moonlit diyas", "Elephants under the arch", "Chandelier night", "Palace doors", "Sky lanterns"],
     faqs: [
       {
         q: "Who should host a reception invite?",

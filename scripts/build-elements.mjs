@@ -47,14 +47,12 @@ const SOURCES = [
   { name: "chandelier", file: "new/element-sheet--three-ornate-antique-crystal-and-go.png", split: true },
   { name: "chandelier", file: "new/element-sheet--three-ornate-antique-crystal-and-go (1).png", split: true },
   { name: "bell", file: "new/element-sheet--five-ornate-brass-temple-bells-hang (1).png", split: true },
-  { name: "swan", file: "new/two-graceful-white-swans--hamsa--with-small-gold-c.png", split: true },
   { name: "corner", file: "new/element-sheet--two-lush-floral-corner-arrangements.png", split: true, grow: 6, bg: [221, 14, 134] },
   { name: "arch", file: "new/a-lush-semicircular-floral-arch-of-pink-roses--whi.png", bg: [192, 8, 97] },
   { name: "toran", file: "new/a-long-horizontal-toran-door-hanging-across-the-fu.png" },
   { name: "jasmine", file: "new/element-sheet--three-long-hanging-strings-of-white (1).png", split: true },
   { name: "egret", file: "new/element-sheet--five-flying-white-egrets-in-differe.png", split: true },
   { name: "paisley", file: "new/element-sheet--six-ornate-gold-foil-paisley--keri- (1).png", split: true },
-  { name: "lotusleaf", file: "new/element-sheet--four-round-green-lotus-leaves-seen-.png", split: true },
   { name: "bloom", file: "new/element-sheet--nine-single-loose-flower-heads-for- (1).png", split: true },
   { name: "bloom", file: "new/element-sheet--nine-single-loose-flower-heads-for-.png", split: true },
   { name: "parasol", file: "new/a-single-ornate-royal-indian-ceremonial-parasol--c.png" },
@@ -63,7 +61,6 @@ const SOURCES = [
   { name: "moon", file: "new/a-soft-glowing-golden-crescent-moon-with-delicate-.png", split: true },
   { name: "fish", file: "new/two-madhubani-folk-art-fish-facing-each-other-in-a (1).png" },
   { name: "palki", file: "new/doli.png" },
-  { name: "water", file: "new/lake-water.png", bg: [204, 0, 116] },
 ];
 
 // Animals cut into parts so code can move their legs (a "cut-out" puppet).

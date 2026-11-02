@@ -106,7 +106,7 @@ export default function PricePage() {
           A <strong>video</strong> feels special and plays straight inside WhatsApp. A <strong>picture</strong> is quickest for guests checking the date and venue later, and easy to print for elders. A <strong>link</strong> to a website can hold RSVPs and maps, but many guests are wary of opening links because of spam and fraud, and older relatives can find websites hard to use.
         </p>
         <p>
-          What works for most families: send the video to everyone, then the details page as a picture. You can make both here: press Export for the video, and use More, then Page as PNG, for the <Link href="/create-marriage-invitation-card">picture card</Link>.
+          What works for most families: send the video to everyone, then the details page as a picture. You can make both here: press Export for the video, then download the pages as a <Link href="/create-marriage-invitation-card">PDF or picture cards</Link>, choosing exactly which pages each group of guests gets.
         </p>
       </section>
 

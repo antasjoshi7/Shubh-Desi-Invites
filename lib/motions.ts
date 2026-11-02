@@ -893,37 +893,6 @@ function put(ctx: Ctx, img: Img | null, p: Put) {
   ctx.restore();
 }
 
-// Lake water across the bottom, rippling: the strip is drawn in thin rows, each nudged sideways.
-function lake(ctx: Ctx, time: number, rise: number, height = 300) {
-  const img = pickEl("water");
-  if (!img) return;
-  const src = getImage(img.src);
-  if (!src) return;
-  const top = H - height * rise;
-  const dh = height + 20;
-  const rows = 48;
-  for (let r = 0; r < rows; r++) {
-    const sy = (r / rows) * img.h;
-    const sh = img.h / rows + 1;
-    const depth = r / rows; // ripples grow towards the viewer
-    const dx = (2 + 7 * depth) * Math.sin(time * 1.4 + r * 0.55);
-    ctx.save();
-    ctx.globalAlpha *= Math.min(1, (r + 1) / 7); // the far edge melts into the page instead of a hard line
-    ctx.drawImage(src, 0, sy, img.w, sh, -24 + dx, top + (r / rows) * dh, W + 48, dh / rows + 1);
-    ctx.restore();
-  }
-  // a soft shimmer line drifting across the water
-  ctx.save();
-  ctx.globalAlpha = 0.18 * rise;
-  ctx.fillStyle = "#ffffff";
-  for (let i = 0; i < 6; i++) {
-    const x = ((time * 26 + i * 137) % (W + 200)) - 100;
-    const y = top + 40 + i * (height / 7);
-    ctx.fillRect(x, y, 70 + (i % 3) * 30, 2);
-  }
-  ctx.restore();
-}
-
 // Things falling gently from above (petals, jasmine, flowers), spinning and swaying; they thin out
 // near the end so the last frame is clean.
 function shower(ctx: Ctx, list: Img[], time: number, duration: number, n: number, size: number, seed: number, start = 0) {
@@ -1054,30 +1023,6 @@ function corners(ctx: Ctx, time: number, at = 0, all4 = false) {
   });
 }
 
-// Swans gliding in on the water from both sides.
-function swans(ctx: Ctx, time: number, waterTop: number, at = 0.4) {
-  const p = arrive(time, at, 2.6);
-  const depth = H - waterTop;
-  const size = Math.min(190, depth * 0.85);
-  [0, 1].forEach((side) => {
-    const home = side ? W - 160 : 160;
-    const x = side ? home + (1 - p) * 360 : home - (1 - p) * 360;
-    const y = Math.min(H - 20, waterTop + depth * 0.72) + 4 * wave(time, 1.3, side * 2); // floating in the water, not on its edge
-    put(ctx, pickEl("swan", side), { x, y, size, anchor: "stand" }); // the pair already face each other
-  });
-}
-
-// Floating lotus leaves and buds bobbing on the water.
-function lilies(ctx: Ctx, time: number, waterTop: number) {
-  const leaves = el("lotusleaf").filter((m) => m.w > m.h);
-  const buds = el("lotusleaf").filter((m) => m.h >= m.w);
-  [80, 300, 520, 650].forEach((x, i) => {
-    const img = (i % 2 ? buds : leaves)[i % 2 ? 0 : i % Math.max(1, leaves.length)] ?? leaves[0];
-    const depth = H - waterTop;
-    put(ctx, img ?? null, { x: x + 6 * wave(time, 0.8, i), y: waterTop + depth * (0.5 + 0.2 * (i % 2)) + 3 * wave(time, 1.4, i), size: i % 2 ? 60 : 95, anchor: "stand", alpha: clamp01((time - 0.3 - i * 0.15) / 0.8) });
-  });
-}
-
 // The crescent moon rising into the sky above the text.
 function moon(ctx: Ctx, time: number, text: TextKit, at = 0) {
   const p = arrive(time, at, 2.2);
@@ -1181,14 +1126,7 @@ function gajra(ctx: Ctx, time: number, text: TextKit, at = 0) {
 
 // ---------- the scenes ----------
 
-const lakeHeight = (text: TextKit) => Math.max(170, Math.min(300, H - text.bottom - 40)); // always below the words
-// Water along the bottom: the painted lake strip when there is one, otherwise the lotus pond motion.
-function pond(ctx: Ctx, time: number, duration: number, text: TextKit, rise: number, height: number) {
-  if (pickEl("water")) lake(ctx, time, rise, height);
-  else layerOf("lotus", ctx, time, duration, text);
-}
-
-type SceneDef = { name: string; parts: string[]; layers: AnimationId[]; draw: Scene; reveal?: number; extras?: string[] }; // extras: used when present (e.g. the lake water)
+type SceneDef = { name: string; parts: string[]; layers: AnimationId[]; draw: Scene; reveal?: number };
 const SCENES: Record<string, SceneDef> = {
   shahiSwagat: {
     name: "Royal welcome",
@@ -1203,31 +1141,8 @@ const SCENES: Record<string, SceneDef> = {
     layers: ["sparkles"],
     draw: (c, t, d, k) => (chandeliers(c, t, k), fans(c, t, k, 0.5), layerOf("sparkles", c, t, d, k)),
   },
-  lotusLake: {
-    name: "Lotus lake",
-    parts: ["swan", "lotusleaf"],
-    layers: ["lotus"],
-    extras: ["water"],
-    draw: (c, t, d, k) => {
-      const h = lakeHeight(k);
-      pond(c, t, d, k, arrive(t, 0, 1.2), h);
-      lilies(c, t, H - h);
-      swans(c, t, H - h);
-    },
-  },
-  moonlitLake: {
-    name: "Moonlit lake",
-    parts: ["moon", "lotusleaf"],
-    layers: ["lotus"],
-    extras: ["water"],
-    draw: (c, t, d, k) => {
-      const h = lakeHeight(k);
-      moon(c, t, k, 0.3);
-      pond(c, t, d, k, arrive(t, 0, 1.2), h);
-      lilies(c, t, H - h);
-      fireflies(c, t, 22, 71);
-    },
-  },
+
+
   baraatParasols: {
     name: "Baraat with parasols",
     parts: ["parasol"],
@@ -1349,18 +1264,7 @@ const SCENES: Record<string, SceneDef> = {
     layers: ["sparkles"],
     draw: (c, t, d, k) => (paisleys(c, t, k), layerOf("sparkles", c, t, d, k)),
   },
-  swanArch: {
-    name: "Swans under the arch",
-    parts: ["arch", "swan"],
-    layers: ["lotus"],
-    extras: ["water"],
-    draw: (c, t, d, k) => {
-      const h = lakeHeight(k);
-      floralArch(c, t, k);
-      pond(c, t, d, k, arrive(t, 0.2, 1.2), h);
-      swans(c, t, H - h, 0.6);
-    },
-  },
+
   moonClouds: {
     name: "Moon and clouds",
     parts: ["moon"],
@@ -1385,7 +1289,6 @@ const SCENES: Record<string, SceneDef> = {
 // Colour variants of favourite scenes: the same scene with a different palette over its painted layers.
 const VARIANTS: Record<string, { of: string; name: string; filter: string }> = {
   royalCourtSilver: { of: "royalCourt", name: "Royal court, silver", filter: "grayscale(1) brightness(1.18) contrast(1.05)" },
-  lotusLakeDusk: { of: "lotusLake", name: "Lotus lake at dusk", filter: "sepia(0.4) saturate(1.35) hue-rotate(-18deg) brightness(0.92)" },
   floralArchPastel: { of: "floralArch", name: "Floral arch, pastel", filter: "saturate(0.55) brightness(1.12)" },
   gardenCornersIvory: { of: "gardenCorners", name: "Garden corners, ivory", filter: "grayscale(0.85) sepia(0.3) brightness(1.1)" },
   toranRoseGold: { of: "toranWelcome", name: "Toran, rose gold", filter: "hue-rotate(-32deg) saturate(1.1)" },
@@ -1400,7 +1303,7 @@ function runScene(def: SceneDef, opts: SceneOpts): Motion {
     text.fadeUp(def.reveal ?? 0.6);
   };
 }
-const sceneAssets = (def: SceneDef) => () => [...[...def.parts, ...(def.extras ?? [])].flatMap((p) => srcs(el(p))), ...def.layers.flatMap((id) => MOTIONS[id]?.assets() ?? [])];
+const sceneAssets = (def: SceneDef) => () => [...def.parts.flatMap((p) => srcs(el(p))), ...def.layers.flatMap((id) => MOTIONS[id]?.assets() ?? [])];
 
 // a scene is offered only once all its painted parts exist (e.g. the doli waits for its picture)
 const ready = (def: SceneDef) => def.parts.every((p) => el(p).length > 0);

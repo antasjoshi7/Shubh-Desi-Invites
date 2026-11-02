@@ -47,7 +47,7 @@ export default function AnimatedPage() {
         <section className="s-section">
           <h2>Scenes: invites that play like a film</h2>
           <p>
-            Several hand-painted elements arrive together and stay gently alive: elephants with royal fans, swans on a lotus lake, a floral arch that blooms around your words. Tap any preview to use it.
+            Several hand-painted elements arrive together and stay gently alive: elephants with royal fans, chandeliers over a royal court, a floral arch that blooms around your words. Tap any preview to use it.
           </p>
           <MotionReel items={SCENE_PREVIEWS} describe />
         </section>

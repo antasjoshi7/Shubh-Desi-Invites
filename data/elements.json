@@ -460,18 +460,6 @@
         "h": 745
       }
     ],
-    "swan": [
-      {
-        "src": "/generated/elements/swan-1.webp",
-        "w": 494,
-        "h": 496
-      },
-      {
-        "src": "/generated/elements/swan-2.webp",
-        "w": 477,
-        "h": 493
-      }
-    ],
     "corner": [
       {
         "src": "/generated/elements/corner-1.webp",
@@ -619,38 +607,6 @@
         "h": 132
       }
     ],
-    "lotusleaf": [
-      {
-        "src": "/generated/elements/lotusleaf-1.webp",
-        "w": 184,
-        "h": 271
-      },
-      {
-        "src": "/generated/elements/lotusleaf-2.webp",
-        "w": 496,
-        "h": 339
-      },
-      {
-        "src": "/generated/elements/lotusleaf-3.webp",
-        "w": 519,
-        "h": 335
-      },
-      {
-        "src": "/generated/elements/lotusleaf-4.webp",
-        "w": 272,
-        "h": 222
-      },
-      {
-        "src": "/generated/elements/lotusleaf-5.webp",
-        "w": 541,
-        "h": 415
-      },
-      {
-        "src": "/generated/elements/lotusleaf-6.webp",
-        "w": 207,
-        "h": 274
-      }
-    ],
     "bloom": [
       {
         "src": "/generated/elements/bloom-1.webp",
@@ -743,13 +699,6 @@
         "src": "/generated/elements/palki.webp",
         "w": 821,
         "h": 672
-      }
-    ],
-    "water": [
-      {
-        "src": "/generated/elements/water.webp",
-        "w": 900,
-        "h": 267
       }
     ]
   },

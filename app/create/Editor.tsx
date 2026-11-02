@@ -5,6 +5,7 @@ import { BgThumb, Label, SameBox, Slider, Swatch } from "@/components/Controls";
 import { MiniPreview } from "@/components/MiniPreview";
 import { PageStrip } from "@/components/PageStrip";
 import { PreviewModal } from "@/components/PreviewModal";
+import { DownloadSheet } from "@/components/DownloadSheet";
 import { RatingBox } from "@/components/RatingBox";
 import { SymbolTile } from "@/components/SymbolTile";
 import { TextOverlay, type OverlayItem } from "@/components/TextOverlay";
@@ -36,6 +37,7 @@ import { rankPalettes } from "@/lib/colors";
 import { EVENTS, defaultInvite, duplicatePage, makePage, newId, pageTitles, startFrom } from "@/lib/defaults";
 import { exportVideo, type ExportResult } from "@/lib/export";
 import { useHistory } from "@/lib/history";
+import { makePdf } from "@/lib/pdf";
 import { track } from "@/lib/track";
 import {
   DEFAULT_LINE_SPACING,
@@ -105,7 +107,7 @@ const PANEL_DESC: Record<string, string> = {
   music: "Background music for the whole video. Tap ▶ to listen first.",
   add: "Add a new page after this one. It starts with this page’s look.",
   pagemenu: "Copy or delete this page. To reorder, hold a page and slide it.",
-  more: "Save this page as a picture, watch your last video, or start again.",
+  more: "Download pages as a PDF or pictures, watch your last video, or start again.",
 };
 const MIN_SIZE = 12; // font size range in the Size panel (page units, the page is 720 wide)
 const MAX_SIZE = 220;
@@ -130,6 +132,8 @@ export default function Editor() {
   const [ready, setReady] = useState(false);
   const [assetTick, setAssetTick] = useState(0); // bumps when an image finishes loading
   const [busy, setBusy] = useState<"" | "preview" | "export">("");
+  const [showDownload, setShowDownload] = useState(false); // the "PDF or pictures" sheet
+  const [downloading, setDownloading] = useState<"" | "pdf" | "pictures">("");
   const [progress, setProgress] = useState(0);
   const [result, setResult] = useState<(ExportResult & { url: string }) | null>(null);
   const [showResult, setShowResult] = useState(false);
@@ -493,20 +497,77 @@ export default function Editor() {
     requestAnimationFrame(tick);
   }
 
-  function downloadPng() {
-    track("png_downloaded");
-    renderPageAt(canvasRef.current!.getContext("2d")!, page, page.duration);
-    canvasRef.current!.toBlob((blob) => {
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = `shaadi-invite-page-${current + 1}.png`;
-      a.click();
-      setTimeout(() => URL.revokeObjectURL(url), 10_000);
-    }, "image/png");
-    setPanel(null);
+  // ----- PDF and pictures -----
+
+  // A page as it looks when its animation has finished, drawn `scale` times the editor's size.
+  function stillCanvas(p: Page, scale: number) {
+    const c = document.createElement("canvas");
+    c.width = W * scale;
+    c.height = H * scale;
+    renderPageAt(c.getContext("2d")!, p, p.duration);
+    return c;
   }
+  const blobOf = (c: HTMLCanvasElement, type: string, quality?: number) => new Promise<Blob>((r, f) => c.toBlob((b) => (b ? r(b) : f(new Error("Couldn't save the page"))), type, quality));
+  const saveFile = (blob: Blob, name: string) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = name;
+    a.click();
+    setTimeout(() => URL.revokeObjectURL(url), 30_000);
+  };
+  // the chosen pages, with every picture they need loaded first
+  async function readyPages(indexes: number[]) {
+    const chosen = indexes.map((i) => invite.pages[i]);
+    await Promise.all([...chosen.map((p) => loadImage(p.background)), ...chosen.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
+    return chosen;
+  }
+  const fileBase = (indexes: number[]) =>
+    "shubh-desi-invite" + (indexes.length < invite.pages.length ? "-" + indexes.map((i) => titles[i].toLowerCase().replace(/[^a-z0-9]+/g, "-")).join("-") : "");
+
+  async function downloadPdf(indexes: number[]) {
+    setDownloading("pdf");
+    try {
+      const pages = await readyPages(indexes);
+      const jpegs = [];
+      for (const p of pages) {
+        const c = stillCanvas(p, 2); // 1440 × 2560: sharp in print
+        jpegs.push({ bytes: new Uint8Array(await (await blobOf(c, "image/jpeg", 0.92)).arrayBuffer()), width: c.width, height: c.height });
+      }
+      saveFile(await makePdf(jpegs, "Wedding invitation"), `${fileBase(indexes)}.pdf`);
+      track("pdf_downloaded", { pages: indexes.length, of: invite.pages.length });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setDownloading("");
+    }
+  }
+
+  async function downloadPictures(indexes: number[]) {
+    setDownloading("pictures");
+    try {
+      const pages = await readyPages(indexes);
+      const files: Record<string, Uint8Array> = {};
+      for (const [k, p] of pages.entries()) {
+        const png = await blobOf(stillCanvas(p, 1.5), "image/png"); // 1080 × 1920, a phone screen
+        if (pages.length === 1) {
+          saveFile(png, `${fileBase(indexes)}.png`);
+        } else {
+          files[`${String(k + 1).padStart(2, "0")}-${titles[indexes[k]].toLowerCase().replace(/[^a-z0-9]+/g, "-")}.png`] = new Uint8Array(await png.arrayBuffer());
+        }
+      }
+      if (pages.length > 1) {
+        const { zipSync } = await import("fflate");
+        saveFile(new Blob([zipSync(files, { level: 0 }) as BlobPart], { type: "application/zip" }), `${fileBase(indexes)}-pictures.zip`);
+      }
+      track("pictures_downloaded", { pages: indexes.length, of: invite.pages.length });
+    } catch (e) {
+      setError(e instanceof Error ? e.message : String(e));
+    } finally {
+      setDownloading("");
+    }
+  }
+
 
   async function makeVideo() {
     deselect();
@@ -1287,8 +1348,13 @@ export default function Editor() {
             {/* ----- More ----- */}
             {panel === "more" && (
               <div className="menu-grid">
-                <button onClick={downloadPng}>
-                  <span>⤓</span>Page as PNG
+                <button
+                  onClick={() => {
+                    setPanel(null);
+                    setShowDownload(true);
+                  }}
+                >
+                  <span>⤓</span>PDF or pictures
                 </button>
                 {result && (
                   <button
@@ -1383,9 +1449,24 @@ export default function Editor() {
               {(result.blob.size / 1024 / 1024).toFixed(1)} MB video
               {invite.music.track && !result.withMusic ? ", but music couldn't be added on this browser" : ""}
             </p>
+            <button className="link-btn" onClick={() => setShowDownload(true)}>
+              Also download as a PDF or pictures
+            </button>
             <RatingBox />
           </div>
         </div>
+      )}
+
+      {showDownload && (
+        <DownloadSheet
+          count={invite.pages.length}
+          titles={titles}
+          drawPage={(i) => (c) => renderPageAt(c, invite.pages[i], invite.pages[i].duration)}
+          busy={downloading}
+          onPdf={downloadPdf}
+          onPictures={downloadPictures}
+          onClose={() => setShowDownload(false)}
+        />
       )}
 
       {/* ---------- Animation / transition preview ---------- */}

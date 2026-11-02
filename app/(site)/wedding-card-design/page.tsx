@@ -77,7 +77,7 @@ export default function DesignsPage() {
       <Faq
         items={[
           { q: "What should a Hindu wedding card include?", a: "Usually Ganesh ji or a shloka at the top, the blessing of the elders, the couple's names with their parents' names, every function's date, time and venue, and an RSVP contact. Our wedding invitation wording page has examples to copy." },
-          { q: "Can I download the wedding card design as a picture?", a: "Yes. Open the design, add your details, then use More, then Page as PNG to save the card. Press Export instead for an animated invite video." },
+          { q: "Can I download the wedding card as a PDF?", a: "Yes. Open the design, add your details, then use More, then PDF or pictures. You get a print-ready PDF (or pictures for WhatsApp) of the pages you choose. Press Export instead for an animated invite video." },
           { q: "Are these shadi card designs free to use?", a: "Yes, every design is free, with no watermark and no sign-up. You can share, post and print what you make." },
           { q: "Can I change the colours of a design?", a: "Yes. In the editor, Colours changes the paper and the artwork, with themes for each function such as yellow for Haldi and green for Mehendi." },
         ]}

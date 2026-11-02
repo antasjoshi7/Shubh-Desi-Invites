@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const STEPS = [
   { name: "Pick a design", text: "Choose a card design: traditional, floral, royal or minimal." },
   { name: "Type your details", text: "Tap each line to change names, parents, date and venue." },
-  { name: "Download your card", text: "Open the More menu (⋯) and tap Page as PNG to save the card, or press Export for a video." },
+  { name: "Download your card", text: "Open the More menu (⋯), tap PDF or pictures, untick any pages you don't need, and download a print-ready PDF or pictures." },
 ];
 
 export default function ECardPage() {
@@ -45,7 +45,7 @@ export default function ECardPage() {
         <h2>How do I create a marriage invitation card for free?</h2>
         <div className="s-answer">
           <p>
-            Open the <Link href="/create">editor</Link>, pick one of the <Link href="/wedding-card-design">wedding card designs</Link> and type your details. To get a picture, open the More menu (⋯) and tap Page as PNG. Every page of your invite can be its own card, so you can send the main card, then the Haldi or Sangeet card separately. For an animated version with music, press Export instead.
+            Open the <Link href="/create">editor</Link>, pick one of the <Link href="/wedding-card-design">wedding card designs</Link> and type your details. To get the card, open the More menu (⋯) and tap PDF or pictures. Every page is ticked; untick the ones a group of guests doesn't need (say, a reception-only version for the office) and download a print-ready PDF or pictures. For an animated version with music, press Export instead.
           </p>
         </div>
       </section>

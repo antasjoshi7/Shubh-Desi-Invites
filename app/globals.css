@@ -1032,3 +1032,16 @@ p.sec-desc { margin: 8px 0 0; }
 .rating-stars button.on { color: var(--marigold); }
 .rating-box textarea, .rating-box input:not([type]) { width: 100%; background: var(--bg-2); color: var(--cream); border: 1px solid var(--line-2); border-radius: 10px; padding: 10px 12px; font-size: 15px; resize: none; }
 .rating-share { display: flex; gap: 8px; align-items: center; font-size: 13px; opacity: 0.8; }
+
+/* "PDF or pictures" sheet */
+.download-modal { max-width: 440px; }
+.download-pages { list-style: none; padding: 0; margin: 12px 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); gap: 12px 10px; max-height: 46vh; overflow-y: auto; }
+.download-pages li { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.download-pages button { position: relative; padding: 0; border: 2px solid transparent; border-radius: 8px; overflow: hidden; background: none; cursor: pointer; opacity: 0.45; transition: opacity 0.15s, border-color 0.15s; }
+.download-pages button.on { opacity: 1; border-color: var(--marigold); }
+.download-pages .tick { position: absolute; top: 4px; right: 4px; width: 20px; height: 20px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; font-weight: 700; background: rgba(0, 0, 0, 0.5); color: transparent; }
+.download-pages button.on .tick { background: var(--marigold); color: var(--bg); }
+.download-pages small { font-size: 11px; opacity: 0.8; text-align: center; }
+.download-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.download-actions .btn { width: 100%; font-size: 14px; padding: 12px 8px; }
+.btn.secondary { background: transparent; border: 1px solid var(--line-2); color: var(--cream); box-shadow: none; }
