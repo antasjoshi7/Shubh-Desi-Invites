@@ -77,7 +77,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Shades of yellow", "Yellow and white", "Florals and pastels", "Wear something turmeric-friendly"],
     timing:
       "Send Haldi invites with the main wedding invite, usually three to five weeks before. A short reminder the day before helps, because Haldi often starts early in the morning.",
-    motions: ["Marigold garlands", "Rose petals", "Kalash blessing", "Butterflies", "Parrots", "Golden sparkles"],
+    motions: ["Haldi morning", "Toran welcome", "Marigold garlands", "Floral arch", "Kalash blessing", "Butterflies"],
     faqs: [
       {
         q: "Can I make only a Haldi invite, without the wedding pages?",
@@ -145,7 +145,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Shades of green", "Florals", "Bright and colourful", "Pastels"],
     timing:
       "Send it with the wedding invite, three to five weeks ahead. If mehendi artists will do guests' hands, mention it so people can plan their day.",
-    motions: ["Mehendi", "Parrots", "Butterflies", "Marigold garlands", "Rose petals", "Peacock dance"],
+    motions: ["Mehendi garden", "Madhubani fish", "Parrots under the arch", "Mehendi", "Jasmine rain", "Garden corners"],
     faqs: [
       {
         q: "Can I combine the Mehendi and Sangeet in one invite?",
@@ -213,7 +213,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Glitter & glam", "Indo-western", "Black and gold", "Jewel tones"],
     timing:
       "Send it three to five weeks ahead, with the wedding invite. If family members are preparing dances, tell them earlier, at least six to eight weeks before.",
-    motions: ["Swinging lanterns", "Golden sparkles", "Peacock dance", "Sky lanterns", "Diya lights", "Rose petals"],
+    motions: ["Sangeet night", "Chandelier night", "Royal court", "Peacock garden", "Swinging lanterns", "Golden sparkles"],
     faqs: [
       {
         q: "What should a Sangeet invite say?",
@@ -281,7 +281,7 @@ export const EVENT_PAGES: EventPage[] = [
     dress: ["Formal", "Indo-western", "Black tie", "Pastels"],
     timing:
       "Send it with the wedding invite, three to five weeks ahead. If the reception is in another city, send it earlier so guests can plan travel.",
-    motions: ["Sky lanterns", "Diya lights", "Golden sparkles", "Palace doors", "Rose petals", "Swinging lanterns"],
+    motions: ["Moonlit lake", "Royal court, silver", "Swans under the arch", "Moonlit diyas", "Palace doors", "Sky lanterns"],
     faqs: [
       {
         q: "Who should host a reception invite?",

@@ -14,9 +14,12 @@ export type MotionPreview = {
   video: string;
   poster: string;
   seconds: number;
+  scene?: boolean; // a full scene (several painted elements together) rather than a single animation
 };
 
 export const MOTION_PREVIEWS = motionsJson as MotionPreview[];
+export const SCENE_PREVIEWS = MOTION_PREVIEWS.filter((m) => m.scene);
+export const SINGLE_PREVIEWS = MOTION_PREVIEWS.filter((m) => !m.scene);
 
 export const motionsNamed = (names: string[]) =>
   names.map((n) => MOTION_PREVIEWS.find((m) => m.name === n)).filter((m): m is MotionPreview => !!m);

@@ -8,6 +8,7 @@ import fontsJson from "@/data/fonts.json";
 import layoutsJson from "@/data/layouts.json";
 import palettesJson from "@/data/palettes.json";
 import { rankPalettes } from "./colors";
+import { SCENE_NAMES } from "./motions";
 import type { AnimationId, BgColours, EventId, LayoutId, Palette, SymbolStyle, TransitionId } from "./types";
 
 export type Background = {
@@ -171,6 +172,7 @@ export const ANIMATIONS: { id: AnimationId; name: string }[] = [
   { id: "parrots", name: "Parrots" },
   { id: "butterflies", name: "Butterflies" },
   { id: "clouds", name: "Floating clouds" },
+  ...SCENE_NAMES,
   { id: "sparkles", name: "Golden sparkles" },
   { id: "fadeUp", name: "Fade up" },
   { id: "wipe", name: "Wipe" },

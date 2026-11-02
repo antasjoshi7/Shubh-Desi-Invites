@@ -54,7 +54,7 @@ const MOTIONS: Partial<Record<AnimationId, { draw: Motion; assets: () => string[
   clouds: { draw: (...a) => clouds(...a), assets: () => srcs(items.cloud) },
 };
 
-export const PAINTED_MOTIONS = Object.keys(MOTIONS) as AnimationId[];
+export const PAINTED_MOTIONS: AnimationId[] = []; // filled at the end of this file, once the scenes are added
 
 // The images each motion needs (loaded before it can draw).
 export function motionAssets(id: AnimationId): string[] {
@@ -847,3 +847,570 @@ function clouds(ctx: Ctx, time: number, _duration: number, text: TextKit) {
   }
   text.fadeUp(0.5);
 }
+
+// =====================================================================================================
+// Scenes: several painted elements arriving together and living on the page, so a still card plays
+// like a short film. Each scene keeps the words clear: things come in along the edges, above and below
+// the text block, and anything that passes behind the words stays faint. Existing motions can be used
+// as layers (their scene without their own text reveal), so scenes combine old and new elements.
+// =====================================================================================================
+
+type SceneOpts = { filter?: string }; // a colour variant: a CSS filter over the painted layers
+type Scene = (ctx: Ctx, time: number, duration: number, text: TextKit) => void;
+
+const el = (name: string) => items[name] ?? [];
+const pickEl = (name: string, i = 0) => {
+  const list = el(name);
+  return list.length ? list[i % list.length] : null;
+};
+// tall/narrow vs round pieces of one sheet (e.g. jasmine strings vs single blooms)
+const tallOf = (name: string) => el(name).filter((m) => m.h > m.w * 1.6);
+const singles = (name: string, max = 360) => el(name).filter((m) => m.w < max && m.h < max); // drop pieces that came out as clumps
+const roundOf = (name: string) => el(name).filter((m) => m.h <= m.w * 1.6);
+
+// The text kit without its reveal, for using a whole motion as one layer of a scene.
+const quietText = (k: TextKit): TextKit => ({ ...k, all: () => {}, masked: () => {}, fadeUp: () => {} });
+function layerOf(id: AnimationId, ctx: Ctx, time: number, duration: number, text: TextKit) {
+  MOTIONS[id]?.draw(ctx, time, duration, quietText(text));
+}
+
+const arrive = (time: number, at: number, dur: number) => easeOut((time - at) / dur);
+const wave = (time: number, speed: number, seed = 0) => Math.sin(time * speed + seed);
+
+// One element: width `size`, placed by its top-centre ("hang"), bottom-centre ("stand") or centre.
+type Put = { x: number; y: number; size: number; rot?: number; alpha?: number; flip?: boolean; anchor?: "hang" | "stand" | "centre" };
+function put(ctx: Ctx, img: Img | null, p: Put) {
+  if (!img) return;
+  const w = p.size;
+  const h = (img.h / img.w) * w;
+  const oy = p.anchor === "hang" ? 0 : p.anchor === "stand" ? -h : -h / 2;
+  ctx.save();
+  ctx.globalAlpha *= p.alpha ?? 1;
+  ctx.translate(p.x, p.y);
+  if (p.rot) ctx.rotate(p.rot);
+  if (p.flip) ctx.scale(-1, 1);
+  draw(ctx, img, -w / 2, oy, w, h);
+  ctx.restore();
+}
+
+// Lake water across the bottom, rippling: the strip is drawn in thin rows, each nudged sideways.
+function lake(ctx: Ctx, time: number, rise: number, height = 300) {
+  const img = pickEl("water");
+  if (!img) return;
+  const src = getImage(img.src);
+  if (!src) return;
+  const top = H - height * rise;
+  const dh = height + 20;
+  const rows = 48;
+  for (let r = 0; r < rows; r++) {
+    const sy = (r / rows) * img.h;
+    const sh = img.h / rows + 1;
+    const depth = r / rows; // ripples grow towards the viewer
+    const dx = (2 + 7 * depth) * Math.sin(time * 1.4 + r * 0.55);
+    ctx.save();
+    ctx.globalAlpha *= Math.min(1, (r + 1) / 7); // the far edge melts into the page instead of a hard line
+    ctx.drawImage(src, 0, sy, img.w, sh, -24 + dx, top + (r / rows) * dh, W + 48, dh / rows + 1);
+    ctx.restore();
+  }
+  // a soft shimmer line drifting across the water
+  ctx.save();
+  ctx.globalAlpha = 0.18 * rise;
+  ctx.fillStyle = "#ffffff";
+  for (let i = 0; i < 6; i++) {
+    const x = ((time * 26 + i * 137) % (W + 200)) - 100;
+    const y = top + 40 + i * (height / 7);
+    ctx.fillRect(x, y, 70 + (i % 3) * 30, 2);
+  }
+  ctx.restore();
+}
+
+// Things falling gently from above (petals, jasmine, flowers), spinning and swaying; they thin out
+// near the end so the last frame is clean.
+function shower(ctx: Ctx, list: Img[], time: number, duration: number, n: number, size: number, seed: number, start = 0) {
+  if (!list.length) return;
+  const fade = clamp01((duration - time) / 0.9);
+  for (let i = 0; i < n; i++) {
+    const t = time - start - rnd(i, seed) * 2.2;
+    if (t < 0) continue;
+    const speed = 70 + rnd(i, seed + 1) * 70;
+    const y = -60 + t * speed;
+    if (y > H + 60) continue;
+    const x = 30 + rnd(i, seed + 2) * (W - 60) + 26 * wave(t, 1.3, i);
+    const s = size * (0.7 + rnd(i, seed + 3) * 0.5);
+    put(ctx, list[i % list.length], { x, y, size: s, rot: t * (0.6 + rnd(i, seed + 4)) * (i % 2 ? 1 : -1), alpha: 0.9 * fade });
+  }
+}
+
+// Tiny glowing specks drifting upwards (fireflies, embers of the diyas).
+function fireflies(ctx: Ctx, time: number, n: number, seed: number, rgb = "255,214,120") {
+  for (let i = 0; i < n; i++) {
+    const x = rnd(i, seed) * W + 30 * wave(time, 0.5, i);
+    const y = H - ((time * (14 + rnd(i, seed + 1) * 18) + rnd(i, seed + 2) * H) % H);
+    const a = clamp01(time / 1.2) * (0.35 + 0.35 * (0.5 + 0.5 * wave(time, 2 + rnd(i, seed + 3) * 3, i)));
+    ctx.fillStyle = `rgba(${rgb},${a})`;
+    ctx.beginPath();
+    ctx.arc(x, y, 2 + rnd(i, seed + 4) * 2.5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+// ---------- the pieces scenes are built from ----------
+
+// Two royal hand fans either side of the text, rising in and slowly waving.
+function fans(ctx: Ctx, time: number, text: TextKit, at = 0.2) {
+  const p = arrive(time, at, 1.1);
+  const y = Math.min(H - 40, text.bottom + 260) + (1 - p) * 300;
+  [0, 1].forEach((side) => {
+    const x = side ? W - 92 : 92;
+    const tilt = (side ? 1 : -1) * (0.22 + 0.1 * wave(time, 1.6, side * 2));
+    put(ctx, pickEl("fan", side), { x, y, size: 170, rot: tilt, anchor: "stand", flip: !!side, alpha: p });
+  });
+}
+
+// Chandeliers dropping in on their chains above the text, swinging a little before settling.
+function chandeliers(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const spots = [
+    { x: 130, size: 150 },
+    { x: W / 2, size: 120 },
+    { x: W - 130, size: 150 },
+  ];
+  spots.forEach((s, i) => {
+    const drop = easeBack((time - at - i * 0.15) / 1);
+    if (drop <= 0) return;
+    const room = i === 1 ? Math.max(60, text.top - 150) : Math.max(140, text.top + 40);
+    const swing = 0.08 * Math.exp(-time * 0.8) * Math.sin(time * 3 + i) + 0.02 * wave(time, 1.1, i);
+    const img = pickEl("chandelier", i);
+    const h = img ? (img.h / img.w) * s.size : 0;
+    put(ctx, img, { x: s.x, y: -h + drop * Math.min(room, h + 10), size: s.size, rot: swing, anchor: "hang" });
+  });
+}
+
+// Temple bells hanging along the top, swinging gently.
+function bells(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const xs = [70, 190, W - 190, W - 70];
+  xs.forEach((x, i) => {
+    const drop = easeBack((time - at - i * 0.1) / 0.9);
+    if (drop <= 0) return;
+    const img = pickEl("bell", i);
+    const size = i % 3 === 0 ? 90 : 70;
+    const h = img ? (img.h / img.w) * size : 0;
+    const reach = Math.min(hangRoom(text, x, size / 2), 260);
+    put(ctx, img, { x, y: -h + drop * Math.min(reach, h), size, rot: 0.12 * Math.sin(time * 2.4 + i) * Math.exp(-time * 0.3) + 0.03 * wave(time, 1.7, i), anchor: "hang" });
+  });
+}
+
+// The toran (mango leaves and marigolds) dropping across the top.
+function toran(ctx: Ctx, time: number, at = 0) {
+  const img = pickEl("toran");
+  if (!img) return;
+  const drop = easeBack((time - at) / 0.9);
+  const h = (img.h / img.w) * (W + 40);
+  ctx.save();
+  ctx.translate(W / 2, -h + drop * h * 0.92);
+  ctx.rotate(0.01 * wave(time, 1.2));
+  draw(ctx, img, -(W + 40) / 2, 0, W + 40, h);
+  ctx.restore();
+}
+
+// The floral arch growing open over the text: sized so its opening clears the words, crown above them.
+function floralArch(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const img = pickEl("arch");
+  if (!img) return;
+  const p = arrive(time, at, 1.4);
+  const opening = 0.46; // the arch's inner opening, as a share of its width
+  const w = Math.max(W * 1.08, (text.right - text.left + 70) / opening) * (0.94 + 0.06 * p);
+  const h = (img.h / img.w) * w;
+  const y = text.top - 44 - 0.3 * h; // the crown clears the symbol at the top of the block
+  ctx.save();
+  ctx.globalAlpha = p;
+  ctx.translate(W / 2, y + h);
+  ctx.scale(1, 0.9 + 0.1 * p);
+  draw(ctx, img, -w / 2, -h, w, h);
+  ctx.restore();
+}
+
+// Lush floral corners growing in: the top-left piece and the bottom-right piece, mirrored for the other two.
+function corners(ctx: Ctx, time: number, at = 0, all4 = false) {
+  const [tl, br] = [pickEl("corner", 0), pickEl("corner", 1)];
+  if (!tl || !br) return;
+  // image, corner x, corner y, mirror x, which way it grows (from the top-left or the bottom-right of the image)
+  const spots: [Img, number, number, number, boolean][] = [
+    [tl, 0, 0, 1, true],
+    [br, W, H, 1, false],
+    ...(all4 ? ([[tl, W, 0, -1, true], [br, 0, H, -1, false]] as [Img, number, number, number, boolean][]) : []),
+  ];
+  spots.forEach(([img, x, y, mx, fromTop], i) => {
+    const p = arrive(time, at + i * 0.2, 1.2);
+    if (p <= 0) return;
+    const w = 290 * (0.75 + 0.25 * p) * (1 + 0.015 * wave(time, 1.1, i));
+    const h = (img.h / img.w) * w;
+    ctx.save();
+    ctx.globalAlpha = p;
+    ctx.translate(x, y);
+    ctx.scale(mx, 1);
+    if (fromTop) draw(ctx, img, -8, -8, w, h);
+    else draw(ctx, img, -w + 8, -h + 8, w, h);
+    ctx.restore();
+  });
+}
+
+// Swans gliding in on the water from both sides.
+function swans(ctx: Ctx, time: number, waterTop: number, at = 0.4) {
+  const p = arrive(time, at, 2.6);
+  const depth = H - waterTop;
+  const size = Math.min(190, depth * 0.85);
+  [0, 1].forEach((side) => {
+    const home = side ? W - 160 : 160;
+    const x = side ? home + (1 - p) * 360 : home - (1 - p) * 360;
+    const y = Math.min(H - 20, waterTop + depth * 0.72) + 4 * wave(time, 1.3, side * 2); // floating in the water, not on its edge
+    put(ctx, pickEl("swan", side), { x, y, size, anchor: "stand" }); // the pair already face each other
+  });
+}
+
+// Floating lotus leaves and buds bobbing on the water.
+function lilies(ctx: Ctx, time: number, waterTop: number) {
+  const leaves = el("lotusleaf").filter((m) => m.w > m.h);
+  const buds = el("lotusleaf").filter((m) => m.h >= m.w);
+  [80, 300, 520, 650].forEach((x, i) => {
+    const img = (i % 2 ? buds : leaves)[i % 2 ? 0 : i % Math.max(1, leaves.length)] ?? leaves[0];
+    const depth = H - waterTop;
+    put(ctx, img ?? null, { x: x + 6 * wave(time, 0.8, i), y: waterTop + depth * (0.5 + 0.2 * (i % 2)) + 3 * wave(time, 1.4, i), size: i % 2 ? 60 : 95, anchor: "stand", alpha: clamp01((time - 0.3 - i * 0.15) / 0.8) });
+  });
+}
+
+// The crescent moon rising into the sky above the text.
+function moon(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const p = arrive(time, at, 2.2);
+  const y = Math.max(110, text.top - 150) + (1 - p) * 120;
+  glow(ctx, W - 150, y, 140, 0.5 * p, "255,220,150");
+  put(ctx, pickEl("moon"), { x: W - 150, y, size: 170, alpha: p, rot: -0.15 + 0.03 * wave(time, 0.5) });
+}
+
+// A flock of egrets crossing the sky above the text.
+function egrets(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const list = el("egret");
+  if (!list.length) return;
+  const sky = Math.max(70, text.top - 220);
+  for (let i = 0; i < 5; i++) {
+    const t = time - at - i * 0.25;
+    if (t < 0) continue;
+    const x = -120 + t * 150 + i * 40;
+    if (x > W + 150) continue;
+    const y = sky + i * 26 + 10 * wave(t, 2, i);
+    put(ctx, list[Math.floor(t * 4 + i) % list.length], { x, y, size: 90 - i * 8 });
+  }
+}
+
+// Something travelling along the bottom: the camel or the doli, bobbing gently as it goes.
+function traveller(ctx: Ctx, time: number, text: TextKit, name: string, size: number, at = 0) {
+  const p = arrive(time, at, 3.2);
+  const ground = Math.min(H - 30, text.bottom + 300);
+  const x = -size / 2 + p * (W / 2 + size / 2) - 10;
+  const bob = -5 * Math.abs(Math.sin(time * 4.4)) * (p < 1 ? 1 : 0.2);
+  ctx.save();
+  ctx.globalAlpha = 0.14;
+  ctx.fillStyle = "#000";
+  ctx.beginPath();
+  ctx.ellipse(x, ground - 4, size * 0.38, 9, 0, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+  put(ctx, pickEl(name), { x, y: ground + bob, size, anchor: "stand" });
+}
+
+// The royal parasols standing either side of the text, their fringe swaying.
+function parasols(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const p = arrive(time, at, 1.2);
+  const y = Math.min(H - 20, text.bottom + 330) + (1 - p) * 260;
+  [0, 1].forEach((side) => {
+    put(ctx, pickEl("parasol", side), { x: side ? W - 80 : 80, y, size: 170, anchor: "stand", rot: 0.04 * wave(time, 1.3, side), flip: !!side, alpha: p });
+  });
+}
+
+// The rangoli spinning slowly into place below the text.
+function rangoli(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const p = arrive(time, at, 1.6);
+  const y = Math.min(H - 150, text.bottom + 170);
+  const size = 260 * (0.6 + 0.4 * p);
+  ctx.save();
+  ctx.translate(W / 2, y);
+  ctx.scale(1, 0.42); // seen at an angle, lying on the floor
+  put(ctx, pickEl("rangoli"), { x: 0, y: 0, size, rot: (1 - p) * 2.4 + time * 0.08, alpha: p });
+  ctx.restore();
+}
+
+// The Madhubani fish pair turning gently below the text.
+function fish(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const p = arrive(time, at, 1.4);
+  const y = Math.min(H - 140, text.bottom + 150);
+  put(ctx, pickEl("fish"), { x: W / 2, y: y + (1 - p) * 60, size: 220, rot: 0.08 * wave(time, 0.9), alpha: p });
+}
+
+// Gold paisleys twinkling in the margins.
+function paisleys(ctx: Ctx, time: number, text: TextKit) {
+  const list = el("paisley");
+  if (!list.length) return;
+  const spots: [number, number][] = [
+    [60, text.top - 40],
+    [W - 60, text.top - 10],
+    [50, text.bottom + 40],
+    [W - 50, text.bottom + 80],
+    [W / 2 - 220, Math.max(60, text.top - 120)],
+    [W / 2 + 220, Math.min(H - 60, text.bottom + 140)],
+  ];
+  spots.forEach(([x, y], i) => {
+    const p = arrive(time, 0.2 + i * 0.18, 0.8);
+    const tw = 0.75 + 0.25 * (0.5 + 0.5 * wave(time, 2.2, i * 1.7));
+    put(ctx, list[i % list.length], { x, y, size: 60 + (i % 3) * 12, rot: 0.2 * wave(time, 0.6, i), alpha: p * tw });
+  });
+}
+
+// Jasmine strings hanging from the top corners.
+function gajra(ctx: Ctx, time: number, text: TextKit, at = 0) {
+  const strings = tallOf("jasmine");
+  if (!strings.length) return;
+  [50, 120, W - 120, W - 50].forEach((x, i) => {
+    const drop = easeBack((time - at - i * 0.12) / 1);
+    if (drop <= 0) return;
+    const img = strings[i % strings.length];
+    const size = 46;
+    const h = (img.h / img.w) * size;
+    const reach = Math.min(h, hangRoom(text, x, 30) + 40);
+    put(ctx, img, { x, y: -h + drop * reach, size, rot: 0.05 * wave(time, 1.5, i), anchor: "hang" });
+  });
+}
+
+// ---------- the scenes ----------
+
+const lakeHeight = (text: TextKit) => Math.max(170, Math.min(300, H - text.bottom - 40)); // always below the words
+// Water along the bottom: the painted lake strip when there is one, otherwise the lotus pond motion.
+function pond(ctx: Ctx, time: number, duration: number, text: TextKit, rise: number, height: number) {
+  if (pickEl("water")) lake(ctx, time, rise, height);
+  else layerOf("lotus", ctx, time, duration, text);
+}
+
+type SceneDef = { name: string; parts: string[]; layers: AnimationId[]; draw: Scene; reveal?: number; extras?: string[] }; // extras: used when present (e.g. the lake water)
+const SCENES: Record<string, SceneDef> = {
+  shahiSwagat: {
+    name: "Royal welcome",
+    parts: ["fan"],
+    layers: ["elephants", "rosePetals"],
+    draw: (c, t, d, k) => (fans(c, t, k, 0.6), layerOf("elephants", c, t, d, k), layerOf("rosePetals", c, t, d, k)),
+    reveal: 2,
+  },
+  royalCourt: {
+    name: "Royal court",
+    parts: ["chandelier", "fan"],
+    layers: ["sparkles"],
+    draw: (c, t, d, k) => (chandeliers(c, t, k), fans(c, t, k, 0.5), layerOf("sparkles", c, t, d, k)),
+  },
+  lotusLake: {
+    name: "Lotus lake",
+    parts: ["swan", "lotusleaf"],
+    layers: ["lotus"],
+    extras: ["water"],
+    draw: (c, t, d, k) => {
+      const h = lakeHeight(k);
+      pond(c, t, d, k, arrive(t, 0, 1.2), h);
+      lilies(c, t, H - h);
+      swans(c, t, H - h);
+    },
+  },
+  moonlitLake: {
+    name: "Moonlit lake",
+    parts: ["moon", "lotusleaf"],
+    layers: ["lotus"],
+    extras: ["water"],
+    draw: (c, t, d, k) => {
+      const h = lakeHeight(k);
+      moon(c, t, k, 0.3);
+      pond(c, t, d, k, arrive(t, 0, 1.2), h);
+      lilies(c, t, H - h);
+      fireflies(c, t, 22, 71);
+    },
+  },
+  baraatParasols: {
+    name: "Baraat with parasols",
+    parts: ["parasol"],
+    layers: ["ghodi"],
+    draw: (c, t, d, k) => (parasols(c, t, k, 0.3), layerOf("ghodi", c, t, d, k)),
+    reveal: 1.8,
+  },
+  doliArrival: {
+    name: "Doli arrival",
+    parts: ["palki", "toran"],
+    layers: ["rosePetals"],
+    draw: (c, t, d, k) => (toran(c, t), traveller(c, t, k, "palki", 300, 0.3), layerOf("rosePetals", c, t, d, k)),
+  },
+  desertCaravan: {
+    name: "Rajasthani camel",
+    parts: ["camel", "bell", "paisley"],
+    layers: [],
+    draw: (c, t, _d, k) => (bells(c, t, k), paisleys(c, t, k), traveller(c, t, k, "camel", 280, 0.2)),
+  },
+  toranWelcome: {
+    name: "Toran welcome",
+    parts: ["toran", "bell"],
+    layers: ["diyaRow"],
+    draw: (c, t, d, k) => (toran(c, t), bells(c, t, k, 0.5), layerOf("diyaRow", c, t, d, k)),
+  },
+  floralArch: {
+    name: "Floral arch",
+    parts: ["arch", "bloom"],
+    layers: ["butterflies"],
+    draw: (c, t, d, k) => (floralArch(c, t, k), shower(c, singles("bloom"), t, d, 12, 46, 81, 0.8), layerOf("butterflies", c, t, d, k)),
+  },
+  gardenCorners: {
+    name: "Garden corners",
+    parts: ["corner"],
+    layers: ["butterflies"],
+    draw: (c, t, d, k) => (corners(c, t, 0, true), layerOf("butterflies", c, t, d, k)),
+  },
+  madhubani: {
+    name: "Madhubani fish",
+    parts: ["fish"],
+    layers: ["mehendi"],
+    draw: (c, t, d, k) => (layerOf("mehendi", c, t, d, k), fish(c, t, k, 0.4)),
+  },
+  rangoliDiyas: {
+    name: "Rangoli",
+    parts: ["rangoli", "toran"],
+    layers: [],
+    draw: (c, t, _d, k) => (toran(c, t), rangoli(c, t, k, 0.3), fireflies(c, t, 16, 91)),
+  },
+  jasmineRain: {
+    name: "Jasmine rain",
+    parts: ["jasmine"],
+    layers: [],
+    draw: (c, t, d, k) => (gajra(c, t, k), shower(c, roundOf("jasmine"), t, d, 18, 30, 101, 0.6)),
+  },
+  chandelierNight: {
+    name: "Chandelier night",
+    parts: ["chandelier"],
+    layers: ["skyLanterns"],
+    draw: (c, t, d, k) => (layerOf("skyLanterns", c, t, d, k), chandeliers(c, t, k, 0.2), fireflies(c, t, 18, 111)),
+  },
+  templeBells: {
+    name: "Temple bells",
+    parts: ["bell"],
+    layers: ["kalash"],
+    draw: (c, t, d, k) => (bells(c, t, k), layerOf("kalash", c, t, d, k)),
+  },
+  peacockGarden: {
+    name: "Peacock garden",
+    parts: ["corner"],
+    layers: ["peacock"],
+    draw: (c, t, d, k) => (corners(c, t, 0.2), layerOf("peacock", c, t, d, k)),
+  },
+  parrotArch: {
+    name: "Parrots under the arch",
+    parts: ["arch"],
+    layers: ["parrots"],
+    draw: (c, t, d, k) => (floralArch(c, t, k), layerOf("parrots", c, t, d, k)),
+  },
+  monsoonEgrets: {
+    name: "Egrets and clouds",
+    parts: ["egret"],
+    layers: ["clouds"],
+    draw: (c, t, d, k) => (layerOf("clouds", c, t, d, k), egrets(c, t, k, 0.4)),
+  },
+  shahiChhatri: {
+    name: "Royal parasols",
+    parts: ["parasol", "toran", "bloom"],
+    layers: [],
+    draw: (c, t, d, k) => (toran(c, t), parasols(c, t, k, 0.3), shower(c, singles("bloom"), t, d, 10, 42, 121, 1)),
+  },
+  haldiMorning: {
+    name: "Haldi morning",
+    parts: ["toran"],
+    layers: ["marigolds", "butterflies"],
+    draw: (c, t, d, k) => (toran(c, t), layerOf("butterflies", c, t, d, k), shower(c, el("marigold").filter((m) => m.h / m.w < 1.5), t, d, 14, 40, 131, 0.8)),
+  },
+  mehendiGarden: {
+    name: "Mehendi garden",
+    parts: ["corner"],
+    layers: ["mehendi", "parrots"],
+    draw: (c, t, d, k) => (layerOf("mehendi", c, t, d, k), corners(c, t, 0.3), layerOf("parrots", c, t, d, k)),
+  },
+  sangeetNight: {
+    name: "Sangeet night",
+    parts: ["chandelier", "paisley"],
+    layers: ["sparkles"],
+    draw: (c, t, d, k) => (chandeliers(c, t, k), paisleys(c, t, k), layerOf("sparkles", c, t, d, k)),
+  },
+  receptionGlow: {
+    name: "Moonlit diyas",
+    parts: ["moon"],
+    layers: ["diyaRow"],
+    draw: (c, t, d, k) => (moon(c, t, k), layerOf("diyaRow", c, t, d, k), fireflies(c, t, 20, 141)),
+  },
+  goldPaisley: {
+    name: "Gold paisley",
+    parts: ["paisley"],
+    layers: ["sparkles"],
+    draw: (c, t, d, k) => (paisleys(c, t, k), layerOf("sparkles", c, t, d, k)),
+  },
+  swanArch: {
+    name: "Swans under the arch",
+    parts: ["arch", "swan"],
+    layers: ["lotus"],
+    extras: ["water"],
+    draw: (c, t, d, k) => {
+      const h = lakeHeight(k);
+      floralArch(c, t, k);
+      pond(c, t, d, k, arrive(t, 0.2, 1.2), h);
+      swans(c, t, H - h, 0.6);
+    },
+  },
+  moonClouds: {
+    name: "Moon and clouds",
+    parts: ["moon"],
+    layers: ["clouds"],
+    draw: (c, t, d, k) => (moon(c, t, k), layerOf("clouds", c, t, d, k), fireflies(c, t, 14, 151)),
+  },
+  flowerShower: {
+    name: "Flower shower",
+    parts: ["bloom", "corner"],
+    layers: [],
+    draw: (c, t, d, k) => (corners(c, t, 0.1), shower(c, singles("bloom"), t, d, 16, 48, 161, 0.3)),
+  },
+  elephantArch: {
+    name: "Elephants under the arch",
+    parts: ["arch"],
+    layers: ["elephants"],
+    draw: (c, t, d, k) => (floralArch(c, t, k), layerOf("elephants", c, t, d, k)),
+    reveal: 2,
+  },
+};
+
+// Colour variants of favourite scenes: the same scene with a different palette over its painted layers.
+const VARIANTS: Record<string, { of: string; name: string; filter: string }> = {
+  royalCourtSilver: { of: "royalCourt", name: "Royal court, silver", filter: "grayscale(1) brightness(1.18) contrast(1.05)" },
+  lotusLakeDusk: { of: "lotusLake", name: "Lotus lake at dusk", filter: "sepia(0.4) saturate(1.35) hue-rotate(-18deg) brightness(0.92)" },
+  floralArchPastel: { of: "floralArch", name: "Floral arch, pastel", filter: "saturate(0.55) brightness(1.12)" },
+  gardenCornersIvory: { of: "gardenCorners", name: "Garden corners, ivory", filter: "grayscale(0.85) sepia(0.3) brightness(1.1)" },
+  toranRoseGold: { of: "toranWelcome", name: "Toran, rose gold", filter: "hue-rotate(-32deg) saturate(1.1)" },
+};
+
+function runScene(def: SceneDef, opts: SceneOpts): Motion {
+  return (ctx, time, duration, text) => {
+    ctx.save();
+    if (opts.filter && "filter" in ctx) ctx.filter = opts.filter;
+    def.draw(ctx, time, duration, text);
+    ctx.restore();
+    text.fadeUp(def.reveal ?? 0.6);
+  };
+}
+const sceneAssets = (def: SceneDef) => () => [...[...def.parts, ...(def.extras ?? [])].flatMap((p) => srcs(el(p))), ...def.layers.flatMap((id) => MOTIONS[id]?.assets() ?? [])];
+
+// a scene is offered only once all its painted parts exist (e.g. the doli waits for its picture)
+const ready = (def: SceneDef) => def.parts.every((p) => el(p).length > 0);
+for (const [id, def] of Object.entries(SCENES)) if (ready(def)) MOTIONS[id as AnimationId] = { draw: runScene(def, {}), assets: sceneAssets(def) };
+for (const [id, v] of Object.entries(VARIANTS)) if (ready(SCENES[v.of])) MOTIONS[id as AnimationId] = { draw: runScene(SCENES[v.of], { filter: v.filter }), assets: sceneAssets(SCENES[v.of]) };
+
+PAINTED_MOTIONS.push(...(Object.keys(MOTIONS) as AnimationId[]));
+
+// Names for the editor's list, in the order they're offered.
+export const SCENE_NAMES: { id: AnimationId; name: string }[] = [
+  ...Object.entries(SCENES).filter(([, d]) => ready(d)).map(([id, d]) => ({ id: id as AnimationId, name: d.name })),
+  ...Object.entries(VARIANTS).filter(([, v]) => ready(SCENES[v.of])).map(([id, v]) => ({ id: id as AnimationId, name: v.name })),
+];

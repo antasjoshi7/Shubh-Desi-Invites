@@ -22,6 +22,8 @@ const DATA_FILE = path.join(ROOT, "data/elements.json");
 // noChain: crop off a thin chain/string at the top (the app draws its own).
 // white: the background is white and the drawing is dark lines (cut by darkness instead of colour).
 // soft: soft-edged things like clouds, whose see-through edges are turned cream so no background tint shows.
+// bg: the background colour, for sheets whose pieces touch the edges (so it can't be measured there).
+// grow: how far apart bits can be and still count as one piece.
 const SOURCES = [
   { name: "horse", file: "side-view-of-a-richly-decorated-indian-wedding-hor.png" },
   { name: "elephant", file: "side-view-of-a-richly-decorated-indian-wedding-ele (1).png" },
@@ -40,6 +42,28 @@ const SOURCES = [
   { name: "butterfly", file: "element-sheet--three-ornate-butterflies-seen-from- (1).png", split: true, grow: 0 },
   { name: "lantern", file: "a-single-ornate-brass-indian-hanging-lantern-on-a-.png", noChain: true },
   { name: "cloud", file: "clouds.png", split: true, soft: true },
+  // scene elements (assets/elements/new), the better of each pair Recraft made
+  { name: "fan", file: "new/element-sheet--two-ornate-royal-rajasthani-hand-fa.png", split: true },
+  { name: "chandelier", file: "new/element-sheet--three-ornate-antique-crystal-and-go.png", split: true },
+  { name: "chandelier", file: "new/element-sheet--three-ornate-antique-crystal-and-go (1).png", split: true },
+  { name: "bell", file: "new/element-sheet--five-ornate-brass-temple-bells-hang (1).png", split: true },
+  { name: "swan", file: "new/two-graceful-white-swans--hamsa--with-small-gold-c.png", split: true },
+  { name: "corner", file: "new/element-sheet--two-lush-floral-corner-arrangements.png", split: true, grow: 6, bg: [221, 14, 134] },
+  { name: "arch", file: "new/a-lush-semicircular-floral-arch-of-pink-roses--whi.png", bg: [192, 8, 97] },
+  { name: "toran", file: "new/a-long-horizontal-toran-door-hanging-across-the-fu.png" },
+  { name: "jasmine", file: "new/element-sheet--three-long-hanging-strings-of-white (1).png", split: true },
+  { name: "egret", file: "new/element-sheet--five-flying-white-egrets-in-differe.png", split: true },
+  { name: "paisley", file: "new/element-sheet--six-ornate-gold-foil-paisley--keri- (1).png", split: true },
+  { name: "lotusleaf", file: "new/element-sheet--four-round-green-lotus-leaves-seen-.png", split: true },
+  { name: "bloom", file: "new/element-sheet--nine-single-loose-flower-heads-for- (1).png", split: true },
+  { name: "bloom", file: "new/element-sheet--nine-single-loose-flower-heads-for-.png", split: true },
+  { name: "parasol", file: "new/a-single-ornate-royal-indian-ceremonial-parasol--c.png" },
+  { name: "camel", file: "new/a-single-decorated-rajasthani-camel--side-view-wal (1).png" },
+  { name: "rangoli", file: "new/a-single-circular-rangoli-mandala-seen-from-direct (1).png" },
+  { name: "moon", file: "new/a-soft-glowing-golden-crescent-moon-with-delicate-.png", split: true },
+  { name: "fish", file: "new/two-madhubani-folk-art-fish-facing-each-other-in-a (1).png" },
+  { name: "palki", file: "new/doli.png" },
+  { name: "water", file: "new/lake-water.png", bg: [204, 0, 116] },
 ];
 
 // Animals cut into parts so code can move their legs (a "cut-out" puppet).
@@ -105,9 +129,10 @@ function measureBackground(data, w, h) {
 
 // RGBA with the background removed: alpha from the distance to the background colour,
 // and edge pixels "un-mixed" from the background so no green or blue fringe is left.
-function cutOut(data, w, h, white, soft) {
+function cutOut(data, w, h, white, soft, fixedBg) {
   const out = Buffer.alloc(w * h * 4);
-  const { bg, spread } = measureBackground(data, w, h);
+  // pieces that touch the edges by design (corners, arches) would fool the border sampling, so they give the colour
+  const { bg, spread } = fixedBg ? { bg: fixedBg, spread: 14 } : measureBackground(data, w, h);
   // which background colour can leak into the edges
   const [br, bgG, bb0] = bg;
   const spill = white ? null : bgG > br + 40 && bgG > bb0 ? "green" : bb0 > br + 60 && bb0 > bgG + 40 ? "blue" : br > bgG + 60 && bb0 > bgG + 60 ? "magenta" : null;
@@ -404,18 +429,19 @@ for (const s of SOURCES) {
     continue;
   }
   const { data, info } = await sharp(src).removeAlpha().raw().toBuffer({ resolveWithObject: true });
-  const rgba = erode(cutOut(data, info.width, info.height, s.white, s.soft), info.width, info.height);
+  const rgba = erode(cutOut(data, info.width, info.height, s.white, s.soft, s.bg), info.width, info.height);
+  // several sheets can feed one name (e.g. two sheets of flowers): their pieces add up
+  const list = (result[s.name] ??= []);
+  const n0 = list.length;
   if (s.columns) {
     const parts = splitColumns(rgba, info.width, info.height, s.columns);
-    result[s.name] = [];
-    for (let i = 0; i < parts.length; i++) result[s.name].push(await save(trim(parts[i]), `${s.name}-${i + 1}`));
+    for (let i = 0; i < parts.length; i++) list.push(await save(trim(parts[i]), `${s.name}-${n0 + i + 1}`));
   } else if (s.split) {
     const items = findItems(rgba, info.width, info.height, s.grow);
-    result[s.name] = [];
-    for (let i = 0; i < items.length; i++) result[s.name].push(await save(trim(itemImage(rgba, info.width, info.height, items[i])), `${s.name}-${i + 1}`));
+    for (let i = 0; i < items.length; i++) list.push(await save(trim(itemImage(rgba, info.width, info.height, items[i])), `${s.name}-${n0 + i + 1}`));
   } else {
     const whole = trim({ data: rgba, w: info.width, h: info.height });
-    result[s.name] = [await save(s.noChain ? trim(cropChain(whole)) : whole, s.name)];
+    list.push(await save(s.noChain ? trim(cropChain(whole)) : whole, n0 ? `${s.name}-${n0 + 1}` : s.name));
   }
   console.log(`  ${s.name}: ${result[s.name].length}`);
 }

@@ -6,7 +6,7 @@ import { Faq } from "@/components/site/Faq";
 import { JsonLd } from "@/components/site/JsonLd";
 import { MotionReel } from "@/components/site/MotionReel";
 import { EVENT_PAGES } from "@/lib/content/events";
-import { MOTION_PREVIEWS, motionsNamed, videoSchema } from "@/lib/content/motions";
+import { MOTION_PREVIEWS, SCENE_PREVIEWS, SINGLE_PREVIEWS, motionsNamed, videoSchema } from "@/lib/content/motions";
 import { appSchema } from "@/lib/schema";
 
 const COUNT = MOTION_PREVIEWS.length;
@@ -43,10 +43,20 @@ export default function AnimatedPage() {
         </div>
       </section>
 
+      {SCENE_PREVIEWS.length > 0 && (
+        <section className="s-section">
+          <h2>Scenes: invites that play like a film</h2>
+          <p>
+            Several hand-painted elements arrive together and stay gently alive: elephants with royal fans, swans on a lotus lake, a floral arch that blooms around your words. Tap any preview to use it.
+          </p>
+          <MotionReel items={SCENE_PREVIEWS} describe />
+        </section>
+      )}
+
       <section className="s-section">
-        <h2>All {COUNT} animations</h2>
-        <p>Tap any preview to open it in the editor with that animation on the same design.</p>
-        <MotionReel items={MOTION_PREVIEWS} describe />
+        <h2>Single animations</h2>
+        <p>One painted element bringing the page to life. Tap any preview to open it in the editor with that animation on the same design.</p>
+        <MotionReel items={SINGLE_PREVIEWS} describe />
       </section>
 
       <section className="s-section">
