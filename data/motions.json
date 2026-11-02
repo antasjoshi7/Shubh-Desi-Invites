@@ -196,22 +196,22 @@
     "id": "doliArrival",
     "name": "Doli arrival",
     "event": "shaadi",
-    "design": "recraft-minimal-01",
+    "design": "recraft-minimal-03",
     "video": "/motions/doliArrival.mp4",
     "poster": "/motions/doliArrival.jpg",
     "seconds": 5.6,
-    "description": "A bridal doli travels in along the bottom under a marigold toran, with rose petals falling.",
+    "description": "Two kahars carry a bridal doli in along the bottom under a marigold toran, with rose petals falling.",
     "scene": true
   },
   {
     "id": "desertCaravan",
     "name": "Rajasthani camel",
     "event": "haldi",
-    "design": "simple-rose-corners-ivory",
+    "design": "recraft-minimal-04",
     "video": "/motions/desertCaravan.mp4",
     "poster": "/motions/desertCaravan.jpg",
     "seconds": 5.6,
-    "description": "A decorated Rajasthani camel walks in below brass temple bells and twinkling gold paisleys.",
+    "description": "A decorated Rajasthani camel walks in, legs swinging, below brass temple bells and twinkling gold paisleys.",
     "scene": true
   },
   {

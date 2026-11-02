@@ -693,6 +693,28 @@
         "w": 821,
         "h": 672
       }
+    ],
+    "kahar": [
+      {
+        "src": "/generated/elements/kahar-1.webp",
+        "w": 187,
+        "h": 368
+      },
+      {
+        "src": "/generated/elements/kahar-2.webp",
+        "w": 187,
+        "h": 368
+      },
+      {
+        "src": "/generated/elements/kahar-3.webp",
+        "w": 188,
+        "h": 368
+      },
+      {
+        "src": "/generated/elements/kahar-4.webp",
+        "w": 188,
+        "h": 368
+      }
     ]
   },
   "rigs": {

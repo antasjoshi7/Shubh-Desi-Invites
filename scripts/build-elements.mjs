@@ -60,6 +60,7 @@ const SOURCES = [
   { name: "moon", file: "new/a-soft-glowing-golden-crescent-moon-with-delicate-.png", split: true },
   { name: "fish", file: "new/two-madhubani-folk-art-fish-facing-each-other-in-a (1).png" },
   { name: "palki", file: "new/doli.png" },
+  { name: "kahar", file: "new/kahar-b.png", split: true }, // a doli bearer: four poses of one walk cycle
 ];
 
 // Animals cut into parts so code can move their legs (a "cut-out" puppet).

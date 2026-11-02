@@ -26,6 +26,24 @@ Last updated: 1 November 2026 (evening).
 | 18 | **More keyword data**: the first screenshots are in docs/keywords.md and already used. Next, look up the event, wording and regional terms listed at the bottom of that file, ideally as a CSV download | Decides the next pages (regional invites? Canva comparison? wording deep dives?) | 20 min |
 | 16 | **Recraft credits** (optional): when you have more, 3 to 5 designs a week keeps the "new designs every week" line true | The home page says new designs are added every week | ongoing |
 
+## Page report cards (start when Search Console is live)
+
+Every published page gets a row in **docs/page-tracker.csv** with four checkpoints, so no page is
+"finished" and forgotten:
+
+- **1 day:** is it indexed? (Search Console › URL inspection; request indexing if not)
+- **1 week:** which searches it has started showing for
+- **1 month:** impressions, clicks and average position: climbing, or stuck on page two?
+- **3 months:** keep, refresh, merge or cut
+
+**Every Monday (15 min):** export Search Console's Pages and Queries reports (last 28 days, CSV) into
+`research/gsc/` and tell me. I fill the tracker, list pages that are slipping, and rank what to refresh.
+
+**Rule that keeps it safe:** before 3 months, only fix things that are wrong (a stale price, a broken
+link, a button name that changed). Real rewrites wait for the 3-month verdict, because Google needs
+about 90 days to judge a page, and editing sooner restarts the clock. The price page is the exception
+to watch: its prices are dated and should be rechecked every 3 months.
+
 ## Data goldmine (before and around launch)
 
 Things only you can get that would put the site ahead of every competitor. Ranked by impact for the effort.
@@ -66,6 +84,7 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 ## Done recently
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.
+- 2 Nov: PDF or pictures download with page ticks; camel walks on a leg rig; doli carried by two kahars; lake and floral arch scenes removed (29 scenes now, 45 animations in all); page report-card tracker.
 - 2 Nov: 33 painted scene animations from 21 new Recraft sheets (66 + 8 credits used on the second account; 26 left), previews on the site.
 - 1 Nov: keyword clusters mapped to pages (docs/keywords.md); designs page moved to /wedding-card-design, e-card page to /create-marriage-invitation-card, home tuned for "wedding invite video".
 - 1 Nov: 16 animation previews incl. new Floating clouds, animated invitation page, price comparison page, marigold favicon, 201 designs, real rating box and review strip (empty until real reviews), answers from the two Reddit threads, bigger text in samples, no more dot-separated lists.
