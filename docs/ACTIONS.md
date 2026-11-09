@@ -3,11 +3,13 @@
 The running to-do list for growing the site. Kept up to date at the end of every working session.
 Last updated: 9 November 2026.
 
+Marketing plan (wedges, channel playbooks, timeline): https://claude.ai/artifact/LdisrAbJhZiB2Yc5v9et9t
+
 ## Waiting on you
 
 | # | What | Why it matters | Effort |
 |---|---|---|---|
-| 1 | **Buy shubhdesi.com and shubhdesi.in** (both free when checked on 2 Nov; confirm at the registrar). Optional: shubhdesiinvites.com too, pointed at shubhdesi.com, for people who type the full name. Then tell me | The site is already renamed to Shubh Desi Invites; the domain is what Google, Pinterest and links build on | 15 min, about ₹1,500/yr for both |
+| 1 | **Buy shubhdesi.com on Cloudflare** (about $11.80/yr) and shubhdesi.in wherever renewal is cheapest (Porkbun or similar). Decided 9 Nov: **host on Cloudflare Pages** too (free, commercial use allowed). Then tell me | I move the site from Vercel to Cloudflare Pages, connect the domain in one click, and redeploy | 15 min |
 | 2 | ~~Say "deploy"~~ **Done 9 Nov 2026**: everything is live at shubh-desi… (currently shaadi-video-maker.vercel.app until the domain is bought) | – | – |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | **Create the GitHub repo** (empty, no README) and send me the URL, or push it yourself | CV proof; lets Vercel deploy on every change | 5 min |
@@ -63,7 +65,7 @@ Things only you can get that would put the site ahead of every competitor. Ranke
 
 | After | I will |
 |---|---|
-| #1 | Point the site at shubhdesi.com (`NEXT_PUBLIC_SITE_URL`), remake share images and pins with the domain on them, redirect the old .vercel.app address |
+| #1 | Set up Cloudflare Pages (you log in once; I deploy the `out` folder), connect shubhdesi.com, point the site at it (`NEXT_PUBLIC_SITE_URL`), remake share images and pins with the domain, and redirect the old .vercel.app address |
 | #2 | Deploy, check every page live, submit the sitemap, run IndexNow |
 | #3 | Remove or replace the fonts, update Terms |
 | #4 | Push, connect Vercel to GitHub, write the README with screenshots |
