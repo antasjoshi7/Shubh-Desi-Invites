@@ -1,14 +1,14 @@
 # Pending actions
 
 The running to-do list for growing the site. Kept up to date at the end of every working session.
-Last updated: 1 November 2026 (evening).
+Last updated: 9 November 2026.
 
 ## Waiting on you
 
 | # | What | Why it matters | Effort |
 |---|---|---|---|
 | 1 | **Buy shubhdesi.com and shubhdesi.in** (both free when checked on 2 Nov; confirm at the registrar). Optional: shubhdesiinvites.com too, pointed at shubhdesi.com, for people who type the full name. Then tell me | The site is already renamed to Shubh Desi Invites; the domain is what Google, Pinterest and links build on | 15 min, about ₹1,500/yr for both |
-| 2 | **Say "deploy"** | Nothing since the first deploy is live yet: new pages, animations, favicon, 201 designs | 1 word |
+| 2 | ~~Say "deploy"~~ **Done 9 Nov 2026**: everything is live at shubh-desi… (currently shaadi-video-maker.vercel.app until the domain is bought) | – | – |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | **Create the GitHub repo** (empty, no README) and send me the URL, or push it yourself | CV proof; lets Vercel deploy on every change | 5 min |
 | 5 | **PostHog**: sign up, create a project, turn on cookieless mode in its settings, send me the project key (starts `phc_`) | Visitor counts, which pages lead to exports, and the rating box (which only appears when PostHog is on) | 15 min |
@@ -84,6 +84,7 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 ## Done recently
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.
+- 9 Nov: deployed to production; fixed page addresses on Vercel (cleanUrls in vercel.json).
 - 2 Nov: PDF or pictures download with page ticks; camel walks on a leg rig; doli carried by two kahars; lake and floral arch scenes removed (25 scenes now, 45 animations in all); page report-card tracker.
 - 2 Nov: 33 painted scene animations from 21 new Recraft sheets (66 + 8 credits used on the second account; 26 left), previews on the site.
 - 1 Nov: keyword clusters mapped to pages (docs/keywords.md); designs page moved to /wedding-card-design, e-card page to /create-marriage-invitation-card, home tuned for "wedding invite video".
