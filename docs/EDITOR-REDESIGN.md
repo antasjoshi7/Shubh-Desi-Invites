@@ -1,66 +1,34 @@
-# Editor redesign: laptop first, Canva-style editing
+# Editor: phone-first, Canva-level editing
 
-Written 9 November 2026 after a hands-on comparison: our editor at 1440 × 860 against Canva's
-editor with an Indian wedding invite template open. The goal is that anyone who has used Canva
-once can use ours without reading a hint.
+About 95% of use will be on phones. The laptop layout stays as it is; only the important Canva
+ideas come over, tuned for a phone. This file lists every flaw found by using the editor at phone
+size (375 × 812) and comparing it with Canva's editor, and what was done about each.
 
-## What's wrong today (laptop)
+Last updated: 10 November 2026.
 
-| # | Problem | What Canva does instead |
+## Fixed (10 Nov 2026)
+
+| # | Flaw | Fix |
 |---|---|---|
-| 1 | **There is no laptop layout.** The phone app sits in a 310 px column in the middle of the screen, with two thirds of the screen empty and 10 px button labels. | Left rail of tools, a side panel that opens beside the canvas, and a big canvas filling the rest. |
-| 2 | **Panels open under the canvas and shrink it.** Opening Font cuts the invite down to about 100 px wide, so you can't see what the font change did. | Panels open on the left. The canvas never changes size. |
-| 3 | **Three clicks to get to typing.** The first click selects the whole block (symbol and every line together), the second selects the line, and the third lets you type. | One click selects that one thing; a double click types into it. |
-| 4 | **The symbol and the text move as one block** by default, so "move this line" moves Ganesh ji too. | Every element is separate. You group things only when you choose to. |
-| 5 | **The text tools are at the bottom of the screen**, as icons with labels (Edit, Font, Size, Colour, Style), far from what you selected. Each one opens a panel. | A single toolbar above the canvas: a font dropdown, size − 16 +, colour, B, I, align, spacing, Position. Most changes take one click with no panel. |
-| 6 | **One small resize dot** (↗). You can't change how wide a line is (where it wraps). | Four corner handles change the size; two side handles change the width and the wrapping; plus rotate and move handles. |
-| 7 | **Two different "colour" tools.** "Colours" (the design) sits in the main bar and "Colour" (text) sits in the text bar. The text colour picker has 12 fixed swatches. | One colour picker with "Colours in this design" first, then a custom colour or hex code. |
-| 8 | **Fonts are a long list of sample lines** with no search and no "fonts already in this invite" group. | "Document fonts" at the top, a search box, and categories (Handwriting, Display…). |
-| 9 | **No keyboard.** Delete, arrow-key nudges, Cmd+D, copy and paste, and Esc to deselect either don't work or only partly work. | All of the above. |
-| 10 | **Hint pills** ("Tap the text to move or resize it all, or hold to pick several") explain how the editor works because it isn't obvious. | Nothing to explain; tooltips appear on hover. |
+| 1 | **Changing one line's font or size messed up the whole page.** Every line was part of one automatic stack that shrank to fit, so making the date bigger or wider shrank and moved Ganesh ji, the names and everything else. | **Pinned layout.** The first time you tap any text on a page, the page is "pinned": it looks exactly the same, but every line now keeps its own place and size, like a Canva text box. Changing a line only pushes the lines *below* it by exactly how much it grew, so the gaps stay the same. Nothing above moves, and nothing shrinks. |
+| 2 | **Three taps to reach the text.** The first tap picked the whole block (symbol and every line together). | One tap picks that line; tapping it again lets you type. Hold to pick several. |
+| 3 | **No copy and paste.** The "Copy" button actually duplicated the line. | Separate **Copy**, **Paste** and **Duplicate**. Copied lines paste on any page, even after a reload; pasting onto another page drops the line under the existing text instead of on top of it. Duplicates appear slightly down and to the right, like Canva. |
+| 4 | **No way to line things up neatly.** | A new **Position** panel: move the selection to the left, centre or right of the design, or to its top, middle or bottom. With several lines picked: line up lefts, centres or rights; space evenly; same size. Plus **Tidy this page**, which puts everything back in a neat centred stack when it's a mess. |
+| 5 | **Colours you picked yourself vanished from the swatches.** | **This invite's colours** come first in the text colour panel: the theme's two colours, then every colour you've picked or used anywhere in the invite. They also show in the paper and artwork swatches. Remembered on the phone. |
+| 6 | **Text colour combos didn't read**, e.g. a pale gold title on light paper. | The theme's colours are now automatically deepened or lightened just enough to read on the paper (the hue stays the same). Only combos that read are offered, and there are 22 of them now instead of 10. Colours you pick by hand are never changed. |
+| 7 | **Only 23 fonts, mostly similar.** | **136 fonts**: 113 new free-licence (OFL) Google fonts, 25 of them with Hindi letters. Fonts load only when they're shown or used, so the editor opens as fast as before. |
+| 8 | **The font list had no search or groups.** | A search box and groups: In this invite, All, Script, Classic, Fancy, Modern and हिंदी. If the line is in Hindi, only fonts that can write it are shown. |
+| 9 | **Text panels shrank the invite to a thumbnail.** With Font open it was about 150 px wide. | Text panels are shorter (the size and typing panels most of all), and the hint lines inside them are gone, so the invite stays big enough to see each change. |
+| 10 | **Text tools didn't all fit.** | The toolbar scrolls sideways when the selection has many tools, like Canva's: Edit, Font, Size, Colour, Style, Position, Duplicate, Copy, Paste, Copy style, Paste style, Delete. |
+| 11 | **No way to copy a look to other lines.** | **Copy style** and **Paste style**, like Canva's paint roller: font, size, colour, spacing and alignment. |
+| 12 | **Changing a design on an edited page.** | The arrangement is kept and moves into the new design's clear area, shrinking only if it no longer fits. |
+| 13 | **Keyboard (for the 5% on laptops).** | Cmd/Ctrl+C, X, V, D, A and Z (and Shift+Z or Y to redo), arrow keys to nudge (Shift for bigger steps), Delete, Esc. |
+| 14 | **Tip bubble overlapped the hint line.** | The hint hides while a tip shows. |
 
-The root cause behind 3, 4 and part of "restructuring is confusing": text lines aren't free
-elements. They form an automatic stack (top, centre or bottom layout), and a hand move is
-stored as an offset from where the stack would have put the line. Adding or resizing one line
-moves the others. That suits a phone (the layout stays tidy without effort), but on a laptop
-it feels like the editor is fighting you.
+## Still to do (ranked)
 
-## The plan, in order
-
-**Phase 1: laptop shell (biggest win).** At 1024 px and wider:
-- a left rail: Design, Colours, Text, Symbol, Motion, Music
-- a 340 px side panel next to the rail, reusing today's panel contents
-- the canvas as large as the height allows
-- the page strip under the canvas
-- a top bar with undo, redo, Play and Export
-
-Phones keep today's layout.
-
-**Phase 2: one toolbar for whatever is selected,** above the canvas, on laptop:
-- for text: font dropdown, size − n +, colour, bold, italic, capitals, align, spacing, Position, duplicate, delete
-- for the symbol: style, size, colour, Position, delete
-
-The bottom text bar goes away on laptop.
-
-**Phase 3: Canva selection rules.** These apply on phones too, because they're simpler everywhere:
-- a click selects one line or the symbol, never the whole block
-- a double click types into the line on the canvas
-- Shift-click or dragging a box over things picks several
-- Cmd+A picks everything
-- clicking empty space deselects
-
-**Phase 4: handles and keyboard.**
-- Four corner handles change the size and two side handles change the width (lines get a stored width).
-- A small floating bar sits above the selection: duplicate, delete, lock.
-- Keys: Delete, arrows (Shift for bigger steps), Cmd+D, Cmd+C/V, Esc.
-
-**Phase 5: colour and font pickers.**
-- Colour: "Colours in this invite" first, then the full picker with a hex field.
-- Fonts: "Fonts in this invite" first, a search box, groups (Script, Serif, Display, Hindi), and a live preview on the canvas when you hover.
-
-**Phase 6: stop the stack from reshuffling.** Once a line has been moved by hand, it stays where
-you put it. Adding a line or changing another line's size no longer moves it. A Position panel
-has "align to page" buttons (top, middle, bottom, left, centre, right) and forward and backward.
-
-**Leave as they are:** the export, the motion system, the designs library, the page strip
-logic and the PDF sheet. Those work.
+1. **Side handles to change a line's width** (where it wraps). Lines now store a width, so this is a small addition to the selection box.
+2. **Type on the page itself** instead of in the panel's text box (Canva types in place). Harder on phones because of the keyboard; the panel works.
+3. **Layers**: bring forward or send back, for overlapping text.
+4. **Rotate.** Rare on invites; low priority.
+5. **Laptop layout** (left rail, side panel): deliberately not done, because almost everyone is on a phone.

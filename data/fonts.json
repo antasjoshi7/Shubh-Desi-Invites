@@ -42,13 +42,15 @@
     "id": "rozha-one",
     "family": "Rozha One",
     "regular": "/fonts/rozha-one-regular.woff2",
-    "style": "traditional"
+    "style": "traditional",
+    "hindi": true
   },
   {
     "id": "yatra-one",
     "family": "Yatra One",
     "regular": "/fonts/yatra-one-regular.woff2",
-    "style": "traditional"
+    "style": "traditional",
+    "hindi": true
   },
   {
     "id": "gilda-display",
@@ -95,6 +97,263 @@
     "style": "traditional"
   },
   {
+    "id": "abhaya-libre",
+    "family": "Abhaya Libre",
+    "bold": "/fonts/abhaya-libre-bold.woff2",
+    "regular": "/fonts/abhaya-libre-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "alice",
+    "family": "Alice",
+    "regular": "/fonts/alice-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "bellefair",
+    "family": "Bellefair",
+    "regular": "/fonts/bellefair-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cardo",
+    "family": "Cardo",
+    "bold": "/fonts/cardo-bold.woff2",
+    "regular": "/fonts/cardo-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "castoro",
+    "family": "Castoro",
+    "regular": "/fonts/castoro-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cormorant",
+    "family": "Cormorant",
+    "bold": "/fonts/cormorant-bold.woff2",
+    "regular": "/fonts/cormorant-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cormorant-sc",
+    "family": "Cormorant SC",
+    "bold": "/fonts/cormorant-sc-bold.woff2",
+    "regular": "/fonts/cormorant-sc-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "cormorant-upright",
+    "family": "Cormorant Upright",
+    "bold": "/fonts/cormorant-upright-bold.woff2",
+    "regular": "/fonts/cormorant-upright-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "crimson-pro",
+    "family": "Crimson Pro",
+    "bold": "/fonts/crimson-pro-bold.woff2",
+    "regular": "/fonts/crimson-pro-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "della-respira",
+    "family": "Della Respira",
+    "regular": "/fonts/della-respira-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "dm-serif-display",
+    "family": "DM Serif Display",
+    "regular": "/fonts/dm-serif-display-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "eb-garamond",
+    "family": "EB Garamond",
+    "bold": "/fonts/eb-garamond-bold.woff2",
+    "regular": "/fonts/eb-garamond-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "eczar",
+    "family": "Eczar",
+    "bold": "/fonts/eczar-bold.woff2",
+    "regular": "/fonts/eczar-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "forum",
+    "family": "Forum",
+    "regular": "/fonts/forum-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "fraunces",
+    "family": "Fraunces",
+    "bold": "/fonts/fraunces-bold.woff2",
+    "regular": "/fonts/fraunces-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "gloock",
+    "family": "Gloock",
+    "regular": "/fonts/gloock-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "gotu",
+    "family": "Gotu",
+    "regular": "/fonts/gotu-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "halant",
+    "family": "Halant",
+    "bold": "/fonts/halant-bold.woff2",
+    "regular": "/fonts/halant-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "kadwa",
+    "family": "Kadwa",
+    "bold": "/fonts/kadwa-bold.woff2",
+    "regular": "/fonts/kadwa-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "kurale",
+    "family": "Kurale",
+    "regular": "/fonts/kurale-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "libre-baskerville",
+    "family": "Libre Baskerville",
+    "bold": "/fonts/libre-baskerville-bold.woff2",
+    "regular": "/fonts/libre-baskerville-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "lora",
+    "family": "Lora",
+    "bold": "/fonts/lora-bold.woff2",
+    "regular": "/fonts/lora-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "lustria",
+    "family": "Lustria",
+    "regular": "/fonts/lustria-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "marcellus-sc",
+    "family": "Marcellus SC",
+    "regular": "/fonts/marcellus-sc-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "martel",
+    "family": "Martel",
+    "bold": "/fonts/martel-bold.woff2",
+    "regular": "/fonts/martel-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "noto-serif-devanagari",
+    "family": "Noto Serif Devanagari",
+    "bold": "/fonts/noto-serif-devanagari-bold.woff2",
+    "regular": "/fonts/noto-serif-devanagari-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "old-standard-tt",
+    "family": "Old Standard TT",
+    "bold": "/fonts/old-standard-tt-bold.woff2",
+    "regular": "/fonts/old-standard-tt-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "philosopher",
+    "family": "Philosopher",
+    "bold": "/fonts/philosopher-bold.woff2",
+    "regular": "/fonts/philosopher-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "playfair-display-sc",
+    "family": "Playfair Display SC",
+    "bold": "/fonts/playfair-display-sc-bold.woff2",
+    "regular": "/fonts/playfair-display-sc-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "prata",
+    "family": "Prata",
+    "regular": "/fonts/prata-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "rufina",
+    "family": "Rufina",
+    "bold": "/fonts/rufina-bold.woff2",
+    "regular": "/fonts/rufina-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "spectral",
+    "family": "Spectral",
+    "bold": "/fonts/spectral-bold.woff2",
+    "regular": "/fonts/spectral-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "sumana",
+    "family": "Sumana",
+    "bold": "/fonts/sumana-bold.woff2",
+    "regular": "/fonts/sumana-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "sura",
+    "family": "Sura",
+    "bold": "/fonts/sura-bold.woff2",
+    "regular": "/fonts/sura-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "tiro-devanagari-hindi",
+    "family": "Tiro Devanagari Hindi",
+    "regular": "/fonts/tiro-devanagari-hindi-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
+    "id": "unna",
+    "family": "Unna",
+    "bold": "/fonts/unna-bold.woff2",
+    "regular": "/fonts/unna-regular.woff2",
+    "style": "traditional"
+  },
+  {
+    "id": "vesper-libre",
+    "family": "Vesper Libre",
+    "bold": "/fonts/vesper-libre-bold.woff2",
+    "regular": "/fonts/vesper-libre-regular.woff2",
+    "style": "traditional",
+    "hindi": true
+  },
+  {
     "id": "pinyon-script",
     "family": "Pinyon Script",
     "regular": "/fonts/pinyon-script-regular.woff2",
@@ -129,6 +388,236 @@
     "family": "Amita",
     "bold": "/fonts/amita-bold.woff2",
     "regular": "/fonts/amita-regular.woff2",
+    "style": "script",
+    "hindi": true
+  },
+  {
+    "id": "allison",
+    "family": "Allison",
+    "regular": "/fonts/allison-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "arizonia",
+    "family": "Arizonia",
+    "regular": "/fonts/arizonia-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "birthstone",
+    "family": "Birthstone",
+    "regular": "/fonts/birthstone-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "charm",
+    "family": "Charm",
+    "bold": "/fonts/charm-bold.woff2",
+    "regular": "/fonts/charm-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "clicker-script",
+    "family": "Clicker Script",
+    "regular": "/fonts/clicker-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "cookie",
+    "family": "Cookie",
+    "regular": "/fonts/cookie-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "corinthia",
+    "family": "Corinthia",
+    "bold": "/fonts/corinthia-bold.woff2",
+    "regular": "/fonts/corinthia-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "dancing-script",
+    "family": "Dancing Script",
+    "bold": "/fonts/dancing-script-bold.woff2",
+    "regular": "/fonts/dancing-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "ephesis",
+    "family": "Ephesis",
+    "regular": "/fonts/ephesis-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "fleur-de-leah",
+    "family": "Fleur De Leah",
+    "regular": "/fonts/fleur-de-leah-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "great-vibes",
+    "family": "Great Vibes",
+    "regular": "/fonts/great-vibes-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "herr-von-muellerhoff",
+    "family": "Herr Von Muellerhoff",
+    "regular": "/fonts/herr-von-muellerhoff-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "imperial-script",
+    "family": "Imperial Script",
+    "regular": "/fonts/imperial-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "italianno",
+    "family": "Italianno",
+    "regular": "/fonts/italianno-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "kalam",
+    "family": "Kalam",
+    "bold": "/fonts/kalam-bold.woff2",
+    "regular": "/fonts/kalam-regular.woff2",
+    "style": "script",
+    "hindi": true
+  },
+  {
+    "id": "kaushan-script",
+    "family": "Kaushan Script",
+    "regular": "/fonts/kaushan-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "lavishly-yours",
+    "family": "Lavishly Yours",
+    "regular": "/fonts/lavishly-yours-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "lovers-quarrel",
+    "family": "Lovers Quarrel",
+    "regular": "/fonts/lovers-quarrel-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "luxurious-script",
+    "family": "Luxurious Script",
+    "regular": "/fonts/luxurious-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "marck-script",
+    "family": "Marck Script",
+    "regular": "/fonts/marck-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "mea-culpa",
+    "family": "Mea Culpa",
+    "regular": "/fonts/mea-culpa-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "meddon",
+    "family": "Meddon",
+    "regular": "/fonts/meddon-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "monsieur-la-doulaise",
+    "family": "Monsieur La Doulaise",
+    "regular": "/fonts/monsieur-la-doulaise-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "mrs-saint-delafield",
+    "family": "Mrs Saint Delafield",
+    "regular": "/fonts/mrs-saint-delafield-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "ms-madi",
+    "family": "Ms Madi",
+    "regular": "/fonts/ms-madi-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "niconne",
+    "family": "Niconne",
+    "regular": "/fonts/niconne-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "playball",
+    "family": "Playball",
+    "regular": "/fonts/playball-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "qwigley",
+    "family": "Qwigley",
+    "regular": "/fonts/qwigley-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "rochester",
+    "family": "Rochester",
+    "regular": "/fonts/rochester-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "rouge-script",
+    "family": "Rouge Script",
+    "regular": "/fonts/rouge-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "sacramento",
+    "family": "Sacramento",
+    "regular": "/fonts/sacramento-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "satisfy",
+    "family": "Satisfy",
+    "regular": "/fonts/satisfy-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "style-script",
+    "family": "Style Script",
+    "regular": "/fonts/style-script-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "tangerine",
+    "family": "Tangerine",
+    "bold": "/fonts/tangerine-bold.woff2",
+    "regular": "/fonts/tangerine-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "the-nautigal",
+    "family": "The Nautigal",
+    "bold": "/fonts/the-nautigal-bold.woff2",
+    "regular": "/fonts/the-nautigal-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "windsong",
+    "family": "WindSong",
+    "regular": "/fonts/windsong-regular.woff2",
+    "style": "script"
+  },
+  {
+    "id": "yellowtail",
+    "family": "Yellowtail",
+    "regular": "/fonts/yellowtail-regular.woff2",
     "style": "script"
   },
   {
@@ -142,5 +631,273 @@
     "family": "Royal Moscow",
     "regular": "/fonts/royal-moscow-regular.woff2",
     "style": "display"
+  },
+  {
+    "id": "aboreto",
+    "family": "Aboreto",
+    "regular": "/fonts/aboreto-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "abril-fatface",
+    "family": "Abril Fatface",
+    "regular": "/fonts/abril-fatface-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "almendra-display",
+    "family": "Almendra Display",
+    "regular": "/fonts/almendra-display-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "arya",
+    "family": "Arya",
+    "bold": "/fonts/arya-bold.woff2",
+    "regular": "/fonts/arya-regular.woff2",
+    "style": "display",
+    "hindi": true
+  },
+  {
+    "id": "baloo-2",
+    "family": "Baloo 2",
+    "bold": "/fonts/baloo-2-bold.woff2",
+    "regular": "/fonts/baloo-2-regular.woff2",
+    "style": "display",
+    "hindi": true
+  },
+  {
+    "id": "berkshire-swash",
+    "family": "Berkshire Swash",
+    "regular": "/fonts/berkshire-swash-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "eagle-lake",
+    "family": "Eagle Lake",
+    "regular": "/fonts/eagle-lake-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "elsie",
+    "family": "Elsie",
+    "regular": "/fonts/elsie-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "elsie-swash-caps",
+    "family": "Elsie Swash Caps",
+    "regular": "/fonts/elsie-swash-caps-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "federo",
+    "family": "Federo",
+    "regular": "/fonts/federo-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "kalnia",
+    "family": "Kalnia",
+    "bold": "/fonts/kalnia-bold.woff2",
+    "regular": "/fonts/kalnia-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "khand",
+    "family": "Khand",
+    "bold": "/fonts/khand-bold.woff2",
+    "regular": "/fonts/khand-regular.woff2",
+    "style": "display",
+    "hindi": true
+  },
+  {
+    "id": "laila",
+    "family": "Laila",
+    "bold": "/fonts/laila-bold.woff2",
+    "regular": "/fonts/laila-regular.woff2",
+    "style": "display",
+    "hindi": true
+  },
+  {
+    "id": "limelight",
+    "family": "Limelight",
+    "regular": "/fonts/limelight-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "lobster",
+    "family": "Lobster",
+    "regular": "/fonts/lobster-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "lobster-two",
+    "family": "Lobster Two",
+    "bold": "/fonts/lobster-two-bold.woff2",
+    "regular": "/fonts/lobster-two-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "modak",
+    "family": "Modak",
+    "regular": "/fonts/modak-regular.woff2",
+    "style": "display",
+    "hindi": true
+  },
+  {
+    "id": "poiret-one",
+    "family": "Poiret One",
+    "regular": "/fonts/poiret-one-regular.woff2",
+    "style": "display"
+  },
+  {
+    "id": "comfortaa",
+    "family": "Comfortaa",
+    "bold": "/fonts/comfortaa-bold.woff2",
+    "regular": "/fonts/comfortaa-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "didact-gothic",
+    "family": "Didact Gothic",
+    "regular": "/fonts/didact-gothic-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "dm-sans",
+    "family": "DM Sans",
+    "bold": "/fonts/dm-sans-bold.woff2",
+    "regular": "/fonts/dm-sans-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "hind",
+    "family": "Hind",
+    "bold": "/fonts/hind-bold.woff2",
+    "regular": "/fonts/hind-regular.woff2",
+    "style": "modern",
+    "hindi": true
+  },
+  {
+    "id": "josefin-sans",
+    "family": "Josefin Sans",
+    "bold": "/fonts/josefin-sans-bold.woff2",
+    "regular": "/fonts/josefin-sans-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "jost",
+    "family": "Jost",
+    "bold": "/fonts/jost-bold.woff2",
+    "regular": "/fonts/jost-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "lato",
+    "family": "Lato",
+    "bold": "/fonts/lato-bold.woff2",
+    "regular": "/fonts/lato-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "manrope",
+    "family": "Manrope",
+    "bold": "/fonts/manrope-bold.woff2",
+    "regular": "/fonts/manrope-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "montserrat",
+    "family": "Montserrat",
+    "bold": "/fonts/montserrat-bold.woff2",
+    "regular": "/fonts/montserrat-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "mukta",
+    "family": "Mukta",
+    "bold": "/fonts/mukta-bold.woff2",
+    "regular": "/fonts/mukta-regular.woff2",
+    "style": "modern",
+    "hindi": true
+  },
+  {
+    "id": "nunito",
+    "family": "Nunito",
+    "bold": "/fonts/nunito-bold.woff2",
+    "regular": "/fonts/nunito-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "outfit",
+    "family": "Outfit",
+    "bold": "/fonts/outfit-bold.woff2",
+    "regular": "/fonts/outfit-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "poppins",
+    "family": "Poppins",
+    "bold": "/fonts/poppins-bold.woff2",
+    "regular": "/fonts/poppins-regular.woff2",
+    "style": "modern",
+    "hindi": true
+  },
+  {
+    "id": "questrial",
+    "family": "Questrial",
+    "regular": "/fonts/questrial-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "quicksand",
+    "family": "Quicksand",
+    "bold": "/fonts/quicksand-bold.woff2",
+    "regular": "/fonts/quicksand-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "rajdhani",
+    "family": "Rajdhani",
+    "bold": "/fonts/rajdhani-bold.woff2",
+    "regular": "/fonts/rajdhani-regular.woff2",
+    "style": "modern",
+    "hindi": true
+  },
+  {
+    "id": "raleway",
+    "family": "Raleway",
+    "bold": "/fonts/raleway-bold.woff2",
+    "regular": "/fonts/raleway-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "teko",
+    "family": "Teko",
+    "bold": "/fonts/teko-bold.woff2",
+    "regular": "/fonts/teko-regular.woff2",
+    "style": "modern",
+    "hindi": true
+  },
+  {
+    "id": "tenor-sans",
+    "family": "Tenor Sans",
+    "regular": "/fonts/tenor-sans-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "urbanist",
+    "family": "Urbanist",
+    "bold": "/fonts/urbanist-bold.woff2",
+    "regular": "/fonts/urbanist-regular.woff2",
+    "style": "modern"
+  },
+  {
+    "id": "work-sans",
+    "family": "Work Sans",
+    "bold": "/fonts/work-sans-bold.woff2",
+    "regular": "/fonts/work-sans-regular.woff2",
+    "style": "modern"
   }
 ]

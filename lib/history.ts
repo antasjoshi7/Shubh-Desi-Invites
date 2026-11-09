@@ -23,6 +23,9 @@ export function useHistory<T>(initial: () => T) {
     });
   }, []);
 
+  // Changes the value without an undo step, for changes you can't see (pinning a page's layout).
+  const replace = useCallback((fn: (prev: T) => T) => setState((s) => ({ ...s, now: fn(s.now) })), []);
+
   // Replaces the value without an undo step (e.g. loading a saved invite).
   const reset = useCallback((value: T) => setState({ past: [], now: value, future: [] }), []);
 
@@ -36,5 +39,5 @@ export function useHistory<T>(initial: () => T) {
     setState((s) => (s.future.length ? { past: [...s.past, s.now], now: s.future[0], future: s.future.slice(1) } : s));
   }, []);
 
-  return { value: state.now, set, reset, undo, redo, canUndo: state.past.length > 0, canRedo: state.future.length > 0 };
+  return { value: state.now, set, replace, reset, undo, redo, canUndo: state.past.length > 0, canRedo: state.future.length > 0 };
 }

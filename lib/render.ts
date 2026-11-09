@@ -4,7 +4,7 @@
 
 import { getImage } from "./assets";
 import { DEFAULT_INITIALS, LAYOUTS, findBackground, surfaceOf } from "./catalog";
-import { isLight, mix } from "./colors";
+import { isLight, mix, readableOn } from "./colors";
 import { drawChariot, drawDiya, drawDoor, drawFallingPetal, drawFlower, drawMandala, rnd } from "./decorations";
 import { styledBackground } from "./recolour";
 import { PAINTED_MOTIONS, drawPaintedMotion } from "./motions";
@@ -49,9 +49,11 @@ type Line = {
 };
 
 // The colour a text box is drawn in.
+// The palette's two colours are nudged darker or lighter when needed, so they always read on the
+// paper (a pale gold title on cream paper becomes a deeper gold). Colours picked by hand stay exact.
 export function boxColor(box: TextBox, page: Page): string {
-  if (box.color === "text") return page.palette.text;
-  if (box.color === "accent") return page.palette.accent;
+  if (box.color === "text") return readableOn(page.palette.text, pageSurface(page), 4.5);
+  if (box.color === "accent") return readableOn(page.palette.accent, pageSurface(page), 3.2);
   return box.color;
 }
 
@@ -88,8 +90,8 @@ function drawSymbolAt(ctx: CanvasRenderingContext2D, page: Page, mono: { x: numb
   ctx.translate(mono.x, mono.y);
   ctx.scale(0.85 + 0.15 * e, 0.85 + 0.15 * e);
   drawSymbol(ctx, 0, 0, mono.size, page.symbolStyle, {
-    main: page.palette.text,
-    accent: page.palette.accent,
+    main: readableOn(page.palette.text, pageSurface(page), 4.5),
+    accent: readableOn(page.palette.accent, pageSurface(page), 3.2),
     surface: pageSurface(page),
     initials: page.initials ?? DEFAULT_INITIALS,
   });
@@ -142,6 +144,7 @@ export function clearArea(page: Page): Area {
 // Works out every line of text and its position: the symbol and lines are stacked,
 // shrunk if needed so they fit the design's clear area, then placed inside it.
 function layoutText(ctx: CanvasRenderingContext2D, page: Page) {
+  if (page.pinned) return layoutPinned(ctx, page);
   const area = clearArea(page);
   const maxWidth = Math.min(MAX_TEXT_WIDTH, area.w - AREA_PAD * 2);
   const room = area.h - AREA_PAD * 2;
@@ -252,6 +255,159 @@ function layoutText(ctx: CanvasRenderingContext2D, page: Page) {
   }
 
   return { groups, centerY, mono, fit };
+}
+
+// A pinned page: every line sits in its own frame (left edge x, top y, width w) at its own size.
+// Nothing here depends on the other lines, so changing one line never moves another.
+function layoutPinned(ctx: CanvasRenderingContext2D, page: Page) {
+  const groups: Line[][] = [];
+  for (const box of page.boxes) {
+    const look = lineLook(box, page);
+    const raw = box.text.trim();
+    if (!raw) continue;
+    const value = look.caps ? raw.toUpperCase() : raw;
+    const frameW = box.w ?? MAX_TEXT_WIDTH;
+    const left = (box.x ?? (W - frameW) / 2) + (box.dx ?? 0);
+    let y = (box.y ?? H / 2) + (box.dy ?? 0);
+    const spacing = JOINED_SCRIPT.test(raw) ? 0 : look.tracking;
+    let size = designSize(box);
+    const measureAt = (t: string, sz: number) => runsWidth(ctx, runsOf(t), sz, look.font, look.bold, look.italic, spacing * sz);
+    // a short line (a date, a name) shrinks a little rather than breaking onto two lines
+    if (!raw.includes("\n") && value.length <= 34) {
+      const w1 = measureAt(value, size);
+      if (w1 > frameW && w1 <= frameW * 1.3) size *= frameW / w1;
+    }
+    const lh = size * look.spacing;
+    ctx.font = fontString(size, look.font, look.bold, look.italic);
+    const measure = (t: string) => measureAt(t, size);
+    groups.push(
+      wrapBalanced(value, frameW, measure).map((text) => {
+        const width = measure(text);
+        const x = look.align === "left" ? left + width / 2 : look.align === "right" ? left + frameW - width / 2 : left + frameW / 2;
+        const line: Line = { text, runs: runsOf(text), size, font: look.font, color: boxColor(box, page), x, y: y + lh / 2, width, boxId: box.id, bold: look.bold, italic: look.italic, tracking: spacing * size, lh };
+        y += lh;
+        return line;
+      }),
+    );
+  }
+  let mono: { x: number; y: number; size: number } | null = null;
+  if (page.symbol !== "off") {
+    const size = (page.symbolSize ?? SYMBOL_SIZE[page.symbol] * 0.8) * (page.symbolScale ?? 1);
+    const top = groups.length ? Math.min(...groups.map((g) => g[0].y - g[0].lh / 2)) : H / 2;
+    // a symbol switched on after pinning sits above the text
+    const x = page.symbolX ?? W / 2;
+    const y = page.symbolY ?? top - size / 2 - 30;
+    mono = { x: x + (page.symbolDx ?? 0), y: y + (page.symbolDy ?? 0), size };
+  }
+  // "Size of everything" grows or shrinks it all around its middle
+  const all = groups.flat();
+  const top = Math.min(mono ? mono.y - mono.size / 2 : Infinity, ...all.map((l) => l.y - l.lh / 2));
+  const bottom = Math.max(mono ? mono.y + mono.size / 2 : -Infinity, ...all.map((l) => l.y + l.lh / 2));
+  const centerY = Number.isFinite(top) ? (top + bottom) / 2 : H / 2;
+  const k = page.textScale ?? 1;
+  if (k !== 1) {
+    const cx = W / 2;
+    for (const l of all) {
+      l.x = cx + (l.x - cx) * k;
+      l.y = centerY + (l.y - centerY) * k;
+      l.size *= k;
+      l.lh *= k;
+      l.width *= k;
+      l.tracking *= k;
+    }
+    if (mono) mono = { x: cx + (mono.x - cx) * k, y: centerY + (mono.y - centerY) * k, size: mono.size * k };
+  }
+  return { groups, centerY, mono, fit: 1 };
+}
+
+// Turns an automatic page into a pinned one that looks exactly the same: every line gets the
+// place and size it is drawn at right now. Pages are pinned the moment you touch their text.
+export function pinPage(page: Page): Page {
+  if (page.pinned) return page;
+  measureCtx ??= document.createElement("canvas").getContext("2d")!;
+  const { groups, mono } = layoutText(measureCtx, page);
+  const area = clearArea(page);
+  const frameW = Math.min(MAX_TEXT_WIDTH, area.w - AREA_PAD * 2);
+  const byId = new Map(groups.map((g) => [g[0].boxId, g]));
+  let lastBottom = area.y + area.h / 2;
+  const fit = layoutText(measureCtx, page).fit;
+  const boxes = page.boxes.map((b) => {
+    const g = byId.get(b.id);
+    if (!g) return { ...b, x: W / 2 - frameW / 2, y: lastBottom, w: frameW, px: Math.round(designSize(b) * fit * page.textScale), scale: undefined, dx: 0, dy: 0 };
+    const first = g[0];
+    const last = g[g.length - 1];
+    lastBottom = last.y + last.lh / 2;
+    // the frame is the text column, moved along with the line
+    return { ...b, x: W / 2 - frameW / 2 + (b.dx ?? 0), y: first.y - first.lh / 2, w: frameW, px: Math.round(first.size * 10) / 10, scale: undefined, dx: 0, dy: 0 };
+  });
+  return {
+    ...page,
+    pinned: true,
+    textScale: 1,
+    boxes,
+    ...(mono ? { symbolX: mono.x, symbolY: mono.y, symbolSize: mono.size } : {}),
+    symbolDx: 0,
+    symbolDy: 0,
+    symbolScale: 1,
+  };
+}
+
+// "Tidy layout": back to the automatic stack (sizes go back to each line's style).
+export function unpinPage(page: Page): Page {
+  return {
+    ...page,
+    pinned: false,
+    textScale: 1,
+    symbolX: undefined,
+    symbolY: undefined,
+    symbolSize: undefined,
+    symbolDx: 0,
+    symbolDy: 0,
+    symbolScale: 1,
+    boxes: page.boxes.map((b) => ({ ...b, x: undefined, y: undefined, w: undefined, dx: 0, dy: 0, px: undefined, scale: undefined })),
+  };
+}
+
+// A pinned page that changes design keeps its arrangement: the whole block moves into the new
+// design's clear area, shrinking only if it no longer fits.
+export function refitPinned(page: Page): Page {
+  if (!page.pinned) return page;
+  const rects = textBoxRects(page);
+  if (!rects.length) return page;
+  const area = clearArea(page);
+  const x0 = Math.min(...rects.map((r) => r.x));
+  const y0 = Math.min(...rects.map((r) => r.y));
+  const x1 = Math.max(...rects.map((r) => r.x + r.w));
+  const y1 = Math.max(...rects.map((r) => r.y + r.h));
+  const pad = AREA_PAD;
+  const k = Math.min(1, (area.w - pad * 2) / Math.max(1, x1 - x0), (area.h - pad * 2) / Math.max(1, y1 - y0));
+  const anchor = LAYOUTS.find((l) => l.id === page.layout)?.anchor ?? 0.5;
+  const ocx = (x0 + x1) / 2;
+  const ocy = (y0 + y1) / 2;
+  const h = (y1 - y0) * k;
+  const ncx = area.x + area.w / 2;
+  const ncy = area.y + pad + Math.max(0, area.h - pad * 2 - h) * anchor + h / 2;
+  const mx = (x: number) => ncx + (x - ocx) * k;
+  const my = (y: number) => ncy + (y - ocy) * k;
+  return {
+    ...page,
+    boxes: page.boxes.map((b) => {
+      const w = b.w ?? MAX_TEXT_WIDTH;
+      const left = (b.x ?? (W - w) / 2) + (b.dx ?? 0);
+      const top = (b.y ?? H / 2) + (b.dy ?? 0);
+      return { ...b, x: mx(left), y: my(top), w: w * k, px: Math.round(designSize(b) * k * 10) / 10, scale: undefined, dx: 0, dy: 0 };
+    }),
+    ...(page.symbolX !== undefined && page.symbolY !== undefined
+      ? {
+          symbolX: mx(page.symbolX + (page.symbolDx ?? 0)),
+          symbolY: my(page.symbolY + (page.symbolDy ?? 0)),
+          symbolSize: (page.symbolSize ?? SYMBOL_SIZE.small) * (page.symbolScale ?? 1) * k,
+          symbolDx: 0,
+          symbolDy: 0,
+          symbolScale: 1,
+        }
+      : {}),
+  };
 }
 
 // How much the page has shrunk its text to fit the design (1 = not at all).

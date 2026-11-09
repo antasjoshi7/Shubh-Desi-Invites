@@ -31,6 +31,10 @@ export type TextBox = {
   dx?: number; // moved by hand: offset from its automatic position (720x1280 units)
   dy?: number;
   scale?: number; // resized by hand: multiplies its text size (1 = normal)
+  // On a pinned page (see Page.pinned) every line has its own place, like a Canva text box:
+  x?: number; // left edge of the line's frame (720x1280 units); the text aligns inside the frame
+  y?: number; // top of the first line
+  w?: number; // frame width: longer text wraps at this width
 };
 
 export type Palette = {
@@ -134,6 +138,12 @@ export type Page = {
   symbolDx?: number; // symbol moved by hand (720x1280 units)
   symbolDy?: number;
   symbolScale?: number; // symbol resized by hand (1 = normal)
+  // Pinned: once you touch the text on a page, every line keeps its own place and size, so changing
+  // one line never moves or shrinks the others. Unpinned pages stack and fit their text automatically.
+  pinned?: boolean;
+  symbolX?: number; // pinned symbol centre and size (720x1280 units)
+  symbolY?: number;
+  symbolSize?: number;
   symbolStyle: SymbolStyle; // the same on every page
   initials?: [string, string]; // for the monogram styles, e.g. ["R", "A"] (the same on every page)
   // Defaults for text lines that don't set their own (new lines copy the line you were on).

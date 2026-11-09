@@ -75,3 +75,25 @@ export function rankPalettes(palettes: Palette[], surface: string, primary?: str
   ranked.filter((r) => r.readable).slice(0, 3).forEach((r) => (r.recommended = true));
   return ranked;
 }
+
+// The colour, made darker (on light paper) or lighter (on dark paper) just enough to reach the
+// given contrast. Keeps its hue, so a gold stays a gold. Colours that already read are unchanged.
+export function readableOn(color: string, surface: string, min: number): string {
+  if (contrast(color, surface) >= min) return color;
+  // try darker and lighter; keep whichever needs the smaller change (mid-tone paper can go either way)
+  const reach = (toward: string) => {
+    if (contrast(toward, surface) < min) return null;
+    let lo = 0, hi = 1;
+    for (let i = 0; i < 12; i++) {
+      const m = (lo + hi) / 2;
+      if (contrast(mix(color, toward, m), surface) >= min) hi = m;
+      else lo = m;
+    }
+    return hi;
+  };
+  const dark = reach("#000000");
+  const light = reach("#ffffff");
+  if (dark === null && light === null) return contrast("#000000", surface) > contrast("#ffffff", surface) ? "#000000" : "#ffffff";
+  if (light === null || (dark !== null && dark <= light)) return mix(color, "#000000", dark!);
+  return mix(color, "#ffffff", light);
+}

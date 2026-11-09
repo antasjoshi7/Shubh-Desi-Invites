@@ -32,6 +32,7 @@ export type FontInfo = {
   regular: string;
   bold?: string;
   style: "traditional" | "script" | "display" | "modern";
+  hindi?: boolean; // has Hindi (Devanagari) letters
 };
 
 export const SYMBOL_STYLES: { id: SymbolStyle; name: string }[] = [

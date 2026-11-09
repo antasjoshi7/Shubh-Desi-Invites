@@ -1,7 +1,7 @@
 # Pending actions
 
 The running to-do list for growing the site. Kept up to date at the end of every working session.
-Last updated: 9 November 2026.
+Last updated: 10 November 2026.
 
 Marketing plan (wedges, channel playbooks, timeline): https://claude.ai/artifact/LdisrAbJhZiB2Yc5v9et9t
 
@@ -76,7 +76,7 @@ Things only you can get that would put the site ahead of every competitor. Ranke
 
 ## Product follow-ups (no rush)
 
-- **Editor redesign for laptops (top priority)**: Canva-style layout, one toolbar for the selection, click = one item, double click = type, real handles, keyboard. Plan and phases in **docs/EDITOR-REDESIGN.md**.
+- **Editor, next steps**: side handles for line width, typing on the page, layers. Ranked in **docs/EDITOR-REDESIGN.md** (phones first; the laptop layout stays as it is).
 
 Bigger product ideas (personal invites per guest, RSVP management, physical card commission model, other occasions and more) are scored in **docs/IDEAS.md**.
 
@@ -86,6 +86,8 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 - **Clouds on light designs**: the clouds are cream, so they barely show on cream paper; they look best on coloured designs. A darker-edged variant would need one more Recraft generation.
 
 ## Done recently
+
+- 10 Nov: phone editor rebuilt to Canva level (not deployed yet): lines keep their place when another line changes (pinned layout), one tap picks a line, copy/paste/duplicate, Position panel (align, space evenly, tidy), your colours remembered, readable colour combos (22), 136 fonts with search and groups, shorter text panels. Details in docs/EDITOR-REDESIGN.md.
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.
 - 9 Nov: deployed to production; fixed page addresses on Vercel (cleanUrls in vercel.json).

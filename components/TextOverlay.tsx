@@ -31,10 +31,9 @@ function capture(e: React.PointerEvent<HTMLElement>) {
   }
 }
 
-// Sits on top of the big preview, like Canva. The first tap picks the whole block (symbol and
-// all the text): drag to move it, pinch or pull the corner dot to resize it. Tap a line in the
-// block to pick just that line (tap it again to type). Press and hold to pick several.
-// Moving snaps to guides and even spacing.
+// Sits on top of the big preview, like Canva. A tap picks that one line (or the symbol): drag to
+// move it, pinch or pull the corner dot to resize it, tap it again to type. Press and hold to pick
+// several; "Select all" picks everything. Moving snaps to guides and even spacing.
 export function TextOverlay({
   rects,
   items,
@@ -44,7 +43,6 @@ export function TextOverlay({
   group,
   groupScale,
   onSelect,
-  onGroup,
   onHold,
   onMove,
   onScale,
@@ -60,7 +58,6 @@ export function TextOverlay({
   group: boolean; // the whole block is picked
   groupScale: number; // the block's size (1 = normal)
   onSelect: (ids: string[]) => void;
-  onGroup: () => void; // pick the whole block
   onGroupScale: (scale: number) => void;
   onHold: (id: string) => void; // press and hold: start picking several
   onMove: (moves: { id: string; dx: number; dy: number }[]) => void;
@@ -396,10 +393,9 @@ export function TextOverlay({
               onPointerDown={(e) => {
                 e.stopPropagation();
                 capture(e);
-                if (group || (!selected.length && !multi)) {
-                  // nothing picked yet: pick the whole block; already picked: drag it
-                  if (!group) onGroup();
-                  startGroupDrag(e, group ? "group" : "fresh");
+                if (group) {
+                  // everything is picked (Select all): drag it all
+                  startGroupDrag(e, "group");
                 } else {
                   // one line (or several): drag it; an unpicked line gets picked (alone, unless picking several)
                   const ids = isOn ? selected : multi ? [...selected, r.id] : [r.id];

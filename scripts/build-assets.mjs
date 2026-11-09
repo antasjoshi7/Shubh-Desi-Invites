@@ -138,9 +138,16 @@ async function buildFonts() {
     entry[m[2]] = `/fonts/${f}`;
     families.set(m[1], entry);
   }
+  // fonts fetched by scripts/fetch-fonts.mjs: their real names, looks and Hindi letters
+  const metaFile = path.join(DATA_DIR, "font-meta.json");
+  const meta = fs.existsSync(metaFile) ? JSON.parse(fs.readFileSync(metaFile, "utf8")) : {};
   const fonts = [...families.values()]
     .filter((f) => f.regular)
-    .map((f) => ({ ...f, style: FONT_STYLES[f.family] ?? "modern" }))
+    .map((f) => {
+      const m = meta[f.id];
+      const family = m?.family ?? f.family;
+      return { ...f, family, style: FONT_STYLES[family] ?? m?.style ?? "modern", ...(m?.hindi ? { hindi: true } : {}) };
+    })
     .filter((f) => f.style !== "skip")
     .sort((a, b) => STYLE_ORDER.indexOf(a.style) - STYLE_ORDER.indexOf(b.style) || listed(a) - listed(b));
   return fonts;

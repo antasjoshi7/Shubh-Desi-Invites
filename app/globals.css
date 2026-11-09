@@ -1045,3 +1045,47 @@ p.sec-desc { margin: 8px 0 0; }
 .download-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 .download-actions .btn { width: 100%; font-size: 14px; padding: 12px 8px; }
 .btn.secondary { background: transparent; border: 1px solid var(--line-2); color: var(--cream); box-shadow: none; }
+
+/* ---------- Canva-style editing (Nov 2026) ---------- */
+
+/* the toolbar scrolls sideways when the selection has many tools, like Canva's */
+.toolbar { overflow-x: auto; scrollbar-width: none; overscroll-behavior-x: contain; }
+.toolbar::-webkit-scrollbar { display: none; }
+.toolbar .tool { flex: 1 0 auto; min-width: 56px; padding-left: 4px; padding-right: 4px; }
+
+/* text panels stay short so the invite stays big enough to see each change */
+.panel-font, .panel-size, .panel-tcolour, .panel-style, .panel-edit, .panel-position { max-height: 40%; }
+.panel-size, .panel-edit { max-height: 30%; }
+
+/* font picker */
+.font-picker { display: flex; flex-direction: column; gap: 8px; }
+.font-search {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--cream);
+  font-size: 16px; /* 16px stops iPhones zooming in */
+}
+.font-groups { margin: 0; }
+.font-row { padding-top: 8px; padding-bottom: 8px; }
+.font-sample { font-size: 20px; }
+.font-sample.loading { opacity: 0.35; }
+.font-name { display: flex; align-items: center; gap: 6px; max-width: 42%; overflow: hidden; text-overflow: ellipsis; }
+.font-tag { font-style: normal; letter-spacing: 0; text-transform: none; padding: 1px 5px; border-radius: 6px; background: rgba(255, 180, 0, 0.16); color: var(--marigold); opacity: 1; }
+.apply-row { margin-top: 12px; }
+
+/* position */
+.pos-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.pos-grid button {
+  padding: 11px 6px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--cream);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.pos-grid button:active { transform: scale(0.97); background: rgba(255, 46, 126, 0.14); }

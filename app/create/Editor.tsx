@@ -9,8 +9,9 @@ import { DownloadSheet } from "@/components/DownloadSheet";
 import { RatingBox } from "@/components/RatingBox";
 import { SymbolTile } from "@/components/SymbolTile";
 import { TextOverlay, type OverlayItem } from "@/components/TextOverlay";
+import { FontPicker } from "@/components/FontPicker";
 import { Tip, useTips } from "@/components/Tip";
-import { loadFont, loadImage } from "@/lib/assets";
+import { ensureFonts, loadFont, loadImage } from "@/lib/assets";
 import { playForVideo, playTrack } from "@/lib/audio";
 import { MUSIC, musicFor } from "@/lib/music";
 import {
@@ -33,7 +34,7 @@ import {
   lookFor,
   surfaceOf,
 } from "@/lib/catalog";
-import { rankPalettes } from "@/lib/colors";
+import { rankPalettes, readableOn } from "@/lib/colors";
 import { EVENTS, defaultInvite, duplicatePage, makePage, newId, pageTitles, startFrom } from "@/lib/defaults";
 import { exportVideo, type ExportResult } from "@/lib/export";
 import { useHistory } from "@/lib/history";
@@ -47,6 +48,9 @@ import {
   W,
   boxColor,
   clearArea,
+  pageSurface,
+  pinPage,
+  refitPinned,
   renderInvite,
   renderPageAt,
   renderTransition,
@@ -54,10 +58,12 @@ import {
   textFit,
   totalDuration,
   transitionLength,
+  unpinPage,
+  type BoxRect,
 } from "@/lib/render";
 import { PAINTED_MOTIONS, motionAssets } from "@/lib/motions";
 import { SYMBOL_FONTS } from "@/lib/symbols";
-import { ROLES, ROLE_ORDER, baseSize, designSize, fontSlot, guessRole, lineLook } from "@/lib/textStyles";
+import { ROLES, ROLE_ORDER, baseSize, designSize, fontSlot, fontsUsed, guessRole, lineLook } from "@/lib/textStyles";
 import type { AnimationId, BgColours, EventId, Invite, Page, PageKind, SameEverywhere, TextBox, TextRole, TransitionId } from "@/lib/types";
 
 // The panel that slides up above the toolbar.
@@ -72,6 +78,7 @@ type Panel =
   | "tcolour"
   | "style"
   | "edit"
+  | "position"
   | "add"
   | "pagemenu"
   | "more"
@@ -89,7 +96,7 @@ const SAME_KEYS: Record<keyof SameEverywhere, (keyof Page)[]> = {
 // Settings that are always the same on every page.
 const ALWAYS_SAME: (keyof Page)[] = ["symbolStyle", "initials", "transition"];
 // Panels for the selected text: they stay open while you tap between lines.
-const TEXT_PANELS: Panel[] = ["font", "size", "tcolour", "style", "edit"];
+const TEXT_PANELS: Panel[] = ["font", "size", "tcolour", "style", "edit", "position"];
 // Panels for browsing (designs, colours…): they take the whole screen, with a small live preview.
 const TALL_PANELS: Panel[] = ["design", "colours", "symbol", "motion", "music", "add"];
 const SAVE_KEY = "shaadi-invite-v2";
@@ -112,7 +119,67 @@ const PANEL_DESC: Record<string, string> = {
 const MIN_SIZE = 12; // font size range in the Size panel (page units, the page is 720 wide)
 const MAX_SIZE = 220;
 // extra text colours offered next to the palette's two
-const TEXT_SWATCHES = ["#ffffff", "#fbf6ec", "#1a1a1a", "#7a1630", "#c2185b", "#c9a03a", "#e8b923", "#1f7a52", "#2a4aa0"];
+const TEXT_SWATCHES = ["#ffffff", "#fbf6ec", "#1a1a1a", "#5a0f1e", "#7a1630", "#c2185b", "#8a5a00", "#c9a03a", "#e8b923", "#1f7a52", "#0f5e5a", "#13235b", "#2a4aa0", "#4b1d5e"];
+const RECENT_KEY = "shaadi-recent-colours"; // colours picked by hand, newest first
+const CLIP_KEY = "shaadi-clipboard"; // copied lines, so they paste on any page (and after a reload)
+type Clip = { boxes: TextBox[] };
+type StyleClip = Partial<TextBox>;
+
+// The page settings that hold where text sits (what pinning and moving change).
+function pinFields(p: Page): Partial<Page> {
+  return {
+    pinned: p.pinned,
+    textScale: p.textScale,
+    boxes: p.boxes,
+    symbolX: p.symbolX,
+    symbolY: p.symbolY,
+    symbolSize: p.symbolSize,
+    symbolDx: p.symbolDx,
+    symbolDy: p.symbolDy,
+    symbolScale: p.symbolScale,
+  };
+}
+
+// Moves items (text lines and/or the symbol) by the given amounts.
+function moveBy(base: Page, moves: Map<string, { x: number; y: number }>): Page {
+  const sym = moves.get(SYMBOL_ID);
+  return {
+    ...base,
+    ...(sym ? { symbolDx: Math.round((base.symbolDx ?? 0) + sym.x), symbolDy: Math.round((base.symbolDy ?? 0) + sym.y) } : {}),
+    boxes: base.boxes.map((b) => {
+      const m = moves.get(b.id);
+      return m ? { ...b, dx: Math.round((b.dx ?? 0) + m.x), dy: Math.round((b.dy ?? 0) + m.y) } : b;
+    }),
+  };
+}
+
+// On a pinned page, a line that grows or shrinks (new font, size, more words) pushes or pulls the
+// lines below it by the same amount, so the gaps between lines stay as they were. Nothing above
+// it moves, and nothing changes size.
+function flowBelow(before: Page, after: Page, ids: string[]): Page {
+  if (!after.pinned) return after;
+  const r0 = new Map(textBoxRects(before).map((r) => [r.id, r]));
+  const r1 = new Map(textBoxRects(after).map((r) => [r.id, r]));
+  const shift = new Map<string, number>();
+  for (const id of ids) {
+    const a = r0.get(id);
+    const b = r1.get(id);
+    if (!a || !b) continue;
+    const delta = b.y + b.h - (a.y + a.h);
+    if (Math.abs(delta) < 0.5) continue;
+    const x0 = Math.min(a.x, b.x);
+    const x1 = Math.max(a.x + a.w, b.x + b.w);
+    for (const o of after.boxes) {
+      if (o.id === id) continue;
+      const or = r0.get(o.id);
+      if (!or || or.y < a.y + a.h - 4) continue; // only lines below it
+      if (Math.min(or.x + or.w, x1) - Math.max(or.x, x0) <= 0) continue; // and under it
+      shift.set(o.id, (shift.get(o.id) ?? 0) + delta);
+    }
+  }
+  if (!shift.size) return after;
+  return { ...after, boxes: after.boxes.map((b) => (shift.has(b.id) ? { ...b, y: (b.y ?? 0) + shift.get(b.id)! } : b)) };
+}
 
 export default function Editor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -141,6 +208,10 @@ export default function Editor() {
   const [toast, setToast] = useState<Toast>(null);
   const [playingTrack, setPlayingTrack] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [clip, setClip] = useState<Clip | null>(null); // copied lines
+  const [styleClip, setStyleClip] = useState<StyleClip | null>(null); // a copied look ("Copy style")
+  const [recent, setRecent] = useState<string[]>([]); // colours picked by hand
+  const pendingColour = useRef<string | null>(null);
   const tips = useTips();
   const stopTrackRef = useRef<(() => void) | null>(null);
   const stopPreview = useRef(false);
@@ -155,7 +226,7 @@ export default function Editor() {
   const surface = surfaceOf(page.colours, bg);
   const ranked = rankPalettes(PALETTES, surface, bg?.primary);
   const area = useMemo(() => clearArea(page), [page]);
-  const boxRects = useMemo(() => (ready ? textBoxRects(page) : []), [ready, page]);
+  const boxRects = useMemo(() => (ready ? textBoxRects(page) : []), [ready, page, assetTick]); // eslint-disable-line react-hooks/exhaustive-deps
   const selBoxes = page.boxes.filter((b) => sel.includes(b.id));
   const firstSel = selBoxes[0];
   const symbolSelected = sel.includes(SYMBOL_ID);
@@ -169,12 +240,12 @@ export default function Editor() {
     ...page.boxes.map((b) => ({ id: b.id, kind: "text" as const, dx: b.dx ?? 0, dy: b.dy ?? 0, scale: designSize(b) / baseSize(b) })),
   ];
   // how much the page has shrunk the text to fit the design (shown, so sizes never change mysteriously)
-  const fit = useMemo(() => (ready ? textFit(page) : 1), [ready, page]);
+  const fit = useMemo(() => (ready ? textFit(page) : 1), [ready, page, assetTick]); // eslint-disable-line react-hooks/exhaustive-deps
 
   // text moved by hand onto the decoration (offer to fit it back)
   const offDesign = boxRects.filter((r) => {
     const b = page.boxes.find((x) => x.id === r.id);
-    if (!b || (!b.dx && !b.dy)) return false;
+    if (!b || (!page.pinned && !b.dx && !b.dy)) return false;
     const m = 6;
     return r.x < area.x - m || r.x + r.w > area.x + area.w + m || r.y < area.y - m || r.y + r.h > area.y + area.h + m;
   });
@@ -202,6 +273,12 @@ export default function Editor() {
       }
       window.history.replaceState(null, "", window.location.pathname);
     }
+    try {
+      setRecent(JSON.parse(localStorage.getItem(RECENT_KEY) ?? "[]"));
+      setClip(JSON.parse(localStorage.getItem(CLIP_KEY) ?? "null"));
+    } catch {
+      // storage blocked
+    }
     loaded.current = true;
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -219,12 +296,40 @@ export default function Editor() {
     return () => window.clearTimeout(id);
   }, [invite]);
 
-  // Fonts and the horse illustration, once.
+  // The fonts this invite uses and the horse illustration, once. Other fonts load when they're
+  // shown in the font list or used.
   useEffect(() => {
-    Promise.all([...FONTS.map((f) => loadFont(f.family, f.regular, f.bold)), ...SYMBOL_FONTS.map((f) => loadFont(f.family, f.file)), loadImage(HORSE)])
+    Promise.all([ensureFonts(fontsUsed(history.value.pages), FONTS), ...SYMBOL_FONTS.map((f) => loadFont(f.family, f.file)), loadImage(HORSE)])
       .catch((e) => setError(String(e)))
       .finally(() => setReady(true));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // A font that's newly in use (picked, pasted, or in a saved invite): load it, then redraw.
+  const fontKey = fontsUsed(invite.pages).join("|");
+  useEffect(() => {
+    if (!ready) return;
+    ensureFonts(fontKey.split("|"), FONTS).then((any) => any && setAssetTick((n) => n + 1));
+  }, [fontKey, ready]);
+
+  // Colours picked by hand go to the front of "Your colours" (after a pause, as the picker drags).
+  function rememberColour(c: string) {
+    pendingColour.current = c.toLowerCase();
+    window.setTimeout(() => {
+      const c2 = pendingColour.current;
+      if (!c2) return;
+      pendingColour.current = null;
+      setRecent((r) => {
+        const next = [c2, ...r.filter((x) => x !== c2)].slice(0, 12);
+        try {
+          localStorage.setItem(RECENT_KEY, JSON.stringify(next));
+        } catch {
+          // storage blocked
+        }
+        return next;
+      });
+    }, 700);
+  }
 
   // The painted motions' images, after start-up (redraw as they arrive).
   useEffect(() => {
@@ -299,7 +404,9 @@ export default function Editor() {
         const everywhere = pick(ALWAYS_SAME);
         const forward = pick((Object.keys(SAME_KEYS) as (keyof SameEverywhere)[]).filter((f) => inv.same[f]).flatMap((f) => SAME_KEYS[f]));
         const pages = inv.pages.map((p, i) => (i === current ? { ...p, ...patch } : { ...p, ...everywhere, ...(i > current ? forward : {}) }));
-        return { ...inv, pages };
+        // a pinned page that changed design moves its text into the new design's clear area
+        const refit = pages.map((p, i) => (p.pinned && (p.background !== inv.pages[i].background || p.bgZoom !== inv.pages[i].bgZoom) ? refitPinned(p) : p));
+        return { ...inv, pages: refit };
       });
     },
     [current, setInvite],
@@ -314,9 +421,31 @@ export default function Editor() {
     });
   }
 
-  // Changes the given lines (the selected ones by default).
-  const setBoxes = (fn: (b: TextBox) => TextBox, ids: string[] = sel) =>
-    update({ boxes: page.boxes.map((b) => (ids.includes(b.id) ? fn(b) : b)) });
+  // Changes the given lines (the selected ones by default). The page is pinned first, and lines
+  // below a line that grows or shrinks move with it, so nothing else on the page changes.
+  const setBoxes = (fn: (b: TextBox) => TextBox, ids: string[] = sel) => {
+    const base = pinPage(page);
+    const next = { ...base, boxes: base.boxes.map((b) => (ids.includes(b.id) ? fn(b) : b)) };
+    update(pinFields(flowBelow(base, next, ids)));
+  };
+
+  // Touching the text pins the page's layout. It looks exactly the same, but from now on every
+  // line keeps its own place and size (no undo step: nothing visible changed).
+  function pinCurrent() {
+    if (page.pinned) return;
+    history.replace((inv) => ({ ...inv, pages: inv.pages.map((p, i) => (i === current ? pinPage(p) : p)) }));
+  }
+
+  // Changes every page's lines at once (Apply to all), keeping each pinned page's gaps.
+  function changeAllPages(fn: (p: Page) => Page) {
+    setInvite((inv) => ({
+      ...inv,
+      pages: inv.pages.map((p) => {
+        const next = fn(p);
+        return p.pinned ? flowBelow(p, next, p.boxes.map((b) => b.id)) : next;
+      }),
+    }));
+  }
   const patchSel = (patch: Partial<TextBox>) => setBoxes((b) => ({ ...b, ...patch }));
 
   // "Apply to all text": this look on every line of every page (and for new lines).
@@ -324,32 +453,33 @@ export default function Editor() {
   // Lines in that group stop using their own font so they all follow it.
   function applyFontToSlot(font: string, slot: "heading" | "body" | "script", label: string) {
     const key = slot === "heading" ? "font" : slot === "body" ? "bodyFont" : "scriptFont";
-    setInvite((inv) => ({
-      ...inv,
-      pages: inv.pages.map((p) => ({ ...p, [key]: font, boxes: p.boxes.map((b) => (fontSlot(b) === slot ? { ...b, font: undefined } : b)) })),
-    }));
+    changeAllPages((p) => ({ ...p, [key]: font, boxes: p.boxes.map((b) => (fontSlot(b) === slot ? { ...b, font: undefined } : b)) }));
     setToast({ text: `${font} now used for ${label}`, undo: true });
   }
 
   function applyToAll(patch: Partial<TextBox>, label: string) {
-    setInvite((inv) => ({
-      ...inv,
-      pages: inv.pages.map((p) => ({
-        ...p,
-        ...(patch.font ? { font: patch.font } : {}),
-        ...(patch.bold !== undefined ? { bold: patch.bold } : {}),
-        ...(patch.spacing !== undefined ? { lineSpacing: patch.spacing } : {}),
-        boxes: p.boxes.map((b) => ({ ...b, ...patch })),
-      })),
+    changeAllPages((p) => ({
+      ...p,
+      ...(patch.font ? { font: patch.font } : {}),
+      ...(patch.bold !== undefined ? { bold: patch.bold } : {}),
+      ...(patch.spacing !== undefined ? { lineSpacing: patch.spacing } : {}),
+      boxes: p.boxes.map((b) => ({ ...b, ...patch })),
     }));
     setToast({ text: `${label} applied to all text`, undo: true });
   }
 
   // "Add text": a new line under the others, ready to type into.
-  function addText() {
-    const like = page.boxes[page.boxes.length - 1];
-    const box: TextBox = { id: newId(), label: "Text", text: "Your text", size: "s", role: "body", color: like && like.color !== "accent" ? like.color : "text" };
-    update({ boxes: [...page.boxes, box] });
+  function addText(text = "Your text") {
+    const base = pinPage(page);
+    const like = base.boxes[base.boxes.length - 1];
+    const rects = textBoxRects(base);
+    const frameW = like?.w ?? Math.min(600, area.w - 28);
+    const size = like && like.role === "body" ? designSize(like) : Math.round(baseSize({ role: "body", size: "s" } as TextBox) * 0.9);
+    // under the last line if there's room, otherwise in the middle of the design
+    const below = rects.length ? Math.max(...rects.map((r) => r.y + r.h)) + 24 : area.y + area.h / 2;
+    const y = below + size * 1.4 < area.y + area.h ? below : area.y + area.h / 2 - size;
+    const box: TextBox = { id: newId(), label: "Text", text, size: "s", role: "body", color: like && like.color !== "accent" ? like.color : "text", x: (W - frameW) / 2, y, w: frameW, px: size };
+    update(pinFields({ ...base, boxes: [...base.boxes, box] }));
     setSel([box.id]);
     setMulti(false);
     setEditing(box.id);
@@ -357,19 +487,157 @@ export default function Editor() {
   }
 
   function duplicateSel() {
+    const base = pinPage(page);
     const boxes: TextBox[] = [];
     const copies: string[] = [];
-    for (const b of page.boxes) {
+    for (const b of base.boxes) {
       boxes.push(b);
       if (sel.includes(b.id)) {
         const id = newId();
         copies.push(id);
-        boxes.push({ ...b, id });
+        boxes.push({ ...b, id, dx: (b.dx ?? 0) + 24, dy: (b.dy ?? 0) + 24 }); // a little down and right, like Canva
       }
     }
-    update({ boxes });
+    update(pinFields({ ...base, boxes }));
     setSel(copies);
-    setToast({ text: copies.length > 1 ? `${copies.length} lines copied` : "Line copied" });
+    setToast({ text: copies.length > 1 ? `${copies.length} lines duplicated` : "Duplicated" });
+  }
+
+  // ----- copy and paste -----
+
+  function copySel(cut = false) {
+    const base = pinPage(page);
+    const boxes = base.boxes.filter((b) => sel.includes(b.id));
+    if (!boxes.length) return;
+    const c = { boxes };
+    setClip(c);
+    try {
+      localStorage.setItem(CLIP_KEY, JSON.stringify(c));
+      navigator.clipboard?.writeText(boxes.map((b) => b.text).join("\n")).catch(() => {});
+    } catch {
+      // storage blocked: copying still works until the page reloads
+    }
+    if (cut) deleteSel();
+    else setToast({ text: boxes.length > 1 ? `${boxes.length} lines copied. Paste on any page` : "Copied. Paste on any page" });
+  }
+
+  function paste() {
+    if (!clip?.boxes.length) return;
+    const base = pinPage(page);
+    const at = (b: TextBox) => [(b.x ?? 0) + (b.dx ?? 0), (b.y ?? 0) + (b.dy ?? 0)];
+    // pasting where the original still sits: offset the copy so it's visible
+    const clash = clip.boxes.some((c) => base.boxes.some((b) => Math.hypot(at(b)[0] - at(c)[0], at(b)[1] - at(c)[1]) < 4));
+    const off = clash ? 24 : 0;
+    let copies = clip.boxes.map((b) => ({ ...b, id: newId(), dx: (b.dx ?? 0) + off, dy: (b.dy ?? 0) + off }));
+    // landing on other text (copied from another page): drop it under the text instead, if there's room
+    if (!clash) {
+      const have = textBoxRects(base).filter((r) => r.id !== SYMBOL_ID);
+      const added = textBoxRects({ ...base, boxes: copies }).filter((r) => r.id !== SYMBOL_ID);
+      const m = 12; // too close counts as touching
+      const hits = added.some((a) => have.some((h) => a.x < h.x + h.w + m && h.x < a.x + a.w + m && a.y < h.y + h.h + m && h.y < a.y + a.h + m));
+      if (hits && have.length && added.length) {
+        const top = Math.min(...added.map((a) => a.y));
+        const height = Math.max(...added.map((a) => a.y + a.h)) - top;
+        const below = Math.max(...have.map((h) => h.y + h.h)) + 20;
+        const room = below + height <= area.y + area.h;
+        const shift = room ? below - top : 24;
+        copies = copies.map((c) => ({ ...c, dy: (c.dy ?? 0) + shift, dx: (c.dx ?? 0) + (room ? 0 : 24) }));
+      }
+    }
+    update(pinFields({ ...base, boxes: [...base.boxes, ...copies] }));
+    setSel(copies.map((c) => c.id));
+    setGroup(false);
+    setToast({ text: "Pasted", undo: true });
+  }
+
+  // Copy style / Paste style: one line's look onto others (like Canva's paint roller).
+  function copyStyle() {
+    if (!firstSel) return;
+    const b = pinPage(page).boxes.find((x) => x.id === firstSel.id) ?? firstSel;
+    const look = lineLook(b, page);
+    setStyleClip({ role: b.role, font: look.font, bold: look.bold, italic: look.italic, caps: look.caps, tracking: look.tracking, align: look.align, spacing: look.spacing, color: b.color, px: designSize(b), scale: undefined });
+    setToast({ text: "Style copied. Pick other lines, then tap Paste style" });
+  }
+  function pasteStyle() {
+    if (!styleClip || !selBoxes.length) return;
+    setBoxes((b) => ({ ...b, ...styleClip }));
+    setToast({ text: "Style pasted", undo: true });
+  }
+
+  // ----- position -----
+
+  // The selected items' outline (text and symbol), as drawn now.
+  function selRects(p: Page = pinPage(page)) {
+    return textBoxRects(p).filter((r) => sel.includes(r.id));
+  }
+  function moveSel(fn: (r: BoxRect) => { x: number; y: number }, base: Page = pinPage(page)) {
+    const moves = new Map(selRects(base).map((r) => [r.id, fn(r)]));
+    update(pinFields(moveBy(base, moves)));
+  }
+  // Places the selection (as one piece) on the design's clear area.
+  function alignOnPage(where: "left" | "center" | "right" | "top" | "middle" | "bottom") {
+    const rs = selRects();
+    if (!rs.length) return;
+    const pad = 14;
+    const x0 = Math.min(...rs.map((r) => r.x));
+    const x1 = Math.max(...rs.map((r) => r.x + r.w));
+    const y0 = Math.min(...rs.map((r) => r.y));
+    const y1 = Math.max(...rs.map((r) => r.y + r.h));
+    const mx = where === "left" ? area.x + pad - x0 : where === "center" ? area.x + area.w / 2 - (x0 + x1) / 2 : where === "right" ? area.x + area.w - pad - x1 : 0;
+    const my = where === "top" ? area.y + pad - y0 : where === "middle" ? area.y + area.h / 2 - (y0 + y1) / 2 : where === "bottom" ? area.y + area.h - pad - y1 : 0;
+    moveSel(() => ({ x: mx, y: my }));
+  }
+  // Lines up several items with each other. Text also takes that alignment, so wrapped lines line up too.
+  function lineUp(how: "left" | "center" | "right") {
+    const base = pinPage(page);
+    const aligned = { ...base, boxes: base.boxes.map((b) => (sel.includes(b.id) ? { ...b, align: how } : b)) };
+    const before = selRects(base);
+    const after = new Map(selRects(aligned).map((r) => [r.id, r]));
+    if (before.length < 2) return;
+    const target =
+      how === "left" ? Math.min(...before.map((r) => r.x)) : how === "right" ? Math.max(...before.map((r) => r.x + r.w)) : (Math.min(...before.map((r) => r.x)) + Math.max(...before.map((r) => r.x + r.w))) / 2;
+    moveSel((r) => {
+      const a = after.get(r.id) ?? r;
+      return { x: how === "left" ? target - a.x : how === "right" ? target - (a.x + a.w) : target - (a.x + a.w / 2), y: 0 };
+    }, aligned);
+  }
+  // Equal gaps between three or more items, top to bottom.
+  function spaceEvenly() {
+    const rs = selRects().sort((a, b) => a.y - b.y);
+    if (rs.length < 3) {
+      setToast({ text: "Pick 3 or more lines to space them evenly" });
+      return;
+    }
+    const span = rs[rs.length - 1].y + rs[rs.length - 1].h - rs[0].y;
+    const gap = (span - rs.reduce((t, r) => t + r.h, 0)) / (rs.length - 1);
+    let y = rs[0].y;
+    const target = new Map<string, number>();
+    for (const r of rs) {
+      target.set(r.id, y);
+      y += r.h + gap;
+    }
+    moveSel((r) => ({ x: 0, y: target.get(r.id)! - r.y }));
+  }
+  function sameSize() {
+    if (!firstSel) return;
+    const px = designSize(pinPage(page).boxes.find((b) => b.id === firstSel.id) ?? firstSel);
+    setBoxes((b) => ({ ...b, px, scale: undefined }));
+  }
+  // Puts the page back to the automatic layout: everything stacked and centred in the design.
+  function tidyLayout() {
+    const tidy = unpinPage(page);
+    update(pinFields({ ...tidy, boxes: tidy.boxes.map((b) => ({ ...b, align: undefined })) }));
+    setSel([]);
+    setGroup(false);
+    setMulti(false);
+    setPanel(null);
+    setToast({ text: "Text lined up again", undo: true });
+  }
+  function selectAll() {
+    pinCurrent();
+    setSel(overlayItems.map((it) => it.id));
+    setGroup(true);
+    setMulti(false);
   }
 
   function deleteSel() {
@@ -382,6 +650,7 @@ export default function Editor() {
   }
 
   function select(ids: string[]) {
+    if (ids.length) pinCurrent();
     setSel(ids);
     setGroup(false);
     if (!ids.length) setMulti(false);
@@ -519,6 +788,7 @@ export default function Editor() {
   // the chosen pages, with every picture they need loaded first
   async function readyPages(indexes: number[]) {
     const chosen = indexes.map((i) => invite.pages[i]);
+    await ensureFonts(fontsUsed(chosen), FONTS);
     await Promise.all([...chosen.map((p) => loadImage(p.background)), ...chosen.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
     return chosen;
   }
@@ -578,6 +848,7 @@ export default function Editor() {
     if (result) URL.revokeObjectURL(result.url);
     setResult(null);
     try {
+      await ensureFonts(fontsUsed(invite.pages), FONTS);
       await Promise.all([...invite.pages.map((p) => loadImage(p.background)), ...invite.pages.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
       stopTrack();
       const music = invite.music.track ? musicFor(invite.music.track, total, invite.music.volume) : null;
@@ -622,11 +893,36 @@ export default function Editor() {
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      const typing = (e.target as HTMLElement).closest("input, textarea, select");
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "z" && !typing) {
+      const typing = (e.target as HTMLElement | null)?.closest?.("input, textarea, select");
+      const mod = e.metaKey || e.ctrlKey;
+      const k = e.key.toLowerCase();
+      if (locked) return;
+      if (mod && k === "z" && !typing) {
         e.preventDefault();
         if (e.shiftKey) history.redo();
         else history.undo();
+      } else if (mod && k === "y" && !typing) {
+        e.preventDefault();
+        history.redo();
+      } else if (mod && (k === "c" || k === "x") && !typing && selBoxes.length) {
+        e.preventDefault();
+        copySel(k === "x");
+      } else if (mod && k === "v" && !typing && clip) {
+        e.preventDefault();
+        paste();
+      } else if (mod && k === "d" && !typing && selBoxes.length) {
+        e.preventDefault();
+        duplicateSel();
+      } else if (mod && k === "a" && !typing) {
+        e.preventDefault();
+        selectAll();
+      } else if (e.key.startsWith("Arrow") && !typing && sel.length) {
+        // nudge: 2 at a time, 10 with Shift
+        e.preventDefault();
+        const step = e.shiftKey ? 10 : 2;
+        const x = e.key === "ArrowLeft" ? -step : e.key === "ArrowRight" ? step : 0;
+        const y = e.key === "ArrowUp" ? -step : e.key === "ArrowDown" ? step : 0;
+        moveSel(() => ({ x, y }));
       } else if ((e.key === "Delete" || e.key === "Backspace") && !typing && sel.length) {
         e.preventDefault();
         deleteSel();
@@ -675,6 +971,17 @@ export default function Editor() {
   const firstLine = firstSel?.text.split("\n")[0] ?? "";
   const selText = group ? "Everything on this page" : selBoxes.length > 1 ? `${selBoxes.length} lines` : firstSel ? `“${firstLine.slice(0, 22)}${firstLine.length > 22 ? "…" : ""}”` : "";
   const sampleText = firstLine.slice(0, 28) || "Rohan & Aishwarya";
+  // "Your colours": picked by hand recently, then every custom colour already in the invite
+  const yourColours = [
+    ...new Set(
+      [
+        ...recent,
+        ...invite.pages.flatMap((p) => [...p.boxes.map((b) => b.color), p.colours.paper ?? "", p.colours.design ?? ""]),
+      ]
+        .filter((c) => c.startsWith("#"))
+        .map((c) => c.toLowerCase()),
+    ),
+  ].slice(0, 12);
   // the size a line is actually drawn at (after fitting), and setting a new one
   // the size a line is set to (the page may show it a little smaller to fit; see `fit`)
   const selSize = firstSel ? Math.round(designSize(firstSel)) : 0;
@@ -716,29 +1023,33 @@ export default function Editor() {
     style: "Style",
     edit: "Edit text",
     add: "Add a page",
+    position: "Position",
     pagemenu: `${titles[current]}, page ${current + 1}`,
     more: "More",
   };
 
-  type ToolId = Panel | "dup" | "del" | "edit-now" | "add-text";
+  type ToolId = Panel | "dup" | "del" | "edit-now" | "add-text" | "copy" | "paste" | "copystyle" | "pastestyle";
+  // Like Canva's phone toolbar: everything for the selection in one row (it scrolls sideways).
   const toolbar: { id: ToolId; icon: string; name: string }[] =
     mode === "text"
       ? [
-          ...(selBoxes.length === 1 ? [{ id: "edit-now" as const, icon: "✎", name: "Edit" }] : []),
+          ...(selBoxes.length === 1 && !group ? [{ id: "edit-now" as const, icon: "✎", name: "Edit" }] : []),
           { id: "font", icon: "Aa", name: "Font" },
           { id: "size", icon: "↕", name: "Size" },
           { id: "tcolour", icon: "●", name: "Colour" },
           { id: "style", icon: "B", name: "Style" },
-          ...(group
-            ? []
-            : [
-                { id: "dup" as const, icon: "⧉", name: "Copy" },
-                { id: "del" as const, icon: "🗑", name: "Delete" },
-              ]),
+          { id: "position", icon: "⊞", name: "Position" },
+          ...(group ? [] : [{ id: "dup" as const, icon: "⧉", name: "Duplicate" }]),
+          { id: "copy", icon: "⎘", name: "Copy" },
+          ...(clip ? [{ id: "paste" as const, icon: "⎗", name: "Paste" }] : []),
+          ...(selBoxes.length === 1 ? [{ id: "copystyle" as const, icon: "🖌", name: "Copy style" }] : []),
+          ...(styleClip ? [{ id: "pastestyle" as const, icon: "🖌", name: "Paste style" }] : []),
+          ...(group ? [] : [{ id: "del" as const, icon: "🗑", name: "Delete" }]),
         ]
       : mode === "symbol"
         ? [
             { id: "symbol", icon: "ॐ", name: "Change" },
+            { id: "position", icon: "⊞", name: "Position" },
             { id: "del", icon: "🗑", name: "Remove" },
           ]
         : [
@@ -748,12 +1059,17 @@ export default function Editor() {
             { id: "symbol", icon: "ॐ", name: "Symbol" },
             { id: "motion", icon: "✦", name: "Motion" },
             { id: "music", icon: "♪", name: "Music" },
+            ...(clip ? [{ id: "paste" as const, icon: "⎗", name: "Paste" }] : []),
           ];
 
   function onTool(id: ToolId) {
     if (id === "dup") return duplicateSel();
     if (id === "del") return deleteSel();
     if (id === "add-text") return addText();
+    if (id === "copy") return copySel();
+    if (id === "paste") return paste();
+    if (id === "copystyle") return copyStyle();
+    if (id === "pastestyle") return pasteStyle();
     if (id === "edit-now") {
       setEditing(firstSel.id);
       setPanel("edit");
@@ -834,14 +1150,9 @@ export default function Editor() {
               group={group}
               groupScale={page.textScale}
               onSelect={select}
-              onGroup={() => {
-                setSel(overlayItems.map((it) => it.id));
-                setGroup(true);
-                if (panel && !TEXT_PANELS.includes(panel)) setPanel(null);
-                tips.done("tap-text");
-              }}
               onGroupScale={(s) => update({ textScale: s })}
               onHold={(id) => {
+                pinCurrent();
                 setGroup(false);
                 setMulti(true);
                 setSel((s) => (s.includes(id) ? s : [...s, id]));
@@ -871,31 +1182,37 @@ export default function Editor() {
 
         {/* smart help */}
         {!locked && !dragging && offDesign.length > 0 && !panel && !sel.length && (
-          <button className="nudge" onClick={() => setBoxes((b) => ({ ...b, dx: 0, dy: 0 }), offDesign.map((r) => r.id))}>
+          <button
+            className="nudge"
+            onClick={() => {
+              const inside = (lo: number, len: number, a0: number, alen: number) => (len > alen ? a0 + (alen - len) / 2 - lo : lo < a0 ? a0 - lo : lo + len > a0 + alen ? a0 + alen - (lo + len) : 0);
+              update(pinFields(moveBy(pinPage(page), new Map(offDesign.map((r) => [r.id, { x: inside(r.x, r.w, area.x, area.w), y: inside(r.y, r.h, area.y, area.h) }])))));
+            }}
+          >
             ✨ Text is sitting on the design. <b>Fit it</b>
           </button>
         )}
         {multi && (
           <div className="multi-bar">
             <span>{sel.length} picked</span>
-            <button onClick={() => setSel(page.boxes.map((b) => b.id))}>Select all</button>
+            <button onClick={selectAll}>Select all</button>
             <button onClick={deselect}>Done</button>
           </div>
         )}
       </div>
 
       {/* ---------- What you can do right now ---------- */}
-      {ready && !locked && !multi && (
+      {ready && !locked && !multi && !panel && tip !== "pages" && (
         <p className="context" key={"ctx-" + mode}>
           {group
-            ? "Drag to move it all, pull ⤢ to resize, or tap a line to edit it"
+            ? "Drag to move it all, or pull ⤢ to resize everything"
             : mode === "text"
-            ? "Drag to move, pull ⤢ to resize, or tap again to type"
+            ? "Drag to move, pull ⤢ to resize, tap again to type"
             : mode === "symbol"
               ? "Drag to move, or pull ⤢ or pinch to resize"
               : fit < 0.8
                 ? "Lots of text here, so it's shrunk to fit. Move a few lines to another page"
-                : "Tap the text to move or resize it all, or hold to pick several"}
+                : "Tap any text to change it. Hold to pick several"}
         </p>
       )}
 
@@ -930,7 +1247,7 @@ export default function Editor() {
               Done
             </button>
           </div>
-          {PANEL_DESC[panel] && <p className="panel-desc">✦ {PANEL_DESC[panel]}</p>}
+          {PANEL_DESC[panel] && !TEXT_PANELS.includes(panel) && <p className="panel-desc">✦ {PANEL_DESC[panel]}</p>}
           <div className="panel-body">
             {/* ----- Design ----- */}
             {panel === "design" && (
@@ -979,30 +1296,52 @@ export default function Editor() {
                 <Label title="Paper" desc="The plain colour behind the artwork" />
                 <div className="swatches">
                   <Swatch value={null} on={page.colours.paper === null} original={bg?.paper} onPick={() => setColours({ paper: null })} name="Original" />
-                  {PAPER_COLOURS.map((s) => (
+                  {yourColours.map((c) => (
+                    <Swatch key={"y" + c} value={c} on={page.colours.paper?.toLowerCase() === c} onPick={() => setColours({ paper: c })} name={c} />
+                  ))}
+                  {PAPER_COLOURS.filter((s) => !yourColours.includes(s.color)).map((s) => (
                     <Swatch key={s.color} value={s.color} on={page.colours.paper === s.color} onPick={() => setColours({ paper: s.color })} name={s.name} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
-                    <input type="color" value={page.colours.paper ?? bg?.paper ?? "#ffffff"} onChange={(e) => setColours({ paper: e.target.value })} aria-label="Any background colour" />
+                    <input
+                      type="color"
+                      value={page.colours.paper ?? bg?.paper ?? "#ffffff"}
+                      onChange={(e) => {
+                        setColours({ paper: e.target.value });
+                        rememberColour(e.target.value);
+                      }}
+                      aria-label="Any background colour"
+                    />
                   </label>
                 </div>
                 <Label title="Artwork" desc="The flowers, borders and patterns" />
                 <div className="swatches">
                   <Swatch value={null} on={page.colours.design === null} original={bg?.primary} onPick={() => setColours({ design: null })} name="Original" />
-                  {DESIGN_COLOURS.map((s) => (
+                  {yourColours.map((c) => (
+                    <Swatch key={"y" + c} value={c} on={page.colours.design?.toLowerCase() === c} onPick={() => setColours({ design: c })} name={c} />
+                  ))}
+                  {DESIGN_COLOURS.filter((s) => !yourColours.includes(s.color)).map((s) => (
                     <Swatch key={s.color} value={s.color} on={page.colours.design === s.color} onPick={() => setColours({ design: s.color })} name={s.name} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
-                    <input type="color" value={page.colours.design ?? bg?.primary ?? "#c9a03a"} onChange={(e) => setColours({ design: e.target.value })} aria-label="Any design colour" />
+                    <input
+                      type="color"
+                      value={page.colours.design ?? bg?.primary ?? "#c9a03a"}
+                      onChange={(e) => {
+                        setColours({ design: e.target.value });
+                        rememberColour(e.target.value);
+                      }}
+                      aria-label="Any design colour"
+                    />
                   </label>
                 </div>
                 <Slider label="Artwork strength" desc="Lower makes the artwork softer and lighter" min={0.2} max={1} step={0.05} value={page.colours.opacity} onChange={(v) => setColours({ opacity: v })} show={`${Math.round(page.colours.opacity * 100)}%`} />
                 <Label title="Text colours" desc="Colours for your words. ★ is easiest to read on this paper" />
                 <div className="chips">
-                  {ranked.slice(0, 8).map(({ palette: p, recommended: rec, readable }) => (
+                  {(ranked.filter((r) => r.readable).length >= 6 ? ranked.filter((r) => r.readable) : ranked).slice(0, 12).map(({ palette: p, recommended: rec, readable }) => (
                     <button key={p.id} className={"chip chip-palette" + (p.id === page.palette.id ? " on" : "") + (readable ? "" : " dim")} onClick={() => update({ palette: p })}>
-                      <span className="swatch" style={{ background: p.text }} />
-                      <span className="swatch" style={{ background: p.accent }} />
+                      <span className="swatch" style={{ background: readableOn(p.text, surface, 4.5) }} />
+                      <span className="swatch" style={{ background: readableOn(p.accent, surface, 3.2) }} />
                       {p.name}
                       {rec && <em className="tag">★</em>}
                     </button>
@@ -1037,21 +1376,23 @@ export default function Editor() {
             {/* ----- Font ----- */}
             {panel === "font" && firstSel && (
               <>
-                <button className="apply-all" onClick={() => applyFontToSlot(selFont, slot, slotName)}>
-                  Use <b style={{ fontFamily: `"${selFont}", serif` }}>{selFont}</b> for {slotName}
-                </button>
-                <button className="link-btn" onClick={() => applyToAll({ font: selFont }, selFont)}>
-                  or for all text
-                </button>
-                <div className="font-list">
-                  {FONTS.map((f) => (
-                    <button key={f.id} className={"font-row" + (f.family === selFont ? " on" : "")} onClick={() => patchSel({ font: f.family })}>
-                      <span className="font-sample" style={{ fontFamily: `"${f.family}", serif` }}>
-                        {sampleText}
-                      </span>
-                      <span className="font-name">{f.family}</span>
-                    </button>
-                  ))}
+                <FontPicker
+                  fonts={FONTS}
+                  current={selFont}
+                  used={fontsUsed(invite.pages)}
+                  sample={sampleText}
+                  onPick={async (family) => {
+                    await ensureFonts([family], FONTS);
+                    patchSel({ font: family });
+                  }}
+                />
+                <div className="apply-row">
+                  <button className="apply-all" onClick={() => applyFontToSlot(selFont, slot, slotName)}>
+                    Use <b style={{ fontFamily: `"${selFont}", serif` }}>{selFont}</b> for {slotName}
+                  </button>
+                  <button className="link-btn" onClick={() => applyToAll({ font: selFont }, selFont)}>
+                    or for all text
+                  </button>
                 </div>
               </>
             )}
@@ -1108,15 +1449,30 @@ export default function Editor() {
             {/* ----- Text colour ----- */}
             {panel === "tcolour" && firstSel && (
               <>
+                <Label title="This invite's colours" desc="The theme's two colours, then every colour you've used" />
                 <div className="swatches">
-                  <Swatch value={page.palette.text} on={firstSel.color === "text"} onPick={() => patchSel({ color: "text" })} name="Main colour" />
-                  <Swatch value={page.palette.accent} on={firstSel.color === "accent"} onPick={() => patchSel({ color: "accent" })} name="Accent colour" />
-                  {TEXT_SWATCHES.map((c) => (
-                    <Swatch key={c} value={c} on={firstSel.color === c} onPick={() => patchSel({ color: c })} name={c} />
+                  <Swatch value={readableOn(page.palette.text, pageSurface(page), 4.5)} on={firstSel.color === "text"} onPick={() => patchSel({ color: "text" })} name="Main colour" />
+                  <Swatch value={readableOn(page.palette.accent, pageSurface(page), 3.2)} on={firstSel.color === "accent"} onPick={() => patchSel({ color: "accent" })} name="Accent colour" />
+                  {yourColours.map((c) => (
+                    <Swatch key={c} value={c} on={firstSel.color.toLowerCase() === c} onPick={() => patchSel({ color: c })} name={c} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
-                    <input type="color" value={boxColor(firstSel, page)} onChange={(e) => patchSel({ color: e.target.value })} aria-label="Any text colour" />
+                    <input
+                      type="color"
+                      value={boxColor(firstSel, page)}
+                      onChange={(e) => {
+                        patchSel({ color: e.target.value });
+                        rememberColour(e.target.value);
+                      }}
+                      aria-label="Any text colour"
+                    />
                   </label>
+                </div>
+                <Label title="More colours" />
+                <div className="swatches">
+                  {TEXT_SWATCHES.filter((c) => !yourColours.includes(c)).map((c) => (
+                    <Swatch key={c} value={c} on={firstSel.color.toLowerCase() === c} onPick={() => patchSel({ color: c })} name={c} />
+                  ))}
                 </div>
                 <button className="apply-all" onClick={() => applyToAll({ color: firstSel.color }, "Colour")}>
                   Apply this colour to all text
@@ -1182,6 +1538,40 @@ export default function Editor() {
                   show={selLook.tracking.toFixed(2)}
                 />
                 <Slider label="Line spacing" desc="The gap between lines of the same text" min={0.9} max={1.8} step={0.05} value={selSpacing} onChange={(v) => patchSel({ spacing: v })} show={selSpacing.toFixed(2)} />
+              </>
+            )}
+
+            {/* ----- Position ----- */}
+            {panel === "position" && sel.length > 0 && (
+              <>
+                <Label title={sel.length > 1 ? "Move them on the page" : "Move it on the page"} desc="Inside the plain middle of the design" />
+                <div className="pos-grid">
+                  <button onClick={() => alignOnPage("left")}>⇤ Left</button>
+                  <button onClick={() => alignOnPage("center")}>↔ Centre</button>
+                  <button onClick={() => alignOnPage("right")}>⇥ Right</button>
+                  <button onClick={() => alignOnPage("top")}>⤒ Top</button>
+                  <button onClick={() => alignOnPage("middle")}>↕ Middle</button>
+                  <button onClick={() => alignOnPage("bottom")}>⤓ Bottom</button>
+                </div>
+                {selBoxes.length > 1 && (
+                  <>
+                    <Label title="Line them up" desc="With each other" />
+                    <div className="pos-grid">
+                      <button onClick={() => lineUp("left")}>Lefts</button>
+                      <button onClick={() => lineUp("center")}>Centres</button>
+                      <button onClick={() => lineUp("right")}>Rights</button>
+                      <button onClick={spaceEvenly}>Space evenly</button>
+                      <button onClick={sameSize}>Same size</button>
+                    </div>
+                  </>
+                )}
+                {selBoxes.length === 1 && !multi && (
+                  <p className="fit-note">To line up several lines, hold one, tap the others, then come back here.</p>
+                )}
+                <Label title="Messed up?" desc="Puts every line on this page back in a neat centred stack" />
+                <button className="apply-all" onClick={tidyLayout}>
+                  Tidy this page
+                </button>
               </>
             )}
 

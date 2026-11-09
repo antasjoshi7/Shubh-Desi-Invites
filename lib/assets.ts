@@ -30,3 +30,21 @@ export async function loadFont(family: string, url: string, boldUrl?: string): P
   faces.forEach((f) => document.fonts.add(f));
   loadedFonts.add(family);
 }
+
+export function fontReady(family: string): boolean {
+  return loadedFonts.has(family);
+}
+
+// Loads the given fonts from the catalogue (skipping ones already loaded or unknown).
+// Resolves true if anything new arrived, so the caller can redraw.
+export async function ensureFonts(families: Iterable<string>, catalogue: { family: string; regular: string; bold?: string }[]): Promise<boolean> {
+  const todo = [...new Set(families)].filter((f) => !loadedFonts.has(f));
+  if (!todo.length) return false;
+  await Promise.all(
+    todo.map((family) => {
+      const info = catalogue.find((f) => f.family === family);
+      return info ? loadFont(info.family, info.regular, info.bold).catch(() => undefined) : undefined;
+    }),
+  );
+  return true;
+}

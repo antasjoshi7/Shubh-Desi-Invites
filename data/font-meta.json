@@ -1,0 +1,579 @@
+{
+  "rozha-one": {
+    "family": "Rozha One",
+    "hindi": true
+  },
+  "yatra-one": {
+    "family": "Yatra One",
+    "hindi": true
+  },
+  "amita": {
+    "family": "Amita",
+    "hindi": true
+  },
+  "great-vibes": {
+    "family": "Great Vibes",
+    "style": "script",
+    "hindi": false
+  },
+  "tangerine": {
+    "family": "Tangerine",
+    "style": "script",
+    "hindi": false
+  },
+  "dancing-script": {
+    "family": "Dancing Script",
+    "style": "script",
+    "hindi": false
+  },
+  "sacramento": {
+    "family": "Sacramento",
+    "style": "script",
+    "hindi": false
+  },
+  "satisfy": {
+    "family": "Satisfy",
+    "style": "script",
+    "hindi": false
+  },
+  "italianno": {
+    "family": "Italianno",
+    "style": "script",
+    "hindi": false
+  },
+  "monsieur-la-doulaise": {
+    "family": "Monsieur La Doulaise",
+    "style": "script",
+    "hindi": false
+  },
+  "rouge-script": {
+    "family": "Rouge Script",
+    "style": "script",
+    "hindi": false
+  },
+  "mrs-saint-delafield": {
+    "family": "Mrs Saint Delafield",
+    "style": "script",
+    "hindi": false
+  },
+  "herr-von-muellerhoff": {
+    "family": "Herr Von Muellerhoff",
+    "style": "script",
+    "hindi": false
+  },
+  "corinthia": {
+    "family": "Corinthia",
+    "style": "script",
+    "hindi": false
+  },
+  "ephesis": {
+    "family": "Ephesis",
+    "style": "script",
+    "hindi": false
+  },
+  "imperial-script": {
+    "family": "Imperial Script",
+    "style": "script",
+    "hindi": false
+  },
+  "lovers-quarrel": {
+    "family": "Lovers Quarrel",
+    "style": "script",
+    "hindi": false
+  },
+  "ms-madi": {
+    "family": "Ms Madi",
+    "style": "script",
+    "hindi": false
+  },
+  "birthstone": {
+    "family": "Birthstone",
+    "style": "script",
+    "hindi": false
+  },
+  "kaushan-script": {
+    "family": "Kaushan Script",
+    "style": "script",
+    "hindi": false
+  },
+  "cookie": {
+    "family": "Cookie",
+    "style": "script",
+    "hindi": false
+  },
+  "allison": {
+    "family": "Allison",
+    "style": "script",
+    "hindi": false
+  },
+  "luxurious-script": {
+    "family": "Luxurious Script",
+    "style": "script",
+    "hindi": false
+  },
+  "windsong": {
+    "family": "WindSong",
+    "style": "script",
+    "hindi": false
+  },
+  "arizonia": {
+    "family": "Arizonia",
+    "style": "script",
+    "hindi": false
+  },
+  "clicker-script": {
+    "family": "Clicker Script",
+    "style": "script",
+    "hindi": false
+  },
+  "the-nautigal": {
+    "family": "The Nautigal",
+    "style": "script",
+    "hindi": false
+  },
+  "meddon": {
+    "family": "Meddon",
+    "style": "script",
+    "hindi": false
+  },
+  "qwigley": {
+    "family": "Qwigley",
+    "style": "script",
+    "hindi": false
+  },
+  "mea-culpa": {
+    "family": "Mea Culpa",
+    "style": "script",
+    "hindi": false
+  },
+  "fleur-de-leah": {
+    "family": "Fleur De Leah",
+    "style": "script",
+    "hindi": false
+  },
+  "lavishly-yours": {
+    "family": "Lavishly Yours",
+    "style": "script",
+    "hindi": false
+  },
+  "style-script": {
+    "family": "Style Script",
+    "style": "script",
+    "hindi": false
+  },
+  "charm": {
+    "family": "Charm",
+    "style": "script",
+    "hindi": false
+  },
+  "niconne": {
+    "family": "Niconne",
+    "style": "script",
+    "hindi": false
+  },
+  "playball": {
+    "family": "Playball",
+    "style": "script",
+    "hindi": false
+  },
+  "rochester": {
+    "family": "Rochester",
+    "style": "script",
+    "hindi": false
+  },
+  "yellowtail": {
+    "family": "Yellowtail",
+    "style": "script",
+    "hindi": false
+  },
+  "marck-script": {
+    "family": "Marck Script",
+    "style": "script",
+    "hindi": false
+  },
+  "kalam": {
+    "family": "Kalam",
+    "style": "script",
+    "hindi": true
+  },
+  "eb-garamond": {
+    "family": "EB Garamond",
+    "style": "traditional",
+    "hindi": false
+  },
+  "libre-baskerville": {
+    "family": "Libre Baskerville",
+    "style": "traditional",
+    "hindi": false
+  },
+  "lora": {
+    "family": "Lora",
+    "style": "traditional",
+    "hindi": false
+  },
+  "cardo": {
+    "family": "Cardo",
+    "style": "traditional",
+    "hindi": false
+  },
+  "crimson-pro": {
+    "family": "Crimson Pro",
+    "style": "traditional",
+    "hindi": false
+  },
+  "prata": {
+    "family": "Prata",
+    "style": "traditional",
+    "hindi": false
+  },
+  "abhaya-libre": {
+    "family": "Abhaya Libre",
+    "style": "traditional",
+    "hindi": false
+  },
+  "dm-serif-display": {
+    "family": "DM Serif Display",
+    "style": "traditional",
+    "hindi": false
+  },
+  "cormorant": {
+    "family": "Cormorant",
+    "style": "traditional",
+    "hindi": false
+  },
+  "cormorant-sc": {
+    "family": "Cormorant SC",
+    "style": "traditional",
+    "hindi": false
+  },
+  "cormorant-upright": {
+    "family": "Cormorant Upright",
+    "style": "traditional",
+    "hindi": false
+  },
+  "forum": {
+    "family": "Forum",
+    "style": "traditional",
+    "hindi": false
+  },
+  "bellefair": {
+    "family": "Bellefair",
+    "style": "traditional",
+    "hindi": false
+  },
+  "old-standard-tt": {
+    "family": "Old Standard TT",
+    "style": "traditional",
+    "hindi": false
+  },
+  "spectral": {
+    "family": "Spectral",
+    "style": "traditional",
+    "hindi": false
+  },
+  "rufina": {
+    "family": "Rufina",
+    "style": "traditional",
+    "hindi": false
+  },
+  "playfair-display-sc": {
+    "family": "Playfair Display SC",
+    "style": "traditional",
+    "hindi": false
+  },
+  "marcellus-sc": {
+    "family": "Marcellus SC",
+    "style": "traditional",
+    "hindi": false
+  },
+  "philosopher": {
+    "family": "Philosopher",
+    "style": "traditional",
+    "hindi": false
+  },
+  "castoro": {
+    "family": "Castoro",
+    "style": "traditional",
+    "hindi": false
+  },
+  "lustria": {
+    "family": "Lustria",
+    "style": "traditional",
+    "hindi": false
+  },
+  "alice": {
+    "family": "Alice",
+    "style": "traditional",
+    "hindi": false
+  },
+  "unna": {
+    "family": "Unna",
+    "style": "traditional",
+    "hindi": false
+  },
+  "gloock": {
+    "family": "Gloock",
+    "style": "traditional",
+    "hindi": false
+  },
+  "fraunces": {
+    "family": "Fraunces",
+    "style": "traditional",
+    "hindi": false
+  },
+  "della-respira": {
+    "family": "Della Respira",
+    "style": "traditional",
+    "hindi": false
+  },
+  "martel": {
+    "family": "Martel",
+    "style": "traditional",
+    "hindi": true
+  },
+  "eczar": {
+    "family": "Eczar",
+    "style": "traditional",
+    "hindi": true
+  },
+  "tiro-devanagari-hindi": {
+    "family": "Tiro Devanagari Hindi",
+    "style": "traditional",
+    "hindi": true
+  },
+  "noto-serif-devanagari": {
+    "family": "Noto Serif Devanagari",
+    "style": "traditional",
+    "hindi": true
+  },
+  "vesper-libre": {
+    "family": "Vesper Libre",
+    "style": "traditional",
+    "hindi": true
+  },
+  "kadwa": {
+    "family": "Kadwa",
+    "style": "traditional",
+    "hindi": true
+  },
+  "sura": {
+    "family": "Sura",
+    "style": "traditional",
+    "hindi": true
+  },
+  "sumana": {
+    "family": "Sumana",
+    "style": "traditional",
+    "hindi": true
+  },
+  "halant": {
+    "family": "Halant",
+    "style": "traditional",
+    "hindi": true
+  },
+  "gotu": {
+    "family": "Gotu",
+    "style": "traditional",
+    "hindi": true
+  },
+  "kurale": {
+    "family": "Kurale",
+    "style": "traditional",
+    "hindi": true
+  },
+  "abril-fatface": {
+    "family": "Abril Fatface",
+    "style": "display",
+    "hindi": false
+  },
+  "poiret-one": {
+    "family": "Poiret One",
+    "style": "display",
+    "hindi": false
+  },
+  "federo": {
+    "family": "Federo",
+    "style": "display",
+    "hindi": false
+  },
+  "limelight": {
+    "family": "Limelight",
+    "style": "display",
+    "hindi": false
+  },
+  "aboreto": {
+    "family": "Aboreto",
+    "style": "display",
+    "hindi": false
+  },
+  "berkshire-swash": {
+    "family": "Berkshire Swash",
+    "style": "display",
+    "hindi": false
+  },
+  "lobster": {
+    "family": "Lobster",
+    "style": "display",
+    "hindi": false
+  },
+  "lobster-two": {
+    "family": "Lobster Two",
+    "style": "display",
+    "hindi": false
+  },
+  "kalnia": {
+    "family": "Kalnia",
+    "style": "display",
+    "hindi": false
+  },
+  "elsie": {
+    "family": "Elsie",
+    "style": "display",
+    "hindi": false
+  },
+  "elsie-swash-caps": {
+    "family": "Elsie Swash Caps",
+    "style": "display",
+    "hindi": false
+  },
+  "almendra-display": {
+    "family": "Almendra Display",
+    "style": "display",
+    "hindi": false
+  },
+  "eagle-lake": {
+    "family": "Eagle Lake",
+    "style": "display",
+    "hindi": false
+  },
+  "laila": {
+    "family": "Laila",
+    "style": "display",
+    "hindi": true
+  },
+  "baloo-2": {
+    "family": "Baloo 2",
+    "style": "display",
+    "hindi": true
+  },
+  "khand": {
+    "family": "Khand",
+    "style": "display",
+    "hindi": true
+  },
+  "modak": {
+    "family": "Modak",
+    "style": "display",
+    "hindi": true
+  },
+  "arya": {
+    "family": "Arya",
+    "style": "display",
+    "hindi": true
+  },
+  "montserrat": {
+    "family": "Montserrat",
+    "style": "modern",
+    "hindi": false
+  },
+  "raleway": {
+    "family": "Raleway",
+    "style": "modern",
+    "hindi": false
+  },
+  "josefin-sans": {
+    "family": "Josefin Sans",
+    "style": "modern",
+    "hindi": false
+  },
+  "quicksand": {
+    "family": "Quicksand",
+    "style": "modern",
+    "hindi": false
+  },
+  "poppins": {
+    "family": "Poppins",
+    "style": "modern",
+    "hindi": true
+  },
+  "lato": {
+    "family": "Lato",
+    "style": "modern",
+    "hindi": false
+  },
+  "nunito": {
+    "family": "Nunito",
+    "style": "modern",
+    "hindi": false
+  },
+  "jost": {
+    "family": "Jost",
+    "style": "modern",
+    "hindi": false
+  },
+  "tenor-sans": {
+    "family": "Tenor Sans",
+    "style": "modern",
+    "hindi": false
+  },
+  "didact-gothic": {
+    "family": "Didact Gothic",
+    "style": "modern",
+    "hindi": false
+  },
+  "questrial": {
+    "family": "Questrial",
+    "style": "modern",
+    "hindi": false
+  },
+  "comfortaa": {
+    "family": "Comfortaa",
+    "style": "modern",
+    "hindi": false
+  },
+  "urbanist": {
+    "family": "Urbanist",
+    "style": "modern",
+    "hindi": false
+  },
+  "outfit": {
+    "family": "Outfit",
+    "style": "modern",
+    "hindi": false
+  },
+  "dm-sans": {
+    "family": "DM Sans",
+    "style": "modern",
+    "hindi": false
+  },
+  "work-sans": {
+    "family": "Work Sans",
+    "style": "modern",
+    "hindi": false
+  },
+  "manrope": {
+    "family": "Manrope",
+    "style": "modern",
+    "hindi": false
+  },
+  "mukta": {
+    "family": "Mukta",
+    "style": "modern",
+    "hindi": true
+  },
+  "hind": {
+    "family": "Hind",
+    "style": "modern",
+    "hindi": true
+  },
+  "rajdhani": {
+    "family": "Rajdhani",
+    "style": "modern",
+    "hindi": true
+  },
+  "teko": {
+    "family": "Teko",
+    "style": "modern",
+    "hindi": true
+  }
+}

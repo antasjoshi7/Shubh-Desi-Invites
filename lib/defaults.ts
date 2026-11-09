@@ -122,7 +122,22 @@ function basePage(bg: Background, kind: PageKind): Page {
 // A new page of the given kind: the settings of `like` (the page you're on),
 // with the template text for that kind of page (and event).
 export function makePage(kind: PageKind, like: Page, event?: EventId): Page {
-  return { ...like, kind, event: kind === "event" ? event : undefined, boxes: boxesFor(kind, event), symbol: symbolFor(kind) };
+  return {
+    ...like,
+    kind,
+    event: kind === "event" ? event : undefined,
+    boxes: boxesFor(kind, event),
+    symbol: symbolFor(kind),
+    // fresh template text lays itself out again
+    pinned: false,
+    symbolX: undefined,
+    symbolY: undefined,
+    symbolSize: undefined,
+    symbolDx: 0,
+    symbolDy: 0,
+    symbolScale: 1,
+    textScale: 1,
+  };
 }
 
 // A new invite starts with a single Intro page.

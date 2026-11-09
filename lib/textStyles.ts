@@ -59,6 +59,18 @@ export function lineLook(box: TextBox, page: Page) {
   };
 }
 
+// Every font an invite draws with (so only those need loading).
+export function fontsUsed(pages: Page[]): string[] {
+  const out = new Set<string>([DEFAULT_BODY_FONT, DEFAULT_SCRIPT_FONT]);
+  for (const p of pages) {
+    out.add(p.font);
+    if (p.bodyFont) out.add(p.bodyFont);
+    if (p.scriptFont) out.add(p.scriptFont);
+    for (const b of p.boxes) out.add(lineLook(b, p).font);
+  }
+  return [...out];
+}
+
 // Which of the invite's fonts a line uses ("Use for all headings" changes that one).
 export function fontSlot(box: TextBox): "heading" | "body" | "script" {
   return box.role ? ROLES[box.role].font : "heading";
