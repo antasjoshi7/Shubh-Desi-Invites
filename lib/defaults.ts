@@ -115,7 +115,8 @@ function basePage(bg: Background, kind: PageKind): Page {
     bold: false,
     animation: "fadeUp",
     duration: 4,
-    transition: "slide",
+    transition: "flythrough",
+    cinematic: true,
   };
 }
 

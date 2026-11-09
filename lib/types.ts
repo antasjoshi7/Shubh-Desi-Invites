@@ -91,6 +91,8 @@ export type AnimationId =
   | "toranRoseGold"
   | "fadeUp" | "wipe" | "typewriter" | "blur" | "bloom" | "petals" | "chariot";
 export type TransitionId =
+  | "flythrough"
+  | "goldflash"
   | "crossfade"
   | "slide"
   | "zoom"
@@ -158,6 +160,7 @@ export type Page = {
   animation: AnimationId;
   duration: number; // seconds
   transition: TransitionId; // transition between pages (the same everywhere)
+  cinematic?: boolean; // the film finish (camera drift, light, gold shimmer); on unless false. The same everywhere
 };
 
 // Settings ticked "Apply to this page and the ones after": changing them on a page also

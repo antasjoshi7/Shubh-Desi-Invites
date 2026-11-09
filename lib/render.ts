@@ -21,8 +21,8 @@ export const FPS = 30;
 // How long each transition lasts. The illustrated ones need a little longer.
 // Illustrated transitions are no longer offered; invites saved with one get a crossfade.
 export const ILLUSTRATED_TRANSITIONS: TransitionId[] = ["petalShower", "mandala", "diya", "doors"];
-export function transitionLength(_type: TransitionId): number {
-  return 0.8;
+export function transitionLength(type: TransitionId): number {
+  return type === "flythrough" ? 1.1 : type === "goldflash" ? 1.0 : 0.8;
 }
 
 
@@ -60,16 +60,157 @@ export function boxColor(box: TextBox, page: Page): string {
 // ---------- One page ----------
 
 // Draws in 720x1280 units. The caller sets any scaling on ctx (see renderPageAt).
-export function render(ctx: CanvasRenderingContext2D, page: Page, time: number) {
+// live = the moving video (preview and export). Stills (the editor, PDFs, pictures) leave out the
+// camera move and the light effects, so what you edit lines up exactly with what you see.
+export function render(ctx: CanvasRenderingContext2D, page: Page, time: number, live = false) {
   ctx.save();
   ctx.clearRect(0, 0, W, H);
+  const cine = page.cinematic !== false;
+  const surface = pageSurface(page);
 
+  // The film finish: the camera drifts in slowly the whole time, so no moment is a still card.
+  // The artwork moves fully; the words move less, which gives the page depth.
+  const cam = cine && live ? cameraAt(page, time) : null;
+  if (cam) {
+    ctx.fillStyle = surface;
+    ctx.fillRect(0, 0, W, H);
+    ctx.save();
+    applyCamera(ctx, cam, 1);
+  }
   drawBackground(ctx, page);
+  if (cam) {
+    ctx.restore();
+    drawWarmLight(ctx, page, time);
+  }
 
   const { groups, centerY, mono } = layoutText(ctx, page);
+  // a soft glow in the paper colour behind every letter keeps words readable over busy artwork
+  FX = cine ? { halo: surface, sheen: live ? sheenAt(time) : null } : null;
+  if (cam) {
+    ctx.save();
+    applyCamera(ctx, cam, 0.4);
+  }
   if (mono) drawSymbolAt(ctx, page, mono, time);
   drawText(ctx, page, groups, time, centerY, mono);
+  if (cam) ctx.restore();
+  FX = null;
 
+  if (cam) {
+    drawGoldDust(ctx, page, time);
+    drawVignette(ctx, surface);
+    drawGrain(ctx, time);
+  }
+  ctx.restore();
+}
+
+// ---------- The film finish ----------
+
+type Camera = { z: number; x: number; y: number };
+let FX: { halo: string; sheen: number | null } | null = null;
+
+const hashOf = (s: string) => {
+  let h = 7;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) | 0;
+  return Math.abs(h);
+};
+
+// A slow push in with a gentle drift, different on each design (so pages don't all move alike).
+function cameraAt(page: Page, t: number): Camera {
+  const e = easeInOutSine(clamp01(t / Math.max(1, page.duration)));
+  const dir = hashOf(page.background) % 2 ? 1 : -1;
+  return { z: 1.025 + 0.06 * e, x: dir * (e - 0.5) * 12, y: -(e - 0.5) * 16 };
+}
+function applyCamera(ctx: CanvasRenderingContext2D, cam: Camera, depth: number) {
+  const z = 1 + (cam.z - 1) * depth;
+  ctx.translate(W / 2 + cam.x * depth, H / 2 + cam.y * depth);
+  ctx.scale(z, z);
+  ctx.translate(-W / 2, -H / 2);
+}
+
+// Where the gold shine is crossing the big words: a sweep shortly after they appear, then every 5s.
+function sheenAt(t: number): number | null {
+  const u = (t - 1.6) % 5;
+  if (t < 1.6 || u > 1.3) return null;
+  return -200 + (u / 1.3) * (W + 400);
+}
+
+// Warm light drifting across the top of the page, like late-afternoon sun.
+function drawWarmLight(ctx: CanvasRenderingContext2D, page: Page, t: number) {
+  const k = hashOf(page.background) % 2 ? 1 : -1;
+  const x = W / 2 + k * (W * 0.35) * Math.sin(t * 0.18 + 1);
+  const y = H * 0.12 + 40 * Math.sin(t * 0.13);
+  ctx.save();
+  ctx.globalCompositeOperation = "soft-light";
+  const g = ctx.createRadialGradient(x, y, 0, x, y, H * 0.65);
+  g.addColorStop(0, "rgba(255, 196, 120, 0.55)");
+  g.addColorStop(1, "rgba(255, 196, 120, 0)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+
+// Specks of gold floating up through the light, at three depths (near ones bigger, softer, faster).
+let dustSprite: HTMLCanvasElement | null = null;
+function drawGoldDust(ctx: CanvasRenderingContext2D, page: Page, t: number) {
+  if (!dustSprite) {
+    dustSprite = makeCanvas(64, 64);
+    const c = dustSprite.getContext("2d")!;
+    const g = c.createRadialGradient(32, 32, 0, 32, 32, 32);
+    g.addColorStop(0, "rgba(255, 236, 180, 1)");
+    g.addColorStop(0.25, "rgba(240, 196, 100, 0.85)");
+    g.addColorStop(1, "rgba(220, 160, 60, 0)");
+    c.fillStyle = g;
+    c.fillRect(0, 0, 64, 64);
+  }
+  const seed = hashOf(page.background) % 1000;
+  const light = isLight(pageSurface(page));
+  ctx.save();
+  ctx.globalCompositeOperation = light ? "source-over" : "lighter";
+  for (let i = 0; i < 34; i++) {
+    const depth = i % 3; // 0 far, 2 near
+    const size = [5, 9, 16][depth] * (0.7 + rnd(seed + i, 1) * 0.6);
+    const speed = [10, 18, 30][depth];
+    const x = rnd(seed + i, 2) * W + Math.sin(t * 0.5 + i) * 14;
+    const y = H + 40 - ((rnd(seed + i, 3) * (H + 80) + t * speed) % (H + 80));
+    const tw = 0.5 + 0.5 * Math.sin(t * (1.2 + rnd(seed + i, 4)) + i * 2.1); // twinkle
+    ctx.globalAlpha = (light ? 0.38 : 0.55) * (0.35 + 0.65 * tw) * (depth === 2 ? 0.6 : 1);
+    ctx.drawImage(dustSprite, x - size, y - size, size * 2, size * 2);
+  }
+  ctx.restore();
+}
+
+// Darker, warmer edges pull the eye to the words in the middle.
+function drawVignette(ctx: CanvasRenderingContext2D, surface: string) {
+  ctx.save();
+  const g = ctx.createRadialGradient(W / 2, H * 0.46, H * 0.28, W / 2, H * 0.5, H * 0.78);
+  g.addColorStop(0, "rgba(40, 14, 6, 0)");
+  g.addColorStop(1, isLight(surface) ? "rgba(70, 30, 10, 0.26)" : "rgba(0, 0, 0, 0.42)");
+  ctx.fillStyle = g;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+}
+
+// A fine film grain that changes every frame (so flat paper never looks digital).
+let grainTile: HTMLCanvasElement | null = null;
+function drawGrain(ctx: CanvasRenderingContext2D, t: number) {
+  if (!grainTile) {
+    grainTile = makeCanvas(160, 160);
+    const c = grainTile.getContext("2d")!;
+    const img = c.createImageData(160, 160);
+    for (let i = 0; i < img.data.length; i += 4) {
+      const v = Math.random() * 255;
+      img.data[i] = img.data[i + 1] = img.data[i + 2] = v;
+      img.data[i + 3] = 255;
+    }
+    c.putImageData(img, 0, 0);
+  }
+  const f = Math.floor(t * 12); // grain changes 12 times a second: film-like, and kinder to the file size
+  const ox = (f * 53) % 160;
+  const oy = (f * 97) % 160;
+  ctx.save();
+  ctx.globalAlpha = 0.035;
+  ctx.globalCompositeOperation = "overlay";
+  for (let y = -oy; y < H; y += 160) for (let x = -ox; x < W; x += 160) ctx.drawImage(grainTile, x, y);
   ctx.restore();
 }
 
@@ -98,12 +239,12 @@ function drawSymbolAt(ctx: CanvasRenderingContext2D, page: Page, mono: { x: numb
   ctx.restore();
 }
 
-// Draws a page scaled to fill whatever size the canvas is.
-export function renderPageAt(ctx: CanvasRenderingContext2D, page: Page, time: number) {
+// Draws a page scaled to fill whatever size the canvas is. live: see render().
+export function renderPageAt(ctx: CanvasRenderingContext2D, page: Page, time: number, live = false) {
   ctx.save();
   const s = ctx.canvas.width / W;
   ctx.setTransform(s, 0, 0, s, 0, 0);
-  render(ctx, page, time);
+  render(ctx, page, time, live);
   ctx.restore();
 }
 
@@ -747,9 +888,21 @@ export function renderInvite(ctx: CanvasRenderingContext2D, invite: Invite, t: n
   const prev = pages[i - 1];
   if (prev && t < starts[i - 1] + prev.duration) {
     const p = (t - starts[i]) / transitionLength(prev.transition);
-    renderTransition(ctx, prev, t - starts[i - 1], pages[i], t - starts[i], prev.transition, p);
+    renderTransition(ctx, prev, t - starts[i - 1], pages[i], t - starts[i], prev.transition, p, true);
   } else {
-    renderPageAt(ctx, pages[i], t - starts[i]);
+    renderPageAt(ctx, pages[i], t - starts[i], true);
+  }
+  // the film finish opens from dark and ends by fading out, like a film
+  if (pages[0].cinematic !== false) {
+    const end = totalDuration(invite);
+    const a = Math.max(clamp01(1 - t / 0.5), clamp01((t - (end - 1)) / 1));
+    if (a > 0) {
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.fillStyle = `rgba(14, 6, 4, ${easeInOutSine(a)})`;
+      ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+      ctx.restore();
+    }
   }
 }
 
@@ -762,21 +915,50 @@ export function renderTransition(
   timeB: number,
   type: TransitionId,
   p: number,
+  live = false,
 ) {
   if (ILLUSTRATED_TRANSITIONS.includes(type)) type = "crossfade";
   const out = ctx.canvas;
   const w = out.width;
   const h = out.height;
   const [A, B] = getLayers(w, h);
-  renderPageAt(A.getContext("2d")!, a, timeA);
-  renderPageAt(B.getContext("2d")!, b, timeB);
+  renderPageAt(A.getContext("2d")!, a, timeA, live);
+  renderPageAt(B.getContext("2d")!, b, timeB, live);
 
   const e = easeInOutCubic(clamp01(p));
   ctx.save();
   ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.clearRect(0, 0, w, h);
 
-  if (type === "crossfade") {
+  if (type === "flythrough") {
+    // the camera keeps moving forward: the old page rushes past as the new one settles in
+    const za = 1 + 0.38 * e * e;
+    const zb = 1.16 - 0.16 * easeOutCubic(clamp01(p));
+    ctx.save();
+    ctx.translate(w / 2, h / 2);
+    ctx.scale(zb, zb);
+    ctx.drawImage(B, -w / 2, -h / 2);
+    ctx.restore();
+    ctx.save();
+    ctx.globalAlpha = 1 - easeInOutSine(clamp01(p * 1.15));
+    ctx.translate(w / 2, h / 2);
+    ctx.scale(za, za);
+    ctx.drawImage(A, -w / 2, -h / 2);
+    ctx.restore();
+  } else if (type === "goldflash") {
+    // a warm bloom of light carries one page into the next
+    ctx.drawImage(A, 0, 0);
+    ctx.globalAlpha = e;
+    ctx.drawImage(B, 0, 0);
+    ctx.globalAlpha = 1;
+    const glow = Math.sin(Math.PI * clamp01(p));
+    const g = ctx.createRadialGradient(w / 2, h * 0.45, 0, w / 2, h * 0.45, Math.hypot(w, h) * 0.6);
+    g.addColorStop(0, `rgba(255, 244, 214, ${0.95 * glow})`);
+    g.addColorStop(0.55, `rgba(255, 214, 140, ${0.55 * glow})`);
+    g.addColorStop(1, `rgba(255, 190, 110, ${0.2 * glow})`);
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, w, h);
+  } else if (type === "crossfade") {
     ctx.drawImage(A, 0, 0);
     ctx.globalAlpha = e;
     ctx.drawImage(B, 0, 0);
@@ -976,6 +1158,30 @@ function runsWidth(ctx: CanvasRenderingContext2D, runs: Run[], size: number, fam
 
 // Draws one line centred on (x, y): raised ordinals and letter spacing included.
 function drawLineText(ctx: CanvasRenderingContext2D, line: Line, x: number, y: number) {
+  if (FX && !ctx.shadowOffsetX) {
+    const fx = FX;
+    FX = null;
+    // glow in the paper colour behind the letters
+    ctx.save();
+    ctx.shadowColor = fx.halo;
+    ctx.shadowBlur = Math.max(6, line.size * 0.42) * ctx.getTransform().a;
+    drawLineText(ctx, line, x, y);
+    ctx.restore();
+    // a band of light crossing the big words, like gold foil catching the light
+    if (fx.sheen !== null && line.size >= 44) {
+      ctx.save();
+      const g = ctx.createLinearGradient(fx.sheen - 90, y - 60, fx.sheen + 90, y + 60);
+      g.addColorStop(0, "rgba(255, 248, 225, 0)");
+      g.addColorStop(0.5, "rgba(255, 248, 225, 0.75)");
+      g.addColorStop(1, "rgba(255, 248, 225, 0)");
+      ctx.fillStyle = g;
+      ctx.shadowColor = "transparent";
+      drawLineText(ctx, line, x, y);
+      ctx.restore();
+    }
+    FX = fx;
+    return;
+  }
   const plain = !line.tracking && line.runs.length === 1 && !line.runs[0].sup;
   if (plain) {
     ctx.fillText(line.text, x, y);

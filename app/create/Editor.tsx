@@ -94,7 +94,7 @@ const SAME_KEYS: Record<keyof SameEverywhere, (keyof Page)[]> = {
 };
 
 // Settings that are always the same on every page.
-const ALWAYS_SAME: (keyof Page)[] = ["symbolStyle", "initials", "transition"];
+const ALWAYS_SAME: (keyof Page)[] = ["symbolStyle", "initials", "transition", "cinematic"];
 // Panels for the selected text: they stay open while you tap between lines.
 const TEXT_PANELS: Panel[] = ["font", "size", "tcolour", "style", "edit", "position"];
 // Panels for browsing (designs, colours…): they take the whole screen, with a small live preview.
@@ -1651,6 +1651,11 @@ export default function Editor() {
                     </button>
                   ))}
                 </div>
+                <Label title="Film finish" desc="A slow camera move, warm light, floating gold and a shine on the big words, so the video feels like one film instead of a slideshow" />
+                <label className="same">
+                  <input type="checkbox" checked={page.cinematic !== false} onChange={(e) => update({ cinematic: e.target.checked })} />
+                  On for the whole video (press ▶ Play to see it)
+                </label>
                 <Label title="Page length" desc="Seconds each page stays on screen" />
                 <div className="segmented">
                   {DURATIONS.map((d) => (

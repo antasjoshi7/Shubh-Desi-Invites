@@ -7,7 +7,7 @@ import {
   CanvasSource,
   Mp4OutputFormat,
   Output,
-  QUALITY_HIGH,
+  QUALITY_MEDIUM,
   canEncodeAudio,
   canEncodeVideo,
 } from "mediabunny";
@@ -45,7 +45,7 @@ export async function exportVideo(
 
 async function mediabunnyWorks(): Promise<boolean> {
   if (typeof VideoEncoder === "undefined") return false;
-  return canEncodeVideo("avc", { width: W, height: H, bitrate: QUALITY_HIGH });
+  return canEncodeVideo("avc", { width: W, height: H, bitrate: QUALITY_MEDIUM });
 }
 
 // AAC audio: built into most browsers; otherwise load Mediabunny's AAC encoder add-on.
@@ -69,7 +69,7 @@ async function exportWithMediabunny(
     format: new Mp4OutputFormat({ fastStart: "in-memory" }),
     target: new BufferTarget(),
   });
-  const video = new CanvasSource(canvas, { codec: "avc", bitrate: QUALITY_HIGH });
+  const video = new CanvasSource(canvas, { codec: "avc", bitrate: QUALITY_MEDIUM });
   output.addVideoTrack(video, { frameRate: FPS });
 
   const audio = music && (await aacReady()) ? new AudioBufferSource({ codec: "aac", bitrate: 128_000 }) : null;

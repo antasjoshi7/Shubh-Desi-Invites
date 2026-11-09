@@ -87,6 +87,8 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 
 ## Done recently
 
+- 10 Nov: film finish for videos (slow camera, warm light, gold dust, gold shine on names, readable glow, grain, fade in/out), Fly through and Golden glow transitions, 64 s video now about 12 MB. Research and next steps in docs/PREMIUM-OUTPUT.md. Kedar & Ria invite remade (exports/, not in git). Not deployed yet.
+
 - 10 Nov: phone editor rebuilt to Canva level (not deployed yet): lines keep their place when another line changes (pinned layout), one tap picks a line, copy/paste/duplicate, Position panel (align, space evenly, tidy), your colours remembered, readable colour combos (22), 136 fonts with search and groups, shorter text panels. Details in docs/EDITOR-REDESIGN.md.
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.

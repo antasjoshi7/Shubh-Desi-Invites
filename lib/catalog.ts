@@ -182,6 +182,8 @@ export const ANIMATIONS: { id: AnimationId; name: string }[] = [
 ];
 
 export const TRANSITIONS: { id: TransitionId; name: string }[] = [
+  { id: "flythrough", name: "Fly through" },
+  { id: "goldflash", name: "Golden glow" },
   { id: "crossfade", name: "Crossfade" },
   { id: "slide", name: "Slide" },
   { id: "zoom", name: "Zoom" },
