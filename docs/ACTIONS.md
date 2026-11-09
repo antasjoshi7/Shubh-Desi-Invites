@@ -76,6 +76,8 @@ Things only you can get that would put the site ahead of every competitor. Ranke
 
 ## Product follow-ups (no rush)
 
+- **Editor redesign for laptops (top priority)**: Canva-style layout, one toolbar for the selection, click = one item, double click = type, real handles, keyboard. Plan and phases in **docs/EDITOR-REDESIGN.md**.
+
 Bigger product ideas (personal invites per guest, RSVP management, physical card commission model, other occasions and more) are scored in **docs/IDEAS.md**.
 
 - **"All pages as pictures" button**: one tap to download every page as a PNG. Designers in the Reddit threads say still pictures are easier for guests to check details than video.
