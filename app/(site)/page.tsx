@@ -40,7 +40,7 @@ const FAQS: FaqItem[] = [
   { q: "Will someone else have the same design?", a: "The designs are shared by everyone who uses the tool, like any template. You can make yours your own by changing the paper and design colours, fonts, the symbol and where the text sits." },
   { q: "Is my invite uploaded anywhere?", a: "No. The video is made inside your browser, on your device. Names, dates and addresses never leave your phone." },
   { q: "Can I write the invite in Hindi?", a: "Yes. Type in Hindi or any language and choose a font with Devanagari letters, such as Yatra One, Rozha One or Amita." },
-  { q: "How long is the video, and what size?", a: "Each page plays for 3 to 8 seconds and you can have up to 10 pages, so most invites are 20 to 60 seconds. Videos are 720 × 1280 (9:16), the shape of a phone screen, which suits WhatsApp and Instagram stories." },
+  { q: "How long is the video, and what size?", a: "Each page plays for 3 to 15 seconds and you can have up to 10 pages, so most invites are 20 to 60 seconds. Videos are 720 × 1280 (9:16), the shape of a phone screen, which suits WhatsApp and Instagram stories." },
   { q: "Can I add music? Is it copyright-free?", a: `Yes, ${COUNTS.music} tracks such as shehnai and dhol are included. They're original, composed for this tool, so they won't be muted on Instagram or WhatsApp.` },
   { q: "Can I add photos of the couple?", a: "Not yet. The designs are illustrated, in the style of printed Indian wedding cards. Photo support is planned." },
   { q: "Can I put Ganesh ji or Om on the invite?", a: `Yes. There are ${COUNTS.symbols} symbols: Ganesh ji and Om in several styles, plus monograms made from the couple's initials. You can move, resize or hide them.` },

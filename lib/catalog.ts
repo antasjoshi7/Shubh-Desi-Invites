@@ -193,6 +193,6 @@ export const TRANSITIONS: { id: TransitionId; name: string }[] = [
   { id: "diagonal", name: "Diagonal" },
 ];
 
-export const DURATIONS = [3, 4, 5, 6, 8];
+export const DURATIONS = [3, 4, 5, 6, 8, 10, 12, 15];
 
 export const MAX_PAGES = 10;

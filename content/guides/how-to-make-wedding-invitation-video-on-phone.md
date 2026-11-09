@@ -48,7 +48,7 @@ Tap **Symbol** to choose the sign at the top of each page: Ganesh ji or Om in se
 
 ## Step 5: Pick music and animation
 
-Tap **Motion** to choose how each page comes alive: rose petals, marigold garlands, diya lights, a baraat horse that gallops across the page, and more. You can also set how long each page shows (3 to 8 seconds).
+Tap **Motion** to choose how each page comes alive: rose petals, marigold garlands, diya lights, a baraat horse that gallops across the page, and more. You can also set how long each page shows (3 to 15 seconds).
 
 Tap **Music** and press ▶ to listen to tracks like shehnai and dhol. The music is original, so it won't get muted on Instagram.
 

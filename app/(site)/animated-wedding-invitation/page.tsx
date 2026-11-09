@@ -90,7 +90,7 @@ export default function AnimatedPage() {
           { q: "Can each page have a different animation?", a: "Yes. Pick an animation per page: a palace-doors opening for the intro, marigolds for the Haldi page, lanterns for the Sangeet, and so on." },
           { q: "Does the animation cover my text?", a: "No. Each animation is built around the text: the horse runs below it, garlands hang beside it, and petals fall behind it. The finished page is always clean and readable." },
           { q: "Is there music with the animation?", a: "Yes. Choose a track like shehnai or dhol; it's original music made for the tool, so it won't be muted on Instagram or WhatsApp." },
-          { q: "How long does each animation play?", a: "Each page shows for 3 to 8 seconds (you choose). The animation fits itself to that length." },
+          { q: "How long does each animation play?", a: "Each page shows for 3 to 15 seconds (you choose). The animation fits itself to that length." },
           { q: "Can I use a simple animation instead?", a: "Yes. There are also quiet ones: fade up, wipe, typewriter and blur in." },
           { q: "Do I need an app or a powerful phone?", a: "No app. It runs in Chrome or Safari; the video is made on your phone, so older phones just take a little longer to export." },
         ]}
