@@ -87,6 +87,7 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 
 - 1 Nov: SEO site around the editor (home, 4 event pages, e-card, wording, designs, guides, privacy), sitemap, robots, structured data, share images, IndexNow, PostHog (off), git repo.
 - 9 Nov: deployed to production; fixed page addresses on Vercel (cleanUrls in vercel.json).
+- 9 Nov: page length up to 15 seconds (10s, 12s, 15s added), deployed.
 - 2 Nov: PDF or pictures download with page ticks; camel walks on a leg rig; doli carried by two kahars; lake and floral arch scenes removed (25 scenes now, 45 animations in all); page report-card tracker.
 - 2 Nov: 33 painted scene animations from 21 new Recraft sheets (66 + 8 credits used on the second account; 26 left), previews on the site.
 - 1 Nov: keyword clusters mapped to pages (docs/keywords.md); designs page moved to /wedding-card-design, e-card page to /create-marriage-invitation-card, home tuned for "wedding invite video".
