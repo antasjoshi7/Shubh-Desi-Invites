@@ -87,6 +87,8 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 
 ## Done recently
 
+- 10 Nov: card-first. Download (PDF, pictures) is the main button; video is "Make it move" in the same sheet, for the ticked pages only. PDFs are tappable: the venue opens Google Maps and phone numbers call. Videos are now full HD (1080 × 1920, about 19 MB a minute) with a send-as-Document tip. Home page leads with the card maker; site instructions updated. Not deployed yet.
+
 - 10 Nov: film finish for videos (slow camera, warm light, gold dust, gold shine on names, readable glow, grain, fade in/out), Fly through and Golden glow transitions, 64 s video now about 12 MB. Research and next steps in docs/PREMIUM-OUTPUT.md. Kedar & Ria invite remade (exports/, not in git). Not deployed yet.
 
 - 10 Nov: phone editor rebuilt to Canva level (not deployed yet): lines keep their place when another line changes (pinned layout), one tap picks a line, copy/paste/duplicate, Position panel (align, space evenly, tidy), your colours remembered, readable colour combos (22), 136 fonts with search and groups, shorter text panels. Details in docs/EDITOR-REDESIGN.md.

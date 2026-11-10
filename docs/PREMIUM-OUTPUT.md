@@ -58,3 +58,18 @@ Saved at `exports/kedar-ria-invite.mp4` (git-ignored: it has family names, numbe
 3. **Couple illustration.** The most-requested paid feature (caricature of the couple). Needs a drawing approach that isn't a generic AI look.
 4. **Text on objects.** Event details on an easel or signboard inside the scene, like the 3D invites.
 5. **Continuous journey.** Pages stitched into one long scene, with the camera panning from the gate to the mandap.
+
+## Decision: card first (10 Nov 2026)
+
+The user's parents disliked the video but liked the same invite as a PDF. The reasons:
+
+1. **Sharpness.** The PDF has 4× the pixels (1440 × 2560, against the old 720 × 1280 video), with no motion compression.
+2. **WhatsApp recompresses videos** but leaves documents untouched.
+3. **People read invites.** They want to zoom in and take their time.
+4. **A still card is judged like print**; a video is judged against studio films.
+
+Card searches are also about 10× the video ones. So the card is the main product, and the video is "Make it move", the same card with gentle motion. Videos are now made at 1080 × 1920 (about 19 MB a minute), with a tip to send them as a WhatsApp Document.
+
+**The PDF wedge.** The PDF is tappable: the venue opens Google Maps and phone numbers call, which a printed card can't do and which almost nobody sets up in Canva. Together with one-tap versions for each guest group, that's the card's advantage.
+
+**Optional video backup.** A small, curated set of cinematic establishing shots (a lake palace, a fort at dawn, a haveli courtyard, a ghat with diyas; not the Taj Mahal, which is a tomb) with a one-page card or save-the-date on top. Generating them costs money in tools like Veo, Kling or Runway, so it's the user's call.

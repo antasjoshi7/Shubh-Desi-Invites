@@ -15,6 +15,9 @@ import { audioContext, makeAudioBuffer } from "./audio";
 import { SAMPLE_RATE } from "./music";
 import { FPS, H, W } from "./render";
 
+// Videos are made at full HD (1080 × 1920) when the phone can encode it, else at 720 × 1280.
+export const HD = { w: 1080, h: 1920 };
+
 export type ExportResult = {
   blob: Blob;
   extension: "mp4" | "webm";
@@ -34,7 +37,7 @@ export async function exportVideo(
   music: Music = null,
 ): Promise<ExportResult> {
   try {
-    if (await mediabunnyWorks()) {
+    if (await mediabunnyWorks(canvas.width, canvas.height)) {
       return await exportWithMediabunny(canvas, duration, draw, onProgress, music);
     }
   } catch (err) {
@@ -43,9 +46,19 @@ export async function exportVideo(
   return exportWithMediaRecorder(canvas, duration, draw, onProgress, music);
 }
 
-async function mediabunnyWorks(): Promise<boolean> {
+async function mediabunnyWorks(width: number, height: number): Promise<boolean> {
   if (typeof VideoEncoder === "undefined") return false;
-  return canEncodeVideo("avc", { width: W, height: H, bitrate: QUALITY_MEDIUM });
+  return canEncodeVideo("avc", { width, height, bitrate: QUALITY_MEDIUM });
+}
+
+// The biggest size this browser can encode: full HD if possible.
+export async function bestVideoSize(): Promise<{ w: number; h: number }> {
+  try {
+    if (typeof VideoEncoder !== "undefined" && (await canEncodeVideo("avc", { width: HD.w, height: HD.h, bitrate: QUALITY_MEDIUM }))) return HD;
+  } catch {
+    // fall through to the smaller size
+  }
+  return { w: W, h: H };
 }
 
 // AAC audio: built into most browsers; otherwise load Mediabunny's AAC encoder add-on.

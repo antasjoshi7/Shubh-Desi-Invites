@@ -45,7 +45,7 @@ export default function ECardPage() {
         <h2>How do I create a marriage invitation card for free?</h2>
         <div className="s-answer">
           <p>
-            Open the <Link href="/create">editor</Link>, pick one of the <Link href="/wedding-card-design">wedding card designs</Link> and type your details. To get the card, open the More menu (⋯) and tap PDF or pictures. Every page is ticked; untick the ones a group of guests doesn't need (say, a reception-only version for the office) and download a print-ready PDF or pictures. For an animated version with music, press Export instead.
+            Open the <Link href="/create">editor</Link>, pick one of the <Link href="/wedding-card-design">wedding card designs</Link> and type your details. To get the card, press Download. Every page is ticked; untick the ones a group of guests doesn't need (say, a reception-only version for the office) and download a print-ready PDF or pictures. In the PDF, the venue opens the map and phone numbers call when tapped. For an animated version with music, tap Make it move in the same sheet.
           </p>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function ECardPage() {
 
       <Faq
         items={[
-          { q: "What size is the e-card?", a: "720 × 1280 pixels (9:16), the shape of a phone screen, so it fills the screen on WhatsApp without cropping." },
+          { q: "What size is the e-card?", a: "PDF pages are 1440 × 2560 (9:16, 5 × 8.9 inches), sharp enough to print. Pictures are 1080 × 1920, the shape of a phone screen, so they fill the screen on WhatsApp without cropping." },
           { q: "Can I print it?", a: "It's sized for phones. For a small print (like 4 × 7 inches) it looks fine; for large printed cards, a print designer is still the better choice." },
           { q: "Is there a watermark?", a: "No. The picture and video you download are clean." },
           { q: "Can I make cards for each function?", a: "Yes. Add a page for Haldi, Mehendi, Sangeet, the wedding and the reception, then download each page as its own picture." },

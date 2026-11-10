@@ -1089,3 +1089,5 @@ p.sec-desc { margin: 8px 0 0; }
   cursor: pointer;
 }
 .pos-grid button:active { transform: scale(0.97); background: rgba(255, 46, 126, 0.14); }
+.download-video { margin-top: 6px; padding-top: 12px; border-top: 1px solid var(--line); }
+.download-video .btn { width: 100%; font-size: 14px; padding: 12px 8px; }

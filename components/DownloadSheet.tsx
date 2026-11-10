@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { MiniPreview } from "@/components/MiniPreview";
 
-// "Download as PDF or pictures": every page is ticked; untick the ones a guest group shouldn't get
-// (e.g. a reception-only version for the office), then pick PDF or pictures.
+// Download: the card first (PDF or pictures), the video second. Every page is ticked; untick the ones a
+// guest group shouldn't get (e.g. a reception-only version for the office).
 export function DownloadSheet({
   count,
   titles,
@@ -12,6 +12,7 @@ export function DownloadSheet({
   busy,
   onPdf,
   onPictures,
+  onVideo,
   onClose,
 }: {
   count: number;
@@ -20,6 +21,7 @@ export function DownloadSheet({
   busy: "" | "pdf" | "pictures";
   onPdf: (pages: number[]) => void;
   onPictures: (pages: number[]) => void;
+  onVideo: (pages: number[]) => void;
   onClose: () => void;
 }) {
   const [picked, setPicked] = useState<boolean[]>(() => Array.from({ length: count }, () => true));
@@ -31,7 +33,7 @@ export function DownloadSheet({
       <div className="modal download-modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-head">
           <span className="label" style={{ margin: 0 }}>
-            Download pages
+            Download your invite
           </span>
           <button className="mini" onClick={onClose} disabled={!!busy} aria-label="Close">
             ×
@@ -64,7 +66,16 @@ export function DownloadSheet({
             {busy === "pictures" ? "Saving…" : chosen.length > 1 ? "Download pictures" : "Download picture"}
           </button>
         </div>
-        <p className="note">PDF: print-ready, 5 × 8.9 inches. Pictures: phone-size images, in a .zip when there are several.</p>
+        <p className="note">
+          The PDF is the card: sharp on any phone and ready to print. Tap the venue in it to open the map, or a phone
+          number to call. Pictures are phone-size images, in a .zip when there are several.
+        </p>
+        <div className="download-video">
+          <button className="btn secondary" onClick={() => onVideo(chosen)} disabled={!chosen.length || !!busy}>
+            ▶ Make it move: video{chosen.length < count ? ` of ${chosen.length} page${chosen.length > 1 ? "s" : ""}` : ""}
+          </button>
+          <p className="note">The same card with gentle motion and music, in full HD. Send it on WhatsApp as a Document so it stays sharp.</p>
+        </div>
       </div>
     </div>
   );

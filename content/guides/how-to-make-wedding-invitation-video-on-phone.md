@@ -54,9 +54,9 @@ Tap **Music** and press ▶ to listen to tracks like shehnai and dhol. The music
 
 Press **Play** at the top to watch the whole invite.
 
-## Step 6: Export and send
+## Step 6: Download and send
 
-Press **Export**. The video is made on your phone (nothing is uploaded) and you get an MP4 file with no watermark. Save it, then send it on WhatsApp with a personal message; there are [ready messages to copy](/wedding-invitation-wording#whatsapp).
+Press **Download**, then **Make it move**. The video is made on your phone (nothing is uploaded) and you get a full HD MP4 file with no watermark. Send it on WhatsApp as a Document (📎, then Document) so it stays sharp, with a personal message; there are [ready messages to copy](/wedding-invitation-wording#whatsapp). In the same sheet you can also download the PDF card, where the venue opens the map.
 
 Want a card instead? Open **More**, tap **PDF or pictures**, untick any pages you don't need, and download a print-ready PDF or pictures as an [e-card](/create-marriage-invitation-card).
 

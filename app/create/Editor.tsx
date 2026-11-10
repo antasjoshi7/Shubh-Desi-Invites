@@ -36,8 +36,9 @@ import {
 } from "@/lib/catalog";
 import { rankPalettes, readableOn } from "@/lib/colors";
 import { EVENTS, defaultInvite, duplicatePage, makePage, newId, pageTitles, startFrom } from "@/lib/defaults";
-import { exportVideo, type ExportResult } from "@/lib/export";
+import { bestVideoSize, exportVideo, type ExportResult } from "@/lib/export";
 import { useHistory } from "@/lib/history";
+import { pdfLinks } from "@/lib/links";
 import { makePdf } from "@/lib/pdf";
 import { track } from "@/lib/track";
 import {
@@ -114,7 +115,7 @@ const PANEL_DESC: Record<string, string> = {
   music: "Background music for the whole video. Tap ▶ to listen first.",
   add: "Add a new page after this one. It starts with this page’s look.",
   pagemenu: "Copy or delete this page. To reorder, hold a page and slide it.",
-  more: "Download pages as a PDF or pictures, watch your last video, or start again.",
+  more: "Download your card or video, watch your last video, or start again.",
 };
 const MIN_SIZE = 12; // font size range in the Size panel (page units, the page is 720 wide)
 const MAX_SIZE = 220;
@@ -802,7 +803,8 @@ export default function Editor() {
       const jpegs = [];
       for (const p of pages) {
         const c = stillCanvas(p, 2); // 1440 × 2560: sharp in print
-        jpegs.push({ bytes: new Uint8Array(await (await blobOf(c, "image/jpeg", 0.92)).arrayBuffer()), width: c.width, height: c.height });
+        // tappable: the venue opens the map, a phone number calls
+        jpegs.push({ bytes: new Uint8Array(await (await blobOf(c, "image/jpeg", 0.92)).arrayBuffer()), width: c.width, height: c.height, links: pdfLinks(p) });
       }
       saveFile(await makePdf(jpegs, "Wedding invitation"), `${fileBase(indexes)}.pdf`);
       track("pdf_downloaded", { pages: indexes.length, of: invite.pages.length });
@@ -839,7 +841,12 @@ export default function Editor() {
   }
 
 
-  async function makeVideo() {
+  async function makeVideo(indexes?: number[]) {
+    // the ticked pages only (a version for one group of guests), or all of them
+    const pages = indexes ? indexes.map((i) => invite.pages[i]) : invite.pages;
+    const film: Invite = { ...invite, pages };
+    const total = totalDuration(film);
+    setShowDownload(false);
     deselect();
     setPanel(null);
     setBusy("export");
@@ -848,14 +855,19 @@ export default function Editor() {
     if (result) URL.revokeObjectURL(result.url);
     setResult(null);
     try {
-      await ensureFonts(fontsUsed(invite.pages), FONTS);
-      await Promise.all([...invite.pages.map((p) => loadImage(p.background)), ...invite.pages.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
+      await ensureFonts(fontsUsed(pages), FONTS);
+      await Promise.all([...pages.map((p) => loadImage(p.background)), ...pages.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
       stopTrack();
       const music = invite.music.track ? musicFor(invite.music.track, total, invite.music.volume) : null;
-      track("video_export_started", { pages: invite.pages.length, seconds: Math.round(total) });
+      track("video_export_started", { pages: pages.length, seconds: Math.round(total) });
       const startedAt = performance.now();
-      const r = await exportVideo(canvasRef.current!, total, (c, t) => renderInvite(c, invite, t), setProgress, music);
-      track("video_export_done", { seconds: Math.round(total), took: Math.round((performance.now() - startedAt) / 1000), events: invite.pages.filter((p) => p.event).map((p) => p.event) });
+      // full HD when the phone can encode it (sharper text and artwork), drawn off-screen
+      const size = await bestVideoSize();
+      const frame = document.createElement("canvas");
+      frame.width = size.w;
+      frame.height = size.h;
+      const r = await exportVideo(frame, total, (c, t) => renderInvite(c, film, t), setProgress, music);
+      track("video_export_done", { seconds: Math.round(total), took: Math.round((performance.now() - startedAt) / 1000), events: pages.filter((p) => p.event).map((p) => p.event) });
       setResult({ ...r, url: URL.createObjectURL(r.blob) });
       setShowResult(true);
     } catch (e) {
@@ -1116,8 +1128,16 @@ export default function Editor() {
             <span>{busy === "preview" ? "■" : "▶"}</span>
             <small>{busy === "preview" ? "Stop" : "Play"}</small>
           </button>
-          <button className="export-btn" onClick={makeVideo} disabled={!ready || locked}>
-            {busy === "export" ? `${Math.round(progress * 100)}%` : "Export"}
+          <button
+            className="export-btn"
+            onClick={() => {
+              deselect();
+              setPanel(null);
+              setShowDownload(true);
+            }}
+            disabled={!ready || locked}
+          >
+            {busy === "export" ? `${Math.round(progress * 100)}%` : "Download"}
           </button>
         </div>
       </header>
@@ -1749,7 +1769,7 @@ export default function Editor() {
                     setShowDownload(true);
                   }}
                 >
-                  <span>⤓</span>PDF or pictures
+                  <span>⤓</span>Download card or video
                 </button>
                 {result && (
                   <button
@@ -1837,15 +1857,18 @@ export default function Editor() {
               </button>
             </div>
             <video src={result.url} controls playsInline loop />
-            <a className="btn" href={result.url} download={`shaadi-invite.${result.extension}`}>
+            <a className="btn" href={result.url} download={`shubh-desi-invite.${result.extension}`}>
               Download .{result.extension}
             </a>
+            <p className="note">
+              <b>Sending on WhatsApp?</b> Attach it as a <b>Document</b> (📎, then Document), not from the gallery, so WhatsApp doesn't blur it.
+            </p>
             <p className="note">
               {(result.blob.size / 1024 / 1024).toFixed(1)} MB video
               {invite.music.track && !result.withMusic ? ", but music couldn't be added on this browser" : ""}
             </p>
             <button className="link-btn" onClick={() => setShowDownload(true)}>
-              Also download as a PDF or pictures
+              Also download the card (PDF or pictures)
             </button>
             <RatingBox />
           </div>
@@ -1860,6 +1883,7 @@ export default function Editor() {
           busy={downloading}
           onPdf={downloadPdf}
           onPictures={downloadPictures}
+          onVideo={(pages) => makeVideo(pages)}
           onClose={() => setShowDownload(false)}
         />
       )}

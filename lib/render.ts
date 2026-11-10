@@ -551,6 +551,12 @@ export function refitPinned(page: Page): Page {
   };
 }
 
+// Every drawn line with its outline (720x1280 units), for the PDF's tappable links.
+export function textLines(page: Page): { boxId: string; text: string; x: number; y: number; w: number; h: number }[] {
+  measureCtx ??= document.createElement("canvas").getContext("2d")!;
+  return layoutText(measureCtx, page).groups.flat().map((l) => ({ boxId: l.boxId, text: l.text, x: l.x - l.width / 2, y: l.y - l.lh / 2, w: l.width, h: l.lh }));
+}
+
 // How much the page has shrunk its text to fit the design (1 = not at all).
 export function textFit(page: Page): number {
   measureCtx ??= document.createElement("canvas").getContext("2d")!;

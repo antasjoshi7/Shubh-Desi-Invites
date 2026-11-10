@@ -55,7 +55,7 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
   const steps = [
     { name: `Pick a ${e.name} design`, text: `Choose one of the ${e.name} designs below, or any of the ${COUNTS.designs} designs in the library.` },
     { name: "Type your details", text: "Tap the text on the invite to change names, date, time and venue. It fits itself to the design." },
-    { name: "Download the video", text: "Add music and an animation, then press Export. You get an MP4 for WhatsApp and Instagram stories." },
+    { name: "Download the card or video", text: "Press Download for a PDF card (the venue opens the map) or pictures, or tap Make it move for an MP4 with music for WhatsApp and Instagram stories." },
   ];
   const others = EVENT_PAGES.filter((x) => x.slug !== slug);
   return (

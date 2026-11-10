@@ -38,7 +38,7 @@ export default function AnimatedPage() {
         <h2>How do I make an animated wedding invitation for free?</h2>
         <div className="s-answer">
           <p>
-            Open the <Link href="/create">invite maker</Link>, pick a design and type your details, then tap <strong>Motion</strong> and choose an animation for each page. Press <strong>Play</strong> to watch it and <strong>Export</strong> to download an MP4 with music. The animations are painted illustrations brought to life in the tool, not stock clips, and they always move around your text, never over it.
+            Open the <Link href="/create">invite maker</Link>, pick a design and type your details, then tap <strong>Motion</strong> and choose an animation for each page. Press <strong>Play</strong> to watch it, then <strong>Download</strong> and <strong>Make it move</strong> for a full HD MP4 with music. The animations are painted illustrations brought to life in the tool, not stock clips, and they always move around your text, never over it.
           </p>
         </div>
       </section>
