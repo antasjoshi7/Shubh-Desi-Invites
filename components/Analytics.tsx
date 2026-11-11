@@ -1,13 +1,34 @@
 "use client";
 
-import { useEffect } from "react";
-import { startAnalytics } from "@/lib/track";
+import { useEffect, Suspense } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { startAnalytics, track } from "@/lib/track";
 
-// Starts analytics after the page has loaded, so it never slows the first paint.
-export function Analytics() {
+function AnalyticsTracker() {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
-    const id = window.setTimeout(startAnalytics, 1500);
-    return () => window.clearTimeout(id);
+    startAnalytics();
   }, []);
+
+  useEffect(() => {
+    if (pathname && typeof window !== "undefined") {
+      let url = window.location.origin + pathname;
+      const sp = searchParams?.toString();
+      if (sp) url += `?${sp}`;
+      track("$pageview", { $current_url: url });
+    }
+  }, [pathname, searchParams]);
+
   return null;
+}
+
+// Tracks pageviews across client-side route changes, and initialises PostHog.
+export function Analytics() {
+  return (
+    <Suspense fallback={null}>
+      <AnalyticsTracker />
+    </Suspense>
+  );
 }

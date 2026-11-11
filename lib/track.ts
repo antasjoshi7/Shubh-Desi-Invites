@@ -18,10 +18,11 @@ export async function startAnalytics() {
     cookieless_mode: "always",
     person_profiles: "never",
     autocapture: false, // only the events below, and page views
-    capture_pageview: true,
+    capture_pageview: false,
     disable_session_recording: true,
   });
   client = posthog;
+  (window as unknown as { posthog?: PostHog }).posthog = posthog;
   queued.forEach(([e, p]) => posthog.capture(e, p));
   queued = [];
 }
