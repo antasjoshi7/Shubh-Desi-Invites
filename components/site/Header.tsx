@@ -20,6 +20,14 @@ export function SiteHeader() {
         </nav>
         <NimbuMirchi className="s-hang" />
       </header>
+      {/* phones: the same links in a row that scrolls sideways (the header only has room for the button) */}
+      <nav className="s-mnav" aria-label="Main (phone)">
+        <Link href="/wedding-card-design">Designs</Link>
+        <Link href="/wedding-invitation-wording">Wording</Link>
+        <Link href="/wedding-mood-board">Mood board</Link>
+        <Link href="/animated-wedding-invitation">Animations</Link>
+        <Link href="/guides">Guides</Link>
+      </nav>
     </div>
   );
 }

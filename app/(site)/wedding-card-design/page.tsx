@@ -63,7 +63,7 @@ export default function DesignsPage() {
         </p>
       </section>
       {cats.map((c) => (
-        <section key={c.id} id={c.id} className="s-section s-cat">
+        <section key={c.id} id={c.id} className="s-section s-cat" data-nofold="1">
           <h2>{c.name} wedding card designs</h2>
           <ul className="s-tiles">
             {c.designs.map((d) => (

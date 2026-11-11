@@ -110,7 +110,21 @@
   .s-logo .s-marigold { width: 28px !important; height: 28px !important; }
   .s-logo .s-marigold svg { width: 28px; height: 28px; }
   .site .s-header .s-btn-small { font-size: 15px; padding: 6px 10px 3px; min-height: 42px; }
-  .s-hang { right: 26px; width: 24px; }
+  .s-hang { display: none; } /* it would hang over the phone menu row */
+}
+.s-mnav { display: none; }
+@media (max-width: 720px) {
+  .s-mnav {
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+    max-width: 1080px; margin: 14px auto 0; padding: 0 max(16px, env(safe-area-inset-left, 0px)) 4px;
+  }
+  .s-mnav::-webkit-scrollbar { display: none; }
+  .site .s-mnav a {
+    flex: none; padding: 7px 12px 5px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+    font-family: var(--label); font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;
+    text-decoration: none; box-shadow: 3px 3px 0 var(--ink); white-space: nowrap;
+  }
+  .site .s-mnav a:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
 }
 @media (max-width: 380px) { .site .s-logo { font-size: 17px; } }
 
@@ -343,4 +357,17 @@
 @media (prefers-reduced-motion: reduce) {
   .s-ticker-track, .s-reviews-track.moving, .s-hang { animation: none; }
   .site .s-btn, .site .s-tiles a { transition: none; }
+}
+
+/* phones: long sections fold to a preview (see PhoneFold) */
+.s-folded { max-height: var(--fold, 460px); overflow: hidden; position: relative; -webkit-mask-image: linear-gradient(#000 70%, transparent); mask-image: linear-gradient(#000 70%, transparent); }
+.site .s-more {
+  display: block; margin: -8px auto 28px; padding: 9px 18px 7px; border: 2px solid var(--ink); background: var(--paper); color: var(--ink);
+  font-family: var(--label); font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; box-shadow: 3px 3px 0 var(--ink); cursor: pointer;
+}
+/* phones: each design style is one row you swipe sideways, instead of a tall grid */
+@media (max-width: 720px) {
+  .s-cat .s-tiles { display: flex; overflow-x: auto; gap: 10px; scroll-snap-type: x mandatory; scrollbar-width: none; padding-bottom: 6px; }
+  .s-cat .s-tiles::-webkit-scrollbar { display: none; }
+  .s-cat .s-tiles li { flex: 0 0 31%; scroll-snap-align: start; }
 }

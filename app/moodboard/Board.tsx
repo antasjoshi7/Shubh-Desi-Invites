@@ -553,7 +553,7 @@ export default function Board() {
           <input id="mb-name" value={name} maxLength={24} placeholder="Your name (optional)" autoComplete="given-name" onChange={(e) => setName(e.target.value)} onKeyDown={(e) => { if (e.key === "Enter") beginOwn(false); }} />
           <button className="mb-btn wide" onClick={() => beginOwn(false)}>{after ? "Start my board and add photos" : "Start my board"}</button>
           {board.sample && <button className="mb-text" onClick={() => beginOwn(true)}>Keep the sample photos and build on them</button>}
-          <p className="mb-fine">Your board stays on this phone. Nothing is uploaded.</p>
+          <p className="mb-fine">Saved in this browser on this phone, not to an account. Nothing is uploaded. Clearing your browser history deletes it, so save a backup file from Send now and then.</p>
         </div>
       </Sheet>
 

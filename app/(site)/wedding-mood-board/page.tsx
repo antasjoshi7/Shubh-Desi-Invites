@@ -43,7 +43,7 @@ const PALETTES = [
 
 const FAQS: FaqItem[] = [
   { q: "Is the wedding mood board free?", a: "Yes. Making a board, the decorator brief, the what-to-wear card, the poster and the PDF of your whole board are all free, with no watermark and no ads." },
-  { q: "Do I need an account?", a: "No. Open it and start. Your board saves on your own phone as you go, so you can close it and come back later." },
+  { q: "Do I need an account?", a: "No. Your board saves in your browser on your own phone as you go, not to an account, so you can close it and come back later. Clearing your browser history or site data deletes it, and so does opening it in another browser, so save a backup file from Send now and then." },
   { q: "Can I use screenshots from Pinterest and Instagram?", a: "Yes. Add the screenshots you've saved for your own planning. The board trims the app's bars off screenshots, spots the same picture added twice, and asks which function each one is for." },
   { q: "Does my decorator need to download anything?", a: "No. The brief is a PDF or a set of pictures you send on WhatsApp. Each photo shows numbered pins and the note for each pin next to it, so the decorator knows exactly which part you mean." },
   { q: "Can I add reels?", a: "Yes. Add a saved reel or a screen recording, play it to the moment you like and keep that frame. You can keep several frames from one video." },
@@ -69,7 +69,7 @@ export default function MoodBoardPage() {
             Put everything you&apos;ve saved for the Haldi, Mehendi, Sangeet and wedding in one place. Mark exactly what you love, and the board finds your colours. Then send your decorator a brief they can act on, and your guests a card that answers &ldquo;what do we wear?&rdquo;. Free on your phone, with no sign-up.
           </p>
           <HeroStickers items={["No more 3 video calls", "Decorator will get it", "Nazar na lage"]} />
-          <Cta href="/moodboard" label="Make your mood board, free" note="Opens with a sample board, so you can see how it works first." />
+          <Cta href="/moodboard" label="Make your mood board, free" note="Opens with a sample board. Your board saves in this browser on your phone, not to an account, so clearing your browser history deletes it. Keep a backup file from Send." />
         </div>
         <HeroPic stamp={<><b>शुभ</b>Brief!</>}>
           <div className="s-hero-art">
