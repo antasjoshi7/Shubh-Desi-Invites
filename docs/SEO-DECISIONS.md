@@ -278,3 +278,11 @@ dates, a family survey, printer quotes).
 | Photo-to-video / PDF-to-video pages | The tool doesn't do it; off-topic for the site |
 | Fake reviews or celebrity claims | Penalty risk and against consumer rules |
 | Paid "force indexing" services | Grey area; IndexNow and Search Console do it free |
+
+## 12. Wedding mood board (11 November 2026)
+
+`/wedding-mood-board` is the landing page and `/moodboard` is the tool, the same split as the home page
+and `/create`: the tool is drawn in the browser, so it's `noindex` and the landing page carries the text,
+the structured data and the links. Event pages link to it from their dress-code section (`#dress-code`),
+which keeps the dress-code topic owned by the event pages for now. A separate dress-code hub waits for
+the keyword lookup (docs/keywords.md).

@@ -64,7 +64,8 @@ function boxesFor(kind: PageKind, event?: EventId): TextBox[] {
         box("And", "&", "names", "accent", { px: 42 }),
         box("Bride", "Aishwarya Iyer", "names", "accent"),
         box("Bride's parents", "(D/o Mr. Ravi & Mrs. Lakshmi Iyer)", "small", "text", { italic: true }),
-        box("Message", "We would be honoured by your presence\nand blessings as they begin\ntheir journey together.", "body"),
+        box("Date", "Saturday, 12th December 2026", "date"),
+        box("Venue", "The Leela Palace, Udaipur", "details"),
       ];
     case "event": {
       const e = (EVENTS.find((x) => x.id === event) ?? EVENTS[1]).info;
@@ -141,13 +142,14 @@ export function makePage(kind: PageKind, like: Page, event?: EventId): Page {
   };
 }
 
-// A new invite starts with a single Intro page.
+// A new invite starts with the main card: names, parents, date and venue, ready to download.
+// (Intro, event and thank-you pages are one tap away in "Add a page".)
 export function defaultInvite(): Invite {
-  const first: Page = { ...basePage(BACKGROUNDS[0], "intro"), animation: "rosePetals" };
+  const first: Page = basePage(BACKGROUNDS[0], "invite");
   return {
     pages: [first],
     same: { duration: true, background: false, animation: false },
-    music: { track: "shehnai-welcome", volume: 0.8 },
+    music: { track: "suno-padmavati", volume: 0.75 },
   };
 }
 

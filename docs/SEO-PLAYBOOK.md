@@ -277,6 +277,8 @@ for ~90 days unless something is wrong. Track each in a simple list (page, date,
 | 4 | Digital vs printed cards: real prices (call 2–3 printers first) | you |
 | 5 | WhatsApp invitation etiquette | you + relatives |
 | 6 | Why Ganesh ji is on wedding cards (check with an elder or pandit) | you |
+| Late Nov–Dec | **Wedding dress code: what to tell guests** (hub: wording per function + the what-to-wear card maker). Only after the keyword lookup in docs/keywords.md and once the brief maker is live. Counts as that fortnight's page | AI draft + you |
+| After the wedding | **How to brief your wedding decorator** (guide, from what really happened, with the real brief as the example) | you |
 | 7+ | Next patterns from section 7, guided by Search Console: write for queries where you already get impressions at positions 5–20 | |
 
 Before writing anything new, check Search Console (after ~4 weeks): **queries with many impressions

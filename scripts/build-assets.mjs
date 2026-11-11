@@ -393,7 +393,8 @@ function suitability(a) {
 // Name new files recraft-<category>-NN.png to put them in a category.
 const CATEGORY_ORDER = [
   "sangeet", "haldi", "mehendi", "wedding", "reception", "minimal",
-  "peacocks", "elephants", "birds", "horses", "florals", "marigold", "lotus", "temple",
+  "regional", "abstract", "prints",
+  "peacocks", "elephants", "tigers", "birds", "horses", "florals", "marigold", "lotus", "temple",
   "palaces", "paisley", "borders", "lights", "drawn", "illustrated",
 ];
 

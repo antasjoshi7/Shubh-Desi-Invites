@@ -1247,7 +1247,24 @@ function wrapBalanced(text: string, maxWidth: number, measure: (t: string) => nu
       if (greedy(mid).length > first.length) lo = mid;
       else hi = mid;
     }
-    out.push(...greedy(hi));
+    out.push(...noDangling(greedy(hi), maxWidth, measure));
+  }
+  return out;
+}
+
+// A line shouldn't end on a little joining word ("at Lakeside Mandap, The / Leela Palace"): move it
+// down to the word it belongs with, when the next line still fits.
+const JOINERS = /^(the|a|an|of|at|in|on|to|and|&|by|for|with|mr\.?|mrs\.?|shri|smt\.?|dr\.?)$/i;
+function noDangling(lines: string[], maxWidth: number, measure: (t: string) => number): string[] {
+  const out = [...lines];
+  for (let i = 0; i < out.length - 1; i++) {
+    const words = out[i].split(" ");
+    if (words.length < 2 || !JOINERS.test(words[words.length - 1])) continue;
+    const moved = words.pop()!;
+    const next = moved + " " + out[i + 1];
+    if (measure(next) > maxWidth) continue;
+    out[i] = words.join(" ");
+    out[i + 1] = next;
   }
   return out;
 }

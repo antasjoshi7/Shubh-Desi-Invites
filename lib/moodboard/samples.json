@@ -1,0 +1,437 @@
+[
+ {
+  "id": "00",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#343e2b",
+   "#5f7859",
+   "#a48b4c",
+   "#57d0a2",
+   "#808fa7"
+  ],
+  "dom": "#1c2014",
+  "hash": "93c39b5c6e34303e",
+  "credit": "Abhishek Sharma"
+ },
+ {
+  "id": "01",
+  "w": 819,
+  "h": 1400,
+  "colors": [
+   "#ecba49",
+   "#a6772b",
+   "#30370e",
+   "#4d5b28",
+   "#fffb71"
+  ],
+  "dom": "#ecba49",
+  "hash": "cbcd6863cf8e5f3e",
+  "credit": "Ajoy Das"
+ },
+ {
+  "id": "02",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#cc1347",
+   "#921d2f",
+   "#c4ae91",
+   "#9a6253",
+   "#d66977"
+  ],
+  "dom": "#c4ae91",
+  "hash": "061a393c7d73e7ef",
+  "credit": "Alok Verma"
+ },
+ {
+  "id": "03",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#91bff8",
+   "#bd8a6c",
+   "#f2bbac",
+   "#c65662",
+   "#75433d"
+  ],
+  "dom": "#91bff8",
+  "hash": "d9ed6c444dd26025",
+  "credit": "Amish Thakkar"
+ },
+ {
+  "id": "04",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#8c3a0b",
+   "#b26428",
+   "#e5b075",
+   "#3e0c02",
+   "#668296"
+  ],
+  "dom": "#8c3a0b",
+  "hash": "0f37698e06ca0f0f",
+  "credit": "Amish Thakkar"
+ },
+ {
+  "id": "05",
+  "w": 1050,
+  "h": 1400,
+  "colors": [
+   "#6e6136",
+   "#b1a458",
+   "#2f2418",
+   "#8f8145",
+   "#4b4127"
+  ],
+  "dom": "#0c0c0c",
+  "hash": "68819fbef7798b21",
+  "credit": "Antony Hyson Seltran"
+ },
+ {
+  "id": "06",
+  "w": 1400,
+  "h": 935,
+  "colors": [
+   "#f8535f",
+   "#d29059",
+   "#c4281d",
+   "#f8e75e",
+   "#fd84ba"
+  ],
+  "dom": "#d29059",
+  "hash": "1326d6160f8f171d",
+  "credit": "Anubhav Event Productions"
+ },
+ {
+  "id": "07",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#d96b0b",
+   "#af4209",
+   "#f69b0e",
+   "#541c05",
+   "#e2caaa"
+  ],
+  "dom": "#d96b0b",
+  "hash": "9995d1fa2b992848",
+  "credit": "Arto Suraj"
+ },
+ {
+  "id": "08",
+  "w": 1050,
+  "h": 1400,
+  "colors": [
+   "#b6bec3",
+   "#381e3f",
+   "#745e69",
+   "#b29480",
+   "#d3dde3"
+  ],
+  "dom": "#b6bec3",
+  "hash": "f8f09c932d6d656d",
+  "credit": "Arto Suraj"
+ },
+ {
+  "id": "09",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#ee2e47",
+   "#cb8a4c",
+   "#5c4e25",
+   "#8f6b3a",
+   "#f7db9b"
+  ],
+  "dom": "#2f301a",
+  "hash": "c3290d0f471f1f8f",
+  "credit": "Bella Pon Fruitsia"
+ },
+ {
+  "id": "10",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#925c37",
+   "#d7a06e",
+   "#4d2b10",
+   "#b77e52",
+   "#703e20"
+  ],
+  "dom": "#925c37",
+  "hash": "0f8f8e8d2fbb9a8e",
+  "credit": "Ghost Rider"
+ },
+ {
+  "id": "11",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#b64216",
+   "#e76d2f",
+   "#4e2712",
+   "#e4c3b0",
+   "#fdfaf6"
+  ],
+  "dom": "#b64216",
+  "hash": "28606b4b3496cf3f",
+  "credit": "Ikshana Productions"
+ },
+ {
+  "id": "12",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#d71d26",
+   "#707d3d",
+   "#94a251",
+   "#bfc7ce",
+   "#d8dc7f"
+  ],
+  "dom": "#bfc7ce",
+  "hash": "36a6b23929099938",
+  "credit": "Ikshana Productions"
+ },
+ {
+  "id": "13",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#8e7c50",
+   "#4e76b1",
+   "#405774",
+   "#2d3335",
+   "#d4b644"
+  ],
+  "dom": "#8e7c50",
+  "hash": "e6ee0f1f2f2f0f1e",
+  "credit": "Ikshana Productions"
+ },
+ {
+  "id": "14",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#d3bd79",
+   "#ad9364",
+   "#714b32",
+   "#651d32",
+   "#331415"
+  ],
+  "dom": "#ad9364",
+  "hash": "a5954dc185474667",
+  "credit": "Ikshana Productions"
+ },
+ {
+  "id": "15",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#ca2633",
+   "#ba856f",
+   "#3f0b12",
+   "#7d2f29",
+   "#ceb4a4"
+  ],
+  "dom": "#0b1414",
+  "hash": "707d4f0f98d86468",
+  "credit": "Love Arya"
+ },
+ {
+  "id": "16",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#cbdbd2",
+   "#d0a052",
+   "#5d7158",
+   "#344f38",
+   "#071522"
+  ],
+  "dom": "#cbdbd2",
+  "hash": "0f1eae6656666566",
+  "credit": "Mehedi Hasan"
+ },
+ {
+  "id": "17",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#ad7426",
+   "#d5a43f",
+   "#eed25a",
+   "#5f3713",
+   "#ebe6da"
+  ],
+  "dom": "#ad7426",
+  "hash": "0a36323f199b1b1f",
+  "credit": "Mohammed Sultan Farooqui"
+ },
+ {
+  "id": "18",
+  "w": 725,
+  "h": 1400,
+  "colors": [
+   "#501211",
+   "#852023",
+   "#977064",
+   "#5a5959",
+   "#e22124"
+  ],
+  "dom": "#060808",
+  "hash": "4d06079b19199a90",
+  "credit": "Mohit Maru"
+ },
+ {
+  "id": "19",
+  "w": 1400,
+  "h": 891,
+  "colors": [
+   "#89541c",
+   "#c1722d",
+   "#4d3918",
+   "#11140d",
+   "#efc08e"
+  ],
+  "dom": "#11140d",
+  "hash": "1913070f4f0f372d",
+  "credit": "Nihal Prabhudesai"
+ },
+ {
+  "id": "20",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#bd253d",
+   "#761242",
+   "#a79793",
+   "#976558",
+   "#bfc1c4"
+  ],
+  "dom": "#a79793",
+  "hash": "cce868c8c8ca8382",
+  "credit": "Pranav Kumar Jain"
+ },
+ {
+  "id": "21",
+  "w": 974,
+  "h": 1400,
+  "colors": [
+   "#813826",
+   "#2b190a",
+   "#dcded2",
+   "#525b5d",
+   "#a9b2a9"
+  ],
+  "dom": "#0b0702",
+  "hash": "2c3717267ebbb969",
+  "credit": "Ricardo Gomez Angel"
+ },
+ {
+  "id": "22",
+  "w": 1400,
+  "h": 933,
+  "colors": [
+   "#c5a58c",
+   "#a8734e",
+   "#efeae9",
+   "#5c767b",
+   "#574945"
+  ],
+  "dom": "#c5a58c",
+  "hash": "0f297155d6d44762",
+  "credit": "Sabesh Photography Ltd"
+ },
+ {
+  "id": "23",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#ab5a22",
+   "#7b310c",
+   "#c18a5b",
+   "#b9b8aa",
+   "#2e1003"
+  ],
+  "dom": "#b9b8aa",
+  "hash": "8a2a2005cda9716b",
+  "credit": "Sangram Rakate"
+ },
+ {
+  "id": "24",
+  "w": 935,
+  "h": 1400,
+  "colors": [
+   "#b21e24",
+   "#655c39",
+   "#a99450",
+   "#bfbeb9",
+   "#242616"
+  ],
+  "dom": "#81807d",
+  "hash": "0f2f3f5e3733b931",
+  "credit": "Sean Williams D"
+ },
+ {
+  "id": "25",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#523b11",
+   "#9a7122",
+   "#524c8c",
+   "#727bb4",
+   "#c1b28d"
+  ],
+  "dom": "#523b11",
+  "hash": "b106442529094f3f",
+  "credit": "T"
+ },
+ {
+  "id": "26",
+  "w": 933,
+  "h": 1400,
+  "colors": [
+   "#967150",
+   "#583323",
+   "#aba78a",
+   "#a03a46",
+   "#e6e9e4"
+  ],
+  "dom": "#583323",
+  "hash": "364d4556a5cc91e7",
+  "credit": "Vidit Goswami"
+ },
+ {
+  "id": "27",
+  "w": 1400,
+  "h": 910,
+  "colors": [
+   "#737044",
+   "#dddcdc",
+   "#9a9476",
+   "#303617",
+   "#3f6486"
+  ],
+  "dom": "#dddcdc",
+  "hash": "0f173369edcc8f17",
+  "credit": "Vidit Goswami"
+ },
+ {
+  "id": "28",
+  "w": 937,
+  "h": 1400,
+  "colors": [
+   "#845c2d",
+   "#1e150b",
+   "#51381b",
+   "#cb8d3c",
+   "#272e2a"
+  ],
+  "dom": "#090807",
+  "hash": "a3a941840c19998f",
+  "credit": "Yana Lysenko"
+ }
+]

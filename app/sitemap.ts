@@ -7,7 +7,7 @@ import { SITE, absolute } from "@/lib/site";
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const landing = ["/", ...EVENT_PAGES.map((p) => `/${p.slug}`), "/animated-wedding-invitation", "/create-marriage-invitation-card", "/wedding-invitation-wording", "/digital-wedding-invitation-price", "/wedding-card-design", "/guides"];
+  const landing = ["/", ...EVENT_PAGES.map((p) => `/${p.slug}`), "/animated-wedding-invitation", "/create-marriage-invitation-card", "/wedding-invitation-wording", "/digital-wedding-invitation-price", "/wedding-card-design", "/wedding-mood-board", "/guides"];
   return [
     ...landing.map((path) => ({ url: absolute(path), lastModified: SITE.updated, changeFrequency: "monthly" as const, priority: path === "/" ? 1 : 0.8 })),
     ...publishedGuides().map((g) => ({ url: absolute(`/guides/${g.slug}`), lastModified: g.updated || SITE.updated, changeFrequency: "yearly" as const, priority: 0.6 })),

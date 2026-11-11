@@ -15,6 +15,7 @@ import { motionsNamed } from "@/lib/content/motions";
 import { appSchema, howToSchema } from "@/lib/schema";
 import { COUNTS, SITE } from "@/lib/site";
 import { Prose } from "@/components/site/Prose";
+import { HeroPic, HeroStickers, Theme, type PageTheme } from "@/components/site/Desi";
 
 // One page per event (/haldi-invitation-video …) plus the Markdown pages in content/pages (/about …).
 export const dynamicParams = false;
@@ -43,6 +44,10 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
+// Each function's page wears its own colours; anything else falls back to paper.
+const eventTheme = (slug: string): PageTheme => (["haldi", "mehendi", "sangeet", "reception"].find((k) => slug.startsWith(k)) as PageTheme | undefined) ?? "paper";
+const HINDI: Record<string, string> = { haldi: "हल्दी", mehendi: "मेहंदी", sangeet: "संगीत", reception: "स्वागत" };
+
 export default async function SlugPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const e = eventPage(slug);
@@ -61,14 +66,18 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <Crumbs trail={[{ name: `${e.name} invitation video`, path: `/${slug}` }]} />
+      <Theme name={eventTheme(slug)} />
       <section className="s-hero">
         <div>
           <h1>{e.h1}</h1>
           <p className="s-lead">{e.lead}</p>
+          <HeroStickers items={[`${e.name} ready in 5 minutes`, "Wording included", "Nazar na lage"]} />
           <Cta href={start} label={`Make a ${e.name} invite`} />
           <p className="s-updated">Updated {new Date(SITE.updated).toLocaleDateString("en-IN", { month: "long", year: "numeric" })}</p>
         </div>
-        <Tiles tiles={tilesFor(e.categories, 3, e.event)} />
+        <HeroPic stamp={<><b>{HINDI[e.event] ?? "शुभ"}</b>Free!</>}>
+          <Tiles tiles={tilesFor(e.categories, 3, e.event)} />
+        </HeroPic>
       </section>
 
       <section className="s-section">
@@ -109,13 +118,16 @@ export default async function SlugPage({ params }: { params: Promise<{ slug: str
         </p>
       </section>
 
-      <section className="s-section">
+      <section className="s-section" id="dress-code">
         <h2>{e.name} dress code ideas</h2>
         <ul className="s-chips">
           {e.dress.map((d) => (
             <li key={d}>{d}</li>
           ))}
         </ul>
+        <p style={{ marginTop: 14 }}>
+          Make a what-to-wear card for your guests, with the colours by name, on the <Link href="/wedding-mood-board">wedding mood board</Link>. It also turns the decor photos you&apos;ve saved into a brief for your decorator.
+        </p>
         <h3 style={{ marginTop: 22 }}>When to send it</h3>
         <p>{e.timing}</p>
       </section>

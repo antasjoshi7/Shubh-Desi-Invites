@@ -8,6 +8,7 @@ import { Tiles } from "@/components/site/Tiles";
 import { tilesFor } from "@/lib/content/gallery";
 import { appSchema, howToSchema } from "@/lib/schema";
 import { COUNTS } from "@/lib/site";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 // Targets "create marriage invitation card" and "wedding cards online" (docs/keywords.md).
 const TITLE = "Create Marriage Invitation Card Online, Free (Indian E-Card)";
@@ -30,15 +31,19 @@ export default function ECardPage() {
   return (
     <>
       <Crumbs trail={[{ name: "Create a marriage invitation card", path: "/create-marriage-invitation-card" }]} />
+      <Theme name="card" />
       <section className="s-hero">
         <div>
           <h1>Create a marriage invitation card online</h1>
           <p className="s-lead">
             Make a digital wedding card (an e-card) to send on WhatsApp: the look of a printed Indian card, saved as a picture or an animated video. Ready in a few minutes on your phone.
           </p>
+          <HeroStickers items={["Tap the venue, map opens", "Print-ready PDF", "Rishtedaar approved"]} />
           <Cta href="/create" label="Create your card" />
         </div>
-        <Tiles tiles={tilesFor(["minimal", "wedding", "borders"], 3, "shaadi")} />
+        <HeroPic stamp={<><b>मुफ़्त</b>PDF!</>}>
+          <Tiles tiles={tilesFor(["minimal", "wedding", "borders"], 3, "shaadi")} />
+        </HeroPic>
       </section>
 
       <section className="s-section">

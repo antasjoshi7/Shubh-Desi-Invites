@@ -11,6 +11,7 @@ import { tilesFor } from "@/lib/content/gallery";
 import { MOTION_PREVIEWS, motionsById } from "@/lib/content/motions";
 import { appSchema, howToSchema, organizationSchema, websiteSchema } from "@/lib/schema";
 import { COUNTS, SITE } from "@/lib/site";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 // Card first (10 Nov 2026): card searches are about 10x the video ones (docs/keywords.md), and families
 // judge a PDF card like a printed one. The video cluster is still covered further down the page.
@@ -51,20 +52,24 @@ const FAQS: FaqItem[] = [
 export default function Home() {
   return (
     <>
+      <Theme name="home" />
       <section className="s-hero">
         <div>
           <p className="s-kicker">Why pay ₹1,699 for an invite?</p>
-          <h1>Free Indian wedding invitation card maker</h1>
+          <h1><mark>Free</mark> Indian wedding invitation card maker</h1>
           <p className="s-lead">
             Make a wedding card as neat as a printed one, on your phone. Pick from {COUNTS.designsLabel} designs in the styles trending on Pinterest and Instagram, add a page for each function, and download a sharp PDF where the venue opens the map and the phone numbers call. Make a version for each group of guests in one tap, or turn the same card into a video. Free, with no watermark and no sign-up.
           </p>
+          <HeroStickers items={["Muft hai, boss", "Mummy-approved", "Log kya kahenge? Wah wah!"]} />
           <Cta />
           <p className="s-updated">
             {COUNTS.designs} designs so far, with new ones every week. Updated{" "}
             {new Date(SITE.updated).toLocaleDateString("en-IN", { month: "long", year: "numeric" })}.
           </p>
         </div>
-        <Tiles tiles={tilesFor(["wedding", "peacocks", "elephants"], 3, "shaadi")} />
+        <HeroPic stamp={<><b>मुफ़्त</b>Free!</>}>
+          <Tiles tiles={tilesFor(["wedding", "peacocks", "elephants"], 3, "shaadi")} />
+        </HeroPic>
       </section>
 
       <section className="s-section">
@@ -112,7 +117,7 @@ export default function Home() {
       <section className="s-section">
         <h2>Invites for every function</h2>
         <p>Make one card with a page for each event, or a separate invite for each. Each page below has designs, wording and dress code ideas for that function.</p>
-        <ul className="s-cards">
+        <ul className="s-cards s-cards-events">
           {EVENT_PAGES.map((e) => (
             <li key={e.slug}>
               <h3>
@@ -180,6 +185,21 @@ export default function Home() {
         <p>
           Copy-ready wording for the main invite, invites from parents, RSVP lines and the WhatsApp message to send with your video is in the <Link href="/wedding-invitation-wording">wedding invitation wording</Link> collection.
         </p>
+      </section>
+
+      <section className="s-section">
+        <h2>Planning the decor and outfits too?</h2>
+        <p>
+          Put the screenshots you&apos;ve saved for each function on one <Link href="/wedding-mood-board">wedding mood board</Link>, mark exactly what you love, and send your decorator a clear brief and your guests a what-to-wear card. Same free, no-sign-up way as the invite.
+        </p>
+        <div className="s-hero-art" style={{ justifyContent: "flex-start", marginTop: 18 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/moodboard/landing/brief-haldi.jpg" alt="A decorator brief for a Haldi, with numbered notes on loved photos" width={360} height={640} loading="lazy" decoding="async" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/moodboard/landing/wear-haldi.jpg" alt="A what-to-wear card for a Haldi: shades of yellow, no white" width={360} height={640} loading="lazy" decoding="async" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/moodboard/landing/poster-wedding.jpg" alt="A wedding mood board poster with a red, gold and ivory palette" width={360} height={640} loading="lazy" decoding="async" />
+        </div>
       </section>
 
       <Reviews />

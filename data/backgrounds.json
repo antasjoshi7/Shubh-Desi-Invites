@@ -209,6 +209,25 @@
     "score": 0.89
   },
   {
+    "id": "recraft-wedding-08",
+    "kind": "simple",
+    "category": "wedding",
+    "src": "/generated/bg/recraft-wedding-08.jpg",
+    "thumb": "/generated/thumbs/recraft-wedding-08.jpg",
+    "primary": "#f9f5f0",
+    "centre": "#ffffff",
+    "busyness": 0.001,
+    "paper": "#ffffff",
+    "layout": "top",
+    "safe": {
+      "x": 0.133,
+      "y": 0.063,
+      "w": 0.733,
+      "h": 0.656
+    },
+    "score": 0.87
+  },
+  {
     "id": "recraft-wedding-03",
     "kind": "simple",
     "category": "wedding",
@@ -475,6 +494,291 @@
     "score": 0.62
   },
   {
+    "id": "recraft-regional-01",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-01.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-01.jpg",
+    "primary": "#cf191e",
+    "centre": "#cd1518",
+    "busyness": 0.004,
+    "paper": "#cd1518",
+    "layout": "centered",
+    "safe": {
+      "x": 0.133,
+      "y": 0.131,
+      "w": 0.733,
+      "h": 0.738
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-regional-04",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-04.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-04.jpg",
+    "primary": "#dd7957",
+    "centre": "#dd7755",
+    "busyness": 0.003,
+    "paper": "#dd7755",
+    "layout": "top",
+    "safe": {
+      "x": 0.033,
+      "y": 0.013,
+      "w": 0.933,
+      "h": 0.75
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-regional-05",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-05.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-05.jpg",
+    "primary": "#4b0411",
+    "centre": "#490410",
+    "busyness": 0.003,
+    "paper": "#490410",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.133,
+      "y": 0.238,
+      "w": 0.733,
+      "h": 0.75
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-regional-07",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-07.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-07.jpg",
+    "primary": "#f6d19d",
+    "centre": "#f7d19d",
+    "busyness": 0.002,
+    "paper": "#f7d19d",
+    "layout": "top",
+    "safe": {
+      "x": 0.122,
+      "y": 0.05,
+      "w": 0.756,
+      "h": 0.8
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-regional-06",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-06.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-06.jpg",
+    "primary": "#ddc08f",
+    "centre": "#fdfbf8",
+    "busyness": 0.002,
+    "paper": "#fdfbf8",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.013,
+      "w": 0.6,
+      "h": 0.819
+    },
+    "score": 0.93
+  },
+  {
+    "id": "recraft-regional-08",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-08.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-08.jpg",
+    "primary": "#93503b",
+    "centre": "#fdfcf9",
+    "busyness": 0.004,
+    "paper": "#fdfcf9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.178,
+      "y": 0.188,
+      "w": 0.644,
+      "h": 0.625
+    },
+    "score": 0.86
+  },
+  {
+    "id": "recraft-regional-03",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-03.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-03.jpg",
+    "primary": "#f5eee7",
+    "centre": "#faf4ec",
+    "busyness": 0.019,
+    "paper": "#fcf6ee",
+    "layout": "centered",
+    "safe": {
+      "x": 0.278,
+      "y": 0.013,
+      "w": 0.444,
+      "h": 0.975
+    },
+    "score": 0.85
+  },
+  {
+    "id": "recraft-regional-02",
+    "kind": "simple",
+    "category": "regional",
+    "src": "/generated/bg/recraft-regional-02.jpg",
+    "thumb": "/generated/thumbs/recraft-regional-02.jpg",
+    "primary": "#14124f",
+    "centre": "#14124e",
+    "busyness": 0.002,
+    "paper": "#14124e",
+    "layout": "top",
+    "safe": {
+      "x": 0.078,
+      "y": 0.047,
+      "w": 0.844,
+      "h": 0.775
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-abstract-03",
+    "kind": "simple",
+    "category": "abstract",
+    "src": "/generated/bg/recraft-abstract-03.jpg",
+    "thumb": "/generated/thumbs/recraft-abstract-03.jpg",
+    "primary": "#dfc092",
+    "centre": "#f8f4f4",
+    "busyness": 0.003,
+    "paper": "#f8f4f4",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.067,
+      "y": 0.206,
+      "w": 0.867,
+      "h": 0.588
+    },
+    "score": 0.94
+  },
+  {
+    "id": "recraft-abstract-01",
+    "kind": "simple",
+    "category": "abstract",
+    "src": "/generated/bg/recraft-abstract-01.jpg",
+    "thumb": "/generated/thumbs/recraft-abstract-01.jpg",
+    "primary": "#f7eee6",
+    "centre": "#f8f2ed",
+    "busyness": 0.003,
+    "paper": "#f8f2ed",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.172,
+      "y": 0.209,
+      "w": 0.656,
+      "h": 0.778
+    },
+    "score": 0.91
+  },
+  {
+    "id": "recraft-abstract-02",
+    "kind": "simple",
+    "category": "abstract",
+    "src": "/generated/bg/recraft-abstract-02.jpg",
+    "thumb": "/generated/thumbs/recraft-abstract-02.jpg",
+    "primary": "#889fb3",
+    "centre": "#fefefe",
+    "busyness": 0.003,
+    "paper": "#feffff",
+    "layout": "top",
+    "safe": {
+      "x": 0.2,
+      "y": 0.08,
+      "w": 0.6,
+      "h": 0.55
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-abstract-04",
+    "kind": "simple",
+    "category": "abstract",
+    "src": "/generated/bg/recraft-abstract-04.jpg",
+    "thumb": "/generated/thumbs/recraft-abstract-04.jpg",
+    "primary": "#0a5a42",
+    "centre": "#f8f1e8",
+    "busyness": 0.012,
+    "paper": "#fbf4ed",
+    "layout": "centered",
+    "safe": {
+      "x": 0.12,
+      "y": 0.25,
+      "w": 0.76,
+      "h": 0.4
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-prints-03",
+    "kind": "simple",
+    "category": "prints",
+    "src": "/generated/bg/recraft-prints-03.jpg",
+    "thumb": "/generated/thumbs/recraft-prints-03.jpg",
+    "primary": "#f5c988",
+    "centre": "#fffffe",
+    "busyness": 0.001,
+    "paper": "#fffffe",
+    "layout": "centered",
+    "safe": {
+      "x": 0.156,
+      "y": 0.125,
+      "w": 0.689,
+      "h": 0.744
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-prints-01",
+    "kind": "simple",
+    "category": "prints",
+    "src": "/generated/bg/recraft-prints-01.jpg",
+    "thumb": "/generated/thumbs/recraft-prints-01.jpg",
+    "primary": "#f8f5f4",
+    "centre": "#ffffff",
+    "busyness": 0,
+    "paper": "#ffffff",
+    "layout": "centered",
+    "safe": {
+      "x": 0.089,
+      "y": 0.075,
+      "w": 0.822,
+      "h": 0.856
+    },
+    "score": 0.71
+  },
+  {
+    "id": "recraft-prints-02",
+    "kind": "simple",
+    "category": "prints",
+    "src": "/generated/bg/recraft-prints-02.jpg",
+    "thumb": "/generated/thumbs/recraft-prints-02.jpg",
+    "primary": "#34588f",
+    "centre": "#fdf8f2",
+    "busyness": 0.003,
+    "paper": "#fdf8f2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.094,
+      "w": 0.956,
+      "h": 0.813
+    },
+    "score": 0.62
+  },
+  {
     "id": "recraft-peacocks-09",
     "kind": "simple",
     "category": "peacocks",
@@ -604,6 +908,44 @@
       "y": 0.081,
       "w": 0.533,
       "h": 0.794
+    },
+    "score": 0.66
+  },
+  {
+    "id": "recraft-peacocks-54",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-54.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-54.jpg",
+    "primary": "#e2e0d7",
+    "centre": "#fcf7f2",
+    "busyness": 0.002,
+    "paper": "#fcf7f2",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.219,
+      "w": 0.956,
+      "h": 0.581
+    },
+    "score": 0.66
+  },
+  {
+    "id": "recraft-peacocks-55",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-55.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-55.jpg",
+    "primary": "#ebe7e4",
+    "centre": "#f9f4f2",
+    "busyness": 0.005,
+    "paper": "#f9f4f2",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.211,
+      "y": 0.225,
+      "w": 0.578,
+      "h": 0.763
     },
     "score": 0.66
   },
@@ -969,6 +1311,25 @@
     "score": 0.62
   },
   {
+    "id": "recraft-peacocks-53",
+    "kind": "simple",
+    "category": "peacocks",
+    "src": "/generated/bg/recraft-peacocks-53.jpg",
+    "thumb": "/generated/thumbs/recraft-peacocks-53.jpg",
+    "primary": "#164355",
+    "centre": "#174356",
+    "busyness": 0.006,
+    "paper": "#164255",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.688
+    },
+    "score": 0.62
+  },
+  {
     "id": "recraft-elephants-03",
     "kind": "simple",
     "category": "elephants",
@@ -1121,6 +1482,25 @@
     "score": 1
   },
   {
+    "id": "recraft-elephants-18",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-18.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-18.jpg",
+    "primary": "#56050a",
+    "centre": "#560509",
+    "busyness": 0.002,
+    "paper": "#560509",
+    "layout": "top",
+    "safe": {
+      "x": 0.083,
+      "y": 0.053,
+      "w": 0.833,
+      "h": 0.866
+    },
+    "score": 1
+  },
+  {
     "id": "recraft-elephants-14",
     "kind": "simple",
     "category": "elephants",
@@ -1159,6 +1539,44 @@
     "score": 0.91
   },
   {
+    "id": "recraft-elephants-19",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-19.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-19.jpg",
+    "primary": "#efd8cf",
+    "centre": "#fde5dc",
+    "busyness": 0.003,
+    "paper": "#fde5dc",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.194,
+      "w": 0.956,
+      "h": 0.594
+    },
+    "score": 0.91
+  },
+  {
+    "id": "recraft-elephants-17",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-17.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-17.jpg",
+    "primary": "#f5f0e9",
+    "centre": "#fdfbf7",
+    "busyness": 0.003,
+    "paper": "#fdfbf7",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.1,
+      "w": 0.956,
+      "h": 0.688
+    },
+    "score": 0.82
+  },
+  {
     "id": "recraft-elephants-05",
     "kind": "simple",
     "category": "elephants",
@@ -1193,6 +1611,25 @@
       "y": 0.269,
       "w": 0.711,
       "h": 0.419
+    },
+    "score": 0.79
+  },
+  {
+    "id": "recraft-elephants-21",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-21.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-21.jpg",
+    "primary": "#d6c4ab",
+    "centre": "#fdfdfd",
+    "busyness": 0.001,
+    "paper": "#fdfdfd",
+    "layout": "top",
+    "safe": {
+      "x": 0.211,
+      "y": 0.106,
+      "w": 0.578,
+      "h": 0.688
     },
     "score": 0.79
   },
@@ -1271,6 +1708,63 @@
       "h": 0.644
     },
     "score": 0.62
+  },
+  {
+    "id": "recraft-elephants-20",
+    "kind": "simple",
+    "category": "elephants",
+    "src": "/generated/bg/recraft-elephants-20.jpg",
+    "thumb": "/generated/thumbs/recraft-elephants-20.jpg",
+    "primary": "#dce0c4",
+    "centre": "#dce0c5",
+    "busyness": 0.004,
+    "paper": "#dde0c4",
+    "layout": "top",
+    "safe": {
+      "x": 0.167,
+      "y": 0.119,
+      "w": 0.667,
+      "h": 0.644
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-tigers-01",
+    "kind": "simple",
+    "category": "tigers",
+    "src": "/generated/bg/recraft-tigers-01.jpg",
+    "thumb": "/generated/thumbs/recraft-tigers-01.jpg",
+    "primary": "#fce2bd",
+    "centre": "#fce1bc",
+    "busyness": 0.009,
+    "paper": "#fde2bd",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.613
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-tigers-02",
+    "kind": "simple",
+    "category": "tigers",
+    "src": "/generated/bg/recraft-tigers-02.jpg",
+    "thumb": "/generated/thumbs/recraft-tigers-02.jpg",
+    "primary": "#f4eae3",
+    "centre": "#f9f3ed",
+    "busyness": 0.003,
+    "paper": "#f9f3ed",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.706
+    },
+    "score": 0.86
   },
   {
     "id": "recraft-birds-03",
@@ -1710,6 +2204,25 @@
     "score": 1
   },
   {
+    "id": "recraft-florals-52",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-52.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-52.jpg",
+    "primary": "#f5e3db",
+    "centre": "#f6e4dc",
+    "busyness": 0.004,
+    "paper": "#f6e4dc",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.122,
+      "y": 0.281,
+      "w": 0.756,
+      "h": 0.706
+    },
+    "score": 0.97
+  },
+  {
     "id": "recraft-florals-03",
     "kind": "simple",
     "category": "florals",
@@ -1786,6 +2299,25 @@
     "score": 0.74
   },
   {
+    "id": "recraft-florals-53",
+    "kind": "simple",
+    "category": "florals",
+    "src": "/generated/bg/recraft-florals-53.jpg",
+    "thumb": "/generated/thumbs/recraft-florals-53.jpg",
+    "primary": "#939d8c",
+    "centre": "#8e9888",
+    "busyness": 0.003,
+    "paper": "#8e9888",
+    "layout": "centered",
+    "safe": {
+      "x": 0.189,
+      "y": 0.075,
+      "w": 0.622,
+      "h": 0.85
+    },
+    "score": 0.62
+  },
+  {
     "id": "recraft-marigold-01",
     "kind": "simple",
     "category": "marigold",
@@ -1858,6 +2390,44 @@
       "y": 0.166,
       "w": 0.633,
       "h": 0.644
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-marigold-05",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-05.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-05.jpg",
+    "primary": "#f5c57e",
+    "centre": "#fbf7f1",
+    "busyness": 0.013,
+    "paper": "#fbf8f4",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.233,
+      "y": 0.125,
+      "w": 0.533,
+      "h": 0.863
+    },
+    "score": 1
+  },
+  {
+    "id": "recraft-marigold-06",
+    "kind": "simple",
+    "category": "marigold",
+    "src": "/generated/bg/recraft-marigold-06.jpg",
+    "thumb": "/generated/thumbs/recraft-marigold-06.jpg",
+    "primary": "#5b0312",
+    "centre": "#590211",
+    "busyness": 0.004,
+    "paper": "#590211",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.133,
+      "y": 0.188,
+      "w": 0.733,
+      "h": 0.775
     },
     "score": 1
   },
@@ -1972,6 +2542,25 @@
       "y": 0.2,
       "w": 0.68,
       "h": 0.66
+    },
+    "score": 0.62
+  },
+  {
+    "id": "recraft-lotus-53",
+    "kind": "simple",
+    "category": "lotus",
+    "src": "/generated/bg/recraft-lotus-53.jpg",
+    "thumb": "/generated/thumbs/recraft-lotus-53.jpg",
+    "primary": "#ebece7",
+    "centre": "#fefdfb",
+    "busyness": 0.003,
+    "paper": "#fefdfb",
+    "layout": "top",
+    "safe": {
+      "x": 0.033,
+      "y": 0.013,
+      "w": 0.933,
+      "h": 0.753
     },
     "score": 0.62
   },
@@ -2147,6 +2736,25 @@
     "score": 1
   },
   {
+    "id": "recraft-palaces-53",
+    "kind": "simple",
+    "category": "palaces",
+    "src": "/generated/bg/recraft-palaces-53.jpg",
+    "thumb": "/generated/thumbs/recraft-palaces-53.jpg",
+    "primary": "#eab7a7",
+    "centre": "#f7c7b8",
+    "busyness": 0.01,
+    "paper": "#f7c7b8",
+    "layout": "bottom",
+    "safe": {
+      "x": 0.14,
+      "y": 0.22,
+      "w": 0.72,
+      "h": 0.62
+    },
+    "score": 0.99
+  },
+  {
     "id": "recraft-palaces-01",
     "kind": "simple",
     "category": "palaces",
@@ -2261,6 +2869,25 @@
     "score": 1
   },
   {
+    "id": "recraft-paisley-05",
+    "kind": "simple",
+    "category": "paisley",
+    "src": "/generated/bg/recraft-paisley-05.jpg",
+    "thumb": "/generated/thumbs/recraft-paisley-05.jpg",
+    "primary": "#e5cd9b",
+    "centre": "#fdfdfc",
+    "busyness": 0.002,
+    "paper": "#fdfdfc",
+    "layout": "centered",
+    "safe": {
+      "x": 0.022,
+      "y": 0.25,
+      "w": 0.956,
+      "h": 0.5
+    },
+    "score": 0.98
+  },
+  {
     "id": "recraft-paisley-03",
     "kind": "simple",
     "category": "paisley",
@@ -2373,6 +3000,44 @@
       "h": 0.281
     },
     "score": 0.61
+  },
+  {
+    "id": "recraft-borders-52",
+    "kind": "simple",
+    "category": "borders",
+    "src": "/generated/bg/recraft-borders-52.jpg",
+    "thumb": "/generated/thumbs/recraft-borders-52.jpg",
+    "primary": "#f6f5f5",
+    "centre": "#faf9f9",
+    "busyness": 0.003,
+    "paper": "#faf9f9",
+    "layout": "centered",
+    "safe": {
+      "x": 0.111,
+      "y": 0.088,
+      "w": 0.778,
+      "h": 0.85
+    },
+    "score": 0.59
+  },
+  {
+    "id": "recraft-lights-03",
+    "kind": "simple",
+    "category": "lights",
+    "src": "/generated/bg/recraft-lights-03.jpg",
+    "thumb": "/generated/thumbs/recraft-lights-03.jpg",
+    "primary": "#53152f",
+    "centre": "#52152f",
+    "busyness": 0.004,
+    "paper": "#52162e",
+    "layout": "top",
+    "safe": {
+      "x": 0.022,
+      "y": 0.013,
+      "w": 0.956,
+      "h": 0.847
+    },
+    "score": 0.98
   },
   {
     "id": "recraft-lights-02",

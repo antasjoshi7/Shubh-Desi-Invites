@@ -3,7 +3,7 @@
 The running to-do list for growing the site. Kept up to date at the end of every working session.
 Last updated: 10 November 2026.
 
-Marketing plan (wedges, channel playbooks, timeline): https://claude.ai/artifact/LdisrAbJhZiB2Yc5v9et9t
+Marketing plan (wedges, channel playbooks, timeline; updated 11 Nov with the brief maker): https://claude.ai/artifact/LdisrAbJhZiB2Yc5v9et9t
 
 ## Waiting on you
 
@@ -26,6 +26,8 @@ Marketing plan (wedges, channel playbooks, timeline): https://claude.ai/artifact
 | 15 | **More Reddit threads as PDFs** in `research/reddit/` whenever you see good ones (questions people ask about invites, wording, costs, WhatsApp) | I can't open Reddit; your saved threads are how real questions get answered on the site | 1 min each |
 | 17 | **Twitter/X handle**: make the account (your own name) and send me the handle | Goes in the site footer, the share cards (`twitter:site`) and the "who made this" data, so the site and your account point to each other | 10 min |
 | 18 | **More keyword data**: the first screenshots are in docs/keywords.md and already used. Next, look up the event, wording and regional terms listed at the bottom of that file, ideally as a CSV download | Decides the next pages (regional invites? Canva comparison? wording deep dives?) | 20 min |
+| 19 | **Try the wedding brief maker on your phone** (run the site locally, open `/moodboard`; plan and status in docs/MOODBOARD.md). Make a decorator brief and a what-to-wear card for one function and tap Send. Ask your brother's fiancée to try it with her real screenshots | First real test of the wedge: does the decorator act on the brief without a call? Also the only way to check the share step, which needs a real phone | 20 min |
+| 20 | **Keyword lookup for the brief maker**: the dress-code, colour and decorator terms listed at the bottom of docs/keywords.md, as a CSV from Keyword Planner | Decides whether the dress-code page is worth building and what it's called. The launch plan has it pencilled for late Nov–Dec | 15 min |
 | 16 | **Recraft credits** (optional): when you have more, 3 to 5 designs a week keeps the "new designs every week" line true | The home page says new designs are added every week | ongoing |
 
 ## Page report cards (start when Search Console is live)
@@ -78,6 +80,8 @@ Things only you can get that would put the site ahead of every competitor. Ranke
 
 - **Editor, next steps**: side handles for line width, typing on the page, layers. Ranked in **docs/EDITOR-REDESIGN.md** (phones first; the laptop layout stays as it is).
 
+- **Wedding mood board (the wedge to test)**: per-person board of decor and outfit inspiration, sorted by event, with notes and a decorator brief. Plan: **docs/MOODBOARD.md**. The 3D venue planner is parked (docs/VENUE-PLANNER.md); the Lychee Bagh page stays as a demo.
+
 Bigger product ideas (personal invites per guest, RSVP management, physical card commission model, other occasions and more) are scored in **docs/IDEAS.md**.
 
 - **"All pages as pictures" button**: one tap to download every page as a PNG. Designers in the Reddit threads say still pictures are easier for guests to check details than video.
@@ -86,6 +90,18 @@ Bigger product ideas (personal invites per guest, RSVP management, physical card
 - **Clouds on light designs**: the clouds are cream, so they barely show on cream paper; they look best on coloured designs. A darker-edged variant would need one more Recraft generation.
 
 ## Done recently
+
+- 11 Nov: whole site restyled in the "chatpata" look (desi poster art × neo-brutalism): own colour set per page, filmi headlines, toran, shop-sign ticker, Hinglish stickers, nimbu-mirchi, nazar, marigold stamps; mood board and the invite editor's pieces restyled too (editor layout unchanged). Rules in docs/DESIGN-CHATPATA.md. Not deployed. Share images and pins still in the old look.
+
+- 11 Nov: 35 new card designs from the Loom brief (big empty middle, few but intricate elements): elephants, tigers, peacocks, marigold, folk and regional art, painted and abstract, block prints. 35 Recraft credits used, 65 left. The design panel is one open scrolling library with section headings. Music: own-upload option removed, old saved songs go quiet, songs download only when played or used. List in docs/NEW-DESIGNS.md. Not deployed yet.
+
+- 11 Nov: wedding mood board linked into the site (not deployed): landing page `/wedding-mood-board` with full SEO (title, description, share image, structured data, sitemap), links from the header, footer, home page, each event's dress-code section and the invite's Download sheet. Production build passes. Details in docs/MOODBOARD.md.
+
+- 11 Nov: replaced synthetic/algorithmic background audio with 9 authentic studio-grade Suno AI productions inspired by trending Indian wedding invitation aesthetics (Padmavati strings, Din Shagna dulcimer & bansuri, Ishq Sufiyana sarod, Rajputana nagada & shehnai, Padharo sarangi, Mangal Aashirvaad sitar, Pahadi santoor, Awadhi geet dholak, Thanjavur temple procession). Added custom MP3/WAV audio upload directly in the music drawer and automatic track decoding for instant preview and glitch-free video exports.
+
+- 11 Nov: venue planner first draft for Lychee Bagh, Dehradun: hand-built 3D model from public photos, Maps and listings, with sample Mehendi, Haldi, Sangeet and Wedding decor, colour by area, tappable run of the day, fireworks and cold pyro. Private artifact only; source in research/venue/ (not in git or on Vercel). No API used.
+
+- 11 Nov: full test pass at phone size (every feature, 22 pages, 286 links) and 18 fixes: new invites start on a complete card (names, date, venue), "Your colours" shows only colours on the invite, no more wiped text or invisible empty lines, paste avoids the symbol, monogram follows the names, no page jump when panels open, "Send on WhatsApp" share button for PDF, pictures and video on phones, smarter line breaks and venue links, card-first wording. List in docs/EDITOR-REDESIGN.md (items 15 to 32). Not deployed yet.
 
 - 10 Nov: card-first. Download (PDF, pictures) is the main button; video is "Make it move" in the same sheet, for the ticked pages only. PDFs are tappable: the venue opens Google Maps and phone numbers call. Videos are now full HD (1080 × 1920, about 19 MB a minute) with a send-as-Document tip. Home page leads with the card maker; site instructions updated. Deployed 10 Nov (with the editor rebuild, 136 fonts and film finish).
 

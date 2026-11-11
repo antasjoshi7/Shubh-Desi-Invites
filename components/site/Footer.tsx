@@ -2,12 +2,19 @@ import Link from "next/link";
 import { EVENT_PAGES } from "@/lib/content/events";
 import { publishedPages } from "@/lib/content/pages";
 import { SITE } from "@/lib/site";
+import { Nazar, Toran } from "./Desi";
 
 // Every page links to every other main page from here, so search engines find them all.
 export function SiteFooter() {
   const pages = publishedPages();
   return (
     <footer className="s-footer">
+      <Toran id="s-toran-f" />
+      <div className="s-footer-sign">
+        <Nazar size={58} />
+        <p lang="hi">नज़र न लगे</p>
+        <span>Shaadi mubarak, in advance</span>
+      </div>
       <div className="s-footer-cols">
         <div>
           <h2>Invitation videos</h2>
@@ -26,6 +33,7 @@ export function SiteFooter() {
             <li><Link href="/wedding-invitation-wording">Invitation wording</Link></li>
             <li><Link href="/digital-wedding-invitation-price">What invites cost</Link></li>
             <li><Link href="/wedding-card-design">Wedding card designs</Link></li>
+            <li><Link href="/wedding-mood-board">Wedding mood board</Link></li>
             <li><Link href="/guides">Guides</Link></li>
           </ul>
         </div>

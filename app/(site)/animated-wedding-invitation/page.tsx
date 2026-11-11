@@ -8,6 +8,7 @@ import { MotionReel } from "@/components/site/MotionReel";
 import { EVENT_PAGES } from "@/lib/content/events";
 import { MOTION_PREVIEWS, SCENE_PREVIEWS, SINGLE_PREVIEWS, motionsNamed, videoSchema } from "@/lib/content/motions";
 import { appSchema } from "@/lib/schema";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 const COUNT = MOTION_PREVIEWS.length;
 const TITLE = `Animated Wedding Invitation Maker: ${COUNT} Indian Animations, Free`;
@@ -24,12 +25,14 @@ export default function AnimatedPage() {
   return (
     <>
       <Crumbs trail={[{ name: "Animated wedding invitation", path: "/animated-wedding-invitation" }]} />
+      <Theme name="animated" />
       <section className="s-hero" style={{ gridTemplateColumns: "1fr" }}>
         <div>
           <h1>Animated Indian wedding invitations</h1>
           <p className="s-lead">
             {COUNT} hand-painted animations made for Indian weddings: a baraat ghodi that really gallops, elephants that meet and raise their trunks, palace doors that swing open, diyas that light one by one. Pick one for each page of your invite and download the video.
           </p>
+          <HeroStickers items={["Ghodi really gallops", "Hand-painted", "No watermark"]} />
           <Cta href="/create?motion=ghodi" label="Make an animated invite" />
         </div>
       </section>

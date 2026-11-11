@@ -12,7 +12,7 @@ import { TextOverlay, type OverlayItem } from "@/components/TextOverlay";
 import { FontPicker } from "@/components/FontPicker";
 import { Tip, useTips } from "@/components/Tip";
 import { ensureFonts, loadFont, loadImage } from "@/lib/assets";
-import { playForVideo, playTrack } from "@/lib/audio";
+import { ensureTrackLoaded, playForVideo, playTrack } from "@/lib/audio";
 import { MUSIC, musicFor } from "@/lib/music";
 import {
   ANIMATIONS,
@@ -117,6 +117,8 @@ const PANEL_DESC: Record<string, string> = {
   pagemenu: "Copy or delete this page. To reorder, hold a page and slide it.",
   more: "Download your card or video, watch your last video, or start again.",
 };
+// a small sign for each event in "Add a page" (the new page keeps this invite's look)
+const EVENT_MARK: Record<EventId, string> = { haldi: "🌼", mehendi: "🌿", sangeet: "🎶", shaadi: "🪔", reception: "✨" };
 const MIN_SIZE = 12; // font size range in the Size panel (page units, the page is 720 wide)
 const MAX_SIZE = 220;
 // extra text colours offered next to the palette's two
@@ -182,6 +184,15 @@ function flowBelow(before: Page, after: Page, ids: string[]): Page {
   return { ...after, boxes: after.boxes.map((b) => (shift.has(b.id) ? { ...b, y: (b.y ?? 0) + shift.get(b.id)! } : b)) };
 }
 
+// The couple's initials from the first page with two name lines ("Rohan Sharma" & "Aishwarya Iyer" → R, A).
+function namesInitials(pages: Page[]): [string, string] | null {
+  for (const p of pages) {
+    const names = p.boxes.filter((b) => b.role === "names").map((b) => b.text.match(/\p{L}/u)?.[0]).filter((c): c is string => !!c);
+    if (names.length >= 2) return [names[0].toUpperCase(), names[1].toUpperCase()];
+  }
+  return null;
+}
+
 export default function Editor() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const areaRef = useRef<HTMLDivElement>(null);
@@ -195,19 +206,21 @@ export default function Editor() {
   const [group, setGroup] = useState(false); // the whole block (symbol + all text) is picked
   const [editing, setEditing] = useState<string | null>(null); // line being typed into
   const [previewing, setPreviewing] = useState<Previewing>(null);
-  const [category, setCategory] = useState<string | null>(null); // design library section
   const [stageSize, setStageSize] = useState({ w: 300, h: 533 });
   const [ready, setReady] = useState(false);
   const [assetTick, setAssetTick] = useState(0); // bumps when an image finishes loading
   const [busy, setBusy] = useState<"" | "preview" | "export">("");
   const [showDownload, setShowDownload] = useState(false); // the "PDF or pictures" sheet
   const [downloading, setDownloading] = useState<"" | "pdf" | "pictures">("");
+  const [made, setMade] = useState<{ kind: "pdf" | "pictures"; files: File[] } | null>(null); // to send from the phone's share sheet
   const [progress, setProgress] = useState(0);
+  const [film, setFilm] = useState({ pages: 0, seconds: 0 }); // what the video being made holds
   const [result, setResult] = useState<(ExportResult & { url: string }) | null>(null);
   const [showResult, setShowResult] = useState(false);
   const [error, setError] = useState("");
   const [toast, setToast] = useState<Toast>(null);
   const [playingTrack, setPlayingTrack] = useState<string | null>(null);
+  const [loadingTrack, setLoadingTrack] = useState<string | null>(null); // a song downloading before it plays
   const [dragging, setDragging] = useState(false);
   const [clip, setClip] = useState<Clip | null>(null); // copied lines
   const [styleClip, setStyleClip] = useState<StyleClip | null>(null); // a copied look ("Copy style")
@@ -215,6 +228,8 @@ export default function Editor() {
   const pendingColour = useRef<string | null>(null);
   const tips = useTips();
   const stopTrackRef = useRef<(() => void) | null>(null);
+  const focusedOnce = useRef<string | null>(null); // the line whose text box has had its first focus
+  const lastEditing = useRef<string | null>(null);
   const stopPreview = useRef(false);
   const loaded = useRef(false);
 
@@ -259,7 +274,11 @@ export default function Editor() {
     let saved: Invite | null = null;
     try {
       const stored = JSON.parse(localStorage.getItem(SAVE_KEY) ?? "null") as Invite | null;
-      if (stored?.pages?.length) history.reset((saved = stored));
+      if (stored?.pages?.length) {
+        // a song from an older version (or one uploaded before) no longer exists: the invite goes quiet
+        if (stored.music?.track && !MUSIC.some((m) => m.id === stored.music.track)) stored.music = { ...stored.music, track: null };
+        history.reset((saved = stored));
+      }
     } catch {
       // nothing saved, or storage blocked
     }
@@ -313,7 +332,8 @@ export default function Editor() {
     ensureFonts(fontKey.split("|"), FONTS).then((any) => any && setAssetTick((n) => n + 1));
   }, [fontKey, ready]);
 
-  // Colours picked by hand go to the front of "Your colours" (after a pause, as the picker drags).
+  // Colours picked by hand go to the front of "Your colours" once the picker settles. This list
+  // only sets the order: a colour shows only while it's actually on the invite.
   function rememberColour(c: string) {
     pendingColour.current = c.toLowerCase();
     window.setTimeout(() => {
@@ -321,7 +341,7 @@ export default function Editor() {
       if (!c2) return;
       pendingColour.current = null;
       setRecent((r) => {
-        const next = [c2, ...r.filter((x) => x !== c2)].slice(0, 12);
+        const next = [c2, ...r.filter((x) => x !== c2)].slice(0, 30);
         try {
           localStorage.setItem(RECENT_KEY, JSON.stringify(next));
         } catch {
@@ -504,6 +524,31 @@ export default function Editor() {
     setToast({ text: copies.length > 1 ? `${copies.length} lines duplicated` : "Duplicated" });
   }
 
+  // Typing into a line. While the couple's initials (the monogram) still match the names, they
+  // follow the names as they're typed.
+  function editText(box: TextBox, text: string) {
+    setBoxes((x) => ({ ...x, text }), [box.id]);
+    if (box.role !== "names") return;
+    const before = namesInitials(invite.pages);
+    const after = namesInitials(invite.pages.map((p) => ({ ...p, boxes: p.boxes.map((b) => (b.id === box.id ? { ...b, text } : b)) })));
+    const now = page.initials ?? DEFAULT_INITIALS;
+    if (!after || (after[0] === now[0] && after[1] === now[1])) return;
+    if (before ? before[0] === now[0] && before[1] === now[1] : now === DEFAULT_INITIALS) update({ initials: after });
+  }
+
+  // A line left empty after typing is removed (it would be invisible and impossible to tap).
+  useEffect(() => {
+    const was = lastEditing.current;
+    lastEditing.current = editing;
+    if (!was || was === editing) return;
+    history.replace((inv) => ({
+      ...inv,
+      pages: inv.pages.map((p) => (p.boxes.some((b) => b.id === was && !b.text.trim()) ? { ...p, boxes: p.boxes.filter((b) => b.id !== was) } : p)),
+    }));
+    setSel((s) => s.filter((id) => id !== was || page.boxes.find((b) => b.id === id)?.text.trim()));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [editing]);
+
   // ----- copy and paste -----
 
   function copySel(cut = false) {
@@ -532,14 +577,14 @@ export default function Editor() {
     let copies = clip.boxes.map((b) => ({ ...b, id: newId(), dx: (b.dx ?? 0) + off, dy: (b.dy ?? 0) + off }));
     // landing on other text (copied from another page): drop it under the text instead, if there's room
     if (!clash) {
-      const have = textBoxRects(base).filter((r) => r.id !== SYMBOL_ID);
+      const have = textBoxRects(base); // other lines and the symbol
       const added = textBoxRects({ ...base, boxes: copies }).filter((r) => r.id !== SYMBOL_ID);
       const m = 12; // too close counts as touching
       const hits = added.some((a) => have.some((h) => a.x < h.x + h.w + m && h.x < a.x + a.w + m && a.y < h.y + h.h + m && h.y < a.y + a.h + m));
       if (hits && have.length && added.length) {
         const top = Math.min(...added.map((a) => a.y));
         const height = Math.max(...added.map((a) => a.y + a.h)) - top;
-        const below = Math.max(...have.map((h) => h.y + h.h)) + 20;
+        const below = Math.max(...have.map((h) => h.y + h.h)) + 28;
         const room = below + height <= area.y + area.h;
         const shift = room ? below - top : 24;
         copies = copies.map((c) => ({ ...c, dy: (c.dy ?? 0) + shift, dx: (c.dx ?? 0) + (room ? 0 : 24) }));
@@ -743,7 +788,7 @@ export default function Editor() {
 
   // ----- preview, PNG, video -----
 
-  function preview() {
+  async function preview() {
     if (busy === "preview") {
       stopPreview.current = true;
       return;
@@ -753,6 +798,16 @@ export default function Editor() {
     stopPreview.current = false;
     setBusy("preview");
     stopTrack();
+    // the song downloads the first time it's needed; start the pictures only once it's here
+    if (invite.music.track) {
+      setLoadingTrack(invite.music.track);
+      await ensureTrackLoaded(invite.music.track);
+      setLoadingTrack(null);
+      if (stopPreview.current) {
+        setBusy("");
+        return;
+      }
+    }
     const stopMusic = invite.music.track ? playForVideo(invite.music.track, total, invite.music.volume) : () => {};
     const start = performance.now();
     const tick = () => {
@@ -786,6 +841,23 @@ export default function Editor() {
     a.click();
     setTimeout(() => URL.revokeObjectURL(url), 30_000);
   };
+  // Phones can hand files straight to WhatsApp (or anything else) through the share sheet.
+  const canShareFiles = (files: File[]) => {
+    try {
+      return typeof navigator !== "undefined" && !!navigator.canShare?.({ files });
+    } catch {
+      return false;
+    }
+  };
+  async function shareFiles(files: File[], what: string) {
+    try {
+      await navigator.share({ files, title: "Wedding invitation" });
+      track("shared", { what, files: files.length });
+    } catch {
+      // closed the share sheet, or sharing isn't allowed here
+    }
+  }
+
   // the chosen pages, with every picture they need loaded first
   async function readyPages(indexes: number[]) {
     const chosen = indexes.map((i) => invite.pages[i]);
@@ -806,7 +878,10 @@ export default function Editor() {
         // tappable: the venue opens the map, a phone number calls
         jpegs.push({ bytes: new Uint8Array(await (await blobOf(c, "image/jpeg", 0.92)).arrayBuffer()), width: c.width, height: c.height, links: pdfLinks(p) });
       }
-      saveFile(await makePdf(jpegs, "Wedding invitation"), `${fileBase(indexes)}.pdf`);
+      const pdf = await makePdf(jpegs, "Wedding invitation");
+      saveFile(pdf, `${fileBase(indexes)}.pdf`);
+      const file = new File([pdf], `${fileBase(indexes)}.pdf`, { type: "application/pdf" });
+      setMade(canShareFiles([file]) ? { kind: "pdf", files: [file] } : null);
       track("pdf_downloaded", { pages: indexes.length, of: invite.pages.length });
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
@@ -820,14 +895,15 @@ export default function Editor() {
     try {
       const pages = await readyPages(indexes);
       const files: Record<string, Uint8Array> = {};
+      const pngs: File[] = [];
       for (const [k, p] of pages.entries()) {
         const png = await blobOf(stillCanvas(p, 1.5), "image/png"); // 1080 × 1920, a phone screen
-        if (pages.length === 1) {
-          saveFile(png, `${fileBase(indexes)}.png`);
-        } else {
-          files[`${String(k + 1).padStart(2, "0")}-${titles[indexes[k]].toLowerCase().replace(/[^a-z0-9]+/g, "-")}.png`] = new Uint8Array(await png.arrayBuffer());
-        }
+        const name = pages.length === 1 ? `${fileBase(indexes)}.png` : `${String(k + 1).padStart(2, "0")}-${titles[indexes[k]].toLowerCase().replace(/[^a-z0-9]+/g, "-")}.png`;
+        pngs.push(new File([png], name, { type: "image/png" }));
+        if (pages.length === 1) saveFile(png, name);
+        else files[name] = new Uint8Array(await png.arrayBuffer());
       }
+      setMade(canShareFiles(pngs) ? { kind: "pictures", files: pngs } : null);
       if (pages.length > 1) {
         const { zipSync } = await import("fflate");
         saveFile(new Blob([zipSync(files, { level: 0 }) as BlobPart], { type: "application/zip" }), `${fileBase(indexes)}-pictures.zip`);
@@ -846,6 +922,7 @@ export default function Editor() {
     const pages = indexes ? indexes.map((i) => invite.pages[i]) : invite.pages;
     const film: Invite = { ...invite, pages };
     const total = totalDuration(film);
+    setFilm({ pages: pages.length, seconds: total });
     setShowDownload(false);
     deselect();
     setPanel(null);
@@ -858,6 +935,7 @@ export default function Editor() {
       await ensureFonts(fontsUsed(pages), FONTS);
       await Promise.all([...pages.map((p) => loadImage(p.background)), ...pages.flatMap((p) => motionAssets(p.animation)).map(loadImage)]);
       stopTrack();
+      if (invite.music.track) await ensureTrackLoaded(invite.music.track);
       const music = invite.music.track ? musicFor(invite.music.track, total, invite.music.volume) : null;
       track("video_export_started", { pages: pages.length, seconds: Math.round(total) });
       const startedAt = performance.now();
@@ -882,12 +960,17 @@ export default function Editor() {
 
   const setMusic = (patch: Partial<Invite["music"]>) => setInvite((inv) => ({ ...inv, music: { ...inv.music, ...patch } }));
 
-  function toggleTrack(id: string) {
+  // ▶ in the music list: the song downloads on the first tap (shown as …), then plays.
+  async function toggleTrack(id: string) {
     const wasPlaying = playingTrack === id;
     stopTrack();
     if (wasPlaying) return;
-    stopTrackRef.current = playTrack(id, invite.music.volume);
     setPlayingTrack(id);
+    setLoadingTrack(id);
+    await ensureTrackLoaded(id);
+    setLoadingTrack((l) => (l === id ? null : l));
+    if (wantTrack.current !== id) return; // stopped, or another song tapped, while it downloaded
+    stopTrackRef.current = playTrack(id, invite.music.volume);
   }
 
   function stopTrack() {
@@ -895,6 +978,10 @@ export default function Editor() {
     stopTrackRef.current = null;
     setPlayingTrack(null);
   }
+  const wantTrack = useRef<string | null>(null); // the song that should be playing (null: none)
+  useEffect(() => {
+    wantTrack.current = playingTrack;
+  }, [playingTrack]);
 
   // leaving the music panel stops the sample
   useEffect(() => {
@@ -978,22 +1065,30 @@ export default function Editor() {
   // ----- small pieces of UI -----
 
   // the design library section shown: the event's designs first, else the current design's
-  const shownCategory = category ?? eventLook?.category ?? bg?.category ?? "peacocks";
+  // the design library's sections: this event's designs first, then every other group
   const categories = CATEGORY_LABELS.filter((c) => BACKGROUNDS.some((b) => b.category === c.id));
+  const librarySections = [...categories.filter((c) => c.id === eventLook?.category), ...categories.filter((c) => c.id !== eventLook?.category)];
   const firstLine = firstSel?.text.split("\n")[0] ?? "";
   const selText = group ? "Everything on this page" : selBoxes.length > 1 ? `${selBoxes.length} lines` : firstSel ? `“${firstLine.slice(0, 22)}${firstLine.length > 22 ? "…" : ""}”` : "";
   const sampleText = firstLine.slice(0, 28) || "Rohan & Aishwarya";
-  // "Your colours": picked by hand recently, then every custom colour already in the invite
-  const yourColours = [
-    ...new Set(
-      [
-        ...recent,
-        ...invite.pages.flatMap((p) => [...p.boxes.map((b) => b.color), p.colours.paper ?? "", p.colours.design ?? ""]),
-      ]
-        .filter((c) => c.startsWith("#"))
-        .map((c) => c.toLowerCase()),
-    ),
-  ].slice(0, 12);
+  // "Your colours": only custom colours actually on this invite right now (never ready-made
+  // swatches, which stay in their own row), the most recently picked first. Text colours and
+  // paper/artwork colours are kept apart, so a pale paper colour isn't offered for words.
+  const inUse = (list: (string | null | undefined)[], presets: string[]) => {
+    const rank = (c: string) => (recent.includes(c) ? recent.indexOf(c) : recent.length);
+    return [...new Set(list.filter((c): c is string => !!c && c.startsWith("#")).map((c) => c.toLowerCase()))]
+      .filter((c) => !presets.includes(c))
+      .sort((a, b) => rank(a) - rank(b))
+      .slice(0, 8);
+  };
+  const textColours = inUse(
+    invite.pages.flatMap((p) => p.boxes.map((b) => b.color)),
+    TEXT_SWATCHES,
+  );
+  const bgColours = inUse(
+    invite.pages.flatMap((p) => [p.colours.paper, p.colours.design]),
+    [...PAPER_COLOURS, ...DESIGN_COLOURS].map((s) => s.color.toLowerCase()),
+  );
   // the size a line is actually drawn at (after fitting), and setting a new one
   // the size a line is set to (the page may show it a little smaller to fit; see `fit`)
   const selSize = firstSel ? Math.round(designSize(firstSel)) : 0;
@@ -1107,7 +1202,7 @@ export default function Editor() {
       <header className="topbar">
         <div className="brand">
           <span className="brand-hi">शादी</span>
-          <span className="brand-en">Video Maker</span>
+          <span className="brand-en">Invites</span>
         </div>
         <div className="topbar-mid">
           <button className="icon-btn labelled" onClick={history.undo} disabled={!history.canUndo || locked} aria-label="Undo" title="Undo">
@@ -1198,6 +1293,7 @@ export default function Editor() {
             />
           )}
           {busy === "preview" && <div className="playing-hint">Tap to stop</div>}
+          {!ready && <div className="stage-loading">Opening your card…</div>}
         </div>
 
         {/* smart help */}
@@ -1272,28 +1368,20 @@ export default function Editor() {
             {/* ----- Design ----- */}
             {panel === "design" && (
               <>
-                <Label title="Designs" desc={eventLook ? `★ marks designs that suit ${titles[current]}` : "Tap a design to use it on this page"} />
-                <div className="cat-row">
-                  {eventLook && (
-                    <button className={"chip suggested" + (shownCategory === eventLook.category ? " on" : "")} onClick={() => setCategory(eventLook.category)}>
-                      ★ For {titles[current]}
-                    </button>
-                  )}
-                  {categories
-                    .filter((c) => c.id !== eventLook?.category)
-                    .map((c) => (
-                      <button key={c.id} className={"chip" + (shownCategory === c.id ? " on" : "")} onClick={() => setCategory(c.id)}>
-                        {c.name}
-                      </button>
-                    ))}
-                </div>
-                <div className="lib-grid">
-                  {BACKGROUNDS.filter((b) => b.category === shownCategory).map((b) => (
-                    <BgThumb key={b.id} b={b} star={!!eventLook && b.category === eventLook.category} on={b.src === page.background} onPick={() => setBackground(b.src)} />
-                  ))}
-                </div>
+                {/* zoom first: below a long library it would be out of reach */}
                 <Slider label="Zoom" desc="Zoom in to push the artwork away from your text" min={0.6} max={1.6} step={0.05} value={page.bgZoom} onChange={(v) => update({ bgZoom: v })} show={`${Math.round(page.bgZoom * 100)}%`} />
                 <SameBox checked={invite.same.background} onChange={(on) => setSame("background", on)} />
+                {/* one open library, scrolled top to bottom, in sections (people browse designs, not categories) */}
+                {librarySections.map((c) => (
+                  <div key={c.id} className="lib-section">
+                    <Label title={c.id === eventLook?.category ? `★ ${c.name}, for ${titles[current]}` : c.name} />
+                    <div className="lib-grid">
+                      {BACKGROUNDS.filter((b) => b.category === c.id).map((b) => (
+                        <BgThumb key={b.id} b={b} star={c.id === eventLook?.category} on={b.src === page.background} onPick={() => setBackground(b.src)} />
+                      ))}
+                    </div>
+                  </div>
+                ))}
               </>
             )}
 
@@ -1316,10 +1404,10 @@ export default function Editor() {
                 <Label title="Paper" desc="The plain colour behind the artwork" />
                 <div className="swatches">
                   <Swatch value={null} on={page.colours.paper === null} original={bg?.paper} onPick={() => setColours({ paper: null })} name="Original" />
-                  {yourColours.map((c) => (
+                  {bgColours.map((c) => (
                     <Swatch key={"y" + c} value={c} on={page.colours.paper?.toLowerCase() === c} onPick={() => setColours({ paper: c })} name={c} />
                   ))}
-                  {PAPER_COLOURS.filter((s) => !yourColours.includes(s.color)).map((s) => (
+                  {PAPER_COLOURS.map((s) => (
                     <Swatch key={s.color} value={s.color} on={page.colours.paper === s.color} onPick={() => setColours({ paper: s.color })} name={s.name} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
@@ -1337,10 +1425,10 @@ export default function Editor() {
                 <Label title="Artwork" desc="The flowers, borders and patterns" />
                 <div className="swatches">
                   <Swatch value={null} on={page.colours.design === null} original={bg?.primary} onPick={() => setColours({ design: null })} name="Original" />
-                  {yourColours.map((c) => (
+                  {bgColours.map((c) => (
                     <Swatch key={"y" + c} value={c} on={page.colours.design?.toLowerCase() === c} onPick={() => setColours({ design: c })} name={c} />
                   ))}
-                  {DESIGN_COLOURS.filter((s) => !yourColours.includes(s.color)).map((s) => (
+                  {DESIGN_COLOURS.map((s) => (
                     <Swatch key={s.color} value={s.color} on={page.colours.design === s.color} onPick={() => setColours({ design: s.color })} name={s.name} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
@@ -1379,8 +1467,17 @@ export default function Editor() {
                   autoFocus
                   value={editBox.text}
                   rows={Math.min(4, Math.max(2, editBox.text.split("\n").length))}
-                  onFocus={(e) => e.currentTarget.select()}
-                  onChange={(e) => setBoxes((x) => ({ ...x, text: e.target.value }), [editBox.id])}
+                  onFocus={(e) => {
+                    // first open: a short line (a name, a date) is selected so typing replaces it; a long
+                    // one gets the cursor at the end. Tapping back in later leaves the cursor where you tap,
+                    // so a typo fix never wipes the whole paragraph.
+                    const t = e.currentTarget;
+                    if (focusedOnce.current === editBox.id) return;
+                    focusedOnce.current = editBox.id;
+                    if (!t.value.includes("\n") && t.value.length <= 40) t.select();
+                    else t.setSelectionRange(t.value.length, t.value.length);
+                  }}
+                  onChange={(e) => editText(editBox, e.target.value)}
                   style={{ fontFamily: `"${lineLook(editBox, page).font}", serif` }}
                   aria-label="Text"
                 />
@@ -1454,6 +1551,7 @@ export default function Editor() {
                     const n = Number(e.target.value);
                     if (n >= MIN_SIZE && n <= MAX_SIZE) setSize(n);
                   }}
+                  onBlur={(e) => (e.currentTarget.value = String(selSize))}
                   aria-label="Font size number"
                 />
               </div>
@@ -1469,11 +1567,11 @@ export default function Editor() {
             {/* ----- Text colour ----- */}
             {panel === "tcolour" && firstSel && (
               <>
-                <Label title="This invite's colours" desc="The theme's two colours, then every colour you've used" />
+                <Label title="This invite's colours" desc="The theme's two colours, then your own colours on this invite" />
                 <div className="swatches">
                   <Swatch value={readableOn(page.palette.text, pageSurface(page), 4.5)} on={firstSel.color === "text"} onPick={() => patchSel({ color: "text" })} name="Main colour" />
                   <Swatch value={readableOn(page.palette.accent, pageSurface(page), 3.2)} on={firstSel.color === "accent"} onPick={() => patchSel({ color: "accent" })} name="Accent colour" />
-                  {yourColours.map((c) => (
+                  {textColours.map((c) => (
                     <Swatch key={c} value={c} on={firstSel.color.toLowerCase() === c} onPick={() => patchSel({ color: c })} name={c} />
                   ))}
                   <label className="swatch-btn swatch-custom" title="Any colour">
@@ -1490,7 +1588,7 @@ export default function Editor() {
                 </div>
                 <Label title="More colours" />
                 <div className="swatches">
-                  {TEXT_SWATCHES.filter((c) => !yourColours.includes(c)).map((c) => (
+                  {TEXT_SWATCHES.map((c) => (
                     <Swatch key={c} value={c} on={firstSel.color.toLowerCase() === c} onPick={() => patchSel({ color: c })} name={c} />
                   ))}
                 </div>
@@ -1695,6 +1793,7 @@ export default function Editor() {
                   <span className="play-btn play-none">–</span>
                   <span className="lib-row-name">No music</span>
                 </button>
+
                 {MUSIC.map((m) => (
                   <div key={m.id} className={"lib-row track" + (invite.music.track === m.id ? " on" : "")} onClick={() => setMusic({ track: m.id })}>
                     <button
@@ -1705,7 +1804,7 @@ export default function Editor() {
                       }}
                       aria-label={playingTrack === m.id ? `Stop ${m.name}` : `Play ${m.name}`}
                     >
-                      {playingTrack === m.id ? "■" : "▶"}
+                      {loadingTrack === m.id ? "…" : playingTrack === m.id ? "■" : "▶"}
                     </button>
                     <span className="lib-row-name">{m.name}</span>
                     <em className="tag">{m.mood}</em>
@@ -1721,10 +1820,9 @@ export default function Editor() {
                 <Label title="Events" desc="Ready-made text for each function" />
                 <div className="kind-grid">
                   {EVENTS.map((e) => {
-                    const theme = THEMES.find((t) => t.name === EVENT_LOOK[e.id].theme)!;
                     return (
                       <button key={e.id} className="kind-card" onClick={() => addPage("event", e.id)}>
-                        <span className="kind-swatch" style={{ background: `linear-gradient(135deg, ${theme.colours.paper} 50%, ${theme.colours.design} 50%)` }} />
+                        <span className="kind-mark" aria-hidden="true">{EVENT_MARK[e.id]}</span>
                         {e.info.name}
                       </button>
                     );
@@ -1793,7 +1891,7 @@ export default function Editor() {
       {/* ---------- Floating preview (while a tall panel covers the page) ---------- */}
       {tall && ready && (
         <button className="pip" onClick={closePanel} aria-label="Back to the page" title="Back to the page">
-          <MiniPreview key={assetTick} draw={pipDraw} width={128} playing={panel === "motion"} still={page.duration} />
+          <MiniPreview key={assetTick} draw={pipDraw} width={100} playing={panel === "motion"} still={page.duration} />
         </button>
       )}
 
@@ -1838,7 +1936,7 @@ export default function Editor() {
               <div style={{ width: `${Math.round(progress * 100)}%` }} />
             </div>
             <p className="note">
-              {Math.round(progress * 100)}% done: {Math.round(total)}s, {invite.pages.length} page{invite.pages.length > 1 ? "s" : ""}. Keep this tab open.
+              {Math.round(progress * 100)}% done: {Math.round(film.seconds)}s, {film.pages} page{film.pages > 1 ? "s" : ""}. Keep this tab open.
             </p>
           </div>
         </div>
@@ -1860,6 +1958,14 @@ export default function Editor() {
             <a className="btn" href={result.url} download={`shubh-desi-invite.${result.extension}`}>
               Download .{result.extension}
             </a>
+            {(() => {
+              const file = new File([result.blob], `shubh-desi-invite.${result.extension}`, { type: result.blob.type || "video/mp4" });
+              return canShareFiles([file]) ? (
+                <button className="btn secondary" onClick={() => shareFiles([file], "video")}>
+                  Send it ↗
+                </button>
+              ) : null;
+            })()}
             <p className="note">
               <b>Sending on WhatsApp?</b> Attach it as a <b>Document</b> (📎, then Document), not from the gallery, so WhatsApp doesn't blur it.
             </p>
@@ -1883,8 +1989,13 @@ export default function Editor() {
           busy={downloading}
           onPdf={downloadPdf}
           onPictures={downloadPictures}
+          made={made?.kind ?? null}
+          onShare={() => made && shareFiles(made.files, made.kind)}
           onVideo={(pages) => makeVideo(pages)}
-          onClose={() => setShowDownload(false)}
+          onClose={() => {
+            setShowDownload(false);
+            setMade(null);
+          }}
         />
       )}
 

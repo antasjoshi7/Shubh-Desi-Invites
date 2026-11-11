@@ -34,3 +34,22 @@ Event terms (haldi invitation, mehndi invitation card, sangeet invitation, recep
 wording terms (wedding invitation message, shadi card matter in hindi, wedding invitation message for
 whatsapp) and regional ones (marathi / gujarati / punjabi / south indian wedding invitation). Export as
 CSV next time if you can (Download keyword ideas), so every row comes through.
+
+### For the brief maker (added 11 Nov 2026, none looked up yet)
+
+Before building the dress-code page, look these up (India, CSV if possible):
+
+- **Dress code wording**: wedding dress code wording, dress code for wedding invitation, dress code
+  message for wedding, haldi dress code, mehndi dress code, sangeet dress code, dress code message for
+  whatsapp, theme dress code for wedding.
+- **What to wear**: what to wear to haldi, haldi outfit for guests, mehendi outfit ideas, sangeet outfit
+  ideas (expect fashion sites and Pinterest to own these; we only want the ones about telling guests).
+- **Colours**: haldi colour theme, mehendi colour combination, wedding colour palette indian, wedding
+  theme colours indian, sangeet theme ideas.
+- **Decorator**: how to brief wedding decorator, questions to ask wedding decorator, wedding decoration
+  checklist, wedding mood board, indian wedding mood board.
+
+How they'd map (one page per cluster, same rule as above): dress-code wording and "tell guests" terms go
+to a new hub `/wedding-dress-code`, which links to each event page's dress-code lines the way the wording
+hub does. Decorator terms go to one guide written after the wedding. Colour pages wait for Search Console
+to show demand.

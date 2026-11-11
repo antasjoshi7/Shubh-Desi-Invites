@@ -6,6 +6,7 @@ import { Faq } from "@/components/site/Faq";
 import { Wordings } from "@/components/site/Wordings";
 import { EVENT_PAGES } from "@/lib/content/events";
 import { WORDING_FAQS, WORDING_GROUPS } from "@/lib/content/wording";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 const TITLE = "Wedding Invitation Wording: 20+ Indian Examples to Copy";
 const DESCRIPTION =
@@ -23,6 +24,7 @@ export default function WordingPage() {
   return (
     <>
       <Crumbs trail={[{ name: "Wedding invitation wording", path: "/wedding-invitation-wording" }]} />
+      <Theme name="wording" />
       <section className="s-hero" style={{ gridTemplateColumns: "1fr" }}>
         <div>
           <h1>Wedding invitation wording</h1>
@@ -30,6 +32,7 @@ export default function WordingPage() {
             {count} ready-to-copy examples for Indian wedding invitations: traditional, from parents, from the couple, Hindi, RSVP lines and the WhatsApp message to send with your invite. Swap in your names and paste into the{" "}
             <Link href="/create">invite maker</Link>.
           </p>
+          <HeroStickers items={["Copy-paste ready", "Hindi + Hinglish", "Mummy will check anyway"]} />
           <ul className="s-jump">
             {WORDING_GROUPS.map((g) => (
               <li key={g.id}>

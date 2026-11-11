@@ -1,4 +1,4 @@
-// Background music, composed and synthesised in code (no audio files, no licences needed).
+// Background music: recorded songs in public/audio, downloaded only when someone plays or uses one.
 // Each track is an exact loop of up to 15 seconds: notes and echoes that run past the end
 // wrap round to the start, so the loop is seamless however long the video is.
 
@@ -6,7 +6,7 @@ export const SAMPLE_RATE = 44100;
 const SR = SAMPLE_RATE;
 type Buf = Float32Array;
 
-export type TrackInfo = { id: string; name: string; mood: string };
+export type TrackInfo = { id: string; name: string; mood: string; file?: string };
 export type Loop = { left: Buf; right: Buf; seconds: number };
 
 // ---------------------------------------------------------------- random + helpers
@@ -347,185 +347,89 @@ const CS3 = 138.59;
 
 const TRACKS: (TrackInfo & { make: () => Loop })[] = [
   {
-    id: "santoor-dawn",
-    name: "Santoor Dawn",
-    mood: "Calm",
-    make: () => {
-      const beat = 60 / 80; // 16 beats = 12s
-      const m = new Mix(16 * beat);
-      tanpura(m, D3, beat, 16, 0.28);
-      line(m, [7, 8, 9, 11, 12, 11, 9, 8, 7, -1, 6, 7, 9, 7, 6, 4, 5, -1, 4, 2, 4, 5, 7, -1, 9, 8, 7, 6, 4, 2, 0, -1], YAMAN, D3 * 2, beat / 2, 0.2, (f) => santoor(f));
-      reverb(m, 0.5);
-      return master(m);
-    },
+    id: "suno-padmavati",
+    name: "Padmavati Royal Palace Strings",
+    mood: "Cinematic Grandeur",
+    file: "/audio/suno-padmavati.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "shehnai-welcome",
-    name: "Shehnai Welcome",
-    mood: "Auspicious",
-    make: () => {
-      const beat = 60 / 72; // 16 beats ≈ 13.3s
-      const m = new Mix(16 * beat);
-      tanpura(m, D3, beat, 16, 0.25);
-      melody(
-        m,
-        [[4, 0, 1.5], [5, 1.5, 0.5], [4, 2, 1], [3, 3, 1], [2, 4, 2], [1, 6, 1], [0, 7, 1], [1, 8, 0.5], [2, 8.5, 0.5], [3, 9, 1], [4, 10, 2], [5, 12, 1], [4, 13, 1], [2, 14, 1], [0, 15, 1]],
-        BHAIRAV, D3 * 2, beat, shehnai, 0.2, 0.1, true,
-      );
-      rhythm(m, "dhum . ta . dhum . ta .", beat, { dhum, ta }, 0.22, 0, 2);
-      reverb(m, 0.4);
-      return master(m);
-    },
+    id: "suno-dinshagna",
+    name: "Din Shagna (Bridal Flute & Dulcimer)",
+    mood: "Emotional Romance",
+    file: "/audio/suno-dinshagna.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "sitar-raga",
-    name: "Sitar Raga",
-    mood: "Elegant",
-    make: () => {
-      const beat = 60 / 70; // 16 beats ≈ 13.7s
-      const m = new Mix(16 * beat);
-      tanpura(m, CS3, beat, 16, 0.25);
-      const sitar = (f: number) => pluck(f, 2.2, 0.997, 0.75, 0.8);
-      line(m, [7, -1, 6, 5, 4, -1, 5, 6, 7, 9, 8, 7, 5, -1, 4, 2, 4, -1, 5, 4, 2, 1, 0, -1, 2, 4, 5, 6, 7, -1, -1, -1], KHAMAJ, CS3 * 2, beat / 2, 0.24, sitar);
-      rhythm(m, "dha dhin dhin dha dha dhin dhin dha dha tin tin ta ta dhin dhin dha", beat, { dha, dhin: dha, tin, ta: na }, 0.28);
-      reverb(m, 0.35);
-      return master(m);
-    },
+    id: "suno-sufi",
+    name: "Ishq Sufiyana (Acoustic Guitar & Sarod)",
+    mood: "Sufi Romance",
+    file: "/audio/suno-sufi.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "dholak-sangeet",
-    name: "Dholak Sangeet",
-    mood: "Festive",
-    make: () => {
-      const beat = 60 / 120; // 24 beats = 12s
-      const m = new Mix(24 * beat);
-      rhythm(m, "dhum . ta dhum . dhum ta .", beat / 2, { dhum, ta }, 0.4, 0, 6);
-      rhythm(m, ". clap . clap", beat, { clap: () => clap() }, 0.35, 0, 6);
-      const sa = 220;
-      const chords = [[0, 4, 7], [-2, 2, 5], [5, 9, 12], [0, 4, 7], [0, 4, 7], [-2, 2, 5], [7, 11, 14], [0, 4, 7]];
-      chords.forEach((c, i) => c.forEach((st) => m.add(harmonium(hz(sa, st), beat * 3), i * 3 * beat, 0.09, 0)));
-      melody(m, [[4, 0, 1], [5, 1, 1], [7, 2, 2], [5, 4, 1], [4, 5, 1], [2, 6, 2], [4, 12, 1], [5, 13, 1], [7, 14, 1], [9, 15, 1], [7, 16, 2], [5, 18, 1], [4, 19, 1], [2, 20, 2], [0, 22, 2]], KHAMAJ, sa * 2, beat, shehnai, 0.12, 0.2, true);
-      reverb(m, 0.25);
-      return master(m);
-    },
+    id: "suno-rajputana",
+    name: "Rajputana Nagada & Shehnai",
+    mood: "Grand Baraat",
+    file: "/audio/suno-rajputana.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "temple-bells",
-    name: "Temple Bells",
-    mood: "Devotional",
-    make: () => {
-      const beat = 1; // 12 beats = 12s
-      const m = new Mix(12);
-      tanpura(m, D3, beat, 12, 0.25);
-      m.add(bell(D3 * 4), 0, 0.22, -0.3);
-      m.add(bell(hz(D3 * 4, 7)), 6, 0.18, 0.3);
-      m.add(bell(D3 * 8, 2.5), 3, 0.08, 0.5);
-      m.add(bell(D3 * 8, 2.5), 9, 0.08, -0.5);
-      melody(m, [[2, 0, 3], [3, 3, 3], [4, 6, 2], [3, 8, 2], [2, 10, 2]], BHUPALI, D3 * 4, beat, flute, 0.16, 0, true);
-      reverb(m, 0.6);
-      return master(m);
-    },
+    id: "suno-padharo",
+    name: "Padharo Royal Rajasthani",
+    mood: "Folk Welcome",
+    file: "/audio/suno-padharo.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "bansuri-breeze",
-    name: "Bansuri Breeze",
-    mood: "Romantic",
-    make: () => {
-      const beat = 60 / 84; // 20 beats ≈ 14.3s
-      const m = new Mix(20 * beat);
-      tanpura(m, D3, beat, 20, 0.22);
-      melody(
-        m,
-        [[5, 0, 1.5], [6, 1.5, 0.5], [7, 2, 2], [6, 4, 1], [5, 5, 0.5], [3, 5.5, 0.5], [2, 6, 2], [3, 8, 1], [5, 9, 1], [6, 10, 1.5], [5, 11.5, 0.5], [3, 12, 2], [2, 14, 1], [1, 15, 1], [0, 16, 3]],
-        BHUPALI, D3 * 2, beat, flute, 0.24, -0.1, true,
-      );
-      rhythm(m, "dha ge na ti na ke dhi na", beat / 2, { dha, ge, na, ti: tin, ke, dhi: dha }, 0.18, 0, 5);
-      reverb(m, 0.5);
-      return master(m);
-    },
+    id: "suno-mangal",
+    name: "Mangal Aashirvaad (Shehnai & Sitar)",
+    mood: "Sacred Vivah",
+    file: "/audio/suno-mangal.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "mehendi-groove",
-    name: "Mehendi Groove",
-    mood: "Playful",
-    make: () => {
-      const beat = 60 / 104; // 24 beats ≈ 13.8s
-      const m = new Mix(24 * beat);
-      rhythm(m, "dhum ta . ta dhum . ta ta", beat / 2, { dhum, ta }, 0.38, 0, 6);
-      rhythm(m, ". . clap .", beat, { clap: () => clap(7) }, 0.3, 0, 6);
-      const riff = [7, 9, 10, 9, 7, 5, 4, 5, 7, -1, 7, 9, 7, 5, 4, -1];
-      for (let r = 0; r < 3; r++) line(m, r === 2 ? [9, 10, 12, 10, 9, 7, 5, 7, 9, -1, 9, 10, 9, 7, 5, -1] : riff, KHAMAJ, D3 * 2, beat / 2, 0.2, (f) => santoor(f, 1.2), r * 8 * beat);
-      m.add(pluck(D3 / 2, beat * 8, 0.998, 0.4), 0, 0.3);
-      m.add(pluck(hz(D3 / 2, 5), beat * 8, 0.998, 0.4), 8 * beat, 0.3);
-      m.add(pluck(hz(D3 / 2, 7), beat * 8, 0.998, 0.4), 16 * beat, 0.3);
-      reverb(m, 0.3);
-      return master(m);
-    },
+    id: "suno-pahadi",
+    name: "Pahadi Santoor & Bansuri",
+    mood: "Valley Serenade",
+    file: "/audio/suno-pahadi.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "baraat-procession",
-    name: "Baraat Procession",
-    mood: "Royal",
-    make: () => {
-      const beat = 60 / 116; // 24 beats ≈ 12.4s
-      const m = new Mix(24 * beat);
-      rhythm(m, "dhol . tilli dhol tilli . dhol tilli", beat / 2, { dhol, tilli }, 0.42, 0, 6);
-      rhythm(m, "tilli tilli tilli tilli", beat / 4, { tilli }, 0.18, 22 * beat, 2);
-      melody(
-        m,
-        [[4, 0, 1], [4, 1, 0.5], [5, 1.5, 0.5], [7, 2, 2], [8, 4, 1], [7, 5, 1], [5, 6, 2], [4, 8, 1], [5, 9, 1], [4, 10, 1], [2, 11, 1], [4, 12, 2], [7, 14, 2], [8, 16, 1], [9, 17, 1], [8, 18, 1], [7, 19, 1], [5, 20, 2], [4, 22, 2]],
-        BILAWAL, 293.66, beat, shehnai, 0.2, 0, true,
-      );
-      reverb(m, 0.3);
-      return master(m);
-    },
+    id: "suno-awadhi",
+    name: "Awadhi Mangal Geet (Dholak)",
+    mood: "Courtyard Haldi",
+    file: "/audio/suno-awadhi.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
   {
-    id: "romantic-strings",
-    name: "Romantic Strings",
-    mood: "Dreamy",
-    make: () => {
-      const beat = 60 / 66; // 16 beats ≈ 14.5s
-      const m = new Mix(16 * beat);
-      const sa = 196;
-      const chords = [[0, 4, 7], [-3, 0, 4], [-7, -3, 0], [-5, -1, 2]];
-      chords.forEach((c, i) => {
-        c.forEach((st) => m.add(pad(hz(sa, st), beat * 4.6), i * 4 * beat, 0.12));
-        m.add(pluck(hz(sa / 2, c[0]), beat * 4, 0.998, 0.35), i * 4 * beat, 0.3);
-      });
-      line(m, [7, 9, 11, 14, 11, 9, 7, 4, 5, 7, 9, 12, 9, 7, 5, 2, 4, 5, 7, 9, 7, 5, 4, 0, 2, 4, 6, 9, 6, 4, 2, -1], BILAWAL, sa * 2, beat / 2, 0.12, (f) => santoor(f, 1.4));
-      reverb(m, 0.6);
-      return master(m);
-    },
-  },
-  {
-    id: "ghungroo-kathak",
-    name: "Ghungroo Kathak",
-    mood: "Dance",
-    make: () => {
-      const beat = 60 / 96; // 24 beats = 15s
-      const m = new Mix(24 * beat);
-      tanpura(m, CS3, beat, 24, 0.18, 5);
-      rhythm(m, "dha ti ra ki ta ka dha . dha ti ra ki ta ka dha .", beat / 4, { dha, ti: ke, ra: na, ki: ke, ta: na, ka: ke }, 0.26, 0, 6);
-      rhythm(m, "g . g . g g g .", beat, { g: () => ghungroo(3) }, 0.4, 0, 3);
-      const sitar = (f: number) => pluck(f, 1.6, 0.996, 0.8, 0.7);
-      line(m, [7, 8, 7, 5, 3, 5, 7, -1, 8, 10, 8, 7, 5, 3, 1, 0], BHAIRAVI, CS3 * 2, beat / 2, 0.22, sitar, 8 * beat);
-      line(m, [0, 1, 3, 5, 7, 5, 3, 1, 0, -1, 3, 1, 0, -1, -1, -1], BHAIRAVI, CS3 * 2, beat / 2, 0.22, sitar, 16 * beat);
-      reverb(m, 0.35);
-      return master(m);
-    },
+    id: "suno-carnatic",
+    name: "Thanjavur Temple Procession",
+    mood: "Royal Heritage",
+    file: "/audio/suno-carnatic.webm",
+    make: () => ({ left: new Float32Array(SAMPLE_RATE * 10), right: new Float32Array(SAMPLE_RATE * 10), seconds: 10 }),
   },
 ];
 
-export const MUSIC: TrackInfo[] = TRACKS.map(({ id, name, mood }) => ({ id, name, mood }));
+export const MUSIC: TrackInfo[] = TRACKS.map(({ id, name, mood, file }) => ({ id, name, mood, file }));
 
 const cache = new Map<string, Loop>();
+
+export function setTrackLoop(id: string, loop: Loop) {
+  cache.set(id, loop);
+}
+
+export function hasTrackLoop(id: string): boolean {
+  return cache.has(id);
+}
 
 // The loop for a track (made once, then remembered).
 export function getLoop(id: string): Loop {
   let loop = cache.get(id);
   if (!loop) {
-    loop = TRACKS.find((t) => t.id === id)!.make();
+    // a song that no longer exists plays as silence instead of breaking Play or the video
+    const track = TRACKS.find((t) => t.id === id);
+    loop = track ? track.make() : { left: new Float32Array(SAMPLE_RATE), right: new Float32Array(SAMPLE_RATE), seconds: 1 };
     cache.set(id, loop);
   }
   return loop;

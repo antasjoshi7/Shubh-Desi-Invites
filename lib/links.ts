@@ -33,7 +33,9 @@ export function pdfLinks(page: Page): PdfLink[] {
     if (phones) continue;
     // a place: the whole text block opens Google Maps searched for that address
     // (a schedule that mentions a place, like "Baraat 3:30 PM at the gate", is not an address)
-    if (PLACE.test(box.text) && !/\b\d{1,2}(:\d{2})?\s?(am|pm)\b/i.test(box.text)) {
+    // (the template's venue line, or "at <Name>", counts too: "at Taj Lands End" has no place word)
+    const place = PLACE.test(box.text) || (box.label === "Venue" && box.text.includes(",")) || /^at\s+\p{Lu}/u.test(box.text.trim());
+    if (place && !/\b\d{1,2}(:\d{2})?\s?(am|pm)\b/i.test(box.text)) {
       const x0 = Math.min(...ls.map((l) => l.x));
       const x1 = Math.max(...ls.map((l) => l.x + l.w));
       const y0 = Math.min(...ls.map((l) => l.y));

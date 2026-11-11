@@ -8,6 +8,7 @@ import { Tiles } from "@/components/site/Tiles";
 import { tilesFor } from "@/lib/content/gallery";
 import { motionsById } from "@/lib/content/motions";
 import { COUNTS } from "@/lib/site";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 // Prices people actually pay, so this page answers "how much does a digital wedding invite cost" honestly.
 // Sources: couples' threads on r/DesiWeddings and r/IndianWeddings (saved in research/reddit) and
@@ -36,6 +37,7 @@ export default function PricePage() {
   return (
     <>
       <Crumbs trail={[{ name: "Digital wedding invitation price", path: "/digital-wedding-invitation-price" }]} />
+      <Theme name="price" />
       <section className="s-hero" style={{ gridTemplateColumns: "1fr" }}>
         <div>
           <p className="s-kicker">Stop paying for wedding invites</p>
@@ -43,6 +45,7 @@ export default function PricePage() {
           <p className="s-lead">
             Anywhere from nothing to ₹30,000. Here&apos;s what printed cards, video templates, invitation websites and designers really charge in India as of {AS_OF}, and how to make a beautiful invite for free.
           </p>
+          <HeroStickers items={["₹0 vs ₹1,699", "Receipts included", "Paisa vasool"]} />
         </div>
       </section>
 
@@ -50,7 +53,7 @@ export default function PricePage() {
         <h2>What does a digital wedding invite cost in India?</h2>
         <div className="s-answer">
           <p>
-            Video invite templates cost about ₹199 to ₹500, invitation websites start around ₹1,699 plus GST, and designers charge ₹2,000 to ₹30,000 for a custom digital invite. Printed cards add ₹30 to ₹500 per card. If you want a traditional Indian design with your names, dates and venues, you can make one free with the <Link href="/">wedding invitation video maker</Link> on this site.
+            Video invite templates cost about ₹199 to ₹500, invitation websites start around ₹1,699 plus GST, and designers charge ₹2,000 to ₹30,000 for a custom digital invite. Printed cards add ₹30 to ₹500 per card. If you want a traditional Indian design with your names, dates and venues, you can make one free with the <Link href="/">wedding invitation card maker</Link> on this site.
           </p>
         </div>
       </section>

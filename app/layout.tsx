@@ -1,12 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Bodoni_Moda, Space_Grotesk, Tiro_Devanagari_Hindi, Yatra_One } from "next/font/google";
+import { Bodoni_Moda, Khand, Mukta, Tiro_Devanagari_Hindi, Yatra_One } from "next/font/google";
 import { Analytics } from "@/components/Analytics";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
 // next/font downloads these at build time and serves them from our own site.
 const yatra = Yatra_One({ weight: "400", subsets: ["latin", "devanagari"], variable: "--font-yatra" });
-const grotesk = Space_Grotesk({ weight: ["400", "500", "600", "700"], subsets: ["latin"], variable: "--font-grotesk" });
+// Chatpata look (11 Nov 2026): Yatra One for signboard headlines, Khand (made for Indian signs) for
+// labels and buttons, Mukta for reading. All three write Hindi too.
+const mukta = Mukta({ weight: ["400", "500", "700"], subsets: ["latin", "devanagari"], variable: "--font-body" });
+const khand = Khand({ weight: ["500", "600", "700"], subsets: ["latin", "devanagari"], variable: "--font-label" });
 const bodoni = Bodoni_Moda({ style: "italic", weight: ["500"], subsets: ["latin"], variable: "--font-bodoni" });
 const tiro = Tiro_Devanagari_Hindi({ weight: "400", subsets: ["devanagari", "latin"], variable: "--font-tiro" });
 
@@ -33,12 +36,12 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#1a0620",
+  themeColor: "#ffd84d",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${yatra.variable} ${grotesk.variable} ${bodoni.variable} ${tiro.variable}`}>
+    <html lang="en-IN" className={`${yatra.variable} ${mukta.variable} ${khand.variable} ${bodoni.variable} ${tiro.variable}`}>
       <body>
         {children}
         <Analytics />

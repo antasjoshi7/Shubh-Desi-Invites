@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { MiniPreview } from "@/components/MiniPreview";
+import { track } from "@/lib/track";
 
 // Download: the card first (PDF or pictures), the video second. Every page is ticked; untick the ones a
 // guest group shouldn't get (e.g. a reception-only version for the office).
@@ -13,6 +14,8 @@ export function DownloadSheet({
   onPdf,
   onPictures,
   onVideo,
+  made,
+  onShare,
   onClose,
 }: {
   count: number;
@@ -22,9 +25,12 @@ export function DownloadSheet({
   onPdf: (pages: number[]) => void;
   onPictures: (pages: number[]) => void;
   onVideo: (pages: number[]) => void;
+  made: "pdf" | "pictures" | null; // just made and the phone can share it
+  onShare: () => void;
   onClose: () => void;
 }) {
   const [picked, setPicked] = useState<boolean[]>(() => Array.from({ length: count }, () => true));
+  const [downloaded, setDownloaded] = useState(false); // after a download, point to the mood board
   const chosen = picked.flatMap((on, i) => (on ? [i] : []));
   const toggle = (i: number) => setPicked((p) => p.map((on, j) => (j === i ? !on : on)));
   const all = chosen.length === count;
@@ -59,13 +65,24 @@ export function DownloadSheet({
           ))}
         </ul>
         <div className="download-actions">
-          <button className="btn" onClick={() => onPdf(chosen)} disabled={!chosen.length || !!busy}>
+          <button className="btn" onClick={() => { setDownloaded(true); onPdf(chosen); }} disabled={!chosen.length || !!busy}>
             {busy === "pdf" ? "Making PDF…" : `Download PDF${chosen.length ? ` (${chosen.length})` : ""}`}
           </button>
-          <button className="btn secondary" onClick={() => onPictures(chosen)} disabled={!chosen.length || !!busy}>
+          <button className="btn secondary" onClick={() => { setDownloaded(true); onPictures(chosen); }} disabled={!chosen.length || !!busy}>
             {busy === "pictures" ? "Saving…" : chosen.length > 1 ? "Download pictures" : "Download picture"}
           </button>
         </div>
+        {made && (
+          <button className="btn share-btn" onClick={onShare}>
+            ↗ Send the {made === "pdf" ? "PDF" : "pictures"} on WhatsApp or anywhere
+          </button>
+        )}
+        {(made || (downloaded && !busy)) && (
+          <p className="note">
+            Planning the decor and outfits too?{" "}
+            <a href="/moodboard" onClick={() => track("moodboard_from_invite")}>Make a mood board</a> and send your decorator a clear brief.
+          </p>
+        )}
         <p className="note">
           The PDF is the card: sharp on any phone and ready to print. Tap the venue in it to open the map, or a phone
           number to call. Pictures are phone-size images, in a .zip when there are several.

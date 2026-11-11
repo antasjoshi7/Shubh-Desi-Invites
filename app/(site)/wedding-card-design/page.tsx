@@ -6,6 +6,7 @@ import { Faq } from "@/components/site/Faq";
 import { Tiles } from "@/components/site/Tiles";
 import { designsByCategory, tilesFor } from "@/lib/content/gallery";
 import { COUNTS } from "@/lib/site";
+import { HeroPic, HeroStickers, Theme } from "@/components/site/Desi";
 
 // Targets the biggest search cluster: "wedding card design" and "Hindu / shadi card design" (docs/keywords.md).
 const TITLE = `Wedding Card Design: ${COUNTS.designsLabel} Free Hindu Wedding Invitation Designs`;
@@ -23,12 +24,14 @@ export default function DesignsPage() {
   return (
     <>
       <Crumbs trail={[{ name: "Wedding card designs", path: "/wedding-card-design" }]} />
+      <Theme name="designs" />
       <section className="s-hero" style={{ gridTemplateColumns: "1fr" }}>
         <div>
           <h1>Wedding card designs</h1>
           <p className="s-lead">
             {COUNTS.designs} free Hindu wedding card designs so far, in the styles trending on Pinterest and Instagram, with new ones every week. Tap any design to add your names, dates and venues, then download it as a shadi card picture or an animated invite video.
           </p>
+          <HeroStickers items={["201 designs", "New every week", "Pinterest wala look"]} />
           <ul className="s-jump">
             {cats.map((c) => (
               <li key={c.id}>

@@ -130,12 +130,11 @@ export function PageStrip({
           <span className="strip-name">{titles[i]}</span>
         </button>
       ))}
-      {canAdd && (
-        <button className="strip-add" onClick={onAdd} disabled={disabled} aria-label="Add a page">
-          <span>+</span>
-          <span className="strip-name">Page</span>
-        </button>
-      )}
+      {/* at the limit it stays, greyed, and says why instead of vanishing */}
+      <button className="strip-add" onClick={onAdd} disabled={disabled || !canAdd} aria-label={canAdd ? "Add a page" : "Pages are full"}>
+        <span>+</span>
+        <span className="strip-name">{canAdd ? "Page" : "Full"}</span>
+      </button>
     </div>
   );
 }
