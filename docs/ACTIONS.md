@@ -9,7 +9,7 @@ Marketing plan (wedges, channel playbooks, timeline; updated 11 Nov with the bri
 
 | # | What | Why it matters | Effort |
 |---|---|---|---|
-| 1 | **Buy shubhdesi.com on Cloudflare** (about $11.80/yr) and shubhdesi.in wherever renewal is cheapest (Porkbun or similar). Decided 9 Nov: **host on Cloudflare Pages** too (free, commercial use allowed). Then tell me | I move the site from Vercel to Cloudflare Pages, connect the domain in one click, and redeploy | 15 min |
+| 1 | ~~Domain~~ **Done 11 Nov**: www.shubhdesi.in is live (bought on GoDaddy, renews Nov 2027 at ₹899; keep auto-renew on). The old vercel.app address redirects there. Hosting stays on Vercel's free plan until the site earns money, then move to Cloudflare Pages | – | – |
 | 2 | ~~Say "deploy"~~ **Done 9 Nov 2026**: everything is live at shubh-desi… (currently shaadi-video-maker.vercel.app until the domain is bought) | – | – |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | ~~GitHub repo~~ **Done 11 Nov**: github.com/antasjoshi7/Shubh-Desi-Invites. Optional: connect it in Vercel (Settings → Git) for deploys on every push | – | – |
