@@ -7,7 +7,7 @@ import { MUSIC } from "./music";
 export const SITE = {
   name: "Shubh Desi Invites",
   // the live address; set NEXT_PUBLIC_SITE_URL to https://shubhdesi.com once that domain is bought and connected
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://shaadi-video-maker.vercel.app").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.shubhdesi.in").replace(/\/$/, ""),
   tagline: "Free Indian wedding invitation card maker",
   // one plain sentence: what it is, who it's for, what it does (read by Google and AI assistants)
   definition:

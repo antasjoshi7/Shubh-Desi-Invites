@@ -1,3 +1,11 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "shaadi-video-maker.vercel.app" }],
+      "destination": "https://www.shubhdesi.in/:path*",
+      "permanent": true
+    }
+  ]
 }

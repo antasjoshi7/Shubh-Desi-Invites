@@ -67,7 +67,7 @@ const PIN_TITLE = { haldi: "Haldi invitation video", mehendi: "Mehendi invitatio
 const PIN_PAGE = { haldi: "/haldi-invitation-video", mehendi: "/mehendi-invitation-video", sangeet: "/sangeet-invitation-video", reception: "/reception-invitation-video", shaadi: "/" };
 const pinDir = path.join(root, "marketing/pinterest");
 fs.mkdirSync(pinDir, { recursive: true });
-const site = (process.env.NEXT_PUBLIC_SITE_URL || "shaadi-video-maker.vercel.app").replace(/^https?:\/\//, "").replace(/\/$/, "");
+const site = (process.env.NEXT_PUBLIC_SITE_URL || "www.shubhdesi.in").replace(/^https?:\/\//, "").replace(/\/$/, "");
 const pinList = [];
 for (const s of samples) {
   const title = s.src.includes("hindi") ? "Hindi wedding card" : PIN_TITLE[s.event];
