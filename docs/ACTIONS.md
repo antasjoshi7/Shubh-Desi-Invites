@@ -12,8 +12,8 @@ Marketing plan (wedges, channel playbooks, timeline; updated 11 Nov with the bri
 | 1 | **Buy shubhdesi.com on Cloudflare** (about $11.80/yr) and shubhdesi.in wherever renewal is cheapest (Porkbun or similar). Decided 9 Nov: **host on Cloudflare Pages** too (free, commercial use allowed). Then tell me | I move the site from Vercel to Cloudflare Pages, connect the domain in one click, and redeploy | 15 min |
 | 2 | ~~Say "deploy"~~ **Done 9 Nov 2026**: everything is live at shubh-desi… (currently shaadi-video-maker.vercel.app until the domain is bought) | – | – |
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
-| 4 | **Create the GitHub repo** (empty, no README) and send me the URL, or push it yourself | CV proof; lets Vercel deploy on every change | 5 min |
-| 5 | **PostHog**: sign up, create a project, turn on cookieless mode in its settings, send me the project key (starts `phc_`) | Visitor counts, which pages lead to exports, and the rating box (which only appears when PostHog is on) | 15 min |
+| 4 | ~~GitHub repo~~ **Done 11 Nov**: github.com/antasjoshi7/Shubh-Desi-Invites. Optional: connect it in Vercel (Settings → Git) for deploys on every push | – | – |
+| 5 | ~~PostHog~~ **Done 11 Nov**: live in cookieless mode (EU project). Visits and events show in PostHog within minutes | – | – |
 | 6 | **Google Search Console**: add a Domain property for the new domain and verify it with the DNS record | Your SEO scoreboard: searches, clicks, positions | 15 min, after #1 |
 | 7 | **Bing Webmaster Tools**: import from Search Console | Bing also feeds ChatGPT search and Copilot | 2 min, after #6 |
 | 8 | **Read the Hindi wording once** (lib/content/wording.ts, the "hindi" group), or ask a parent | Wrong Hindi on a public page hurts trust | 10 min |
