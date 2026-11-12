@@ -14,7 +14,7 @@ Marketing plan (wedges, channel playbooks, timeline; updated 11 Nov with the bri
 | 3 | **Decide on the 7 restricted fonts** (Royal, Royal Glamour, Royal Moscow; Dehanna, Kharisna, Taj Mahal, Arivndr Pomt have no licence) | Their licences don't allow use on a website; matters more once the site gets traffic and the repo is public | Decision |
 | 4 | ~~GitHub repo~~ **Done 11 Nov**: github.com/antasjoshi7/Shubh-Desi-Invites. Optional: connect it in Vercel (Settings → Git) for deploys on every push | – | – |
 | 5 | ~~PostHog~~ **Done 11 Nov**: live in cookieless mode (EU project). Visits and events show in PostHog within minutes | – | – |
-| 6 | **Google Search Console**: add a Domain property for the new domain and verify it with the DNS record | Your SEO scoreboard: searches, clicks, positions | 15 min, after #1 |
+| 6 | ~~Google Search Console~~ **Done 12 Nov**: Domain property sc-domain:shubhdesi.in verified. Still to do once: submit `sitemap.xml` (Sitemaps) and request indexing for the home page, /create and /wedding-card-design (URL inspection). First data shows in 2–3 days | – | – |
 | 7 | **Bing Webmaster Tools**: import from Search Console | Bing also feeds ChatGPT search and Copilot | 2 min, after #6 |
 | 8 | **Read the Hindi wording once** (lib/content/wording.ts, the "hindi" group), or ask a parent | Wrong Hindi on a public page hurts trust | 10 min |
 | 9 | **Finish the story page** (content/pages/about.md): add your **email** and **Twitter/X handle** in the last line (the two [brackets]), read it once, set `status: published`. If the brand name changes, change it in the first line too | A real person and a real reason behind the site is a trust signal for Google and for families | 5 min |
